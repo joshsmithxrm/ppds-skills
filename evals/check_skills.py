@@ -217,10 +217,15 @@ def check_ppds_invocation(
         tokens = shlex.split(cmdline, posix=True)
     except ValueError:
         tokens = cmdline.split()
-    # Trim at shell operators
+    # Trim at shell operators. shlex.split keeps space-less redirections and
+    # pipes attached to a token ('ppds auth list >/dev/null' -> '>/dev/null',
+    # 'ppds auth list 2>/dev/null' -> '2>/dev/null'), so match the exact
+    # operator tokens AND any token that starts with a redirection/pipe/sep.
     argv: list[str] = []
     for tok in tokens:
-        if tok in SHELL_OPERATORS:
+        if tok in SHELL_OPERATORS or any(
+            tok.startswith(op) for op in (">", "2>", "<", "|", "&", ";")
+        ):
             break
         argv.append(tok)
     if not argv:
@@ -339,6 +344,9 @@ def check_body(path: Path, text: str, tree: dict, mcp_tools: set[str]) -> None:
             cmdline = cmdline.replace("...", "").replace("…", "")
             check_ppds_invocation(path, i, cmdline, tree)
 
+    if in_fence:
+        err(path, len(lines), "unclosed code fence at end of file")
+
 
 def check_links(path: Path, text: str) -> None:
     for i, line in enumerate(text.splitlines(), start=1):
@@ -350,7 +358,7 @@ def check_links(path: Path, text: str) -> None:
                 err(path, i, f"broken relative link: {target}")
 
 
-def check_generated_refs(cli_version: str) -> None:
+def check_generated_refs(cli_version: str, mcp_version: str) -> None:
     for ref in SKILLS_DIR.glob("*/references/cli-*.md"):
         head = ref.read_text(encoding="utf-8")[:600]
         if "GENERATED" in head and f"CLI version {cli_version}" not in head:
@@ -359,6 +367,15 @@ def check_generated_refs(cli_version: str) -> None:
                 None,
                 f"generated reference is stale (expected CLI version {cli_version})"
                 " — re-run tools/generate_flag_tables.py",
+            )
+    for ref in SKILLS_DIR.glob("*/references/mcp-tools.md"):
+        head = ref.read_text(encoding="utf-8")[:600]
+        if "GENERATED" in head and f"ppds-mcp-server {mcp_version}" not in head:
+            err(
+                ref,
+                None,
+                f"generated reference is stale (expected MCP version {mcp_version})"
+                " — re-run tools/capture_mcp_tools.py + tools/generate_flag_tables.py",
             )
 
 
@@ -418,7 +435,7 @@ def main() -> int:
         check_body(ref, text, tree, mcp_tools)
         check_links(ref, text)
 
-    check_generated_refs(cli_version)
+    check_generated_refs(cli_version, mcp_version)
     check_plugin_versions()
 
     if errors:
