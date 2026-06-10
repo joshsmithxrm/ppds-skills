@@ -6,6 +6,9 @@ host) to drive the [Power Platform Developer
 Suite](https://github.com/joshsmithxrm/power-platform-developer-suite) (PPDS)
 well against Microsoft Dataverse.
 
+Free, MIT-licensed, runs entirely on your machine with zero telemetry — no
+hosted broker, no per-call credits, no data leaving your environment.
+
 Skills are Markdown documentation, not code: each `skills/<name>/SKILL.md`
 carries frontmatter the agent uses for discovery, a lean body with workflows
 and hard safety rules, and a `references/` directory whose CLI flag tables
@@ -89,6 +92,33 @@ python evals/check_skills.py           # static eval suite (also runs in CI)
 The eval suite fails if a skill cites a command or flag that does not exist
 in the captured surface, if frontmatter drifts from the captured versions,
 or if generated references go stale. CI: `.github/workflows/evals.yml`.
+
+## Before going public (maintainers)
+
+The current captures are from PPDS CLI **1.2.0-rc.4**. Several command
+surfaces are actively changing for **v1.2 stable** (e.g. `--publish` /
+`--dry-run` / `--label` on metadata commands, web-resource `create`,
+positional entity arguments). Publishing before re-capturing would ship flag
+tables that drift from the released CLI — exactly the failure this package
+exists to prevent. Do it in this order:
+
+1. **Merge** the initial package to `main` (review complete).
+2. **Wait for PPDS CLI v1.2.0 stable** to ship to NuGet.
+3. **Install the stable build** (`dotnet tool update -g PPDS.Cli`) and
+   **regenerate captures + bump frontmatter** — the tooling is already here:
+   ```bash
+   python tools/capture_cli_help.py
+   python tools/capture_mcp_tools.py
+   python tools/generate_flag_tables.py
+   # update metadata.ppds_cli_version_tested / ppds_mcp_version_tested in each
+   # skills/*/SKILL.md to the stable versions, then:
+   python evals/check_skills.py
+   ```
+4. **Re-run CI** — Actions runs free on public repos, which clears the
+   billing block seen on the private repo.
+5. **Flip the repo public.**
+6. **Submit to the registry / awesome-lists** (tracked in
+   [power-platform-developer-suite#1211](https://github.com/joshsmithxrm/power-platform-developer-suite/issues/1211)).
 
 ## Conventions
 
