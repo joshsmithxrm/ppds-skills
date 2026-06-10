@@ -1,0 +1,28 @@
+Description:
+  Get details for or manage a global option set (choice)
+
+Usage:
+  ppds metadata optionset [<name>] [command] [options]
+
+Arguments:
+  <name>  The option set name (e.g., 'new_customstatus')
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+
+Commands:
+  create         Create a new global option set
+  update         Update an existing global option set
+  delete         Delete a global option set
+  add-option     Add a new option value to an existing option set
+  update-option  Update an existing option value in an option set
+  remove-option  Remove an option value from an option set
+  reorder        Reorder option values in an option set
+

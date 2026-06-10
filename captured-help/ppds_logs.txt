@@ -1,0 +1,13 @@
+Description:
+  Show recent PPDS log entries or bundle diagnostics for a bug report
+
+Usage:
+  ppds logs [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  tail  Show recent lines from PPDS log files
+  dump  Bundle PPDS logs and diagnostics into a zip file for bug reports
+

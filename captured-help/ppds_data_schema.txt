@@ -1,0 +1,21 @@
+Description:
+  Generate a migration schema from Dataverse metadata
+
+Usage:
+  ppds data schema [options]
+
+Options:
+  -e, --entities <entities>                      [Required] Entity logical names to include (comma-separated or multiple -e flags)
+  -o, --output <output>                          [Required] Output schema file path
+  -p, --profile <profile>                        Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
+  -env, --environment <environment>              Override the environment URL. Takes precedence over profile's bound environment.
+  --include-audit-fields                         Include audit fields (createdon, createdby, modifiedon, modifiedby, overriddencreatedon)
+  --disable-plugins                              Set disableplugins=true on all entities
+  -a, --include-attributes <include-attributes>  Only include these attributes (whitelist, comma-separated or multiple flags)
+  --exclude-attributes <exclude-attributes>      Exclude these attributes (blacklist, comma-separated)
+  --filter <filter>                              SQL-like filter per entity. Format: entity:expression (e.g., "account:statecode = 0"). Repeatable.
+  -f, --output-format <Csv|Json|Text>            Output format [default: Text]
+  -v, --verbose                                  Enable verbose logging output
+  --debug                                        Enable diagnostic logging output
+  -?, -h, --help                                 Show help and usage information
+

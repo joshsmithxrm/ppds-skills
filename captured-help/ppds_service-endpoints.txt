@@ -1,0 +1,16 @@
+Description:
+  Service endpoint management: list, get, register, update, unregister
+
+Usage:
+  ppds service-endpoints [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                     List registered service endpoints in the environment
+  get <name-or-id>         Get details for a specific service endpoint
+  register                 Register a service endpoint: webhook, queue, topic, eventhub
+  update <name-or-id>      Update an existing service endpoint
+  unregister <name-or-id>  Unregister a service endpoint from Dataverse
+

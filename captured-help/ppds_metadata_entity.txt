@@ -1,0 +1,29 @@
+Description:
+  Get full metadata for a specific entity, or create/update/delete entities and manage status reasons (see subcommands)
+
+Usage:
+  ppds metadata entity <entity> [command] [options]
+
+Arguments:
+  <entity>  The entity logical name (e.g., 'account')
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  --include <include>                  Include specific metadata sections: attributes, relationships, keys, privileges (comma-separated or multiple flags)
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+
+Commands:
+  create               Create a new Dataverse table (entity)
+  update               Update an existing Dataverse table (entity)
+  delete               Delete a Dataverse table (entity)
+  add-statusreason     Add a new status reason to an entity's statuscode attribute
+  list-statusreasons   List all status reasons for an entity's statuscode attribute
+  update-statusreason  Update an existing status reason on an entity
+  remove-statusreason  Remove a status reason from an entity's statuscode attribute
+

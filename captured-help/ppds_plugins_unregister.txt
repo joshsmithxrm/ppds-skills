@@ -1,0 +1,21 @@
+Description:
+  Unregister plugin entities from Dataverse
+
+Usage:
+  ppds plugins unregister <type> <name-or-id> [options]
+
+Arguments:
+  <type>        The type of entity to unregister: assembly, package, type, step, image
+  <name-or-id>  Name or GUID of the entity to unregister
+
+Options:
+  -f, --force                          Force cascade delete of all child entities
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

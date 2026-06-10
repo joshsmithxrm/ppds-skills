@@ -1,0 +1,18 @@
+Description:
+  List solutions in the environment
+
+Usage:
+  ppds solutions list [options]
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
+  --filter <filter>                    Filter by solution unique name or friendly name
+  -m, --include-managed                Include managed solutions in the list
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

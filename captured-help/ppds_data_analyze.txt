@@ -1,0 +1,13 @@
+Description:
+  Analyze schema and display dependency graph
+
+Usage:
+  ppds data analyze [options]
+
+Options:
+  -s, --schema <schema>                [Required] Path to schema.xml file
+  -f, --output-format <Csv|Json|Text>  Output format: text or json [default: Text]
+  -v, --verbose                        Enable verbose logging output
+  --debug                              Enable diagnostic logging output
+  -?, -h, --help                       Show help and usage information
+

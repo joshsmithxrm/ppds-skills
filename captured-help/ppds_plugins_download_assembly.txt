@@ -1,0 +1,21 @@
+Description:
+  Download a plugin assembly DLL
+
+Usage:
+  ppds plugins download assembly <name-or-id> [options]
+
+Arguments:
+  <name-or-id>  Assembly name or GUID
+
+Options:
+  -o, --output <output>                [Required] Output file path or directory
+  -f, --force                          Overwrite existing file
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

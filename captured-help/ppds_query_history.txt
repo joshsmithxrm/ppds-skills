@@ -1,0 +1,16 @@
+Description:
+  Manage SQL query history: list, get, execute, delete, clear
+
+Usage:
+  ppds query history [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list          List recent query history entries
+  get <id>      Get a specific query history entry
+  execute <id>  Re-execute a query from history
+  delete <id>   Delete a query history entry
+  clear         Clear all query history for the current environment
+

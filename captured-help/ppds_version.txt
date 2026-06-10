@@ -1,0 +1,14 @@
+Description:
+  Show version information for the PPDS CLI
+
+Usage:
+  ppds version [options]
+
+Options:
+  --check         Check NuGet for the latest available version
+  --update        Update PPDS CLI to the latest version
+  --stable        Force update to latest stable version
+  --prerelease    Force update to latest pre-release version
+  -y, --yes       Skip confirmation prompt
+  -?, -h, --help  Show help and usage information
+

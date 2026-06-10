@@ -1,0 +1,61 @@
+name: skill-evals
+
+# Runs on self-hosted runners (Linux + Windows) because GitHub-hosted minutes
+# are billing-blocked on this account while the repo is PRIVATE.
+#
+# When the repo goes PUBLIC, GitHub-hosted runners are free — revert to
+# `runs-on: ubuntu-latest` (single job). That is also the safer choice:
+# self-hosted runners on a public repo can execute untrusted code from fork
+# PRs. See the "Before going public" checklist in the README.
+#
+# Runner assumptions (adjust the matrix labels to match `gh api
+# repos/joshsmithxrm/ppds-skills/actions/runners`):
+#   - each runner advertises `self-hosted` plus its OS label (`Linux` /
+#     `Windows`)
+#   - bash is on PATH (Git for Windows provides it on Windows runners)
+#   - Python 3.8+ is installed (the suite has no third-party dependencies)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  static-checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner:
+          - [self-hosted, Linux]
+          - [self-hosted, Windows]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Zero-dependency static eval suite: frontmatter shape, code-block
+      # correctness, command/flag existence against the captured --help
+      # surface, MCP tool-name existence, link integrity, version
+      # consistency between skills, captured-help, and plugin manifests.
+      # Running on both OSes also validates the pure-Python suite
+      # cross-platform — matching the Windows/Linux agent audience.
+      #
+      # Per-OS shells on purpose: a self-hosted Windows runner's `shell: bash`
+      # can resolve to the System32 WSL stub (no distro => exit 1), so Windows
+      # uses PowerShell and Linux uses bash, each picking its own interpreter.
+      - name: Run skill evals (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: python3 evals/check_skills.py
+
+      - name: Run skill evals (Windows)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          $py = $null
+          foreach ($name in 'python','py','python3') {
+            $c = Get-Command $name -ErrorAction SilentlyContinue
+            if ($c) { $py = $c.Source; break }
+          }
+          if (-not $py) { Write-Error 'No Python interpreter found on PATH'; exit 1 }
+          & $py evals/check_skills.py
+          exit $LASTEXITCODE

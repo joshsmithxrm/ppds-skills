@@ -1,0 +1,10 @@
+{
+  "name": "ppds",
+  "version": "0.1.0",
+  "description": "PPDS Skills — knowledge layer teaching AI coding agents to drive the Power Platform Developer Suite (CLI + MCP) against Microsoft Dataverse.",
+  "author": {
+    "name": "Josh Smith"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/joshsmithxrm/ppds-skills"
+}

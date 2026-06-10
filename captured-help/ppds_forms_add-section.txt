@@ -1,0 +1,26 @@
+Description:
+  Add a section to a tab on a Main form
+
+Usage:
+  ppds forms add-section [options]
+
+Options:
+  --entity <entity>                    [Required] Entity logical name
+  --form <form>                        [Required] Form name
+  --tab <tab>                          [Required] Parent tab label
+  --label <label>                      [Required] Section label
+  --show-label                         Show the section label
+  --columns <columns>                  Number of columns (1 or 2)
+  --visible                            Whether the section is visible
+  --available-on-phone                 Whether the section is available on phone
+  --publish                            Publish customizations after adding the section
+  --solution <solution>                Solution unique name to associate the change with
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

@@ -1,0 +1,15 @@
+Description:
+  Manage security roles
+
+Usage:
+  ppds roles [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list           List security roles
+  show <role>    Show role details and assigned users
+  assign <role>  Assign a role to a user
+  remove <role>  Remove a role from a user
+

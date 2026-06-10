@@ -1,0 +1,9 @@
+Description:
+  Launch interactive TUI mode for profile selection and SQL queries
+
+Usage:
+  ppds interactive [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+

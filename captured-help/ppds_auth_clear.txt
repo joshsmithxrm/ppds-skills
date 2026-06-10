@@ -1,0 +1,9 @@
+Description:
+  Delete all profiles and cached credentials
+
+Usage:
+  ppds auth clear [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+

@@ -1,0 +1,14 @@
+Description:
+  Generate, sync, and validate deployment settings files
+
+Usage:
+  ppds deployment-settings [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  generate  Generate a new deployment settings file from current environment
+  sync      Sync deployment settings file with solution (preserves existing values)
+  validate  Validate deployment settings file against solution
+

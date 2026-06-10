@@ -1,0 +1,29 @@
+Description:
+  Register a processing step for a plugin type
+
+Usage:
+  ppds plugins register step <type> [options]
+
+Arguments:
+  <type>  Plugin type name (fully qualified)
+
+Options:
+  --message <message>                            [Required] SDK message name (Create, Update, Delete, etc.)
+  --entity <entity>                              [Required] Primary entity logical name
+  --stage <stage>                                [Required] Pipeline stage: PreValidation, PreOperation, or PostOperation
+  --mode <mode>                                  Execution mode: Sync or Async [default: Sync]
+  --rank <rank>                                  Execution order (1-999999) [default: 1]
+  --filtering-attributes <filtering-attributes>  Comma-separated list of attributes that trigger this step (for Update message)
+  --name <name>                                  Step display name (auto-generated if not specified)
+  --secure-config <secure-config>                Secure configuration string (write-only, not stored in source control)
+  --event-handler-type <event-handler-type>      Event handler type: pluginType or serviceEndpoint [default: pluginType]
+  -p, --profile <profile>                        Authentication profile name
+  -env, --environment <environment>              Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>                      Solution unique name. Overrides value in configuration file.
+  -q, --quiet                                    Show only warnings and errors
+  -v, --verbose                                  Show detailed output including debug messages
+  --debug                                        Show trace-level diagnostic output
+  --correlation-id <correlation-id>              Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>            Output format [default: Text]
+  -?, -h, --help                                 Show help and usage information
+

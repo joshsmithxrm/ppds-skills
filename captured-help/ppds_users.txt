@@ -1,0 +1,14 @@
+Description:
+  Manage users
+
+Usage:
+  ppds users [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list          List users
+  show <user>   Show user details
+  roles <user>  List roles for a user
+

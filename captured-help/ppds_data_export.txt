@@ -1,0 +1,21 @@
+Description:
+  Export data from Dataverse to a ZIP file
+
+Usage:
+  ppds data export [options]
+
+Options:
+  -s, --schema <schema>                                [Required] Path to schema.xml file
+  -o, --output <output>                                [Required] Output ZIP file path
+  -p, --profile <profile>                              Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
+  -env, --environment <environment>                    Override the environment URL. Takes precedence over profile's bound environment.
+  --parallel <parallel>                                Maximum concurrent entity exports (only applies when schema contains multiple entities) [default: 64]
+  --batch-size <batch-size>                            Records per API request (all records are exported; this controls request size) [default: 5000]
+  --page-parallel <page-parallel>                      Partitions per entity for page-level parallelism (0=auto, 1=disabled) [default: 0]
+  --page-parallel-threshold <page-parallel-threshold>  Minimum records before page-level parallelism activates [default: 5000]
+  -f, --output-format <Csv|Json|Text>                  Output format [default: Text]
+  --format <Cmt|Json>                                  Data export format: cmt (CMT-compatible XML ZIP) or json (PPDS-native JSON) [default: Cmt]
+  -v, --verbose                                        Enable verbose logging output
+  --debug                                              Enable diagnostic logging output
+  -?, -h, --help                                       Show help and usage information
+

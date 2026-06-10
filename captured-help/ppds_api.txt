@@ -1,0 +1,12 @@
+Description:
+  Send raw HTTP requests to the Dataverse Web API
+
+Usage:
+  ppds api [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  request  Send a raw HTTP request to the Dataverse Web API. Note: on Git Bash/MSYS a leading-slash --path (e.g. /api/data/v9.2/accounts) is rewritten into a Windows path before it reaches the CLI; prefix with MSYS_NO_PATHCONV=1, set MSYS2_ARG_CONV_EXCL='*', or run from PowerShell/cmd.
+

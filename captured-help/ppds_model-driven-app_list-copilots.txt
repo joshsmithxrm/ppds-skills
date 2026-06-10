@@ -1,0 +1,17 @@
+Description:
+  List the Copilot Studio agents (bots) wired into the app
+
+Usage:
+  ppds model-driven-app list-copilots [options]
+
+Options:
+  --app <app>                          [Required] App display name or unique name
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Environment URL override
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

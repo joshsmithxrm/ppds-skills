@@ -1,0 +1,14 @@
+Description:
+  Manage cloud flows (Power Automate)
+
+Usage:
+  ppds flows [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list        List cloud flows
+  get <name>  Get a cloud flow by workflow ID or unique name
+  url <name>  Get Power Automate maker URL for a flow
+

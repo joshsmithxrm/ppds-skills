@@ -1,0 +1,11 @@
+Description:
+  Name or rename an existing authentication profile
+
+Usage:
+  ppds auth name [options]
+
+Options:
+  -i, --index <index>  [Required] The index of the profile to be named/renamed
+  -n, --name <name>    [Required] The name you want to give to this authentication profile (maximum 30 characters)
+  -?, -h, --help       Show help and usage information
+

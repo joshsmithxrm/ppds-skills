@@ -1,0 +1,21 @@
+Description:
+  Remove a sub-grid from a Main form by label
+
+Usage:
+  ppds forms remove-subgrid [options]
+
+Options:
+  --entity <entity>                    [Required] Entity logical name
+  --form <form>                        [Required] Form name
+  --label <label>                      [Required] Label of the sub-grid to remove
+  --publish                            Publish customizations after writing
+  --solution <solution>                Solution unique name to associate the change with
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

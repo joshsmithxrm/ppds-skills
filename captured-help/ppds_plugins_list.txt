@@ -1,0 +1,21 @@
+Description:
+  List registered plugins in the environment
+
+Usage:
+  ppds plugins list [options]
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -a, --assembly <assembly>            Filter by assembly name (classic DLL plugins)
+  -pkg, --package <package>            Filter by package name or unique name (NuGet plugin packages)
+  --include-hidden                     Include hidden steps (excluded by default)
+  --include-microsoft                  Include Microsoft.* assemblies (excluded by default, except Microsoft.Crm.ServiceBus)
+  --all                                Show all plugins (equivalent to --include-hidden --include-microsoft)
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

@@ -1,0 +1,21 @@
+Description:
+  Update package content with new nupkg
+
+Usage:
+  ppds plugins update package <name> <path> [options]
+
+Arguments:
+  <name>  Package name or unique name
+  <path>  Path to the .nupkg file
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

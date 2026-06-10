@@ -1,0 +1,11 @@
+Description:
+  Select which authentication profile should be active
+
+Usage:
+  ppds auth select [options]
+
+Options:
+  -i, --index <index>  The index of the profile to be active
+  -n, --name <name>    The name of the profile to be active
+  -?, -h, --help       Show help and usage information
+

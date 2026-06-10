@@ -1,0 +1,9 @@
+Description:
+  Open CLI documentation in browser
+
+Usage:
+  ppds docs [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+

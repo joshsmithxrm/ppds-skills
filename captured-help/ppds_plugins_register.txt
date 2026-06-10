@@ -1,0 +1,16 @@
+Description:
+  Register plugin components: assembly, package, type, step, image
+
+Usage:
+  ppds plugins register [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  assembly <path>  Register a plugin assembly (DLL)
+  package <path>   Register a plugin package (NuGet)
+  type <assembly>  Register a plugin type within an assembly
+  step <type>      Register a processing step for a plugin type
+  image <step>     Register an image for a processing step
+

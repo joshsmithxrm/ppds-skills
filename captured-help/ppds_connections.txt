@@ -1,0 +1,13 @@
+Description:
+  Manage Power Platform connections (Power Apps Admin API)
+
+Usage:
+  ppds connections [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list      List connections from Power Apps Admin API
+  get <id>  Get a connection by ID
+

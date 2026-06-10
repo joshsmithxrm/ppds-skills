@@ -1,0 +1,18 @@
+Description:
+  Extract plugin step/image attributes from assembly to JSON configuration
+
+Usage:
+  ppds plugins extract [options]
+
+Options:
+  -i, --input <input>                  [Required] Path to assembly (.dll) or plugin package (.nupkg)
+  -o, --output <output>                Output file path (default: registrations.json in input directory)
+  -s, --solution <solution>            Solution unique name to add components to
+  -f, --force                          Overwrite existing file without merging
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

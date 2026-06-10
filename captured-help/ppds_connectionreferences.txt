@@ -1,0 +1,16 @@
+Description:
+  Manage connection references
+
+Usage:
+  ppds connectionreferences [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                List connection references
+  get <name>          Get a connection reference by logical name
+  flows <name>        List flows that use a connection reference
+  connections <name>  Show bound connection for a connection reference
+  analyze             Analyze flow-connection reference relationships (orphan detection)
+

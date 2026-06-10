@@ -1,0 +1,20 @@
+Description:
+  Unregister a data source and cascade-delete all child data providers
+
+Usage:
+  ppds data-sources unregister <name-or-id> [options]
+
+Arguments:
+  <name-or-id>  Data source logical name or GUID
+
+Options:
+  --force                              Cascade-delete all child data providers. Required if any providers exist.
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

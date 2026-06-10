@@ -1,0 +1,18 @@
+Description:
+  Manage global choices/option sets (deprecated - use 'optionset')
+
+Usage:
+  ppds metadata choice [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  create         Create a new global choice (option set)
+  update         Update an existing global choice (option set)
+  delete         Delete a global choice (option set)
+  add-option     Add a new option value to an existing option set
+  update-option  Update an existing option value in an option set
+  remove-option  Remove an option value from an option set
+  reorder        Reorder option values in an option set
+

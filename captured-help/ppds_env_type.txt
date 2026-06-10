@@ -1,0 +1,15 @@
+Description:
+  Manage custom environment type definitions
+
+Usage:
+  ppds env type [<name>] [options]
+
+Arguments:
+  <Development|Production|Sandbox|Test|Trial|Unknown>  Type name (Production, Sandbox, Development, Test, Trial)
+
+Options:
+  -c, --color <Blue|BrightBlue|BrightCyan|BrightGreen|BrightRed|BrightYellow|Brown|Cyan|Gray|Green|Red|White|Yellow>  Default color for this type
+  --remove                                                                                                            Remove this custom type definition
+  --list                                                                                                              List all type definitions (built-in + custom)
+  -?, -h, --help                                                                                                      Show help and usage information
+

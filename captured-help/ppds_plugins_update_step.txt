@@ -1,0 +1,27 @@
+Description:
+  Update step properties
+
+Usage:
+  ppds plugins update step <name-or-id> [options]
+
+Arguments:
+  <name-or-id>  Step name or GUID
+
+Options:
+  --mode <mode>                                  Execution mode: Sync or Async
+  --stage <stage>                                Pipeline stage: PreValidation, PreOperation, or PostOperation
+  --rank <rank>                                  Execution order (1-999999)
+  --filtering-attributes <filtering-attributes>  Comma-separated list of attributes that trigger this step
+  --description <description>                    Step description
+  --can-be-bypassed                              Whether this step can be bypassed via BypassBusinessLogicExecution
+  --can-use-readonly                             Whether this step can use a read-only database connection
+  --invocation-source <invocation-source>        Pipeline invocation source: Parent or Child
+  -p, --profile <profile>                        Authentication profile name
+  -env, --environment <environment>              Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                                    Show only warnings and errors
+  -v, --verbose                                  Show detailed output including debug messages
+  --debug                                        Show trace-level diagnostic output
+  --correlation-id <correlation-id>              Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>            Output format [default: Text]
+  -?, -h, --help                                 Show help and usage information
+

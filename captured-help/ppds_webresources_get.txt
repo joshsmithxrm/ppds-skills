@@ -1,0 +1,21 @@
+Description:
+  Get web resource content
+
+Usage:
+  ppds webresources get <name> [options]
+
+Arguments:
+  <name>  Web resource name, partial name, or GUID
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
+  --unpublished                        Get the unpublished (latest draft) version instead of published
+  -o, --output <output>                Write content to file instead of stdout
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+
