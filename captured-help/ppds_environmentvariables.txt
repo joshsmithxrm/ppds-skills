@@ -1,0 +1,16 @@
+Description:
+  Manage environment variables
+
+Usage:
+  ppds environmentvariables [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                      List environment variables
+  get <schemaName>          Get environment variable details
+  set <schemaName> <value>  Set an environment variable value
+  export                    Export environment variables for deployment settings
+  url <schemaName>          Get the Maker portal URL for an environment variable
+

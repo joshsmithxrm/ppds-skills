@@ -1,0 +1,46 @@
+Description:
+  PPDS CLI - Power Platform Developer Suite command-line tool
+  
+  Documentation: https://joshsmithxrm.github.io/ppds-docs/
+
+Usage:
+  ppds [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+  --version       Show version information
+
+Commands:
+  api                   Send raw HTTP requests to the Dataverse Web API
+  auth                  Manage authentication profiles
+  env                   Manage environment selection
+  org                   Manage environment selection (alias for 'env')
+  data                  Data operations: export, import, copy, analyze, schema, users, load, update, delete, truncate
+  plugins               Plugin registration management: extract, deploy, register, diff, list, get, clean, download, update, unregister, enable, disable
+  plugintraces          Query and manage plugin trace logs: list, get, related, timeline, settings, delete
+  service-endpoints     Service endpoint management: list, get, register, update, unregister
+  custom-apis           Custom API management: list, get, register, update, unregister, add-parameter, update-parameter, remove-parameter
+  data-providers        Data provider management: list, get, register, update, unregister
+  data-sources          Data source management: list, get, register, update, unregister
+  metadata              Browse Dataverse entity metadata: entities, attributes, relationships, option sets
+  schema                Compare Dataverse schemas across environments and data packages.
+  query                 Execute FetchXML and SQL queries against Dataverse
+  solutions             Manage Dataverse solutions: list, get, export, import, publish
+  importjobs            Monitor solution import jobs: list, get, data, wait
+  environmentvariables  Manage environment variables
+  flows                 Manage cloud flows (Power Automate)
+  connections           Manage Power Platform connections (Power Apps Admin API)
+  connectionreferences  Manage connection references
+  deployment-settings   Generate, sync, and validate deployment settings files
+  users                 Manage users
+  roles                 Manage security roles
+  model-driven-app      Manage model-driven app navigation and components
+  views                 Manage Dataverse savedqueries views: list, get, add-column, remove-column, update-column, reorder-columns, set-sort, clear-sort, set-filter, clear-filter, set-fetchxml
+  forms                 Inspect and modify Dataverse systemform records: list forms, view form structure, and manage tabs, sections, fields, and sub-grids
+  webresources          Manage Dataverse web resources: list, get, url, publish, pull, push
+  publish <names>       Publish Dataverse customizations
+  docs                  Open CLI documentation in browser
+  version               Show version information for the PPDS CLI
+  logs                  Show recent PPDS log entries or bundle diagnostics for a bug report
+  interactive           Launch interactive TUI mode for profile selection and SQL queries
+

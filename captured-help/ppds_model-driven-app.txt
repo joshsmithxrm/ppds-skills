@@ -1,0 +1,24 @@
+Description:
+  Manage model-driven app navigation and components
+
+Usage:
+  ppds model-driven-app [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                   List all model-driven apps in the environment
+  get                    Show app metadata and component counts
+  sitemap                Display the sitemap navigation structure of an app
+  set-sitemap-xml        Replace the sitemap XML for an app (validates against XSD before writing)
+  add-table <entities>   Add one or more tables to the app's sitemap navigation
+  remove-table           Remove a table from the app's sitemap navigation and clean up its components
+  set-forms              Set explicit form visibility for a table in the app. Requires --all or at least one --form.
+  set-views              Set explicit view visibility for a table in the app. Requires --all or at least one --view.
+  set-charts             Set explicit chart visibility for a table in the app. Requires --all or at least one --chart.
+  add-copilot            Wire a Copilot Studio agent (bot) into the app
+  remove-copilot         Remove a Copilot Studio agent (bot) from the app
+  list-copilots          List the Copilot Studio agents (bots) wired into the app
+  inspect-app-assistant  Diagnose Copilot (app assistant) bindings for the app - read-only, no changes
+

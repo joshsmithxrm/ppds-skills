@@ -1,0 +1,26 @@
+Description:
+  Create a new Dataverse table (entity)
+
+Usage:
+  ppds metadata entity <entity> create [options]
+
+Arguments:
+  <entity>  The entity logical name (e.g., 'account')
+
+Options:
+  -s, --solution <solution>                  [Required] Solution unique name to add the table to
+  --name <name>                              [Required] Schema name for the new table (e.g., new_MyTable)
+  --display-name <display-name>              [Required] Display name of the table
+  --plural-name <plural-name>                [Required] Plural display name of the table
+  --ownership <OrganizationOwned|UserOwned>  [Required] Ownership type: UserOwned or OrganizationOwned
+  --description <description>                Description of the table
+  --dry-run                                  Validate only, do not persist changes
+  -p, --profile <profile>                    Authentication profile name
+  -env, --environment <environment>          Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                                Show only warnings and errors
+  -v, --verbose                              Show detailed output including debug messages
+  --debug                                    Show trace-level diagnostic output
+  --correlation-id <correlation-id>          Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>        Output format [default: Text]
+  -?, -h, --help                             Show help and usage information
+

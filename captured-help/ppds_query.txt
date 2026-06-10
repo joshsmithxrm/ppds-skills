@@ -1,0 +1,15 @@
+Description:
+  Execute FetchXML and SQL queries against Dataverse
+
+Usage:
+  ppds query [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  fetch <fetchxml>  Execute a FetchXML query against Dataverse
+  sql <sql>         Execute a SQL query against Dataverse (transpiled to FetchXML)
+  explain <sql>     Show the execution plan for a SQL query
+  history           Manage SQL query history: list, get, execute, delete, clear
+

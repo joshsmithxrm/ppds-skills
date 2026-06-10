@@ -1,0 +1,26 @@
+Description:
+  Update properties of an existing section on a Main form
+
+Usage:
+  ppds forms update-section [options]
+
+Options:
+  --entity <entity>                    [Required] Entity logical name
+  --form <form>                        [Required] Form name
+  --section <section>                  [Required] Section current label
+  --label <label>                      New label for the section (renames the section)
+  --show-label                         Show the section label
+  --columns <columns>                  Number of columns
+  --visible                            Whether the section is visible
+  --available-on-phone                 Whether the section is available on phone
+  --publish                            Publish customizations after updating the section
+  --solution <solution>                Solution unique name to associate the change with
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

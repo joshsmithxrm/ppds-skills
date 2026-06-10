@@ -1,0 +1,23 @@
+Description:
+  Register an image for a processing step
+
+Usage:
+  ppds plugins register image <step> [options]
+
+Arguments:
+  <step>  Step name to attach the image to
+
+Options:
+  --name <name>                        [Required] Image name
+  --type <type>                        [Required] Image type: pre, post, or both
+  --attributes <attributes>            Comma-separated list of attributes to include (all if not specified)
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

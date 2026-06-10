@@ -1,0 +1,26 @@
+Description:
+  Add a tab to a Main form
+
+Usage:
+  ppds forms add-tab [options]
+
+Options:
+  --entity <entity>                    [Required] Entity logical name
+  --form <form>                        [Required] Form name
+  --label <label>                      [Required] Label for the new tab
+  --show-label                         Whether to show the tab label
+  --expanded                           Whether the tab is expanded by default
+  --visible                            Whether the tab is visible
+  --available-on-phone                 Whether the tab is available on phone
+  --columns <columns>                  Number of columns in the tab (1, 2, or 3)
+  --publish                            Publish customizations after writing
+  --solution <solution>                Solution unique name to associate the change with
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

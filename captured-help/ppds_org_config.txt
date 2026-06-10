@@ -1,0 +1,18 @@
+Description:
+  Configure environment display settings (label, type, color)
+
+Usage:
+  ppds org config [<url>] [options]
+
+Arguments:
+  <url>  Environment URL to configure
+
+Options:
+  -l, --label <label>                                                                                                 Short display label for status bar and tabs
+  -t, --type <Development|Production|Sandbox|Test|Trial|Unknown>                                                      Environment type (Production, Sandbox, Development, Test, Trial)
+  -c, --color <Blue|BrightBlue|BrightCyan|BrightGreen|BrightRed|BrightYellow|Brown|Cyan|Gray|Green|Red|White|Yellow>  Status bar color. Valid values: Red, Green, Yellow, Cyan, Blue, Gray, Brown, BrightRed, BrightGreen, BrightYellow, BrightCyan, BrightBlue, White
+  -s, --show                                                                                                          Show current configuration for the environment
+  --list                                                                                                              List all configured environments
+  --remove                                                                                                            Remove configuration for the environment
+  -?, -h, --help                                                                                                      Show help and usage information
+

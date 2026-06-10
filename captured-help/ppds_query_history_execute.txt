@@ -1,0 +1,20 @@
+Description:
+  Re-execute a query from history
+
+Usage:
+  ppds query history execute <id> [options]
+
+Arguments:
+  <id>  The history entry ID to execute
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -t, --top <top>                      Limit the number of results returned (overrides query TOP)
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

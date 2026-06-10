@@ -1,0 +1,18 @@
+Description:
+  Generate user mapping file from source to target environment
+
+Usage:
+  ppds data users [options]
+
+Options:
+  -sp, --source-profile <source-profile>  Authentication profile for source environment (defaults to active profile)
+  -tp, --target-profile <target-profile>  Authentication profile for target environment (defaults to active profile)
+  -se, --source-env <source-env>          [Required] Source environment - accepts URL, friendly name, unique name, or ID
+  -te, --target-env <target-env>          [Required] Target environment - accepts URL, friendly name, unique name, or ID
+  -o, --output <output>                   [Required] Output user mapping XML file path
+  --analyze                               Analyze user differences without generating mapping file
+  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -v, --verbose                           Enable verbose logging output
+  --debug                                 Enable diagnostic logging output
+  -?, -h, --help                          Show help and usage information
+

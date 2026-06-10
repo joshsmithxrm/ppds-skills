@@ -1,0 +1,27 @@
+Description:
+  Inspect and modify Dataverse systemform records: list forms, view form structure, and manage tabs, sections, fields, and sub-grids
+
+Usage:
+  ppds forms [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list            List systemforms for a Dataverse entity
+  get             Get the structure of a specific Dataverse systemform
+  set-xml         Write raw form XML to a Dataverse systemform record. Schema validation is applied before writing. All id and labelid attributes must use brace-format GUIDs ({xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}). All id and labelid values must be unique within the document.
+  add-tab         Add a tab to a Main form
+  update-tab      Update properties of an existing tab on a Main form
+  remove-tab      Remove a tab from a Main form
+  find-tab        Find a tab in a form by label and return its ID and position
+  add-section     Add a section to a tab on a Main form
+  update-section  Update properties of an existing section on a Main form
+  remove-section  Remove a section from a Main form
+  find-section    Find a section in a form by label and return its ID and parent tab
+  add-field       Add one or more fields to a section on a Main form. classid is resolved automatically from column metadata - never specify it directly.
+  remove-field    Remove the first occurrence of a field from a Main form
+  reorder-fields  Reorder fields in a section. Provide the authoritative ordered list; fields not in the list are removed.
+  add-subgrid     Add a sub-grid control to a section on a Main form
+  remove-subgrid  Remove a sub-grid from a Main form by label
+

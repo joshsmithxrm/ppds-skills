@@ -1,0 +1,18 @@
+Description:
+  Manage Dataverse solutions: list, get, export, import, publish
+
+Usage:
+  ppds solutions [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                      List solutions in the environment
+  get <unique-name>         Get details for a specific solution
+  export <unique-name>      Export a solution to a ZIP file
+  import <file>             Import a solution from a ZIP file
+  components <unique-name>  List components in a solution
+  publish                   Publish all customizations (alias for ppds publish --all)
+  url <unique-name>         Get the Maker portal URL for a solution
+

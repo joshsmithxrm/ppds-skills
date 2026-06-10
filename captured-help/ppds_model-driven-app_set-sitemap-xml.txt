@@ -1,0 +1,21 @@
+Description:
+  Replace the sitemap XML for an app (validates against XSD before writing)
+
+Usage:
+  ppds model-driven-app set-sitemap-xml [options]
+
+Options:
+  --app <app>                          [Required] App display name or unique name
+  --xml <xml>                          [Required] Path to sitemap XML file
+  --solution <solution>                Add app (type 80) and sitemap (type 62) to this solution
+  --publish                            Publish the app after modification
+  --confirm                            Bypass write protection on production-flagged environments
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Environment URL override
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

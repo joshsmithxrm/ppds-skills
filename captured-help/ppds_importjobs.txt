@@ -1,0 +1,16 @@
+Description:
+  Monitor solution import jobs: list, get, data, wait
+
+Usage:
+  ppds importjobs [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list       List import jobs in the environment
+  get <id>   Get details for a specific import job
+  data <id>  Get the raw XML data for an import job
+  wait <id>  Wait for an import job to complete
+  url <id>   Get the Maker portal URL for an import job
+

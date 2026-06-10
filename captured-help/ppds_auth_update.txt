@@ -1,0 +1,12 @@
+Description:
+  Update profile name or default environment
+
+Usage:
+  ppds auth update [options]
+
+Options:
+  -i, --index <index>                [Required] The index of the profile to update
+  -n, --name <name>                  The name to give this profile (max 30 characters)
+  -env, --environment <environment>  Default environment (ID, URL, unique name, or partial name)
+  -?, -h, --help                     Show help and usage information
+

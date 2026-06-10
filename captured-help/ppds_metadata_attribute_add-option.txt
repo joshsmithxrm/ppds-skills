@@ -1,0 +1,22 @@
+Description:
+  Add an option to a column's local option set
+
+Usage:
+  ppds metadata attribute add-option [options]
+
+Options:
+  -s, --solution <solution>            Solution unique name (required for value derivation when --option has no explicit value)
+  -e, --entity <entity>                [Required] Logical name of the entity
+  -c, --column <column>                [Required] Logical name of the Choice/Choices column
+  --option <option>                    [Required] Option to add: "Label[:Value][:#Color]"
+  --publish                            Publish the entity after the change
+  --dry-run                            Validate only, do not persist changes
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

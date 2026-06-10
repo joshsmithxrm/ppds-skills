@@ -1,0 +1,11 @@
+Description:
+  Verify connection and show current user info from Dataverse
+
+Usage:
+  ppds org who [options]
+
+Options:
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -env, --environment <environment>    Environment to query (ID, URL, unique name, or partial name). Uses profile default if not specified.
+  -?, -h, --help                       Show help and usage information
+

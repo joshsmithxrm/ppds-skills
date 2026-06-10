@@ -1,0 +1,11 @@
+Description:
+  Show recent lines from PPDS log files
+
+Usage:
+  ppds logs tail [options]
+
+Options:
+  -n, --lines <lines>  Number of lines to show from each log file (default: 50, max: 10000) [default: 50]
+  -l, --level <level>  Filter by log level (e.g., 'error', 'warning'). Case-insensitive substring match.
+  -?, -h, --help       Show help and usage information
+

@@ -1,0 +1,13 @@
+Description:
+  Download plugin assembly or package binary from Dataverse
+
+Usage:
+  ppds plugins download [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  assembly <name-or-id>  Download a plugin assembly DLL
+  package <name-or-id>   Download a plugin package (nupkg)
+

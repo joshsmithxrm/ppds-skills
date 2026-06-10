@@ -1,0 +1,16 @@
+Description:
+  Data source management: list, get, register, update, unregister
+
+Usage:
+  ppds data-sources [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                     List registered data sources in the environment
+  get <name-or-id>         Get details for a specific data source
+  register <name>          Register a new data source entity in Dataverse
+  update <name-or-id>      Update a data source (no mutable attributes; see help)
+  unregister <name-or-id>  Unregister a data source and cascade-delete all child data providers
+

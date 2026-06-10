@@ -1,0 +1,14 @@
+Description:
+  Create, delete, or reactivate alternate keys on Dataverse tables
+
+Usage:
+  ppds metadata key [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  create      Create an alternate key on a Dataverse table
+  delete      Delete an alternate key from a Dataverse table
+  reactivate  Reactivate a failed alternate key
+

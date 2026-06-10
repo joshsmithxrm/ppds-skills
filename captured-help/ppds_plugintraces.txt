@@ -1,0 +1,17 @@
+Description:
+  Query and manage plugin trace logs: list, get, related, timeline, settings, delete
+
+Usage:
+  ppds plugintraces [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                 List plugin trace logs with optional filtering
+  get <trace-id>       Get detailed information about a plugin trace
+  settings             View or set plugin trace logging settings
+  related <trace-id>   Get plugin traces related by correlation ID or record
+  timeline <trace-id>  Display plugin execution timeline as a hierarchy tree
+  delete <trace-id>    Delete plugin trace logs
+

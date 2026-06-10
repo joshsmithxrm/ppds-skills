@@ -1,0 +1,23 @@
+Description:
+  Plugin registration management: extract, deploy, register, diff, list, get, clean, download, update, unregister, enable, disable
+
+Usage:
+  ppds plugins [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  extract                         Extract plugin step/image attributes from assembly to JSON configuration
+  deploy                          Deploy plugin registrations to environment
+  register                        Register plugin components: assembly, package, type, step, image
+  diff                            Compare configuration against environment state
+  list                            List registered plugins in the environment
+  get <type> <name-or-id>         Get details for a specific plugin entity
+  clean                           Remove orphaned registrations not in configuration
+  download                        Download plugin assembly or package binary from Dataverse
+  update                          Update existing plugin registrations
+  unregister <type> <name-or-id>  Unregister plugin entities from Dataverse
+  enable <step-name-or-id>        Enable a plugin processing step
+  disable <step-name-or-id>       Disable a plugin processing step
+

@@ -1,0 +1,16 @@
+Description:
+  Manage environment selection (alias for 'env')
+
+Usage:
+  ppds org [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                                                      List available environments
+  select                                                    Select the active environment for the current profile
+  who                                                       Verify connection and show current user info from Dataverse
+  config <url>                                              Configure environment display settings (label, type, color)
+  type <Development|Production|Sandbox|Test|Trial|Unknown>  Manage custom environment type definitions
+

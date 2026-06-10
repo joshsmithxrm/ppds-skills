@@ -1,0 +1,27 @@
+Description:
+  Create a new Dataverse relationship
+
+Usage:
+  ppds metadata relationship create [options]
+
+Options:
+  -s, --solution <solution>                                                  [Required] Solution unique name to add the relationship to
+  --from <from>                                                              [Required] Source entity logical name (referenced/parent for 1:N, entity1 for N:N)
+  --to <to>                                                                  [Required] Target entity logical name (referencing/child for 1:N, entity2 for N:N)
+  --type <many-to-many|one-to-many>                                          [Required] Relationship type: one-to-many or many-to-many
+  --name <name>                                                              [Required] Schema name for the relationship
+  --lookup-name <lookup-name>                                                Schema name of the lookup column (one-to-many only)
+  --lookup-display-name <lookup-display-name>                                Display name of the lookup column (one-to-many only)
+  --intersect-entity <intersect-entity>                                      Schema name of the intersect entity (many-to-many only). Defaults to --name.
+  --cascade-delete <Active|Cascade|NoCascade|RemoveLink|Restrict|UserOwned>  Cascade behavior for delete: Cascade, Active, NoCascade, RemoveLink, Restrict
+  --cascade-assign <Active|Cascade|NoCascade|RemoveLink|Restrict|UserOwned>  Cascade behavior for assign: Cascade, Active, NoCascade, UserOwned
+  --dry-run                                                                  Validate only, do not persist changes
+  -p, --profile <profile>                                                    Authentication profile name
+  -env, --environment <environment>                                          Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                                                                Show only warnings and errors
+  -v, --verbose                                                              Show detailed output including debug messages
+  --debug                                                                    Show trace-level diagnostic output
+  --correlation-id <correlation-id>                                          Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>                                        Output format [default: Text]
+  -?, -h, --help                                                             Show help and usage information
+

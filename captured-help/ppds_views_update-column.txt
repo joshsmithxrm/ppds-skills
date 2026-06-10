@@ -1,0 +1,22 @@
+Description:
+  Update the width of an existing column in a view
+
+Usage:
+  ppds views update-column [options]
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Override the environment URL.
+  --entity <entity>                    [Required] Entity logical name (e.g., account)
+  -v, --view <view>                    [Required] View name
+  -c, --column <column>                [Required] Attribute name of the column to update
+  --width <width>                      [Required] New column width in pixels (positive integer)
+  --solution <solution>                Add the view to this solution after the operation
+  --publish                            Publish the entity after the operation
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

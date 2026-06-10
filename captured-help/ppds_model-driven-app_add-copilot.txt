@@ -1,0 +1,22 @@
+Description:
+  Wire a Copilot Studio agent (bot) into the app
+
+Usage:
+  ppds model-driven-app add-copilot [options]
+
+Options:
+  --app <app>                          [Required] App display name or unique name
+  --bot <bot>                          [Required] Copilot agent (bot) display name, schema name, or id
+  --publish                            Publish the app after modification
+  --dry-run                            Preview the appelement that would be created (and the eligibility verdict); makes no changes
+  --force                              Wire the Copilot even if the app is reported unsupported for the app-assistant agent
+  --confirm                            Bypass write protection on production-flagged environments
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Environment URL override
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

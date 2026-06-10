@@ -1,0 +1,25 @@
+Description:
+  Update an existing Dataverse relationship
+
+Usage:
+  ppds metadata relationship update [options]
+
+Options:
+  -s, --solution <solution>                                                    [Required] Solution unique name containing the relationship
+  --name <name>                                                                [Required] Schema name of the relationship to update
+  --cascade-delete <Active|Cascade|NoCascade|RemoveLink|Restrict|UserOwned>    Updated cascade behavior for delete
+  --cascade-assign <Active|Cascade|NoCascade|RemoveLink|Restrict|UserOwned>    Updated cascade behavior for assign
+  --cascade-merge <Active|Cascade|NoCascade|RemoveLink|Restrict|UserOwned>     Updated cascade behavior for merge
+  --cascade-reparent <Active|Cascade|NoCascade|RemoveLink|Restrict|UserOwned>  Updated cascade behavior for reparent
+  --cascade-share <Active|Cascade|NoCascade|RemoveLink|Restrict|UserOwned>     Updated cascade behavior for share
+  --cascade-unshare <Active|Cascade|NoCascade|RemoveLink|Restrict|UserOwned>   Updated cascade behavior for unshare
+  --dry-run                                                                    Validate only, do not persist changes
+  -p, --profile <profile>                                                      Authentication profile name
+  -env, --environment <environment>                                            Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                                                                  Show only warnings and errors
+  -v, --verbose                                                                Show detailed output including debug messages
+  --debug                                                                      Show trace-level diagnostic output
+  --correlation-id <correlation-id>                                            Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>                                          Output format [default: Text]
+  -?, -h, --help                                                               Show help and usage information
+

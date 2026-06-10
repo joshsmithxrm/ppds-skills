@@ -1,0 +1,29 @@
+Description:
+  Set or replace the filter on a view.
+  
+  Use --filter-file to apply a <filter> XML fragment from a file:
+    <filter type="and">
+      <condition attribute="statecode" operator="eq" value="0" />
+    </filter>
+  
+  Use --condition for a quick single-condition filter: --condition "statecode:eq:0"
+
+Usage:
+  ppds views set-filter [options]
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Override the environment URL.
+  --entity <entity>                    [Required] Entity logical name (e.g., account)
+  -v, --view <view>                    [Required] View name
+  --filter-file <filter-file>          Path to a file containing a <filter> XML fragment. Mutually exclusive with --condition.
+  --condition <condition>              Inline single condition in format 'attribute:operator:value' (e.g. statecode:eq:0). Mutually exclusive with --filter-file.
+  --solution <solution>                Add the view to this solution after the operation
+  --publish                            Publish the entity after the operation
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

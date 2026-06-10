@@ -1,0 +1,24 @@
+Description:
+  Create and store authentication profiles on this computer
+
+Usage:
+  ppds auth create [options]
+
+Options:
+  -n, --name <name>                                     The name you want to give to this authentication profile (maximum 30 characters)
+  -env, --environment <environment>                     Default environment (ID, url, unique name, or partial name)
+  -ci, --cloud <China|Public|UsGov|UsGovDod|UsGovHigh>  Optional: The cloud instance to authenticate with [default: Public]
+  -t, --tenant <tenant>                                 Tenant ID if using application ID/client secret or application ID/client certificate
+  -dc, --deviceCode                                     Use the Microsoft Entra ID Device Code flow for interactive sign-in
+  -id, --applicationId <applicationId>                  Optional: The application ID to authenticate with
+  -cs, --clientSecret <clientSecret>                    Optional: The client secret to authenticate with
+  -cdp, --certificateDiskPath <certificateDiskPath>     Optional: The certificate disk path to authenticate with
+  -cp, --certificatePassword <certificatePassword>      Optional: The certificate password to authenticate with
+  -ct, --certificateThumbprint <certificateThumbprint>  Certificate thumbprint for Windows certificate store authentication
+  -mi, --managedIdentity                                Use Azure Managed Identity
+  -un, --username <username>                            Optional: The username to authenticate with; shows a Microsoft Entra ID dialog if not specified
+  -p, --password <password>                             Optional: The password to authenticate with
+  -ghf, --githubFederated                               Use GitHub Federation for Service Principal Auth; requires --tenant and --applicationId arguments
+  -adof, --azureDevOpsFederated                         Use Azure DevOps Federation for Service Principal Auth; requires --tenant and --applicationId arguments
+  -?, -h, --help                                        Show help and usage information
+

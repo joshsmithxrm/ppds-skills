@@ -1,0 +1,14 @@
+Description:
+  Create, update, or delete columns (deprecated - use 'attribute')
+
+Usage:
+  ppds metadata column [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  create  Create a new column (attribute) on a Dataverse table
+  update  Update an existing column (attribute) on a Dataverse table
+  delete  Delete a column (attribute) from a Dataverse table
+

@@ -1,0 +1,23 @@
+name: skill-evals
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Zero-dependency static eval suite: frontmatter shape, code-block
+      # correctness, command/flag existence against the captured --help
+      # surface, MCP tool-name existence, link integrity, version
+      # consistency between skills, captured-help, and plugin manifests.
+      - name: Run skill evals
+        run: python evals/check_skills.py

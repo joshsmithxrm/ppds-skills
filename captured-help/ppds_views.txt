@@ -1,0 +1,40 @@
+Description:
+  Manage Dataverse savedqueries views: list, get, add-column, remove-column, update-column, reorder-columns, set-sort, clear-sort, set-filter, clear-filter, set-fetchxml
+
+Usage:
+  ppds views [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list             List all views for an entity
+  get              Get detailed view configuration including columns, sort, and filter
+  add-column       Add one or more columns to a view
+  remove-column    Remove a column from a view by attribute name
+  update-column    Update the width of an existing column in a view
+  reorder-columns  Set the authoritative column order for a view. Columns not listed are dropped.
+  set-sort         Set the sort order for a view. Multiple --sort flags applied in declaration order.
+  clear-sort       Remove all sort configuration from a view
+  set-filter       Set or replace the filter on a view.
+  
+                   Use --filter-file to apply a <filter> XML fragment from a file:
+                     <filter type="and">
+                       <condition attribute="statecode" operator="eq" value="0" />
+                     </filter>
+  
+                   Use --condition for a quick single-condition filter: --condition "statecode:eq:0"
+  clear-filter     Remove all filter conditions from a view
+  set-fetchxml     Apply a complete FetchXML document to a view, replacing the existing fetchxml.
+  
+                   Expected format (file must have <fetch> as root element):
+                     <fetch version="1.0" output-format="xml-platform" mapping="logical" no-lock="false">
+                       <entity name="account">
+                         <attribute name="name" />
+                         <order attribute="name" descending="false" />
+                         <filter type="and">
+                           <condition attribute="statecode" operator="eq" value="0" />
+                         </filter>
+                       </entity>
+                     </fetch>
+

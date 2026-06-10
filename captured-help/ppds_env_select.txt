@@ -1,0 +1,10 @@
+Description:
+  Select the active environment for the current profile
+
+Usage:
+  ppds env select [options]
+
+Options:
+  -env, --environment <environment>  [Required] Default environment (ID, url, unique name, or partial name)
+  -?, -h, --help                     Show help and usage information
+

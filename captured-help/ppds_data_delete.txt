@@ -1,0 +1,29 @@
+Description:
+  Delete records from a Dataverse entity
+
+Usage:
+  ppds data delete [options]
+
+Options:
+  -e, --entity <entity>                [Required] Target entity logical name
+  --id <id>                            Record ID (GUID) to delete
+  -k, --key <key>                      Alternate key field(s) for lookup. Format: field=value or field1=value1,field2=value2 for composite keys.
+  --file <file>                        Path to file containing record IDs (JSON array or CSV with ID column)
+  --id-column <id-column>              Column name containing record IDs in CSV file (default: entity primary key)
+  --filter <filter>                    SQL-like filter expression to match records for deletion (e.g., "name like '%test%'")
+  --force                              Skip confirmation prompt (required for non-interactive execution)
+  --dry-run                            Preview records that would be deleted without actually deleting
+  --limit <limit>                      Maximum number of records to delete (fails if query returns more)
+  --batch-size <batch-size>            Records per batch (default: 100) [default: 100]
+  --bypass-plugins <all|async|sync>    Bypass custom plugin execution: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
+  --bypass-flows                       Bypass Power Automate flow triggers
+  --continue-on-error                  Continue deleting on individual record failures
+  -p, --profile <profile>              Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

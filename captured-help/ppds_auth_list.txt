@@ -1,0 +1,10 @@
+Description:
+  List all authentication profiles
+
+Usage:
+  ppds auth list [options]
+
+Options:
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

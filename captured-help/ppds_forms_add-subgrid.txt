@@ -1,0 +1,29 @@
+Description:
+  Add a sub-grid control to a section on a Main form
+
+Usage:
+  ppds forms add-subgrid [options]
+
+Options:
+  --entity <entity>                    [Required] Entity logical name
+  --form <form>                        [Required] Form name
+  --section <section>                  [Required] Section label to add the sub-grid to
+  --label <label>                      [Required] Display label for the sub-grid
+  --target-entity <target-entity>      [Required] Logical name of the entity displayed in the sub-grid
+  --default-view <default-view>        [Required] GUID of the default view (savedqueries record) to display in the sub-grid
+  --relationship <relationship>        Relationship schema name used to filter the sub-grid records
+  --hide-label                         Whether to hide the sub-grid label
+  --hide-on-phone                      Whether to hide the sub-grid on phone
+  --max-rows <max-rows>                Maximum number of rows to display in the sub-grid
+  --hide-search-box                    Whether to hide the search box in the sub-grid
+  --publish                            Publish customizations after writing
+  --solution <solution>                Solution unique name to associate the change with
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

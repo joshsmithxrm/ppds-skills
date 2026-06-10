@@ -1,0 +1,26 @@
+Description:
+  Update an existing status reason on an entity
+
+Usage:
+  ppds metadata entity <entity> update-statusreason [options]
+
+Arguments:
+  <entity>  The entity logical name (e.g., 'account')
+
+Options:
+  -e, --entity <entity>                [Required] Logical name of the entity
+  --value <value>                      Target status reason by option value (mutually exclusive with --label)
+  --label <label>                      Target status reason by current label (mutually exclusive with --value)
+  --new-label <new-label>              New label to apply to the status reason
+  --color <color>                      New hex color for the status reason (e.g., #FF0000)
+  -s, --solution <solution>            Solution unique name
+  --publish                            Publish the entity after the change
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

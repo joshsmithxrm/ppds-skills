@@ -1,0 +1,10 @@
+Description:
+  Bundle PPDS logs and diagnostics into a zip file for bug reports
+
+Usage:
+  ppds logs dump [options]
+
+Options:
+  -o, --output <output>  Directory to write the zip into (default: current directory)
+  -?, -h, --help         Show help and usage information
+

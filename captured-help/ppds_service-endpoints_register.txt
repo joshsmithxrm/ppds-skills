@@ -1,0 +1,15 @@
+Description:
+  Register a service endpoint: webhook, queue, topic, eventhub
+
+Usage:
+  ppds service-endpoints register [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  webhook <name>   Register an HTTP webhook endpoint
+  queue <name>     Register an Azure Service Bus queue endpoint
+  topic <name>     Register an Azure Service Bus topic endpoint
+  eventhub <name>  Register an Azure Event Hub endpoint
+

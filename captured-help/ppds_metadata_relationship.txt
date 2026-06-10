@@ -1,0 +1,14 @@
+Description:
+  Create, update, or delete Dataverse relationships
+
+Usage:
+  ppds metadata relationship [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  create  Create a new Dataverse relationship
+  update  Update an existing Dataverse relationship
+  delete  Delete a Dataverse relationship
+

@@ -1,0 +1,19 @@
+Description:
+  Manage authentication profiles
+
+Usage:
+  ppds auth [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  create  Create and store authentication profiles on this computer
+  list    List all authentication profiles
+  select  Select which authentication profile should be active
+  delete  Delete a particular authentication profile
+  update  Update profile name or default environment
+  name    Name or rename an existing authentication profile
+  clear   Delete all profiles and cached credentials
+  who     Show the current active profile
+

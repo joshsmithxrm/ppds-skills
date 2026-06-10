@@ -1,0 +1,16 @@
+Description:
+  Data provider management: list, get, register, update, unregister
+
+Usage:
+  ppds data-providers [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  list                     List registered data providers in the environment
+  get <name-or-id>         Get details for a specific data provider
+  register <name>          Register a new data provider with plugin operation bindings
+  update <name-or-id>      Update plugin bindings on an existing data provider
+  unregister <name-or-id>  Unregister a data provider from Dataverse
+

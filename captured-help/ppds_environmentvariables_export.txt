@@ -1,0 +1,18 @@
+Description:
+  Export environment variables for deployment settings
+
+Usage:
+  ppds environmentvariables export [options]
+
+Options:
+  -s, --solution <solution>            Filter by solution unique name
+  -o, --output <output>                Output file path (default: stdout)
+  -p, --profile <profile>              Authentication profile to use
+  -e, --environment <environment>      Target environment (name, URL, or ID)
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

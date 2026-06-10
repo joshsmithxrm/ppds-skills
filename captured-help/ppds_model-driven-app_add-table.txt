@@ -1,0 +1,26 @@
+Description:
+  Add one or more tables to the app's sitemap navigation
+
+Usage:
+  ppds model-driven-app add-table <entities>... [options]
+
+Arguments:
+  <entities>  Logical name(s) of the table(s) to add
+
+Options:
+  --app <app>                          [Required] App display name or unique name
+  --group <group>                      Navigation group name (creates if not found)
+  --area <area>                        Navigation area name (creates if not found, defaults to first area)
+  --title <title>                      Display title for the SubArea (defaults to entity's DisplayName, applies to first entity when multiple specified)
+  --solution <solution>                Add app (type 80) and sitemap (type 62) to this solution
+  --publish                            Publish the app after modification
+  --confirm                            Bypass write protection on production-flagged environments
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Environment URL override
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

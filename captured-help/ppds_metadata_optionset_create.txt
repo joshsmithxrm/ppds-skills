@@ -1,0 +1,25 @@
+Description:
+  Create a new global option set
+
+Usage:
+  ppds metadata optionset [<name>] create [options]
+
+Arguments:
+  <name>  The option set name (e.g., 'new_customstatus')
+
+Options:
+  -s, --solution <solution>            [Required] Solution unique name to add the option set to
+  --name <name>                        [Required] Schema name for the global option set
+  --display-name <display-name>        [Required] Display name of the global option set
+  --options <options>                  [Required] Option definitions: "Label1=1,Label2=2"
+  --description <description>          Description of the global option set
+  --dry-run                            Validate only, do not persist changes
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

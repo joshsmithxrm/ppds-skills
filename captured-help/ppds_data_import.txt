@@ -1,0 +1,26 @@
+Description:
+  Import data from a ZIP file into Dataverse
+
+Usage:
+  ppds data import [options]
+
+Options:
+  -d, --data <data>                       [Required] Path to data.zip file
+  -p, --profile <profile>                 Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
+  -env, --environment <environment>       Override the environment URL. Takes precedence over profile's bound environment.
+  --bypass-plugins <all|async|sync>       Bypass custom plugin execution: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
+  --bypass-flows                          Bypass Power Automate flow triggers (no special privilege required)
+  --continue-on-error                     Continue import on individual record failures
+  -m, --mode <Create|Skip|Update|Upsert>  Import mode: Create, Update, or Upsert [default: Upsert]
+  -u, --user-mapping <user-mapping>       Path to user mapping XML file for remapping user references
+  --strip-owner-fields                    Strip ownership fields (ownerid, createdby, modifiedby) allowing Dataverse to assign current user
+  --skip-missing-columns                  Skip columns that exist in exported data but not in target environment (prevents schema mismatch errors)
+  --resolve-lookups                       Enable external lookup resolution (ID check, then name-based query)
+  --skip-unresolved-lookups               Null unresolved lookups instead of failing the record [default: True] (requires --resolve-lookups)
+  --impersonate-owners                    Preserve record ownership via CallerAADObjectId impersonation (requires --user-mapping)
+  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -v, --verbose                           Enable verbose logging output
+  --debug                                 Enable diagnostic logging output
+  --error-report <error-report>           Base path for output files (creates .errors.jsonl, .progress.log, .summary.json). Errors are streamed in real-time.
+  -?, -h, --help                          Show help and usage information
+

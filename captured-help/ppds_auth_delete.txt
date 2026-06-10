@@ -1,0 +1,11 @@
+Description:
+  Delete a particular authentication profile
+
+Usage:
+  ppds auth delete [options]
+
+Options:
+  -i, --index <index>  The index of the profile to be deleted
+  -n, --name <name>    The name of the profile to be deleted
+  -?, -h, --help       Show help and usage information
+

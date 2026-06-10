@@ -1,0 +1,22 @@
+Description:
+  Set or clear the implementing plugin type on a Custom API
+
+Usage:
+  ppds custom-apis set-plugin <unique-name-or-id> [options]
+
+Arguments:
+  <unique-name-or-id>  Custom API unique name or GUID
+
+Options:
+  --plugin <plugin>                    Plugin type name to set as the implementing type
+  --assembly <assembly>                Assembly name for disambiguation (optional)
+  --none                               Clear the plugin type (mutually exclusive with --plugin)
+  -p, --profile <profile>              Authentication profile name
+  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

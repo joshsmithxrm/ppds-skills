@@ -1,0 +1,22 @@
+Description:
+  Push locally-modified web resources back to Dataverse
+
+Usage:
+  ppds webresources push <folder> [options]
+
+Arguments:
+  <folder>  Folder previously populated by 'ppds webresources pull'
+
+Options:
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
+  --force                              Skip safety checks: server-conflict detection (someone edited since last pull) and environment URL validation (pulled from a different env than the current connection)
+  --dry-run                            Preview what would be pushed without uploading. Still authenticates and queries the server for conflict detection.
+  --publish                            After upload, run the Dataverse Publish step on the uploaded resources (required before changes take effect in apps)
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

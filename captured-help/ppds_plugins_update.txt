@@ -1,0 +1,15 @@
+Description:
+  Update existing plugin registrations
+
+Usage:
+  ppds plugins update [command] [options]
+
+Options:
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  assembly <name> <path>  Update assembly content with new DLL
+  package <name> <path>   Update package content with new nupkg
+  step <name-or-id>       Update step properties
+  image <name-or-id>      Update image attributes
+
