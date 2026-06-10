@@ -38,8 +38,24 @@ jobs:
       # consistency between skills, captured-help, and plugin manifests.
       # Running on both OSes also validates the pure-Python suite
       # cross-platform — matching the Windows/Linux agent audience.
-      - name: Run skill evals
+      #
+      # Per-OS shells on purpose: a self-hosted Windows runner's `shell: bash`
+      # can resolve to the System32 WSL stub (no distro => exit 1), so Windows
+      # uses PowerShell and Linux uses bash, each picking its own interpreter.
+      - name: Run skill evals (Linux)
+        if: runner.os == 'Linux'
         shell: bash
+        run: python3 evals/check_skills.py
+
+      - name: Run skill evals (Windows)
+        if: runner.os == 'Windows'
+        shell: powershell
         run: |
-          if command -v python3 >/dev/null 2>&1; then PY=python3; else PY=python; fi
-          "$PY" evals/check_skills.py
+          $py = $null
+          foreach ($name in 'python','py','python3') {
+            $c = Get-Command $name -ErrorAction SilentlyContinue
+            if ($c) { $py = $c.Source; break }
+          }
+          if (-not $py) { Write-Error 'No Python interpreter found on PATH'; exit 1 }
+          & $py evals/check_skills.py
+          exit $LASTEXITCODE
