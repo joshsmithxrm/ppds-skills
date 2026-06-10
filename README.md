@@ -114,8 +114,12 @@ exists to prevent. Do it in this order:
    # skills/*/SKILL.md to the stable versions, then:
    python evals/check_skills.py
    ```
-4. **Re-run CI** — Actions runs free on public repos, which clears the
-   billing block seen on the private repo.
+4. **Re-run CI.** While private, `evals.yml` runs on self-hosted Linux +
+   Windows runners (GitHub-hosted minutes are billing-blocked on the
+   account). On going public, GitHub-hosted runners are free — revert the
+   workflow to `runs-on: ubuntu-latest` and drop the self-hosted matrix.
+   That also removes the fork-PR risk of self-hosted runners on a public
+   repo.
 5. **Flip the repo public.**
 6. **Submit to the registry / awesome-lists** (tracked in
    [power-platform-developer-suite#1211](https://github.com/joshsmithxrm/power-platform-developer-suite/issues/1211)).

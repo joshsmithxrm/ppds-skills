@@ -1,5 +1,20 @@
 name: skill-evals
 
+# Runs on self-hosted runners (Linux + Windows) because GitHub-hosted minutes
+# are billing-blocked on this account while the repo is PRIVATE.
+#
+# When the repo goes PUBLIC, GitHub-hosted runners are free — revert to
+# `runs-on: ubuntu-latest` (single job). That is also the safer choice:
+# self-hosted runners on a public repo can execute untrusted code from fork
+# PRs. See the "Before going public" checklist in the README.
+#
+# Runner assumptions (adjust the matrix labels to match `gh api
+# repos/joshsmithxrm/ppds-skills/actions/runners`):
+#   - each runner advertises `self-hosted` plus its OS label (`Linux` /
+#     `Windows`)
+#   - bash is on PATH (Git for Windows provides it on Windows runners)
+#   - Python 3.8+ is installed (the suite has no third-party dependencies)
+
 on:
   push:
     branches: [main]
@@ -7,17 +22,24 @@ on:
 
 jobs:
   static-checks:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        runner:
+          - [self-hosted, Linux]
+          - [self-hosted, Windows]
+    runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
 
       # Zero-dependency static eval suite: frontmatter shape, code-block
       # correctness, command/flag existence against the captured --help
       # surface, MCP tool-name existence, link integrity, version
       # consistency between skills, captured-help, and plugin manifests.
+      # Running on both OSes also validates the pure-Python suite
+      # cross-platform — matching the Windows/Linux agent audience.
       - name: Run skill evals
-        run: python evals/check_skills.py
+        shell: bash
+        run: |
+          if command -v python3 >/dev/null 2>&1; then PY=python3; else PY=python; fi
+          "$PY" evals/check_skills.py
