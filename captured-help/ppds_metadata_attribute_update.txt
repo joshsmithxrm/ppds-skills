@@ -13,6 +13,7 @@ Options:
   --required-level <required-level>    Updated requirement level: None, Recommended, or Required
   --max-length <max-length>            Updated maximum length
   --dry-run                            Validate only, do not persist changes
+  --publish                            Publish the entity after the change
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

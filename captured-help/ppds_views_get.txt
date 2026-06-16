@@ -8,7 +8,9 @@ Options:
   -p, --profile <profile>              Authentication profile name
   -e, --environment <environment>      Override the environment URL.
   --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name
+  -v, --view <view>                    [Required] View name or ID
+  --unpublished                        Show the unpublished (latest draft) view instead of the published version
+  --raw                                Write raw fetchxml to stdout instead of the structured summary
   -q, --quiet                          Show only warnings and errors
   -v, --verbose                        Show detailed output including debug messages
   --debug                              Show trace-level diagnostic output

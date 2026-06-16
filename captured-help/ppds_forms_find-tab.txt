@@ -6,8 +6,8 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
-  --label <label>                      [Required] Label of the tab to find
+  --form <form>                        [Required] Name or ID of the form
+  --label <label>                      [Required] Label or name of the tab to find
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

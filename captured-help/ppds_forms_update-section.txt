@@ -6,8 +6,8 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
-  --section <section>                  [Required] Section current label
+  --form <form>                        [Required] Name or ID of the form
+  --section <section>                  [Required] Current label or name of the section to update
   --label <label>                      New label for the section (renames the section)
   --show-label                         Show the section label
   --columns <columns>                  Number of columns

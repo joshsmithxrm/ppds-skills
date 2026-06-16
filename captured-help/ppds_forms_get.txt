@@ -6,7 +6,9 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Logical name of the entity
-  --form <form>                        [Required] Name of the form
+  --form <form>                        [Required] Name or ID of the form
+  --unpublished                        Show the unpublished (latest draft) form instead of the published version
+  --raw                                Write raw formxml to stdout instead of the structured summary
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

@@ -6,7 +6,7 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
+  --form <form>                        [Required] Name or ID of the form
   --xml <xml>                          [Required] Path to the XML file to write. Schema validation is applied before writing. All id and labelid attributes must use brace-format GUIDs ({xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}). All id and labelid values must be unique within the document.
   --publish                            Publish customizations after writing
   --solution <solution>                Solution unique name to associate the change with

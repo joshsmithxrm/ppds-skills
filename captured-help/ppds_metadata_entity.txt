@@ -19,11 +19,11 @@ Options:
   -?, -h, --help                       Show help and usage information
 
 Commands:
-  create               Create a new Dataverse table (entity)
-  update               Update an existing Dataverse table (entity)
-  delete               Delete a Dataverse table (entity)
-  add-statusreason     Add a new status reason to an entity's statuscode attribute
-  list-statusreasons   List all status reasons for an entity's statuscode attribute
-  update-statusreason  Update an existing status reason on an entity
-  remove-statusreason  Remove a status reason from an entity's statuscode attribute
+  create                        Create a new Dataverse table (entity)
+  update <entity>               Update an existing Dataverse table (entity)
+  delete <entity>               Delete a Dataverse table (entity)
+  add-statusreason <entity>     Add a new status reason to an entity's statuscode attribute
+  list-statusreasons <entity>   List all status reasons for an entity's statuscode attribute
+  update-statusreason <entity>  Update an existing status reason on an entity
+  remove-statusreason <entity>  Remove a status reason from an entity's statuscode attribute
 

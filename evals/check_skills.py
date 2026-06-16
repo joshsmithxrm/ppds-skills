@@ -19,6 +19,12 @@ Zero-dependency checks, run locally and in CI:
   6. Reference freshness — generated cli-*.md files carry the same CLI
      version as the manifest.
   7. Line cap — SKILL.md files stay within MAX_SKILL_LINES.
+  8. Capture freshness — when a `ppds` CLI is on PATH, its `--version` must
+     equal the captured manifest version, so captures cannot silently lag the
+     installed CLI (the failure that shipped rc.4 tables while rc.6 was
+     installed). Skipped (not failed) when `ppds` is absent, preserving the
+     zero-dependency contract for minimal CI; set PPDS_SKIP_FRESHNESS=1 to
+     force-skip even when the CLI is present.
 
 Exit code 0 = all checks pass; 1 = findings (printed to stderr).
 
@@ -28,8 +34,11 @@ exempt from command validation — they exist to show anti-patterns.
 from __future__ import annotations
 
 import json
+import os
 import re
 import shlex
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -399,6 +408,55 @@ def check_plugin_versions() -> None:
                     )
 
 
+def installed_cli_version(tool: str = "ppds") -> str | None:
+    """`<tool> --version` with +build metadata stripped, or None if absent."""
+    exe = shutil.which(tool)
+    if not exe:
+        return None
+    try:
+        result = subprocess.run(
+            [exe, "--version"],
+            capture_output=True,
+            text=True,
+            timeout=60,
+            encoding="utf-8",
+            errors="replace",
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if result.returncode != 0:
+        return None
+    return (result.stdout or "").strip().split("+")[0].strip() or None
+
+
+def check_capture_freshness(cli_version: str) -> None:
+    """Fail if the installed `ppds` CLI version differs from the captures.
+
+    Opportunistic: when no `ppds` is on PATH (e.g. minimal CI) the check is
+    skipped, keeping the suite zero-dependency. When the CLI *is* present, a
+    mismatch means the captured surface no longer matches the tool the skills
+    are meant to drive — re-run the capture pipeline before shipping.
+    """
+    if os.environ.get("PPDS_SKIP_FRESHNESS"):
+        sys.stderr.write("note: capture-freshness check skipped (PPDS_SKIP_FRESHNESS)\n")
+        return
+    installed = installed_cli_version()
+    if installed is None:
+        sys.stderr.write(
+            "note: capture-freshness check skipped (no `ppds` on PATH)\n"
+        )
+        return
+    if installed != cli_version:
+        err(
+            HELP_DIR / "manifest.json",
+            None,
+            f"captured CLI version {cli_version!r} != installed `ppds --version`"
+            f" {installed!r} — re-run tools/capture_cli_help.py +"
+            " tools/capture_mcp_tools.py + tools/generate_flag_tables.py and bump"
+            " metadata.ppds_cli_version_tested in skills/*/SKILL.md",
+        )
+
+
 def main() -> int:
     manifest = load_manifest()
     tree: dict = manifest["command_tree"]
@@ -437,6 +495,7 @@ def main() -> int:
 
     check_generated_refs(cli_version, mcp_version)
     check_plugin_versions()
+    check_capture_freshness(cli_version)
 
     if errors:
         for e in errors:

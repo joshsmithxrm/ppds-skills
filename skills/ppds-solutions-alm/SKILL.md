@@ -3,7 +3,7 @@ name: ppds-solutions-alm
 description: Dataverse solution ALM with PPDS — export/import solutions, watch import jobs, inspect components, manage environment variables and connection references, and generate/sync/validate deployment settings files for target environments. Use when the user wants to export or import a solution, move customizations between environments, check why a solution import failed, fix orphaned connection references, set environment variables, or prepare deployment settings for a pipeline. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.2.0-rc.4"
+  ppds_cli_version_tested: "1.2.0-rc.6"
   ppds_mcp_version_tested: "1.0.0"
 ---
 

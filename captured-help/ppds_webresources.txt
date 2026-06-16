@@ -1,5 +1,5 @@
 Description:
-  Manage Dataverse web resources: list, get, url, publish, pull, push
+  Manage Dataverse web resources: list, get, url, publish, pull, push, create, update
 
 Usage:
   ppds webresources [command] [options]
@@ -8,10 +8,12 @@ Options:
   -?, -h, --help  Show help and usage information
 
 Commands:
-  list <name-pattern>  List web resources in the environment
-  get <name>           Get web resource content
-  url <name>           Get the Maker portal URL for a web resource
-  publish <names>      Publish web resources (alias for ppds publish --type webresource)
-  pull <folder>        Pull web resources to a local folder with tracking metadata
-  push <folder>        Push locally-modified web resources back to Dataverse
+  list <name-pattern>   List web resources in the environment
+  get <name>            Get web resource content
+  url <name>            Get the Maker portal URL for a web resource
+  publish <names>       Publish web resources (alias for ppds publish --type webresource)
+  pull <folder>         Pull web resources to a local folder with tracking metadata
+  push <folder>         Push locally-modified web resources back to Dataverse
+  create <file>         Create a new web resource from a local file
+  update <name> <file>  Update an existing web resource's content from a local file
 

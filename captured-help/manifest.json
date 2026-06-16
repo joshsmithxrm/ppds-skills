@@ -1,7 +1,7 @@
 {
   "tool": "ppds",
-  "cli_version": "1.2.0-rc.4",
-  "cli_version_raw": "1.2.0-rc.4+044d93aec22cb37fc15182c64a3bb57b836272c6",
+  "cli_version": "1.2.0-rc.6",
+  "cli_version_raw": "1.2.0-rc.6+996ab773a82614ee165d49c3975baf44aa3745b0",
   "command_tree": {
     "ppds": [
       "api",
@@ -262,7 +262,9 @@
       "url",
       "publish",
       "pull",
-      "push"
+      "push",
+      "create",
+      "update"
     ],
     "ppds publish": [],
     "ppds docs": [],
@@ -520,6 +522,8 @@
     "ppds webresources publish": [],
     "ppds webresources pull": [],
     "ppds webresources push": [],
+    "ppds webresources create": [],
+    "ppds webresources update": [],
     "ppds logs tail": [],
     "ppds logs dump": [],
     "ppds plugins register assembly": [],

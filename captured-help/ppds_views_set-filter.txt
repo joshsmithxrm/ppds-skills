@@ -15,7 +15,7 @@ Options:
   -p, --profile <profile>              Authentication profile name
   -e, --environment <environment>      Override the environment URL.
   --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name
+  -v, --view <view>                    [Required] View name or ID
   --filter-file <filter-file>          Path to a file containing a <filter> XML fragment. Mutually exclusive with --condition.
   --condition <condition>              Inline single condition in format 'attribute:operator:value' (e.g. statecode:eq:0). Mutually exclusive with --filter-file.
   --solution <solution>                Add the view to this solution after the operation

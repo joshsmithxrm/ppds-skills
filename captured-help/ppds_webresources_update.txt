@@ -1,15 +1,17 @@
 Description:
-  Find a section in a form by label and return its ID and parent tab
+  Update an existing web resource's content from a local file
 
 Usage:
-  ppds forms find-section [options]
+  ppds webresources update <name> <file> [options]
+
+Arguments:
+  <name>  Web resource name (exact) or GUID
+  <file>  Local file whose content replaces the web resource content
 
 Options:
-  --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Name or ID of the form
-  --label <label>                      [Required] Label or name of the section to find
+  --publish                            Publish the web resource after the update (required before the change is visible to apps)
   -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors
   -v, --verbose                        Show detailed output including debug messages
   --debug                              Show trace-level diagnostic output

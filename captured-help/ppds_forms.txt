@@ -20,8 +20,8 @@ Commands:
   remove-section  Remove a section from a Main form
   find-section    Find a section in a form by label and return its ID and parent tab
   add-field       Add one or more fields to a section on a Main form. classid is resolved automatically from column metadata - never specify it directly.
-  remove-field    Remove the first occurrence of a field from a Main form
+  remove-field    Remove a field from a Main form. Without --section, removes all occurrences of the field; with --section, removes only from the specified section.
   reorder-fields  Reorder fields in a section. Provide the authoritative ordered list; fields not in the list are removed.
   add-subgrid     Add a sub-grid control to a section on a Main form
-  remove-subgrid  Remove a sub-grid from a Main form by label
+  remove-subgrid  Remove a sub-grid from a Main form by label or name
 

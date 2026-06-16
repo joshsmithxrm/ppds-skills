@@ -29,7 +29,7 @@ equivalent package.
 | `ppds-data` | Schema-driven bulk export/import/copy, CSV load, bulk update/delete/truncate, user mapping |
 | `ppds-webresources` | Pull/edit/push/publish loop with conflict detection |
 
-Versions these skills were generated against: **PPDS CLI 1.2.0-rc.4**,
+Versions these skills were generated against: **PPDS CLI 1.2.0-rc.6**,
 **PPDS.Mcp server 1.0.0** (recorded per-skill in frontmatter
 `metadata.ppds_cli_version_tested`).
 
@@ -95,33 +95,35 @@ or if generated references go stale. CI: `.github/workflows/evals.yml`.
 
 ## Before going public (maintainers)
 
-The current captures are from PPDS CLI **1.2.0-rc.4**. Several command
-surfaces are actively changing for **v1.2 stable** (e.g. `--publish` /
-`--dry-run` / `--label` on metadata commands, web-resource `create`,
-positional entity arguments). Publishing before re-capturing would ship flag
-tables that drift from the released CLI — exactly the failure this package
-exists to prevent. Do it in this order:
+The captures track the latest published **prerelease** CLI (currently
+**1.2.0-rc.6**), because the README prerequisite installs PPDS with
+`--prerelease` — so that is the surface users actually get. The capture
+tooling re-runs against whatever `ppds` is installed, and the eval suite
+now fails if the captured version lags the installed CLI (the
+capture-freshness gate), so stale tables can't pass CI silently. When
+v1.2.0 **stable** ships, re-capture against it before/at go-public. Do it in
+this order:
 
 1. **Merge** the initial package to `main` (review complete).
-2. **Wait for PPDS CLI v1.2.0 stable** to ship to NuGet.
-3. **Install the stable build** (`dotnet tool update -g PPDS.Cli`) and
-   **regenerate captures + bump frontmatter** — the tooling is already here:
+2. **Re-capture whenever the installed CLI moves** (each new rc, and again at
+   v1.2.0 stable) — the tooling is already here:
    ```bash
+   dotnet tool update -g PPDS.Cli --prerelease   # or drop --prerelease at stable
    python tools/capture_cli_help.py
    python tools/capture_mcp_tools.py
    python tools/generate_flag_tables.py
-   # update metadata.ppds_cli_version_tested / ppds_mcp_version_tested in each
-   # skills/*/SKILL.md to the stable versions, then:
+   # bump metadata.ppds_cli_version_tested / ppds_mcp_version_tested in each
+   # skills/*/SKILL.md to the installed versions, then:
    python evals/check_skills.py
    ```
-4. **Re-run CI.** While private, `evals.yml` runs on self-hosted Linux +
+3. **Re-run CI.** While private, `evals.yml` runs on self-hosted Linux +
    Windows runners (GitHub-hosted minutes are billing-blocked on the
    account). On going public, GitHub-hosted runners are free — revert the
    workflow to `runs-on: ubuntu-latest` and drop the self-hosted matrix.
    That also removes the fork-PR risk of self-hosted runners on a public
    repo.
-5. **Flip the repo public.**
-6. **Submit to the registry / awesome-lists** (tracked in
+4. **Flip the repo public.**
+5. **Submit to the registry / awesome-lists** (tracked in
    [power-platform-developer-suite#1211](https://github.com/joshsmithxrm/power-platform-developer-suite/issues/1211)).
 
 ## Conventions

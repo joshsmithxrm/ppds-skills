@@ -2,13 +2,14 @@ Description:
   List all status reasons for an entity's statuscode attribute
 
 Usage:
-  ppds metadata entity <entity> list-statusreasons [options]
+  ppds metadata entity <entity> list-statusreasons [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                [Required] Logical name of the entity
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

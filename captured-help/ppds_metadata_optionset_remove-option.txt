@@ -10,8 +10,10 @@ Arguments:
 Options:
   -s, --solution <solution>            [Required] Solution unique name containing the option set
   --name <name>                        [Required] Name of the option set
-  --value <value>                      [Required] Numeric value of the option to remove
+  --value <value>                      Target option by value (mutually exclusive with --label)
+  --label <label>                      Target option by label (mutually exclusive with --value)
   --force                              Skip confirmation prompt
+  --dry-run                            Validate that the target option exists, without removing it
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

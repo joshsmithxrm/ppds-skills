@@ -10,7 +10,11 @@ Options:
   --display-name <display-name>        Updated display name
   --plural-name <plural-name>          Updated plural display name
   --description <description>          Updated description
+  --icon-small <icon-small>            16x16 icon: web resource logical name. Use empty string to clear.
+  --icon-medium <icon-medium>          32x32 icon: web resource logical name. Use empty string to clear.
+  --icon-vector <icon-vector>          SVG vector icon: web resource logical name. Use empty string to clear.
   --dry-run                            Validate only, do not persist changes
+  --publish                            Publish the entity after the change
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

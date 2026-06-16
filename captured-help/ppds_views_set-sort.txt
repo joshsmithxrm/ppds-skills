@@ -8,7 +8,7 @@ Options:
   -p, --profile <profile>              Authentication profile name
   -e, --environment <environment>      Override the environment URL.
   --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name
+  -v, --view <view>                    [Required] View name or ID
   --sort <sort>                        [Required] Sort specification: 'attributename:asc' or 'attributename:desc'. Repeatable; applied in declaration order (first = primary).
   --solution <solution>                Add the view to this solution after the operation
   --publish                            Publish the entity after the operation

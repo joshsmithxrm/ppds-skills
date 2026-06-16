@@ -10,8 +10,11 @@ Arguments:
 Options:
   -s, --solution <solution>            [Required] Solution unique name containing the option set
   --name <name>                        [Required] Name of the option set
-  --value <value>                      [Required] Numeric value of the option to update
-  --label <label>                      [Required] New label for the option
+  --value <value>                      Target option by value (mutually exclusive with --label)
+  --label <label>                      Target option by current label (mutually exclusive with --value)
+  --new-label <new-label>              New label to apply
+  --color <color>                      New hex color (e.g. #FF0000)
+  --dry-run                            Validate only, do not persist changes
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

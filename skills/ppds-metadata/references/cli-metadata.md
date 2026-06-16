@@ -1,9 +1,9 @@
 # `ppds metadata` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0-rc.4. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0-rc.6. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0-rc.4**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.2.0-rc.6**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds metadata`
 
@@ -165,13 +165,13 @@ Options:
   -?, -h, --help                       Show help and usage information
 
 Commands:
-  create               Create a new Dataverse table (entity)
-  update               Update an existing Dataverse table (entity)
-  delete               Delete a Dataverse table (entity)
-  add-statusreason     Add a new status reason to an entity's statuscode attribute
-  list-statusreasons   List all status reasons for an entity's statuscode attribute
-  update-statusreason  Update an existing status reason on an entity
-  remove-statusreason  Remove a status reason from an entity's statuscode attribute
+  create                        Create a new Dataverse table (entity)
+  update <entity>               Update an existing Dataverse table (entity)
+  delete <entity>               Delete a Dataverse table (entity)
+  add-statusreason <entity>     Add a new status reason to an entity's statuscode attribute
+  list-statusreasons <entity>   List all status reasons for an entity's statuscode attribute
+  update-statusreason <entity>  Update an existing status reason on an entity
+  remove-statusreason <entity>  Remove a status reason from an entity's statuscode attribute
 ```
 
 ## `ppds metadata key`
@@ -492,6 +492,7 @@ Options:
   --required-level <required-level>    Updated requirement level: None, Recommended, or Required
   --max-length <max-length>            Updated maximum length
   --dry-run                            Validate only, do not persist changes
+  --publish                            Publish the entity after the change
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors
@@ -692,6 +693,7 @@ Options:
   --name <name>                        [Required] Name of the option set
   --value <value>                      [Required] Numeric value of the option to update
   --label <label>                      [Required] New label for the option
+  --color <color>                      New color for the option (hex string, e.g., #FF0000)
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors
@@ -802,13 +804,14 @@ Description:
   Add a new status reason to an entity's statuscode attribute
 
 Usage:
-  ppds metadata entity <entity> add-statusreason [options]
+  ppds metadata entity <entity> add-statusreason [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                [Required] Logical name of the entity
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   --label <label>                      [Required] Display label for the new status reason
   --value <value>                      Explicit option value (mutually exclusive with --solution for derivation)
   -s, --solution <solution>            [Required when --value is omitted] Solution unique name; publisher prefix x 10,000 is used to derive the option value
@@ -847,6 +850,7 @@ Options:
   --ownership <OrganizationOwned|UserOwned>  [Required] Ownership type: UserOwned or OrganizationOwned
   --description <description>                Description of the table
   --dry-run                                  Validate only, do not persist changes
+  --publish                                  Publish the entity after it is created
   -p, --profile <profile>                    Authentication profile name
   -env, --environment <environment>          Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                                Show only warnings and errors
@@ -864,14 +868,15 @@ Description:
   Delete a Dataverse table (entity)
 
 Usage:
-  ppds metadata entity <entity> delete [options]
+  ppds metadata entity <entity> delete [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
   -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity to delete
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   --force                              Skip confirmation prompt
   --dry-run                            Show dependencies without deleting
   -p, --profile <profile>              Authentication profile name
@@ -891,13 +896,14 @@ Description:
   List all status reasons for an entity's statuscode attribute
 
 Usage:
-  ppds metadata entity <entity> list-statusreasons [options]
+  ppds metadata entity <entity> list-statusreasons [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                [Required] Logical name of the entity
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors
@@ -915,13 +921,14 @@ Description:
   Remove a status reason from an entity's statuscode attribute
 
 Usage:
-  ppds metadata entity <entity> remove-statusreason [options]
+  ppds metadata entity <entity> remove-statusreason [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                [Required] Logical name of the entity
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   --value <value>                      Target status reason by option value (mutually exclusive with --label)
   --label <label>                      Target status reason by label (mutually exclusive with --value)
   -s, --solution <solution>            Solution unique name
@@ -944,18 +951,23 @@ Description:
   Update an existing Dataverse table (entity)
 
 Usage:
-  ppds metadata entity <entity> update [options]
+  ppds metadata entity <entity> update [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
   -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity to update
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   --display-name <display-name>        Updated display name
   --plural-name <plural-name>          Updated plural display name
   --description <description>          Updated description
+  --icon-small <icon-small>            16x16 icon: web resource logical name (e.g. new_icons/myentity16.png). Use empty string to clear.
+  --icon-medium <icon-medium>          32x32 icon: web resource logical name. Use empty string to clear.
+  --icon-vector <icon-vector>          SVG vector icon: web resource logical name (primary icon in modern Dataverse). Use empty string to clear.
   --dry-run                            Validate only, do not persist changes
+  --publish                            Publish the entity after the change
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors
@@ -973,13 +985,14 @@ Description:
   Update an existing status reason on an entity
 
 Usage:
-  ppds metadata entity <entity> update-statusreason [options]
+  ppds metadata entity <entity> update-statusreason [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                [Required] Logical name of the entity
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   --value <value>                      Target status reason by option value (mutually exclusive with --label)
   --label <label>                      Target status reason by current label (mutually exclusive with --value)
   --new-label <new-label>              New label to apply to the status reason
@@ -1088,6 +1101,7 @@ Options:
   --label <label>                      [Required] Label for the new option
   --value <value>                      Numeric value for the option (auto-assigned if not specified)
   --color <color>                      Color for the option (hex string, e.g., #FF0000)
+  --dry-run                            Validate only, do not persist changes
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors
@@ -1169,8 +1183,10 @@ Arguments:
 Options:
   -s, --solution <solution>            [Required] Solution unique name containing the option set
   --name <name>                        [Required] Name of the option set
-  --value <value>                      [Required] Numeric value of the option to remove
+  --value <value>                      Target option by value (mutually exclusive with --label)
+  --label <label>                      Target option by label (mutually exclusive with --value)
   --force                              Skip confirmation prompt
+  --dry-run                            Validate that the target option exists, without removing it
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors
@@ -1250,8 +1266,11 @@ Arguments:
 Options:
   -s, --solution <solution>            [Required] Solution unique name containing the option set
   --name <name>                        [Required] Name of the option set
-  --value <value>                      [Required] Numeric value of the option to update
-  --label <label>                      [Required] New label for the option
+  --value <value>                      Target option by value (mutually exclusive with --label)
+  --label <label>                      Target option by current label (mutually exclusive with --value)
+  --new-label <new-label>              New label to apply
+  --color <color>                      New hex color (e.g. #FF0000)
+  --dry-run                            Validate only, do not persist changes
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors
@@ -1363,6 +1382,7 @@ Options:
   --ownership <OrganizationOwned|UserOwned>  [Required] Ownership type: UserOwned or OrganizationOwned
   --description <description>                Description of the table
   --dry-run                                  Validate only, do not persist changes
+  --publish                                  Publish the entity after it is created
   -p, --profile <profile>                    Authentication profile name
   -env, --environment <environment>          Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                                Show only warnings and errors
@@ -1412,7 +1432,11 @@ Options:
   --display-name <display-name>        Updated display name
   --plural-name <plural-name>          Updated plural display name
   --description <description>          Updated description
+  --icon-small <icon-small>            16x16 icon: web resource logical name. Use empty string to clear.
+  --icon-medium <icon-medium>          32x32 icon: web resource logical name. Use empty string to clear.
+  --icon-vector <icon-vector>          SVG vector icon: web resource logical name. Use empty string to clear.
   --dry-run                            Validate only, do not persist changes
+  --publish                            Publish the entity after the change
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

@@ -18,7 +18,7 @@ to its implementation in this repository, for AC-by-AC review.
 ## Anti-hallucination architecture (design ratification §2)
 
 - `tools/capture_cli_help.py` walks the released CLI's full command tree
-  (269 nodes at 1.2.0-rc.4) into `captured-help/*.txt` + `manifest.json`.
+  (271 nodes at 1.2.0-rc.6) into `captured-help/*.txt` + `manifest.json`.
 - `tools/capture_mcp_tools.py` records the released MCP server's actual
   `tools/list` response (41 tools at 1.0.0) — the repo-HEAD docs describe a
   larger future surface, so the live capture is the truth source.

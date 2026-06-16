@@ -6,7 +6,7 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
+  --form <form>                        [Required] Name or ID of the form
   --label <label>                      [Required] Label for the new tab
   --show-label                         Whether to show the tab label
   --expanded                           Whether the tab is expanded by default

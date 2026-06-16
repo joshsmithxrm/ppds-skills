@@ -6,8 +6,8 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
-  --section <section>                  [Required] Section label to add the sub-grid to
+  --form <form>                        [Required] Name or ID of the form
+  --section <section>                  [Required] Label or name of the section to add the sub-grid to
   --label <label>                      [Required] Display label for the sub-grid
   --target-entity <target-entity>      [Required] Logical name of the entity displayed in the sub-grid
   --default-view <default-view>        [Required] GUID of the default view (savedqueries record) to display in the sub-grid

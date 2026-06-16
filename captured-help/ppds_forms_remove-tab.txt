@@ -6,8 +6,8 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
-  --tab <tab>                          [Required] Label of the tab to remove
+  --form <form>                        [Required] Name or ID of the form
+  --tab <tab>                          [Required] Label or name of the tab to remove
   --publish                            Publish customizations after writing
   --solution <solution>                Solution unique name to associate the change with
   -p, --profile <profile>              Authentication profile name

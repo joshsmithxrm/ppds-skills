@@ -1,0 +1,24 @@
+Description:
+  Create a new web resource from a local file
+
+Usage:
+  ppds webresources create <file> [options]
+
+Arguments:
+  <file>  Local file to upload as the web resource content
+
+Options:
+  --name <name>                        [Required] Logical name for the new web resource (e.g., new_/icons/vet.svg)
+  --display-name <display-name>        Display name (defaults to the logical name)
+  --type <type>                        Web resource type override; inferred from the file extension when omitted. One of: html, css, js, xml, png, jpg, gif, xap, xsl, ico, svg, resx
+  -s, --solution <solution>            Solution unique name to add the web resource to
+  --publish                            Publish the web resource after creation (required before it is visible to apps)
+  -p, --profile <profile>              Authentication profile name
+  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                          Show only warnings and errors
+  -v, --verbose                        Show detailed output including debug messages
+  --debug                              Show trace-level diagnostic output
+  --correlation-id <correlation-id>    Correlation ID for distributed tracing
+  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -?, -h, --help                       Show help and usage information
+

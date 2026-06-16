@@ -2,13 +2,14 @@ Description:
   Remove a status reason from an entity's statuscode attribute
 
 Usage:
-  ppds metadata entity <entity> remove-statusreason [options]
+  ppds metadata entity <entity> remove-statusreason [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                [Required] Logical name of the entity
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   --value <value>                      Target status reason by option value (mutually exclusive with --label)
   --label <label>                      Target status reason by label (mutually exclusive with --value)
   -s, --solution <solution>            Solution unique name

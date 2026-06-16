@@ -6,8 +6,8 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
-  --tab <tab>                          [Required] Parent tab label
+  --form <form>                        [Required] Name or ID of the form
+  --tab <tab>                          [Required] Label or name of the parent tab
   --label <label>                      [Required] Section label
   --show-label                         Show the section label
   --columns <columns>                  Number of columns (1 or 2)

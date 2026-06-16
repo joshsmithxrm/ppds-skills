@@ -13,6 +13,7 @@ Options:
   --label <label>                      [Required] Label for the new option
   --value <value>                      Numeric value for the option (auto-assigned if not specified)
   --color <color>                      Color for the option (hex string, e.g., #FF0000)
+  --dry-run                            Validate only, do not persist changes
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

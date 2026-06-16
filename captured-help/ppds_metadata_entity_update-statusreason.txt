@@ -2,13 +2,14 @@ Description:
   Update an existing status reason on an entity
 
 Usage:
-  ppds metadata entity <entity> update-statusreason [options]
+  ppds metadata entity <entity> update-statusreason [<entity>] [options]
 
 Arguments:
   <entity>  The entity logical name (e.g., 'account')
+  <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                [Required] Logical name of the entity
+  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
   --value <value>                      Target status reason by option value (mutually exclusive with --label)
   --label <label>                      Target status reason by current label (mutually exclusive with --value)
   --new-label <new-label>              New label to apply to the status reason

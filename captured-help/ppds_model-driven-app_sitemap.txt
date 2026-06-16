@@ -6,6 +6,8 @@ Usage:
 
 Options:
   --app <app>                          [Required] App display name or unique name
+  --unpublished                        Read the unpublished (latest draft) sitemap instead of the published version
+  --raw                                Output the raw sitemap XML instead of the parsed navigation structure
   -p, --profile <profile>              Authentication profile name
   -e, --environment <environment>      Environment URL override
   -q, --quiet                          Show only warnings and errors

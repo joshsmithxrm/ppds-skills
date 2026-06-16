@@ -37,7 +37,7 @@ Commands:
   model-driven-app      Manage model-driven app navigation and components
   views                 Manage Dataverse savedqueries views: list, get, add-column, remove-column, update-column, reorder-columns, set-sort, clear-sort, set-filter, clear-filter, set-fetchxml
   forms                 Inspect and modify Dataverse systemform records: list forms, view form structure, and manage tabs, sections, fields, and sub-grids
-  webresources          Manage Dataverse web resources: list, get, url, publish, pull, push
+  webresources          Manage Dataverse web resources: list, get, url, publish, pull, push, create, update
   publish <names>       Publish Dataverse customizations
   docs                  Open CLI documentation in browser
   version               Show version information for the PPDS CLI

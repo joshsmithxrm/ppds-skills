@@ -6,8 +6,8 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
-  --section <section>                  [Required] Section label containing the fields to reorder
+  --form <form>                        [Required] Name or ID of the form
+  --section <section>                  [Required] Label or name of the section containing the fields to reorder
   --fields <fields>                    [Required] Comma-separated ordered list of field logical names. Fields not in the list are removed.
   --publish                            Publish customizations after writing
   --solution <solution>                Solution unique name to associate the change with

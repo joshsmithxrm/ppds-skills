@@ -8,7 +8,7 @@ Options:
   -p, --profile <profile>                Authentication profile name
   -e, --environment <environment>        Override the environment URL.
   --entity <entity>                      [Required] Entity logical name (e.g., account)
-  -v, --view <view>                      [Required] View name
+  -v, --view <view>                      [Required] View name or ID
   -c, --column <column>                  [Required] Column to add. Format: 'attributename' or 'attributename:width' (default width 150). Repeatable.
   --via-relationship <via-relationship>  Lookup/relationship attribute to use for related-entity columns
   --solution <solution>                  Add the view to this solution after the operation

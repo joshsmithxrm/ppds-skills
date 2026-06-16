@@ -9,6 +9,7 @@ Options:
   --name <name>                        [Required] Name of the option set
   --value <value>                      [Required] Numeric value of the option to update
   --label <label>                      [Required] New label for the option
+  --color <color>                      New color for the option (hex string, e.g., #FF0000)
   -p, --profile <profile>              Authentication profile name
   -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                          Show only warnings and errors

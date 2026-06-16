@@ -6,8 +6,8 @@ Usage:
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
-  --tab <tab>                          [Required] Current label of the tab to update
+  --form <form>                        [Required] Name or ID of the form
+  --tab <tab>                          [Required] Label or name of the tab to update
   --label <label>                      New label for the tab (renames the tab)
   --show-label                         Whether to show the tab label
   --expanded                           Whether the tab is expanded by default

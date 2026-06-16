@@ -1,13 +1,13 @@
 Description:
-  Remove a sub-grid from a Main form by label
+  Remove a sub-grid from a Main form by label or name
 
 Usage:
   ppds forms remove-subgrid [options]
 
 Options:
   --entity <entity>                    [Required] Entity logical name
-  --form <form>                        [Required] Form name
-  --label <label>                      [Required] Label of the sub-grid to remove
+  --form <form>                        [Required] Name or ID of the form
+  --label <label>                      [Required] Label or name of the sub-grid to remove
   --publish                            Publish customizations after writing
   --solution <solution>                Solution unique name to associate the change with
   -p, --profile <profile>              Authentication profile name

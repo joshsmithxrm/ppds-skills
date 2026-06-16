@@ -3,7 +3,7 @@ name: ppds-metadata
 description: Browse and author Dataverse schema with PPDS — list entities/tables, inspect attributes/columns and relationships, create or update tables, columns, relationships, alternate keys, and global choices/option sets, compare schemas across environments, and adjust views and forms. Use when the user wants to know what columns or relationships an entity has, create or modify a table or column, manage option sets or keys, diff schema between environments, or edit a view or form definition. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.2.0-rc.4"
+  ppds_cli_version_tested: "1.2.0-rc.6"
   ppds_mcp_version_tested: "1.0.0"
 ---
 

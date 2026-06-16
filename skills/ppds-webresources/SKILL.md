@@ -3,7 +3,7 @@ name: ppds-webresources
 description: Manage Dataverse web resources with PPDS — pull JavaScript/CSS/HTML/image web resources to a local folder with tracking metadata, edit locally, push changes back with conflict detection, and publish. Use when the user wants to download web resources for editing, sync local script changes to Dataverse, publish a web resource, or get its Maker portal URL. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.2.0-rc.4"
+  ppds_cli_version_tested: "1.2.0-rc.6"
   ppds_mcp_version_tested: "1.0.0"
 ---
 

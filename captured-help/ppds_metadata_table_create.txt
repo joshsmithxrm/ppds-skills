@@ -12,6 +12,7 @@ Options:
   --ownership <OrganizationOwned|UserOwned>  [Required] Ownership type: UserOwned or OrganizationOwned
   --description <description>                Description of the table
   --dry-run                                  Validate only, do not persist changes
+  --publish                                  Publish the entity after it is created
   -p, --profile <profile>                    Authentication profile name
   -env, --environment <environment>          Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                                Show only warnings and errors
