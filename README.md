@@ -90,8 +90,24 @@ python evals/check_skills.py           # static eval suite (also runs in CI)
 ```
 
 The eval suite fails if a skill cites a command or flag that does not exist
-in the captured surface, if frontmatter drifts from the captured versions,
-or if generated references go stale. CI: `.github/workflows/evals.yml`.
+in the captured surface, if frontmatter drifts from the captured versions, if
+the captured surface lags the installed CLI (the capture-freshness gate), or
+if generated references go stale. CI: `.github/workflows/evals.yml`.
+
+## Evals — static and behavioral
+
+Two layers:
+
+- **Static** (`evals/check_skills.py`, zero-dependency, every PR) — proves the
+  skills only *cite* real commands/flags, frontmatter matches the captured
+  versions, and captures don't lag the installed CLI.
+- **Behavioral** (`evals/live/`) — proves an agent given a real task actually
+  loads the right skill and routes PPDS correctly (`SKILL_LOADED` /
+  `CONTAINS` / `NOT_CONTAINS` / LLM-judged `semantic`, at P1–P3). The
+  mechanical half (harness self-test + scenario validation against the captured
+  surface) runs free on every PR; the billed, LLM-judged run is opt-in
+  (`.github/workflows/live-evals.yml`, or `python evals/live/run_live_evals.py`
+  locally). See [evals/live/README.md](evals/live/README.md).
 
 ## Before going public (maintainers)
 

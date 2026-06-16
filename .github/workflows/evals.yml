@@ -45,7 +45,9 @@ jobs:
       - name: Run skill evals (Linux)
         if: runner.os == 'Linux'
         shell: bash
-        run: python3 evals/check_skills.py
+        run: |
+          python3 evals/check_skills.py
+          python3 evals/live/_selftest.py
 
       - name: Run skill evals (Windows)
         if: runner.os == 'Windows'
@@ -58,4 +60,6 @@ jobs:
           }
           if (-not $py) { Write-Error 'No Python interpreter found on PATH'; exit 1 }
           & $py evals/check_skills.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $py evals/live/_selftest.py
           exit $LASTEXITCODE

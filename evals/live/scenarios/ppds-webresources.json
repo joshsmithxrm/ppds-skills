@@ -1,0 +1,77 @@
+{
+  "skill": "ppds-webresources",
+  "description": "Behavioral routing evals for the ppds-webresources skill: the pull/edit/push/publish loop, dry-run conflict preview, the rc.6 create/update positional commands, and the MCP read/publish surface for shell-less hosts. Asserts the agent never routes to `pac webresource` and never reaches for `--force` to bypass conflict detection unless the user accepts clobbering.",
+  "scenarios": [
+    {
+      "id": "pull-edit-push-publish-loop",
+      "priority": "P1",
+      "prompt": "I need to tweak the JavaScript web resources in my AcmePortal solution. Download them so I can edit them locally, and then get my edits live in Dataverse afterward.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-webresources", "priority": "P1" },
+        { "type": "contains", "scope": "all", "all": ["ppds webresources pull", "ppds webresources push"], "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["--publish", "ppds webresources publish"], "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["--type js", "-t js"], "priority": "P2" },
+        { "type": "not_contains", "scope": "all", "any": ["pac webresource", "ppds webresources upload"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Lays out the pull-to-folder, edit-locally, push-back, publish loop (publish via push --publish or a separate publish call) and filters the pull to the AcmePortal solution and the js type.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "push-dry-run-conflict-preview",
+      "priority": "P1",
+      "prompt": "Before I upload my local web resource changes I want to see exactly what would change and make sure a teammate hasn't edited the same files on the server since I pulled. Don't actually push yet.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-webresources", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "ppds webresources push", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "--dry-run", "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac webresource", "--force"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Uses push --dry-run as the preview/conflict-detection step and does not suggest --force, which would skip the very server-conflict check the user asked for.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "force-overwrite-conflict-safety",
+      "priority": "P1",
+      "prompt": "I ran the push and it failed with a WebResource.Conflict error saying the server copy changed since my pull. I'm sure my version is the one I want — what's the safest way forward?",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-webresources", "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["ppds webresources pull", "ppds webresources push"], "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac webresource"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Treats --force as a clobbering safety override: recommends re-pulling and merging the server changes first, and only mentions --force as an explicit last resort that overwrites the teammate's edits, not as the default fix.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "create-new-webresource",
+      "priority": "P1",
+      "prompt": "I have a brand-new SVG icon file at ./assets/vet.svg that doesn't exist in Dataverse yet. Add it as a web resource named new_/icons/vet.svg in my AcmePortal solution and make it visible to the apps.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-webresources", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "ppds webresources create", "priority": "P1" },
+        { "type": "contains", "scope": "all", "all": ["--name", "--publish"], "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac webresource", "ppds webresources push", "ppds webresources upload"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Routes a not-yet-existing file to `ppds webresources create <file>` with --name set to the logical name and --publish to make it visible, scoping it to the AcmePortal solution, rather than the pull/push loop.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "update-existing-from-file",
+      "priority": "P1",
+      "prompt": "I already have the finished contents of an existing web resource called new_/scripts/account_form.js sitting in a single local file build/account_form.js. Just overwrite that one web resource's content from my file and publish it — no folder syncing.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-webresources", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "ppds webresources update", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "--publish", "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac webresource", "ppds webresources push", "ppds webresources upload"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Uses the rc.6 `ppds webresources update <name> <file>` positional form for a single-file overwrite of an existing resource and publishes, instead of the folder-based pull/push loop.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "mcp-list-and-publish-shellless",
+      "priority": "P1",
+      "prompt": "I'm working through an MCP host with no shell access. List the web resources in my AcmePortal solution, read the contents of the main one, and then publish it so my earlier edit goes live.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-webresources", "priority": "P1" },
+        { "type": "contains", "scope": "all", "all": ["ppds_web_resources_list", "ppds_web_resources_get", "ppds_web_resources_publish"], "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac webresource", "ppds webresources pull", "ppds webresources push"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Routes a shell-less host to the MCP read/publish tools (list, get, publish) rather than the CLI pull/push loop, which manages local tracking metadata and needs a shell.", "priority": "P2" }
+      ]
+    }
+  ]
+}

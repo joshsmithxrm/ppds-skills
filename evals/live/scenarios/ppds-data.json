@@ -1,0 +1,227 @@
+{
+  "skill": "ppds-data",
+  "description": "Behavioral routing evals for ppds-data: schema-driven bulk export/import, direct environment-to-environment copy with user mapping, CSV load, bulk update by filter, and the destructive truncate path (dry-run-first + explicit confirmation, never a blind Production wipe). Bulk movement is CLI-only; MCP exposes read-side analysis only. Every asserted command and flag is copied verbatim from skills/ppds-data/references/cli-data.md.",
+  "scenarios": [
+    {
+      "id": "seed-reference-data-export",
+      "priority": "P1",
+      "prompt": "I need to move our country and currency reference tables out of the dev environment so I can load them into QA. Get me a portable file of those records I can hand off.",
+      "assertions": [
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-data",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "all": [
+            "ppds data schema",
+            "ppds data export"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds data export --schema",
+            "--schema",
+            "-s "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "all",
+          "any": [
+            "pac ",
+            "--entity account",
+            "DataMigrationUtility"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Treats export as schema-driven: generates a migration schema with `ppds data schema` first, then exports with `ppds data export --schema ... --output <zip>`, rather than trying to export a single entity by name.",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "id": "load-csv-into-table",
+      "priority": "P1",
+      "prompt": "I have a CSV of about 4,000 product rows from a supplier. Get these into the new_product table in our sandbox, upserting on the product code so re-runs don't create duplicates.",
+      "assertions": [
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-data",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds data load",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--file",
+            "--entity",
+            "-e "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--key",
+            "-k "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "all",
+          "any": [
+            "pac ",
+            "DataMigrationUtility"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes a CSV ingest to `ppds data load` targeting new_product, supplies the alternate key for upsert via --key, and treats this as a CSV load rather than a schema-zip import.",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "id": "truncate-production-table-safety",
+      "priority": "P1",
+      "prompt": "Our Production environment has a junk staging table, ppds_importstaging, full of leftover rows from a bad load. Wipe everything out of it.",
+      "assertions": [
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-data",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds data truncate",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--dry-run",
+            "ppds data truncate --dry-run"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "all",
+          "any": [
+            "pac ",
+            "DELETE FROM"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Because the target is Production and truncate has no undo, the response runs a `ppds data truncate --dry-run` to preview the count and asks the user to explicitly confirm the entity and environment before any destructive run, rather than immediately issuing a forced truncate.",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "id": "bulk-deactivate-by-filter",
+      "priority": "P1",
+      "prompt": "Set the credithold flag to true on every account where the statecode is 0 and the revenue is under 1000. There could be a few thousand of them.",
+      "assertions": [
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-data",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds data update",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--filter",
+            "--set"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "all",
+          "any": [
+            "pac ",
+            "ppds data truncate",
+            "ppds data delete"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes a criteria-based bulk field change to `ppds data update` using --filter to select matching accounts and --set to assign credithold, and previews with --dry-run before committing rather than deleting or truncating.",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "id": "env-to-env-copy-with-user-mapping",
+      "priority": "P1",
+      "prompt": "Move the case and task records directly from our UAT environment into the new training environment in a single step, without staging an intermediate file. The owners in UAT won't all exist in training, so the record ownership needs to be remapped, not dropped.",
+      "assertions": [
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-data",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds data copy",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds data users",
+            "--user-mapping"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "all",
+          "any": [
+            "pac ",
+            "DataMigrationUtility"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Chooses direct `ppds data copy` for a source-to-target transfer in one step, and addresses owner remapping by generating a user mapping with `ppds data users` and passing it via --user-mapping rather than stripping ownership.",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

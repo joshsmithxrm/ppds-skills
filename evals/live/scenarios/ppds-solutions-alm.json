@@ -1,0 +1,78 @@
+{
+  "skill": "ppds-solutions-alm",
+  "description": "Behavioral routing evals for ppds-solutions-alm: solution export/import round-trip, import-job diagnosis, environment variables, connection-reference orphan detection, and deployment settings files. Every asserted ppds command/flag is copied verbatim from skills/ppds-solutions-alm/references/*.md; ppds_* MCP tool names come from skills/ppds-core/references/mcp-tools.md.",
+  "scenarios": [
+    {
+      "id": "export-managed-solution",
+      "priority": "P1",
+      "prompt": "I need a deployable managed build of our CustomerPortal solution written to ./out/CustomerPortal_managed.zip so I can hand it to the release pipeline. How do I produce that?",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-solutions-alm", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "ppds solutions export", "priority": "P1" },
+        { "type": "contains", "scope": "all", "all": ["--managed", "CustomerPortal"], "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac ", "--name CustomerPortal", "solutions pack", "solutions clone"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Routes to `ppds solutions export` with the solution unique name as a positional argument and the --managed flag for a deployable artifact, not pac and not a --name option.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "import-to-prod-then-wait",
+      "priority": "P1",
+      "prompt": "Promote the ContosoSales_managed.zip artifact into our production org at https://contoso.crm.dynamics.com and then block until the import has actually finished so my deploy script knows it's done.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-solutions-alm", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "ppds solutions import", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "ppds importjobs wait", "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac ", "--path", "--async", "--max-async-wait-time"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Treats the production import as a mutation against the target — states the target environment URL and seeks confirmation before importing — then polls completion with `ppds importjobs wait <job-id>` rather than a pac-style --async/--max-async-wait-time flag on import.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "diagnose-failed-import",
+      "priority": "P1",
+      "prompt": "Our overnight solution deployment didn't take and nobody knows why. Figure out which import attempt failed and pull the detailed component-level reason it blew up.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-solutions-alm", "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["ppds importjobs list", "ppds_import_jobs_list"], "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["ppds importjobs get", "ppds importjobs data", "ppds_import_jobs_get"], "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac ", "ppds import-jobs", "ppds importjob "], "priority": "P1" },
+        { "type": "semantic", "rubric": "Lists recent import jobs to find the failed one, then fetches that job's detail/log (get or data, or the ppds_import_jobs_get MCP tool) to surface the component-level failure reason.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "set-environment-variable",
+      "priority": "P1",
+      "prompt": "After importing the app into the test environment, the API base URL setting still points at dev. Update the contoso_ApiBaseUrl setting to https://test-api.contoso.com for this environment.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-solutions-alm", "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["ppds environmentvariables set", "ppds_environment_variables_set"], "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "contoso_ApiBaseUrl", "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac ", "ppds env-vars", "ppds envvars", "ppds environment-variables"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Routes to setting the environment variable value via `ppds environmentvariables set <schemaName> <value>` (or the ppds_environment_variables_set MCP tool), using the correct group name 'environmentvariables' rather than env-vars/envvars.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "unbound-connection-references-before-import",
+      "priority": "P1",
+      "prompt": "We keep hitting import failures because flows come over with no connection wired up. Before the next deploy, show me which connection references in the SalesAutomation solution have nothing bound to them so we can fix the orphans.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-solutions-alm", "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["ppds connectionreferences list", "ppds connectionreferences analyze", "ppds_connection_references_list", "ppds_connection_references_analyze"], "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["--unbound", "--orphans-only", "ppds_connection_references_analyze", "ppds_connection_references_list"], "priority": "P2" },
+        { "type": "not_contains", "scope": "all", "any": ["pac ", "connectionreferences update", "connectionreferences bind", "--connection "], "priority": "P1" },
+        { "type": "semantic", "rubric": "Diagnoses orphaned/unbound connection references with `ppds connectionreferences list --unbound` or `analyze --orphans-only` (or the matching ppds_connection_references_* MCP tool), and does not claim a CLI command binds connections — binding happens in the Maker portal.", "priority": "P2" }
+      ]
+    },
+    {
+      "id": "generate-deployment-settings",
+      "priority": "P2",
+      "prompt": "I'm wiring up a pipeline deployment for the FieldService solution and need a deployment settings file at ./deploy/test.json seeded from the current environment's environment variables and connection references.",
+      "assertions": [
+        { "type": "skill_loaded", "skill": "ppds-solutions-alm", "priority": "P1" },
+        { "type": "contains", "scope": "all", "value": "ppds deployment-settings generate", "priority": "P1" },
+        { "type": "contains", "scope": "all", "any": ["--solution", "-s"], "priority": "P1" },
+        { "type": "not_contains", "scope": "all", "any": ["pac ", "deployment-settings create", "ppds deploymentsettings"], "priority": "P1" },
+        { "type": "semantic", "rubric": "Routes to `ppds deployment-settings generate` with --solution and an --output path, and uses the correct subcommand 'generate' (not 'create') and the hyphenated group 'deployment-settings'.", "priority": "P2" }
+      ]
+    }
+  ]
+}
