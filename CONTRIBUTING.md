@@ -136,6 +136,10 @@ renames/removals, MINOR = new skills/capabilities, PATCH = fixes.
 
 ## Release process
 
+Agent-driven: the `release` skill (`.claude/skills/release/`) walks these steps
+with the version-bump and prose-cleanup judgment baked in. The steps, for
+reference:
+
 1. Re-capture against the target CLI/MCP versions (above) and bump frontmatter.
 2. Bump the version in `plugin.json` **and** the `marketplace.json` plugin
    entry (they must match — the eval enforces it).
