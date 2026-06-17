@@ -117,7 +117,8 @@ renames/removals, MINOR = new skills/capabilities, PATCH = fixes.
 ## Getting help
 
 - **Questions / ideas**: open a
-  [Discussion](https://github.com/joshsmithxrm/ppds-skills/discussions).
+  [Discussion on the main PPDS repo](https://github.com/joshsmithxrm/power-platform-developer-suite/discussions)
+  — the skills share the PPDS community hub.
 - **Bugs in the skills**: open an
   [Issue](https://github.com/joshsmithxrm/ppds-skills/issues).
 - **Bugs in the `ppds` CLI / MCP server**: file them in the
