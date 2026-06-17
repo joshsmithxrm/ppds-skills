@@ -103,7 +103,7 @@ published stable). Two operational gotchas:
 
 ```bash
 dotnet tool update -g PPDS.Cli --prerelease   # or drop --prerelease at stable
-dotnet tool update -g PPDS.Mcp
+dotnet tool update -g PPDS.Mcp --prerelease   # or drop --prerelease at stable
 python3 tools/recapture.py                    # 3 capture scripts + frontmatter bump
 python3 evals/check_skills.py
 ```
