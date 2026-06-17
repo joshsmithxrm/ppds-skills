@@ -72,17 +72,46 @@ hand-written:
 ## Regenerating the references (maintainers)
 
 Re-capture whenever the installed CLI/MCP surface moves (each new rc, and again
-at v1.2.0 stable):
+at v1.2.0 stable).
+
+### Automated (preferred)
+
+A new **stable** `PPDS.Cli` on NuGet is picked up by
+`.github/workflows/recapture-on-release.yml` — weekly, or on demand:
+
+```bash
+gh workflow run recapture-on-release.yml
+```
+
+It installs the released CLI/MCP, re-captures, runs `tools/recapture.py` to bump
+the frontmatter pins, runs the static gate, and opens a PR for review. It
+**never auto-merges**, and it correctly no-ops when the latest stable isn't newer
+than the captured version (e.g. while `1.2.0-rc.N` is still ahead of the latest
+published stable). Two operational gotchas:
+
+- The repo setting **Settings → Actions → General → "Allow GitHub Actions to
+  create and approve pull requests"** must stay **on**, or the final
+  PR-creation step fails.
+- A `GITHUB_TOKEN`-opened PR does not trigger CI, so the auto-PR shows no
+  `skill-evals` checks and can't merge as-is — **close and reopen it** to fire
+  the checks. Then review the capture diff and the PR's manual-prose checklist
+  (drop any `--prerelease` guidance and stale `rc` mentions — `check_skills.py`
+  does **not** catch those once the pin is stable), resolve any review threads,
+  and merge.
+
+### Manual (offline, or what the automation runs under the hood)
 
 ```bash
 dotnet tool update -g PPDS.Cli --prerelease   # or drop --prerelease at stable
-python3 tools/capture_cli_help.py             # walks `ppds ... --help`
-python3 tools/capture_mcp_tools.py            # captures MCP tools/list
-python3 tools/generate_flag_tables.py         # rewrites skills/*/references/
-# bump metadata.ppds_cli_version_tested / ppds_mcp_version_tested in each
-# skills/*/SKILL.md to the installed versions, then:
+dotnet tool update -g PPDS.Mcp
+python3 tools/recapture.py                    # 3 capture scripts + frontmatter bump
 python3 evals/check_skills.py
 ```
+
+`tools/recapture.py` wraps `capture_cli_help.py`, `capture_mcp_tools.py`, and
+`generate_flag_tables.py`, then bumps `metadata.ppds_cli_version_tested` /
+`ppds_mcp_version_tested` in every `skills/*/SKILL.md` from the fresh manifests.
+Run against the currently installed CLI it is a no-op (zero diff).
 
 ## Branch strategy
 
