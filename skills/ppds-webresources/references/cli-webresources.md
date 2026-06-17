@@ -1,9 +1,9 @@
 # `ppds webresources` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0-rc.6. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0-rc.6**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds webresources`
 

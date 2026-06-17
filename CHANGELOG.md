@@ -5,6 +5,20 @@ All notable changes to this package are documented here. The format follows
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html): MAJOR =
 skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
 
+## [0.1.1] - 2026-06-17
+
+Re-captured against **PPDS CLI 1.2.0 stable** (previously 1.2.0-rc.6). The
+released surface is byte-identical to rc.6 — no command or flag changes — so
+this is a version-alignment refresh.
+
+### Changed
+
+- `metadata.ppds_cli_version_tested` bumped to `1.2.0` across all seven skills;
+  `captured-help/` and the generated references regenerated from 1.2.0 stable.
+- README, DESIGN, and `ppds-core` drop the `--prerelease` install guidance now
+  that 1.2.0 ships stable; stale `1.2.0-rc.6` references updated.
+- MCP pin unchanged (`ppds_mcp_server` still self-reports `1.0.0.0`).
+
 ## [0.1.0] - 2026-06-17
 
 Initial public release — seven PPDS skills generated against the 1.2.0 CLI
@@ -28,4 +42,5 @@ surface (flag tables captured at 1.2.0-rc.6) and PPDS.Mcp server 1.0.0.
 - `captured-help/` verbatim CLI/MCP surface, the `evals/check_skills.py` static
   authoring gate, and the `evals/live/` behavioral eval suite.
 
+[0.1.1]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.1
 [0.1.0]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.0

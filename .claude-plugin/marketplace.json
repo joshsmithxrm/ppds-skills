@@ -5,13 +5,13 @@
   },
   "metadata": {
     "description": "Skills for driving the Power Platform Developer Suite (PPDS) against Microsoft Dataverse",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "ppds",
       "source": "./",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "PPDS Skills — auth, environments, safety model, SQL/FetchXML queries, plugins, solutions ALM, metadata, bulk data, web resources."
     }
   ]

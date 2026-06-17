@@ -1,7 +1,7 @@
 {
   "tool": "ppds",
-  "cli_version": "1.2.0-rc.6",
-  "cli_version_raw": "1.2.0-rc.6+996ab773a82614ee165d49c3975baf44aa3745b0",
+  "cli_version": "1.2.0",
+  "cli_version_raw": "1.2.0+abd0d57f54d2a9600597f0fa099b9fbf89084c20",
   "command_tree": {
     "ppds": [
       "api",

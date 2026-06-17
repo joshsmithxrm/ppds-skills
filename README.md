@@ -37,11 +37,9 @@ errors while these skills were being authored.
 | `ppds-webresources` | Pull/edit/push/publish loop with conflict detection |
 
 These skills target the **1.2.0** CLI surface (flag tables captured at
-1.2.0-rc.6) and **PPDS.Mcp server 1.0.0**. The exact tested versions live in
+1.2.0) and **PPDS.Mcp server 1.0.0**. The exact tested versions live in
 each skill's frontmatter (`metadata.ppds_cli_version_tested` /
-`ppds_mcp_version_tested`) and are enforced by the eval suite; re-capture
-against 1.2.0 stable is tracked in
-[#2](https://github.com/joshsmithxrm/ppds-skills/issues/2).
+`ppds_mcp_version_tested`) and are enforced by the eval suite.
 
 ## Prerequisite
 
@@ -51,8 +49,7 @@ dotnet tool install -g PPDS.Mcp    # optional: `ppds-mcp-server`
 ```
 
 Update later with `dotnet tool update -g PPDS.Cli`. These skills target the
-1.2.0 surface; until PPDS 1.2.0 ships stable, add `--prerelease` to install it
-(`dotnet tool install -g PPDS.Cli --prerelease`).
+**1.2.0** surface, which now ships as a stable release.
 
 ## Install — Claude Code
 
