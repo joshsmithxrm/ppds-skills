@@ -57,7 +57,7 @@ checked rigorously — make it `P1` when that nuance is the whole point (it is
 ### `skill_loaded`
 Deterministic. Passes if the named skill was triggered during the run.
 ```jsonc
-{ "type": "skill_loaded", "skill": "ppds-query", "priority": "P1" }
+{ "type": "skill_loaded", "skill": "ppds-query", "priority": "P2" }
 ```
 
 ### `contains`
@@ -65,15 +65,15 @@ Deterministic substring match within `scope`. Use `value` for one substring or
 `any` / `all` for a list (`any` = at least one present; `all` = every one
 present). `ignore_case` (default `false`) lower-cases both sides.
 ```jsonc
-{ "type": "contains", "scope": "commands", "any": ["ppds query sql", "ppds_query_sql"], "priority": "P1" }
-{ "type": "contains", "scope": "commands", "value": "count(", "ignore_case": true, "priority": "P2" }
+{ "type": "contains", "scope": "all", "any": ["ppds query sql", "ppds_query_sql"], "priority": "P1" }
+{ "type": "contains", "scope": "all", "value": "count(", "ignore_case": true, "priority": "P2" }
 ```
 
 ### `not_contains`
 Deterministic. Fails if any listed substring appears in `scope`. Use for
 anti-patterns (routing to `pac`, MS skills, or a hallucinated flag).
 ```jsonc
-{ "type": "not_contains", "scope": "all", "any": ["pac ", " --limit"], "priority": "P1" }
+{ "type": "not_contains", "scope": "commands", "any": ["pac ", " --limit"], "priority": "P1" }
 ```
 
 ### `semantic`

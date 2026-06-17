@@ -20,7 +20,7 @@ dotnet tool install -g PPDS.Mcp                # MCP server: `ppds-mcp-server`
 ```
 
 Verify: `ppds --version`. Flag tables in references/ were generated from CLI
-**1.2.0-rc.4**; if the installed major/minor differs, prefer live `--help`.
+**1.2.0-rc.6**; if the installed major/minor differs, prefer live `--help`.
 
 ## Surface routing (applies to every ppds-* skill)
 

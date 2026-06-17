@@ -1,6 +1,7 @@
 name: live-evals
 
-# Behavioral (LLM-judged) eval suite — power-platform-developer-suite#... / ppds-skills#4.
+# Behavioral (LLM-judged) eval suite — ppds-skills#4 (follow-up to
+# power-platform-developer-suite#1011).
 #
 # OPT-IN and COST-AWARE: this job drives `claude` headless for both the agent
 # under test and the semantic judge, so it runs ONLY on manual dispatch, never

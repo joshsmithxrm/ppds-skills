@@ -1,6 +1,6 @@
 # PPDS error interpretation — exit codes and error codes
 
-Source of truth: PPDS CLI 1.2.0-rc.4 (`ExitCodes.cs`, `ErrorCodes.cs` in the
+Source of truth: PPDS CLI 1.2.0-rc.6 (`ExitCodes.cs`, `ErrorCodes.cs` in the
 public repository). Errors are emitted to **stderr** as a structured JSON
 envelope; **stdout carries only data**:
 

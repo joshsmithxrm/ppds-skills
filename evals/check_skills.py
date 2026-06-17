@@ -25,6 +25,9 @@ Zero-dependency checks, run locally and in CI:
      installed). Skipped (not failed) when `ppds` is absent, preserving the
      zero-dependency contract for minimal CI; set PPDS_SKIP_FRESHNESS=1 to
      force-skip even when the CLI is present.
+  9. Prose version drift — any release-candidate CLI version written in skill
+     markdown prose must equal the captured version, so a hand-written line
+     can't ship a stale `1.2.0-rc.N` that the GENERATED-header check misses.
 
 Exit code 0 = all checks pass; 1 = findings (printed to stderr).
 
@@ -51,6 +54,7 @@ MAX_DESCRIPTION = 1024
 MAX_NAME = 64
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 MCP_TOOL_RE = re.compile(r"\bppds_[a-z0-9_]+\b")
+SEMVER_RC_RE = re.compile(r"\d+\.\d+\.\d+-rc\.\d+")
 SHELL_OPERATORS = {"|", "||", "&&", ";", ">", ">>", "<", "2>&1", "&"}
 MCP_SERVER_FLAGS = {
     "--read-only",
@@ -388,6 +392,27 @@ def check_generated_refs(cli_version: str, mcp_version: str) -> None:
             )
 
 
+def check_prose_version_drift(cli_version: str) -> None:
+    """Flag any release-candidate CLI version written in skill markdown prose
+    that drifts from the captured version. The freshness gate covers
+    frontmatter and GENERATED reference headers; hand-written prose (e.g. a
+    "flag tables were generated from CLI <old-rc>" or "Source of truth: PPDS
+    CLI <old-rc>" line) would otherwise ship stale — the exact version drift
+    this package exists to prevent."""
+    if "-rc." not in cli_version:
+        return  # nothing to drift against on a stable pin
+    for md in sorted(SKILLS_DIR.rglob("*.md")):
+        for i, line in enumerate(md.read_text(encoding="utf-8").splitlines(), start=1):
+            for m in SEMVER_RC_RE.finditer(line):
+                if m.group(0) != cli_version:
+                    err(
+                        md,
+                        i,
+                        f"stale CLI version {m.group(0)!r} in prose"
+                        f" (captured/pinned is {cli_version!r})",
+                    )
+
+
 def check_plugin_versions() -> None:
     plugin_file = ROOT / ".claude-plugin" / "plugin.json"
     marketplace_file = ROOT / ".claude-plugin" / "marketplace.json"
@@ -494,6 +519,7 @@ def main() -> int:
         check_links(ref, text)
 
     check_generated_refs(cli_version, mcp_version)
+    check_prose_version_drift(cli_version)
     check_plugin_versions()
     check_capture_freshness(cli_version)
 

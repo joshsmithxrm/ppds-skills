@@ -30,8 +30,10 @@ equivalent package.
 | `ppds-webresources` | Pull/edit/push/publish loop with conflict detection |
 
 Versions these skills were generated against: **PPDS CLI 1.2.0-rc.6**,
-**PPDS.Mcp server 1.0.0** (recorded per-skill in frontmatter
-`metadata.ppds_cli_version_tested`).
+**PPDS.Mcp server 1.0.0** (the NuGet package version; the server's
+`serverInfo` reports the 4-part assembly version `1.0.0.0`, which is what the
+captured `mcp-tools.md` shows verbatim). Recorded per-skill in frontmatter
+`metadata.ppds_cli_version_tested` / `ppds_mcp_version_tested`.
 
 ## Prerequisite
 
@@ -120,7 +122,7 @@ capture-freshness gate), so stale tables can't pass CI silently. When
 v1.2.0 **stable** ships, re-capture against it before/at go-public. Do it in
 this order:
 
-1. **Merge** the initial package to `main` (review complete).
+1. ~~**Merge** the initial package to `main`~~ — **done**.
 2. **Re-capture whenever the installed CLI moves** (each new rc, and again at
    v1.2.0 stable) — the tooling is already here:
    ```bash
@@ -132,12 +134,12 @@ this order:
    # skills/*/SKILL.md to the installed versions, then:
    python evals/check_skills.py
    ```
-3. **Re-run CI.** While private, `evals.yml` runs on self-hosted Linux +
-   Windows runners (GitHub-hosted minutes are billing-blocked on the
-   account). On going public, GitHub-hosted runners are free — revert the
-   workflow to `runs-on: ubuntu-latest` and drop the self-hosted matrix.
-   That also removes the fork-PR risk of self-hosted runners on a public
-   repo.
+3. **Revert CI to GitHub-hosted runners.** While private, **both**
+   `evals.yml` and `live-evals.yml` run on self-hosted Linux + Windows runners
+   (GitHub-hosted minutes are billing-blocked on the account). On going public,
+   GitHub-hosted runners are free — switch both workflows back to
+   `runs-on: ubuntu-latest` and drop the self-hosted matrix. That also removes
+   the fork-PR risk of self-hosted runners backing a public repo.
 4. **Flip the repo public.**
 5. **Submit to the registry / awesome-lists** (tracked in
    [power-platform-developer-suite#1211](https://github.com/joshsmithxrm/power-platform-developer-suite/issues/1211)).
