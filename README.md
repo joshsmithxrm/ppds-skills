@@ -1,5 +1,10 @@
 # PPDS Skills
 
+[![skill-evals](https://github.com/joshsmithxrm/ppds-skills/actions/workflows/evals.yml/badge.svg)](https://github.com/joshsmithxrm/ppds-skills/actions/workflows/evals.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Claude%20Code%20%7C%20Copilot%20CLI-8A2BE2)](https://agentskills.io)
+[![Docs](https://img.shields.io/badge/docs-ppds--docs-blue)](https://joshsmithxrm.github.io/ppds-docs/)
+
 A knowledge-layer skills package that teaches AI coding agents (Claude Code,
 GitHub Copilot CLI, and any [Agent Skills](https://agentskills.io)-compatible
 host) to drive the [Power Platform Developer
@@ -13,9 +18,11 @@ Skills are Markdown documentation, not code: each `skills/<name>/SKILL.md`
 carries frontmatter the agent uses for discovery, a lean body with workflows
 and hard safety rules, and a `references/` directory whose CLI flag tables
 are **generated verbatim from real `ppds <command> --help` output** — never
-hand-written. That last part is the point: exact-flag reference tables are
-what cut agent flag hallucination from ~58% to ~2.5% in Microsoft's
-equivalent package.
+hand-written. That last part is the point: exact-flag reference tables are the
+technique Microsoft's Dataverse skills package credits for sharply reducing
+agent flag hallucination, and the same discipline — an eval that rejects any
+command or flag absent from the captured surface — caught 9 real flag/command
+errors while these skills were being authored.
 
 ## The skills
 
@@ -29,18 +36,23 @@ equivalent package.
 | `ppds-data` | Schema-driven bulk export/import/copy, CSV load, bulk update/delete/truncate, user mapping |
 | `ppds-webresources` | Pull/edit/push/publish loop with conflict detection |
 
-Versions these skills were generated against: **PPDS CLI 1.2.0-rc.6**,
-**PPDS.Mcp server 1.0.0** (the NuGet package version; the server's
-`serverInfo` reports the 4-part assembly version `1.0.0.0`, which is what the
-captured `mcp-tools.md` shows verbatim). Recorded per-skill in frontmatter
-`metadata.ppds_cli_version_tested` / `ppds_mcp_version_tested`.
+These skills target the **1.2.0** CLI surface (flag tables captured at
+1.2.0-rc.6) and **PPDS.Mcp server 1.0.0**. The exact tested versions live in
+each skill's frontmatter (`metadata.ppds_cli_version_tested` /
+`ppds_mcp_version_tested`) and are enforced by the eval suite; re-capture
+against 1.2.0 stable is tracked in
+[#2](https://github.com/joshsmithxrm/ppds-skills/issues/2).
 
 ## Prerequisite
 
 ```bash
-dotnet tool install -g PPDS.Cli --prerelease   # the `ppds` CLI
-dotnet tool install -g PPDS.Mcp                # optional: `ppds-mcp-server`
+dotnet tool install -g PPDS.Cli    # the `ppds` CLI
+dotnet tool install -g PPDS.Mcp    # optional: `ppds-mcp-server`
 ```
+
+Update later with `dotnet tool update -g PPDS.Cli`. These skills target the
+1.2.0 surface; until PPDS 1.2.0 ships stable, add `--prerelease` to install it
+(`dotnet tool install -g PPDS.Cli --prerelease`).
 
 ## Install — Claude Code
 
@@ -82,67 +94,27 @@ The agent should load `ppds-core` and run `ppds env list` (or the
 Follow up with "How many accounts are in <env>?" and it should route to
 `ppds query sql` with a `COUNT(*)`.
 
-## Regenerating the references (maintainers)
-
-```bash
-python tools/capture_cli_help.py       # walks `ppds ... --help` into captured-help/
-python tools/capture_mcp_tools.py      # captures MCP tools/list into captured-help/
-python tools/generate_flag_tables.py   # rewrites skills/*/references/cli-*.md
-python evals/check_skills.py           # static eval suite (also runs in CI)
-```
-
-The eval suite fails if a skill cites a command or flag that does not exist
-in the captured surface, if frontmatter drifts from the captured versions, if
-the captured surface lags the installed CLI (the capture-freshness gate), or
-if generated references go stale. CI: `.github/workflows/evals.yml`.
-
 ## Evals — static and behavioral
 
 Two layers:
 
 - **Static** (`evals/check_skills.py`, zero-dependency, every PR) — proves the
   skills only *cite* real commands/flags, frontmatter matches the captured
-  versions, and captures don't lag the installed CLI.
+  versions, generated references are fresh, and the plugin manifests agree.
+  A capture-freshness check additionally fails **locally** when an installed
+  `ppds` differs from the captures — a pre-publish nudge to re-capture (or to
+  upgrade your CLI to the targeted surface); it self-skips in CI, which
+  installs no CLI to keep the suite zero-dependency.
 - **Behavioral** (`evals/live/`) — proves an agent given a real task actually
   loads the right skill and routes PPDS correctly (`SKILL_LOADED` /
   `CONTAINS` / `NOT_CONTAINS` / LLM-judged `semantic`, at P1–P3). The
   mechanical half (harness self-test + scenario validation against the captured
   surface) runs free on every PR; the billed, LLM-judged run is opt-in
-  (`.github/workflows/live-evals.yml`, or `python evals/live/run_live_evals.py`
+  (`.github/workflows/live-evals.yml`, or `python3 evals/live/run_live_evals.py`
   locally). See [evals/live/README.md](evals/live/README.md).
 
-## Before going public (maintainers)
-
-The captures track the latest published **prerelease** CLI (currently
-**1.2.0-rc.6**), because the README prerequisite installs PPDS with
-`--prerelease` — so that is the surface users actually get. The capture
-tooling re-runs against whatever `ppds` is installed, and the eval suite
-now fails if the captured version lags the installed CLI (the
-capture-freshness gate), so stale tables can't pass CI silently. When
-v1.2.0 **stable** ships, re-capture against it before/at go-public. Do it in
-this order:
-
-1. ~~**Merge** the initial package to `main`~~ — **done**.
-2. **Re-capture whenever the installed CLI moves** (each new rc, and again at
-   v1.2.0 stable) — the tooling is already here:
-   ```bash
-   dotnet tool update -g PPDS.Cli --prerelease   # or drop --prerelease at stable
-   python tools/capture_cli_help.py
-   python tools/capture_mcp_tools.py
-   python tools/generate_flag_tables.py
-   # bump metadata.ppds_cli_version_tested / ppds_mcp_version_tested in each
-   # skills/*/SKILL.md to the installed versions, then:
-   python evals/check_skills.py
-   ```
-3. **Revert CI to GitHub-hosted runners.** While private, **both**
-   `evals.yml` and `live-evals.yml` run on self-hosted Linux + Windows runners
-   (GitHub-hosted minutes are billing-blocked on the account). On going public,
-   GitHub-hosted runners are free — switch both workflows back to
-   `runs-on: ubuntu-latest` and drop the self-hosted matrix. That also removes
-   the fork-PR risk of self-hosted runners backing a public repo.
-4. **Flip the repo public.**
-5. **Submit to the registry / awesome-lists** (tracked in
-   [power-platform-developer-suite#1211](https://github.com/joshsmithxrm/power-platform-developer-suite/issues/1211)).
+Maintainers: the reference-regeneration and release process (re-capture,
+version bump, publish) lives in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Conventions
 
@@ -156,6 +128,32 @@ this order:
   `.claude-plugin/marketplace.json` (kept equal by the eval suite). MAJOR =
   skill renames/removals; MINOR = new skills or capabilities; PATCH = fixes.
 
+## Related projects
+
+| Project | Description |
+|---------|-------------|
+| [power-platform-developer-suite](https://github.com/joshsmithxrm/power-platform-developer-suite) | The PPDS CLI, MCP server, TUI, VS Code extension, and NuGet libraries these skills drive |
+| [ppds-docs](https://joshsmithxrm.github.io/ppds-docs/) | PPDS documentation site |
+| [VS Code extension](https://marketplace.visualstudio.com/items?itemName=JoshSmithXRM.power-platform-developer-suite) | PPDS in the editor — profiles, solutions browser, `.ppdsnb` notebooks |
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how the captured-help layer and
+reference tables are regenerated, how to run the evals, and the release
+process. By participating you agree to the
+[Code of Conduct](CODE_OF_CONDUCT.md). Security reports: see
+[SECURITY.md](SECURITY.md).
+
+## Trademarks
+
+This is an independent, community project and is not affiliated with, endorsed
+by, or sponsored by Microsoft, Anthropic, or GitHub. Microsoft, Dataverse,
+Power Platform, Power Apps, Power Automate, and Dynamics 365 are trademarks of
+Microsoft Corporation. Claude and Anthropic are trademarks of Anthropic, PBC.
+GitHub and GitHub Copilot are trademarks of GitHub, Inc. All third-party marks
+are used nominatively to identify the products this package interoperates with;
+their use does not imply endorsement.
+
 ## License
 
-MIT — matching PPDS itself.
+MIT — matching PPDS itself. See [LICENSE](LICENSE).

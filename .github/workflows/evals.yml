@@ -1,65 +1,41 @@
 name: skill-evals
 
-# Runs on self-hosted runners (Linux + Windows) because GitHub-hosted minutes
-# are billing-blocked on this account while the repo is PRIVATE.
-#
-# When the repo goes PUBLIC, GitHub-hosted runners are free — revert to
-# `runs-on: ubuntu-latest` (single job). That is also the safer choice:
-# self-hosted runners on a public repo can execute untrusted code from fork
-# PRs. See the "Before going public" checklist in the README.
-#
-# Runner assumptions (adjust the matrix labels to match `gh api
-# repos/joshsmithxrm/ppds-skills/actions/runners`):
-#   - each runner advertises `self-hosted` plus its OS label (`Linux` /
-#     `Windows`)
-#   - bash is on PATH (Git for Windows provides it on Windows runners)
-#   - Python 3.8+ is installed (the suite has no third-party dependencies)
+# Zero-dependency static eval suite: frontmatter shape, code-block correctness,
+# command/flag existence against the captured --help surface, MCP tool-name
+# existence, link integrity, and version consistency between skills,
+# captured-help, and the plugin manifests. The matrix runs the pure-Python
+# suite on both Linux and Windows, matching the Windows/Linux agent audience.
 
 on:
   push:
     branches: [main]
   pull_request:
 
+# Least privilege: the suite only reads the checkout; it never writes to the
+# repo, comments on PRs, or publishes. Pinning this here makes the token scope
+# independent of the org/repo default-permissions setting.
+permissions:
+  contents: read
+
 jobs:
   static-checks:
     strategy:
       fail-fast: false
       matrix:
-        runner:
-          - [self-hosted, Linux]
-          - [self-hosted, Windows]
-    runs-on: ${{ matrix.runner }}
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.2.2
 
-      # Zero-dependency static eval suite: frontmatter shape, code-block
-      # correctness, command/flag existence against the captured --help
-      # surface, MCP tool-name existence, link integrity, version
-      # consistency between skills, captured-help, and plugin manifests.
-      # Running on both OSes also validates the pure-Python suite
-      # cross-platform — matching the Windows/Linux agent audience.
-      #
-      # Per-OS shells on purpose: a self-hosted Windows runner's `shell: bash`
-      # can resolve to the System32 WSL stub (no distro => exit 1), so Windows
-      # uses PowerShell and Linux uses bash, each picking its own interpreter.
-      - name: Run skill evals (Linux)
-        if: runner.os == 'Linux'
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.3.0
+        with:
+          python-version: '3.8'  # the documented floor; setup-python puts `python` on PATH on all OSes
+
+      # `ppds` is intentionally NOT installed here: check_skills.py validates the
+      # skills against the committed captured-help/ surface, so the suite stays
+      # zero-dependency and the capture-freshness gate self-skips (no CLI on PATH).
+      - name: Run skill evals
         shell: bash
         run: |
-          python3 evals/check_skills.py
-          python3 evals/live/_selftest.py
-
-      - name: Run skill evals (Windows)
-        if: runner.os == 'Windows'
-        shell: powershell
-        run: |
-          $py = $null
-          foreach ($name in 'python','py','python3') {
-            $c = Get-Command $name -ErrorAction SilentlyContinue
-            if ($c) { $py = $c.Source; break }
-          }
-          if (-not $py) { Write-Error 'No Python interpreter found on PATH'; exit 1 }
-          & $py evals/check_skills.py
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          & $py evals/live/_selftest.py
-          exit $LASTEXITCODE
+          python evals/check_skills.py
+          python evals/live/_selftest.py

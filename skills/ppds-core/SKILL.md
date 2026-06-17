@@ -15,12 +15,13 @@ Dataverse. One install, no Python, no PAC CLI dependency. Docs:
 https://joshsmithxrm.github.io/ppds-docs/
 
 ```bash
-dotnet tool install -g PPDS.Cli --prerelease   # CLI: `ppds`
-dotnet tool install -g PPDS.Mcp                # MCP server: `ppds-mcp-server`
+dotnet tool install -g PPDS.Cli   # CLI: `ppds`   (update: dotnet tool update -g PPDS.Cli)
+dotnet tool install -g PPDS.Mcp   # MCP server: `ppds-mcp-server`
 ```
 
-Verify: `ppds --version`. Flag tables in references/ were generated from CLI
-**1.2.0-rc.6**; if the installed major/minor differs, prefer live `--help`.
+Verify: `ppds --version`. These skills target the **1.2.0** surface (flag
+tables generated from 1.2.0-rc.6); until 1.2.0 ships stable, add `--prerelease`
+to install it. If the installed major/minor differs, prefer live `--help`.
 
 ## Surface routing (applies to every ppds-* skill)
 
@@ -90,11 +91,14 @@ These rules are not style; agents must follow them.
    to read-only (`cross_env_dml_policy: ReadOnly`); a Production target
    always prompts even when the policy is `Allow`.
 
-3. **Dry-run first.** Every PPDS mutation surface has a preview: use it,
-   show the user the result, then execute. `ppds query sql --dry-run` (DML
-   plan), `ppds plugins deploy --dry-run`, `ppds plugintraces delete
-   --dry-run`, and friends. Only add `--confirm` / `--force` after a human
-   has seen the preview.
+3. **Preview before you execute.** Most PPDS mutation surfaces have a
+   `--dry-run` preview: use it, show the user the result, then execute.
+   `ppds query sql --dry-run` (DML plan), `ppds plugins deploy --dry-run`,
+   `ppds plugintraces delete --dry-run`, and friends. Only add `--confirm` /
+   `--force` after a human has seen the preview. Where no `--dry-run` exists —
+   notably `ppds data import`, `ppds data copy`, `ppds solutions import` —
+   import into a sandbox first and lean on the rule 1–2 confirmation gates; for
+   data moves, `ppds data analyze --schema <schema.xml>` previews dependencies.
 
 4. **MCP sessions get pinned.** Launch `ppds-mcp-server` with `--read-only`
    for analysis sessions, and `--allowed-env <url>` (repeatable) when
@@ -137,4 +141,5 @@ These rules are not style; agents must follow them.
 | Bulk data export/import/copy/load/delete | ppds-data |
 | Web resources pull/push/publish | ppds-webresources |
 | Users, roles, diagnostics | [references/cli-users.md](references/cli-users.md), [references/cli-roles.md](references/cli-roles.md), [references/cli-logs.md](references/cli-logs.md) |
+| Model-driven apps, data sources/providers, flows | no dedicated skill yet — `ppds model-driven-app`, `ppds data-sources`, `ppds data-providers`, `ppds flows`, or `ppds api request` |
 | Anything else (raw Web API escape hatch) | `ppds api request` — prefer a typed command when one exists |

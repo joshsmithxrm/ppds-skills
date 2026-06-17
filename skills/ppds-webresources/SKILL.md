@@ -44,6 +44,11 @@ Key behaviors (verified against the released CLI):
   clobbering (`WebResource.Conflict` is the error code you'll see).
 - `push --dry-run` is the preview step the safety model requires.
 - Publishing alone (no content change): `ppds webresources publish <names>`.
+- Single-file writes without the tracked folder: `ppds webresources create
+  <file> --name <logical-name>` (new — `--name` is required, e.g.
+  `--name new_/scripts/app.js`) and `ppds webresources update <name> <file>`
+  (existing). The pull/push loop is still preferred for ongoing edits — it adds
+  conflict detection — but these are the right tool for a one-off create/update.
 - Browse/read: `ppds webresources list "<name-pattern>"`,
   `ppds webresources get <name>`, `ppds webresources url <name>`.
 
@@ -51,7 +56,7 @@ Key behaviors (verified against the released CLI):
 
 | Wrong | Correct |
 |-------|---------|
-| `ppds webresources upload <file>` | `pull` a folder, edit, `push` the folder |
+| `ppds webresources upload <file>` | single file: `ppds webresources create <file> --name <logical-name>` (new) or `update <name> <file>` (existing); for ongoing edits, `pull`/edit/`push` the folder |
 | `ppds webresources push --file app.js` | push takes the tracked **folder**: `ppds webresources push ./webres` |
 | Forgetting publish | `push --publish`, or `ppds webresources publish <names>` afterward |
 | `--web-resource-type 3` (numeric API codes) | human types: `--type js`, `--type css`, ... |

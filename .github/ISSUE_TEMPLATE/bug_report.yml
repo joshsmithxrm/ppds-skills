@@ -1,0 +1,48 @@
+name: Bug report
+description: A skill routed wrong, cited a bad flag, or gave unsafe guidance
+labels: ["type:bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bugs in the **`ppds` CLI or MCP server** itself belong in the
+        [engine repo](https://github.com/joshsmithxrm/power-platform-developer-suite/issues).
+        Use this form for problems in the **skills** (wrong routing, a cited
+        flag that doesn't exist, unsafe or misleading guidance).
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill?
+      options:
+        - ppds-core
+        - ppds-query
+        - ppds-plugins
+        - ppds-solutions-alm
+        - ppds-metadata
+        - ppds-data
+        - ppds-webresources
+        - "Not sure / discovery (the agent loaded the wrong one)"
+    validations:
+      required: true
+  - type: dropdown
+    id: host
+    attributes:
+      label: Agent host
+      options:
+        - Claude Code
+        - GitHub Copilot CLI
+        - Other Agent Skills host
+    validations:
+      required: true
+  - type: input
+    id: cli-version
+    attributes:
+      label: "`ppds --version`"
+      placeholder: e.g. 1.2.0-rc.6
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did the agent do, and what should it have done? Include the prompt and the command/flag it produced.
+    validations:
+      required: true

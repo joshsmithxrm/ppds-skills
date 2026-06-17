@@ -1,2 +1,11 @@
 __pycache__/
 *.pyc
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/

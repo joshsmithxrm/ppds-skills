@@ -401,7 +401,10 @@ def check_prose_version_drift(cli_version: str) -> None:
     this package exists to prevent."""
     if "-rc." not in cli_version:
         return  # nothing to drift against on a stable pin
-    for md in sorted(SKILLS_DIR.rglob("*.md")):
+    # Skill prose plus the top-level docs that hand-cite the rc (README/DESIGN).
+    # CHANGELOG is excluded on purpose: its entries are immutable history.
+    root_docs = [ROOT / "README.md", ROOT / "DESIGN.md"]
+    for md in sorted(SKILLS_DIR.rglob("*.md")) + [d for d in root_docs if d.exists()]:
         for i, line in enumerate(md.read_text(encoding="utf-8").splitlines(), start=1):
             for m in SEMVER_RC_RE.finditer(line):
                 if m.group(0) != cli_version:
@@ -478,7 +481,9 @@ def check_capture_freshness(cli_version: str) -> None:
             f"captured CLI version {cli_version!r} != installed `ppds --version`"
             f" {installed!r} — re-run tools/capture_cli_help.py +"
             " tools/capture_mcp_tools.py + tools/generate_flag_tables.py and bump"
-            " metadata.ppds_cli_version_tested in skills/*/SKILL.md",
+            " metadata.ppds_cli_version_tested in skills/*/SKILL.md"
+            " (or set PPDS_SKIP_FRESHNESS=1 to skip this check for an"
+            " unrelated change)",
         )
 
 

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: PPDS CLI / MCP server bug
+    url: https://github.com/joshsmithxrm/power-platform-developer-suite/issues
+    about: >-
+      Bugs in the `ppds` CLI or MCP server itself (auth, query, deploy,
+      destructive operations) belong in the engine repository, not here. This
+      repo only contains the documentation skills.
+  - name: PPDS documentation
+    url: https://joshsmithxrm.github.io/ppds-docs/
+    about: How the underlying CLI and MCP server work.
