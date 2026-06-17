@@ -31,7 +31,7 @@ GitHub Actions to create and approve PRs* repo setting must be on, and a
 bot-opened PR shows no CI — **close/reopen it** to fire `skill-evals`.
 
 Offline alternative: `dotnet tool update -g PPDS.Cli && dotnet tool update -g PPDS.Mcp`
-then `python tools/recapture.py`. See CONTRIBUTING "Regenerating the references".
+then `python3 tools/recapture.py`. See CONTRIBUTING "Regenerating the references".
 
 ## 2. Read the capture diff → decide the version bump
 
@@ -67,7 +67,7 @@ hand-check these when moving rc → stable:
 ## 5. Gate + merge
 
 ```bash
-python evals/check_skills.py    # must pass: validates against the new capture
+python3 evals/check_skills.py    # must pass: validates against the new capture
 ```
 
 Open the PR, link/close the tracking issue (e.g. `Closes #N`), resolve any review
@@ -76,7 +76,8 @@ threads (conversation resolution is required to merge). Squash-merge.
 ## 6. Tag + GitHub Release
 
 ```bash
-git tag -a vX.Y.Z <merge-commit> -m "release: X.Y.Z"
+git checkout main && git pull          # main now at the squash-merged release
+git tag -a vX.Y.Z -m "release: X.Y.Z"
 git push origin vX.Y.Z
 gh release create vX.Y.Z --title "vX.Y.Z" --notes "<the CHANGELOG X.Y.Z section>"
 ```
