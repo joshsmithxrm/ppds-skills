@@ -1,6 +1,6 @@
 {
   "skill": "ppds-webresources",
-  "description": "Behavioral routing evals for the ppds-webresources skill: the pull/edit/push/publish loop, dry-run conflict preview, the rc.6 create/update positional commands, and the MCP read/publish surface for shell-less hosts. Asserts the agent never routes to `pac webresource` and never reaches for `--force` to bypass conflict detection unless the user accepts clobbering.",
+  "description": "Behavioral routing evals for the ppds-webresources skill: the pull/edit/push/publish loop, dry-run conflict preview, the rc.6 create/update positional commands, and the MCP read/publish surface for shell-less hosts. Asserts the agent never routes to `pac webresource` and never reaches for `--force` to bypass conflict detection unless the user accepts clobbering. NOTE: mcp-list-and-publish-shellless exercises MCP-tool routing for shell-less hosts, which the default ClaudeCodeDriver (a CLI shell host) cannot drive — its routing assertions are P2 until an MCP-capable driver exists; the ppds-core skill documents the shell-less->MCP rule.",
   "scenarios": [
     {
       "id": "pull-edit-push-publish-loop",
@@ -237,7 +237,7 @@
             "ppds_web_resources_list",
             "ppds webresources list"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
