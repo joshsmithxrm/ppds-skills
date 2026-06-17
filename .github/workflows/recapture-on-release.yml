@@ -1,0 +1,136 @@
+name: recapture-on-release
+
+# Opens a ready-to-review PR when a newer STABLE PPDS.Cli ships on NuGet:
+# installs the released CLI + MCP server, regenerates captured-help/ and the
+# skill reference tables, bumps the frontmatter version pins, and runs the
+# static gate. It NEVER auto-merges — a human reviews the capture diff and the
+# manual-prose checklist in the PR body (issue #8).
+#
+# This job installs the CLI, so it is deliberately SEPARATE from evals.yml,
+# which is intentionally zero-dependency (installs no CLI). Runs on Linux so
+# Python writes LF and the captures match the committed eol=lf blobs with no
+# CRLF churn.
+
+on:
+  schedule:
+    - cron: '17 8 * * 1'   # Mondays 08:17 UTC — cheap poll for a new stable
+  workflow_dispatch:
+    inputs:
+      cli_version:
+        description: 'Force a specific PPDS.Cli version (else: latest stable on NuGet)'
+        required: false
+        type: string
+
+# Least privilege: needs to push the branch and open the PR, nothing else.
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: recapture-on-release
+  cancel-in-progress: false
+
+jobs:
+  recapture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.2.2
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.3.0
+        with:
+          python-version: '3.8'
+
+      # TODO(pre-merge): pin to a commit SHA to match the repo's action-pinning
+      # convention (see actions pinned by SHA in evals.yml).
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Resolve current vs target CLI version
+        id: ver
+        shell: bash
+        run: |
+          set -euo pipefail
+          current="$(python -c "import json;print(json.load(open('captured-help/manifest.json'))['cli_version'])")"
+          forced="${{ inputs.cli_version }}"
+          if [ -n "$forced" ]; then
+            target="$forced"
+          else
+            target="$(python tools/latest_stable_cli.py)"
+          fi
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "target=$target"   >> "$GITHUB_OUTPUT"
+          echo "Current captured: '$current' | target stable: '$target'"
+          if [ -z "$target" ]; then
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "No stable version resolved from NuGet — no-op."
+          elif [ "$(python tools/cli_newer_than.py "$target" "$current")" = "yes" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "Target '$target' is newer than captured '$current' — will re-capture."
+          else
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "Target '$target' is not newer than captured '$current' — no-op."
+          fi
+
+      - name: Install released PPDS tools
+        if: steps.ver.outputs.proceed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          dotnet tool install -g PPDS.Cli --version "${{ steps.ver.outputs.target }}"
+          # MCP server tracks its own version; take whatever stable is current.
+          dotnet tool install -g PPDS.Mcp || dotnet tool update -g PPDS.Mcp
+          echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
+
+      - name: Re-capture + bump frontmatter
+        if: steps.ver.outputs.proceed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          ppds --version
+          python tools/recapture.py
+
+      - name: Static gate
+        if: steps.ver.outputs.proceed == 'true'
+        shell: bash
+        run: python evals/check_skills.py
+
+      - name: Open PR if the captured surface changed
+        if: steps.ver.outputs.proceed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET: ${{ steps.ver.outputs.target }}
+          CURRENT: ${{ steps.ver.outputs.current }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -A
+          # Post-normalization diff (eol=lf already applied on add): empty means
+          # the new release left the captured surface byte-identical.
+          if git diff --cached --quiet; then
+            echo "No surface change between $CURRENT and $TARGET — no PR needed."
+            exit 0
+          fi
+
+          branch="recapture/ppds-$TARGET"
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git commit -m "chore(captures): re-capture CLI/MCP surface against PPDS $TARGET"
+          git push -u origin "$branch" --force-with-lease
+
+          body="$(cat <<EOF
+          Automated re-capture against **PPDS CLI \`$TARGET\`** (was \`$CURRENT\`), per #8.
+
+          The capture scripts + frontmatter bump + \`check_skills.py\` ran green. **Do not merge without the manual review below** — the static gate verifies that cited commands/flags *exist*, not that the skill prose is still accurate or complete.
+
+          ## Manual review checklist
+          - [ ] Read the \`captured-help/\` diff: any **new / renamed / removed** command or flag that needs new *prose* in a skill (the gate won't tell you).
+          - [ ] If the pin is now **stable**, drop \`--prerelease\` install guidance (\`README.md\`, \`skills/ppds-core/SKILL.md\`) and remove stale \`rc\` mentions (\`README.md\`, \`DESIGN.md\`, \`skills/*\`) — \`check_skills.py::check_prose_version_drift\` does NOT catch these on a stable pin.
+          - [ ] Update \`CHANGELOG.md\`.
+          - [ ] Bump \`.claude-plugin/plugin.json\` + \`marketplace.json\` if cutting a package release.
+          - [ ] Close #8's first real run / link this PR to #2 if this is the v1.2 recapture.
+          EOF
+          )"
+          gh pr create --title "chore(captures): re-capture against PPDS $TARGET" \
+            --body "$body" --label "type:docs,epic:agent-tooling" --base main --head "$branch"
