@@ -44,7 +44,7 @@ skill's in-context *description* without opening the full file), exact-flag
 MCP-tool-name `contains` (the CLI driver can't emit MCP calls). The
 LLM-judged `semantic` assertion is where flag- and intent-level correctness is
 checked rigorously — make it `P1` when that nuance is the whole point (it is
-*skipped*, never failed, when no `ANTHROPIC_API_KEY` is set).
+*skipped*, never failed, when no `claude` CLI is available).
 
 `scope` selects what text the assertion looks at (default `all`):
 
@@ -77,11 +77,12 @@ anti-patterns (routing to `pac`, MS skills, or a hallucinated flag).
 ```
 
 ### `semantic`
-LLM-judged via `judge.py`. `rubric` states, in one sentence, what a correct
-response must do. The judge sees the prompt, the proposed commands, and the
-final answer, and returns pass/fail + confidence + reason. **Skipped (not
-failed)** when no `ANTHROPIC_API_KEY` is set, so the deterministic layer still
-runs everywhere.
+LLM-judged via `judge.py`, which drives the **same `claude` CLI** the agent
+runs on — so it works on a Claude Code subscription, no API key. `rubric`
+states, in one sentence, what a correct response must do. The judge sees the
+prompt, the proposed commands, and the final answer, and returns pass/fail +
+confidence + reason. **Skipped (not failed)** when no `claude` CLI is
+available, so the deterministic layer still runs everywhere.
 ```jsonc
 { "type": "semantic",
   "rubric": "Routes to the SQL->FetchXML engine with a COUNT aggregate and does not invent a --limit flag (the engine paginates, there is no --limit on `ppds query sql`).",

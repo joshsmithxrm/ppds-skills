@@ -2,14 +2,19 @@ name: live-evals
 
 # Behavioral (LLM-judged) eval suite — power-platform-developer-suite#... / ppds-skills#4.
 #
-# OPT-IN and COST-AWARE: this job drives `claude` headless (billed) and calls
-# the Anthropic API for the semantic judge, so it runs ONLY on manual dispatch,
-# never on push or pull_request. The mechanical half — harness self-test +
-# scenario validation against the captured surface — runs for free on every PR
-# inside the `skill-evals` workflow (evals/live/_selftest.py).
+# OPT-IN and COST-AWARE: this job drives `claude` headless for both the agent
+# under test and the semantic judge, so it runs ONLY on manual dispatch, never
+# on push or pull_request. The mechanical half — harness self-test + scenario
+# validation against the captured surface — runs for free on every PR inside
+# the `skill-evals` workflow (evals/live/_selftest.py).
 #
-# Required secret: ANTHROPIC_API_KEY (used both to authenticate Claude Code
-# headless and to call the semantic judge).
+# Auth: this is primarily a LOCAL tool — run it where `claude` is logged into
+# your Claude Code subscription. For CI, provide ONE of:
+#   - CLAUDE_CODE_OAUTH_TOKEN secret (subscription; generate with `claude
+#     setup-token`), or
+#   - ANTHROPIC_API_KEY secret (API billing).
+# Whichever is set authenticates both the agent and the judge — no separate
+# judge key.
 
 on:
   workflow_dispatch:
@@ -34,6 +39,8 @@ jobs:
       - name: Run live evals
         shell: bash
         env:
+          # Subscription token preferred; API key works too. Set whichever you have.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PPDS_LIVE_MODEL: opus
           # plan mode = read-only: skills load and commands are proposed, but

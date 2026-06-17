@@ -14,8 +14,8 @@ evals/live/
   scenarios/<skill>.json   one scenario file per skill (the test cases)
   run_live_evals.py        runner: drive agent -> assert -> aggregate by priority
   drivers.py               AgentRun + ClaudeCodeDriver (headless `claude -p`)
-  judge.py                 zero-dep Anthropic-API judge for `semantic` assertions
-  _selftest.py             offline harness test + scenario validation (no key/CLI)
+  judge.py                 `semantic` judge — drives the same `claude` CLI (no API key)
+  _selftest.py             offline harness test + scenario validation (no CLI)
   schema.md                the scenario-file schema
 ```
 
@@ -24,7 +24,7 @@ evals/live/
 | | When | Needs | Cost |
 |--|------|-------|------|
 | `_selftest.py` | **every PR** (inside `skill-evals`) | nothing | free |
-| `run_live_evals.py` | **manual only** (`live-evals` workflow, or locally) | `claude` CLI + `ANTHROPIC_API_KEY` | billed |
+| `run_live_evals.py` | **manual only** (`live-evals` workflow, or locally) | `claude` CLI (a Claude Code subscription is enough — agent **and** judge use it; no API key) | billed |
 
 `_selftest.py` unit-tests the parser and assertion engine **and** validates that
 every `ppds ...` / `ppds_*` fragment any scenario asserts actually exists in
@@ -35,16 +35,16 @@ quality-deepening layer.
 ## Running the billed suite locally
 
 ```bash
-dotnet tool install -g @anthropic-ai/claude-code   # or: npm i -g @anthropic-ai/claude-code
-export ANTHROPIC_API_KEY=sk-ant-...                # judge + Claude Code auth
+npm install -g @anthropic-ai/claude-code   # then `claude` once, logged into your subscription
 python evals/live/run_live_evals.py                # all skills
 python evals/live/run_live_evals.py --filter ppds-query
 python evals/live/run_live_evals.py --list         # list scenarios, run nothing
 ```
 
-Degrades gracefully: no `claude` on PATH → the whole suite is **skipped**
-(exit 0); `ANTHROPIC_API_KEY` unset → `semantic` assertions are **skipped**
-while the deterministic ones still run.
+Both the agent under test and the semantic judge run on your authenticated
+`claude` CLI — **no Anthropic API key**. Degrades gracefully: no `claude` on
+PATH → the whole suite is **skipped** (exit 0), and the `semantic` judge skips
+the same way while the deterministic assertions still run.
 
 ### How it stays safe
 
@@ -61,7 +61,7 @@ commands the agent **constructs**, never their results.
 | `PPDS_LIVE_PERMISSION_MODE` | `plan` | `claude --permission-mode` |
 | `PPDS_LIVE_MAX_TURNS` | `12` | `claude --max-turns` |
 | `PPDS_LIVE_TIMEOUT` | `240` | per-scenario wall-clock seconds |
-| `PPDS_JUDGE_MODEL` | `claude-opus-4-8` | semantic-judge model |
+| `PPDS_JUDGE_MODEL` | `sonnet` | model the semantic judge passes to `claude --model` |
 
 ## Priority levels
 

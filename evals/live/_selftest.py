@@ -121,9 +121,16 @@ def test_assertions() -> None:
     r = evaluate({"type": "contains", "scope": "all", "value": "pac env list"}, polluted, "P1")
     check(not r.passed, "contains must not match raw-only (skill-body) text")
 
-    # semantic without a key must skip, never hard-fail
-    r = evaluate({"type": "semantic", "rubric": "x"}, run, "P2")
-    check(r.skipped, "semantic without API key should skip")
+    # semantic skips (never hard-fails) when the judge is unavailable; force
+    # that path so this self-test stays fully offline (no `claude` invocation).
+    import judge as _judge
+    _orig_avail = _judge.available
+    _judge.available = lambda: False
+    try:
+        r = evaluate({"type": "semantic", "rubric": "x"}, run, "P2")
+        check(r.skipped, "semantic must skip when the judge is unavailable")
+    finally:
+        _judge.available = _orig_avail
 
     # priority inheritance
     r = evaluate({"type": "skill_loaded", "skill": "ppds-query"}, run, "P3")

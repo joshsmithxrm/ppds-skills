@@ -13,10 +13,11 @@ per-scenario assertions:
   - semantic      — LLM-judged: safety model respected, CLI/MCP routing sound
 
 Priority levels: a failing P1 fails the run (exit 1); P2/P3 are informational.
-Cost-aware and opt-in — it shells out to `claude` (you pay) and, for semantic
-assertions, calls the Anthropic API. It degrades gracefully: if `claude` is
-not on PATH the suite is skipped (exit 0); if `ANTHROPIC_API_KEY` is unset,
-semantic assertions are skipped while deterministic ones still run.
+Cost-aware and opt-in — it shells out to `claude` for both the agent under
+test and the semantic judge (so a Claude Code subscription is enough; no
+Anthropic API key). It degrades gracefully: if `claude` is not on PATH the
+suite is skipped (exit 0); the semantic judge skips the same way, while the
+deterministic assertions still run.
 
 Usage:
     python evals/live/run_live_evals.py [--filter ppds-query] [--list]
@@ -102,7 +103,7 @@ def evaluate(a: dict, run: AgentRun, default_priority: str) -> AssertionResult:
 
     if atype == "semantic":
         if not judge.available():
-            return AssertionResult(atype, priority, False, True, "no ANTHROPIC_API_KEY")
+            return AssertionResult(atype, priority, False, True, "no `claude` CLI")
         v = judge.judge(
             a.get("rubric", ""), run.prompt, run.command_strings, run.final_text
         )
@@ -159,7 +160,7 @@ def main() -> int:
 
     if not judge.available():
         sys.stderr.write(
-            "note: ANTHROPIC_API_KEY unset — semantic assertions will be skipped\n"
+            "note: no `claude` CLI — semantic assertions will be skipped\n"
         )
 
     p1_fail = 0
