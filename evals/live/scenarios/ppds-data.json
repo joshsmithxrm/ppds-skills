@@ -10,7 +10,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-data",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -56,7 +56,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-data",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -72,7 +72,7 @@
             "--entity",
             "-e "
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -81,7 +81,7 @@
             "--key",
             "-k "
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -107,7 +107,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-data",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -148,13 +148,16 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-data",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
           "scope": "all",
-          "value": "ppds data update",
-          "priority": "P1"
+          "priority": "P1",
+          "any": [
+            "ppds data update",
+            "ppds query sql"
+          ]
         },
         {
           "type": "contains",
@@ -163,7 +166,7 @@
             "--filter",
             "--set"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -190,7 +193,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-data",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",

@@ -10,7 +10,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-plugins",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -28,7 +28,7 @@
             "--input",
             "-i "
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -37,7 +37,7 @@
             "--config",
             "-c "
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -64,7 +64,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-plugins",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -79,7 +79,7 @@
             "--dry-run",
             "--clean"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -106,7 +106,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-plugins",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -149,7 +149,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-plugins",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -195,7 +195,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-plugins",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -210,7 +210,7 @@
             "--plugin",
             "--assembly"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",

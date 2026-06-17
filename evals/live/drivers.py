@@ -30,6 +30,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 SKILLS_DIR = ROOT / "skills"
 
+# The driver runs in a bare sandbox — no auth profile, no real files, no
+# selected environment. Without framing, the agent correctly stops to ask
+# ("I can't see that CSV", "which environment?") and never emits the routing
+# command, so the eval can't observe what it would actually run. This preamble
+# isolates the signal the suite measures — routing — by asking for the concrete
+# command under the assumption that prerequisites are met. It does NOT tell the
+# agent which command to use.
+# NOTE: this MUST stay a single line (no newlines). On Windows a newline inside
+# an argv string truncates the `claude -p <prompt>` argument, so the task after
+# the newline is dropped and the agent answers "the task is missing".
+PLANNING_PREAMBLE = (
+    "You are advising a developer on exactly how to perform the task below with "
+    "the Power Platform Developer Suite (PPDS). This is a planning exercise: "
+    "assume an auth profile is already created and the correct environment is "
+    "selected, and that any files or paths mentioned already exist. Do NOT stop "
+    "to ask clarifying questions and do NOT run exploratory shell commands to "
+    "discover prerequisites; give the specific `ppds ...` command(s) you would "
+    "run, including the flags, and call out any safety steps (dry-run, "
+    "confirmation) inline. The task: "
+)
+
 
 @dataclass
 class AgentRun:
@@ -220,7 +241,7 @@ class ClaudeCodeDriver:
             argv = [
                 self.exe,
                 "-p",
-                prompt,
+                PLANNING_PREAMBLE + prompt,
                 "--output-format",
                 "stream-json",
                 "--verbose",

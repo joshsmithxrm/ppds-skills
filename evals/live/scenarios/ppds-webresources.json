@@ -10,7 +10,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-webresources",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -63,7 +63,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-webresources",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -75,7 +75,7 @@
           "type": "contains",
           "scope": "all",
           "value": "--dry-run",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -101,7 +101,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-webresources",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -135,7 +135,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-webresources",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -150,7 +150,7 @@
             "--name",
             "--publish"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -177,7 +177,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-webresources",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -189,7 +189,7 @@
           "type": "contains",
           "scope": "all",
           "value": "--publish",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -216,7 +216,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-webresources",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -225,6 +225,17 @@
             "ppds_web_resources_list",
             "ppds_web_resources_get",
             "ppds_web_resources_publish"
+          ],
+          "priority": "P2"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds_web_resources_publish",
+            "ppds webresources publish",
+            "ppds_web_resources_list",
+            "ppds webresources list"
           ],
           "priority": "P1"
         },

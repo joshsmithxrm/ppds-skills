@@ -10,7 +10,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-solutions-alm",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -53,7 +53,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-solutions-alm",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -93,7 +93,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-solutions-alm",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -139,7 +139,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-solutions-alm",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -182,7 +182,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-solutions-alm",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -232,7 +232,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-solutions-alm",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -247,7 +247,7 @@
             "--solution",
             "-s"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",

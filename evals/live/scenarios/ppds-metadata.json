@@ -10,7 +10,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-metadata",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -48,7 +48,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-metadata",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -94,7 +94,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-metadata",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -131,7 +131,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-metadata",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -150,7 +150,7 @@
             "--filter-file",
             "--fetchxml"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -177,7 +177,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-metadata",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -194,7 +194,7 @@
             "--target-env",
             "-te"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -221,7 +221,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-metadata",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -236,7 +236,7 @@
           "type": "contains",
           "scope": "all",
           "value": "--dry-run",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",

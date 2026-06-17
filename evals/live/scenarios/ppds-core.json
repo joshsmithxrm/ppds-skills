@@ -10,7 +10,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-core",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -54,7 +54,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-core",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -71,7 +71,7 @@
             "--clientSecret",
             "--tenant"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -99,7 +99,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-core",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -114,7 +114,7 @@
             "--deviceCode",
             "-dc"
           ],
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",
@@ -141,7 +141,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-core",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -178,7 +178,7 @@
         {
           "type": "skill_loaded",
           "skill": "ppds-core",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "contains",
@@ -194,7 +194,7 @@
           "type": "contains",
           "scope": "all",
           "value": "--dry-run",
-          "priority": "P1"
+          "priority": "P2"
         },
         {
           "type": "not_contains",

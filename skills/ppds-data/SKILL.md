@@ -54,17 +54,32 @@ Import facts worth knowing (all real flags, see reference):
 
 ## Targeted bulk operations
 
+`load` / `update` / `delete` / `truncate` are single-entity and filter- or
+file-driven — distinct from the schema-driven export/import loop above. Each
+previews with `--dry-run`; `update` / `delete` / `truncate` take `--force` to
+run non-interactively, only after the user has seen the preview.
+
 ```bash
-ppds data load --help       # CSV → entity (column mapping, upsert)
-ppds data update --help     # bulk update existing records
-ppds data delete --help     # bulk delete by criteria
-ppds data truncate --help   # delete ALL records from an entity — DANGEROUS
+# CSV → table; upsert on an alternate key so re-runs don't duplicate rows
+ppds data load --file products.csv --entity new_product --key new_productcode --dry-run
+#   --generate-mapping / --mapping for column maps; without --key it creates every row.
+
+# Bulk field change by filter (deactivate = set statecode) — the direct route
+ppds data update --entity account --filter "statecode eq 0" --set "statecode=1" --dry-run
+
+# Bulk delete by filter (preview the matched rows first)
+ppds data delete --entity task --filter "statecode eq 1" --dry-run
+
+# Wipe an ENTIRE table — DANGEROUS, no undo
+ppds data truncate --entity new_stagingrow --dry-run
 ```
 
-`truncate` is the command behind "wipe this table" asks — never run it
-without naming the entity, the record count (`ppds query sql "SELECT
-COUNT(*) FROM <entity>"`), and the environment to the user and getting
-explicit confirmation. There is no undo.
+For a criteria-based bulk field change, `ppds data update --filter --set` is
+the direct route — don't reach for `ppds query sql "UPDATE ..."` unless you
+specifically want the SQL/FetchXML DML path (see ppds-query). `truncate` is
+the command behind "wipe this table" asks — never run it without naming the
+entity, the record count (`ppds query sql "SELECT COUNT(*) FROM <entity>"`),
+and the environment to the user, then getting explicit confirmation.
 
 ## Common mistakes (do not invent these)
 

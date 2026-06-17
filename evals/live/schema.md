@@ -33,6 +33,19 @@ Every assertion has a `type` and an optional `priority` (`P1` | `P2` | `P3`;
 inherits the scenario's `priority` if omitted). **A failing `P1` fails the
 run** (exit 1); `P2`/`P3` are reported but non-fatal.
 
+**Priority convention** (calibrated against real headless runs): `P1` gates
+only the signals that are *reliably observable* when driving `claude -p` in
+plan mode — **command-level routing** (`contains` of a `ppds <command>`) and
+**anti-patterns** (`not_contains` over actual commands). Everything that an
+agent can get right without it showing up deterministically is `P2`
+(informational): `skill_loaded` (the agent often routes correctly from a
+skill's in-context *description* without opening the full file), exact-flag
+`contains` (plan prose names the command but not always every flag), and
+MCP-tool-name `contains` (the CLI driver can't emit MCP calls). The
+LLM-judged `semantic` assertion is where flag- and intent-level correctness is
+checked rigorously — make it `P1` when that nuance is the whole point (it is
+*skipped*, never failed, when no `ANTHROPIC_API_KEY` is set).
+
 `scope` selects what text the assertion looks at (default `all`):
 
 | scope | what it covers |
