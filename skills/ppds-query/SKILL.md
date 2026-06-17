@@ -3,7 +3,7 @@ name: ppds-query
 description: Query and modify Microsoft Dataverse data with PPDS — SQL (transpiled to FetchXML) with joins, CTEs, aggregates and window functions, raw FetchXML, guarded DML, execution plans, TDS endpoint routing, and query history. Use when the user wants to read, filter, join, aggregate, count, or analyze Dataverse records, run INSERT/UPDATE/DELETE statements, inspect a query plan, convert SQL to FetchXML, or recall a previous query. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.2.0-rc.6"
+  ppds_cli_version_tested: "1.2.0"
   ppds_mcp_version_tested: "1.0.0"
 ---
 

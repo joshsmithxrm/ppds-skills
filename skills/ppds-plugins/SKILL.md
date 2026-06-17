@@ -3,7 +3,7 @@ name: ppds-plugins
 description: Register, deploy, and debug Dataverse plugins declaratively with PPDS — attribute-driven registration ([PluginStep]/[PluginImage]/[CustomApi]), the extract → diff → deploy loop, assembly management, Custom APIs, service endpoints, and plugin trace log debugging (list/get/timeline). Use when the user wants to register or deploy a plugin assembly, sync plugin steps from code, diagnose a plugin error or performance problem, read plugin trace logs, or manage Custom APIs. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.2.0-rc.6"
+  ppds_cli_version_tested: "1.2.0"
   ppds_mcp_version_tested: "1.0.0"
 ---
 
