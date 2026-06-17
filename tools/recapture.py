@@ -87,7 +87,9 @@ def bump_frontmatter(cli_version: str, mcp_version: str) -> int:
 
         text, old_cli = bump_line(text, "ppds_cli_version_tested", cli_version)
         if old_cli is None:
-            sys.stderr.write(f"WARNING: no ppds_cli_version_tested in {skill.name}\n")
+            sys.stderr.write(
+                f"WARNING: no ppds_cli_version_tested in {skill.parent.name}/SKILL.md\n"
+            )
 
         # Only rewrite the MCP pin if the current value no longer satisfies the
         # captured server version — preserves the intentional '1.0.0' vs
