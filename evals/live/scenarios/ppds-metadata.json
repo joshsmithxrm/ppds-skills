@@ -7,10 +7,37 @@
       "priority": "P1",
       "prompt": "I'm working in our Dataverse dev environment. What columns does the account table have, and what type is each one?",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-metadata", "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["ppds metadata attributes account", "ppds metadata entity account", "ppds_data_schema", "ppds_metadata_entity"], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["pac ", "ppds metadata list-attributes", "ppds metadata entity account --attributes"], "priority": "P1" },
-        { "type": "semantic", "rubric": "Routes to a metadata read for the account entity's columns (ppds metadata attributes account, or the entity metadata read with attributes included) rather than querying row data, and does not invent a list-columns subcommand.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-metadata",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds metadata attributes account",
+            "ppds metadata entity account",
+            "ppds_data_schema",
+            "ppds_metadata_entity"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "pac ",
+            "ppds metadata list-attributes",
+            "ppds metadata entity account --attributes"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes to a metadata read for the account entity's columns (ppds metadata attributes account, or the entity metadata read with attributes included) rather than querying row data, and does not invent a list-columns subcommand.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -18,11 +45,45 @@
       "priority": "P1",
       "prompt": "Add a new Priority choice column to our custom contoso_project table, with options Low, Medium, and High. It should live in the Contoso solution.",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-metadata", "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["ppds metadata attribute create", "ppds_metadata_add_column"], "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["--type", "--solution"], "priority": "P2" },
-        { "type": "not_contains", "scope": "all", "any": ["pac ", "ppds metadata create-column", "ppds metadata column add", "ppds metadata add-column"], "priority": "P1" },
-        { "type": "semantic", "rubric": "Creates a Choice column via the attribute authoring surface, defines the Low/Medium/High options (e.g. via --option or --options or the MCP tool's options argument) rather than a global --choice reference, and includes the required solution.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-metadata",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds metadata attribute create",
+            "ppds_metadata_add_column"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--type",
+            "--solution"
+          ],
+          "priority": "P2"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "pac ",
+            "ppds metadata create-column",
+            "ppds metadata column add",
+            "ppds metadata add-column"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Creates a Choice column via the attribute authoring surface, defines the Low/Medium/High options (e.g. via --option or --options or the MCP tool's options argument) rather than a global --choice reference, and includes the required solution.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -30,10 +91,36 @@
       "priority": "P1",
       "prompt": "I need a one-to-many relationship from account to my custom contoso_invoice table so each invoice points back to an account, added to the Contoso solution.",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-metadata", "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["ppds metadata relationship create", "ppds_metadata_create_relationship"], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["pac ", "ppds metadata create-relationship", "--child", "--parent"], "priority": "P1" },
-        { "type": "semantic", "rubric": "Routes to the relationship authoring surface for a one-to-many relationship using the real source/target flags (--from / --to with --type one-to-many) or the MCP create-relationship tool, not invented --parent/--child flags.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-metadata",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds metadata relationship create",
+            "ppds_metadata_create_relationship"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "pac ",
+            "ppds metadata create-relationship",
+            "--child",
+            "--parent"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes to the relationship authoring surface for a one-to-many relationship using the real source/target flags (--from / --to with --type one-to-many) or the MCP create-relationship tool, not invented --parent/--child flags.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -41,11 +128,45 @@
       "priority": "P1",
       "prompt": "Our 'Active Accounts' view on the account table is showing inactive rows. Restrict it to only active records (statecode = 0).",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-metadata", "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["ppds views set-filter", "ppds views set-fetchxml"], "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["--condition", "--filter-file", "--fetchxml"], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["pac ", "ppds views update-filter", "ppds views add-filter"], "priority": "P1" },
-        { "type": "semantic", "rubric": "Edits the saved query (view) filter through the views surface, naming the view and entity, to add a statecode=0 condition via --condition or a filter/fetchxml file, rather than editing row data or inventing an update-filter subcommand.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-metadata",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds views set-filter",
+            "ppds views set-fetchxml"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--condition",
+            "--filter-file",
+            "--fetchxml"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "pac ",
+            "ppds views update-filter",
+            "ppds views add-filter"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Edits the saved query (view) filter through the views surface, naming the view and entity, to add a statecode=0 condition via --condition or a filter/fetchxml file, rather than editing row data or inventing an update-filter subcommand.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -53,11 +174,43 @@
       "priority": "P1",
       "prompt": "Before I import our solution into UAT, I want to see how the schema differs between our Dev and UAT environments so I can spot any drift.",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-metadata", "priority": "P1" },
-        { "type": "contains", "scope": "all", "value": "ppds schema compare", "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["--source-env", "-se", "--target-env", "-te"], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["pac solution check", "ppds schema diff", "ppds compare schema"], "priority": "P1" },
-        { "type": "semantic", "rubric": "Routes to `ppds schema compare` for an environment-to-environment comparison using the real source/target env flags (--source-env/-se and --target-env/-te), not a hallucinated diff command or pac.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-metadata",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds schema compare",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--source-env",
+            "-se",
+            "--target-env",
+            "-te"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "pac solution check",
+            "ppds schema diff",
+            "ppds compare schema"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes to `ppds schema compare` for an environment-to-environment comparison using the real source/target env flags (--source-env/-se and --target-env/-te), not a hallucinated diff command or pac.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -65,11 +218,41 @@
       "priority": "P1",
       "prompt": "We no longer need the contoso_legacydata custom table. Remove it from the Contoso solution, but I want to understand the blast radius before anything is actually deleted.",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-metadata", "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["ppds metadata entity", "ppds metadata table delete"], "priority": "P1" },
-        { "type": "contains", "scope": "all", "value": "--dry-run", "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["pac ", "ppds metadata delete-table", "ppds metadata drop-entity"], "priority": "P1" },
-        { "type": "semantic", "rubric": "Routes the destructive table deletion through the metadata entity/table delete surface and, because the user wants to see impact first, leads with --dry-run (which shows dependencies without deleting) before any forced delete.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-metadata",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds metadata entity",
+            "ppds metadata table delete"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "--dry-run",
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "pac ",
+            "ppds metadata delete-table",
+            "ppds metadata drop-entity"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes the destructive table deletion through the metadata entity/table delete surface and, because the user wants to see impact first, leads with --dry-run (which shows dependencies without deleting) before any forced delete.",
+          "priority": "P2"
+        }
       ]
     }
   ]

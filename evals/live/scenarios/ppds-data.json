@@ -33,7 +33,7 @@
         },
         {
           "type": "not_contains",
-          "scope": "all",
+          "scope": "commands",
           "any": [
             "pac ",
             "--entity account",
@@ -85,7 +85,7 @@
         },
         {
           "type": "not_contains",
-          "scope": "all",
+          "scope": "commands",
           "any": [
             "pac ",
             "DataMigrationUtility"
@@ -126,7 +126,7 @@
         },
         {
           "type": "not_contains",
-          "scope": "all",
+          "scope": "commands",
           "any": [
             "pac ",
             "DELETE FROM"
@@ -167,7 +167,7 @@
         },
         {
           "type": "not_contains",
-          "scope": "all",
+          "scope": "commands",
           "any": [
             "pac ",
             "ppds data truncate",
@@ -209,7 +209,7 @@
         },
         {
           "type": "not_contains",
-          "scope": "all",
+          "scope": "commands",
           "any": [
             "pac ",
             "DataMigrationUtility"

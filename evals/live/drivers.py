@@ -43,13 +43,22 @@ class AgentRun:
     error: str | None = None
 
     def scope_text(self, scope: str) -> str:
-        """Concatenated text for an assertion `scope`."""
+        """Concatenated text for an assertion `scope`.
+
+        `all` is the agent's OUTPUT — the commands it proposed plus its final
+        answer. It deliberately EXCLUDES `self.raw` (the whole transcript),
+        because the transcript embeds the loaded SKILL.md text: a `not_contains`
+        for `pac ` would otherwise always fail against a skill body that itself
+        documents "don't use `pac`", and a `contains` would pass on the skill
+        text rather than on the agent actually choosing the command. `raw` is
+        kept only for debugging.
+        """
         commands = "\n".join(self.command_strings)
         if scope == "commands":
             return commands
         if scope == "text":
             return self.final_text
-        return "\n".join([commands, self.final_text, self.raw])  # "all"
+        return "\n".join([commands, self.final_text])  # "all" = agent output
 
 
 # ---------------------------------------------------------------------------
@@ -143,6 +152,13 @@ def parse_stream_json(text: str, prompt: str) -> AgentRun:
             cmd = _command_from_tool(name, inp)
             if cmd:
                 run.command_strings.append(cmd)
+            # In plan mode the agent presents its intended commands inside the
+            # ExitPlanMode plan rather than executing them — fold it into the
+            # final answer so routing assertions see the proposal.
+            if name == "ExitPlanMode" and isinstance(inp, dict):
+                plan = inp.get("plan")
+                if isinstance(plan, str) and plan:
+                    run.final_text += "\n" + plan
         for frag in _iter_text(obj):
             if frag:
                 run.final_text += frag

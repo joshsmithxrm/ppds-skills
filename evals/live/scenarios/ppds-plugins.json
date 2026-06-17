@@ -7,12 +7,53 @@
       "priority": "P1",
       "prompt": "I just decorated my plugin classes with attributes and rebuilt MyPlugins.dll. How do I get those step and image registrations into my Dataverse dev environment with PPDS?",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-plugins", "priority": "P1" },
-        { "type": "contains", "scope": "all", "all": ["ppds plugins extract", "ppds plugins deploy"], "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["--input", "-i "], "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["--config", "-c "], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["plugins deploy --assembly", "plugins deploy --file", "pac "], "priority": "P1" },
-        { "type": "semantic", "rubric": "Routes the registration through the declarative loop: extract reads the DLL to JSON and deploy consumes that JSON config via --config, never passing the assembly path directly to deploy.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-plugins",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "all": [
+            "ppds plugins extract",
+            "ppds plugins deploy"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--input",
+            "-i "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--config",
+            "-c "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "plugins deploy --assembly",
+            "plugins deploy --file",
+            "pac "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes the registration through the declarative loop: extract reads the DLL to JSON and deploy consumes that JSON config via --config, never passing the assembly path directly to deploy.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -20,11 +61,41 @@
       "priority": "P1",
       "prompt": "I have my registrations.json and I want to deploy it, and I also want PPDS to delete any plugin steps in the environment that are no longer in my config. How do I do this without accidentally wiping something I still need?",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-plugins", "priority": "P1" },
-        { "type": "contains", "scope": "all", "value": "ppds plugins deploy", "priority": "P1" },
-        { "type": "contains", "scope": "all", "all": ["--dry-run", "--clean"], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["plugins deploy --file", "plugins deploy --assembly", "pac "], "priority": "P1" },
-        { "type": "semantic", "rubric": "Treats --clean as destructive (it removes orphaned registrations) and previews the deployment with --dry-run before running the real --clean deploy.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-plugins",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds plugins deploy",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "all": [
+            "--dry-run",
+            "--clean"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "plugins deploy --file",
+            "plugins deploy --assembly",
+            "pac "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Treats --clean as destructive (it removes orphaned registrations) and previews the deployment with --dry-run before running the real --clean deploy.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -32,11 +103,42 @@
       "priority": "P1",
       "prompt": "Saving an account in my app started throwing a business process error this afternoon, and I'm pretty sure it's one of my plugins. How do I figure out which plugin blew up and see the actual exception?",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-plugins", "priority": "P1" },
-        { "type": "contains", "scope": "all", "value": "ppds plugintraces list", "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["--errors-only", "ppds plugintraces get"], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["ppds traces", "ppds plugin-traces", "--filter-xml", "pac "], "priority": "P1" },
-        { "type": "semantic", "rubric": "Routes failure diagnosis to ppds plugintraces (list filtered to errors, then get to read the exception detail), not to a guess or to a different command group.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-plugins",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds plugintraces list",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--errors-only",
+            "ppds plugintraces get"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "ppds traces",
+            "ppds plugin-traces",
+            "--filter-xml",
+            "pac "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes failure diagnosis to ppds plugintraces (list filtered to errors, then get to read the exception detail), not to a guess or to a different command group.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -44,11 +146,45 @@
       "priority": "P2",
       "prompt": "Updates on the contact table feel really slow and I think a chain of plugins is firing on each save. I want to see the whole transaction as a tree and find the step that's eating the time.",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-plugins", "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["ppds plugintraces timeline", "ppds plugintraces list"], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["ppds traces", "ppds plugin-traces", "--filter-xml", "pac "], "priority": "P1" },
-        { "type": "contains", "scope": "all", "any": ["--min-duration", "timeline"], "priority": "P2" },
-        { "type": "semantic", "rubric": "Uses the plugintraces timeline view (by trace or correlation id) to see chained executions, and/or filters slow steps with --min-duration, to locate the bottleneck.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-plugins",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "ppds plugintraces timeline",
+            "ppds plugintraces list"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "ppds traces",
+            "ppds plugin-traces",
+            "--filter-xml",
+            "pac "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "any": [
+            "--min-duration",
+            "timeline"
+          ],
+          "priority": "P2"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Uses the plugintraces timeline view (by trace or correlation id) to see chained executions, and/or filters slow steps with --min-duration, to locate the bottleneck.",
+          "priority": "P2"
+        }
       ]
     },
     {
@@ -56,11 +192,41 @@
       "priority": "P2",
       "prompt": "I wrote a plugin that implements a new custom message called contoso_RecalculatePricing and I want to expose it as a global Custom API in Dataverse so I can call it from my code. How do I register it with PPDS?",
       "assertions": [
-        { "type": "skill_loaded", "skill": "ppds-plugins", "priority": "P1" },
-        { "type": "contains", "scope": "all", "value": "ppds custom-apis register", "priority": "P1" },
-        { "type": "contains", "scope": "all", "all": ["--plugin", "--assembly"], "priority": "P1" },
-        { "type": "not_contains", "scope": "all", "any": ["pac plugin", "ppds customapi", "pac "], "priority": "P1" },
-        { "type": "semantic", "rubric": "Routes to ppds custom-apis register with the implementing plugin type and assembly supplied via --plugin and --assembly, rather than the Plugin Registration Tool or a pac command.", "priority": "P2" }
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-plugins",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds custom-apis register",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "all": [
+            "--plugin",
+            "--assembly"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "pac plugin",
+            "ppds customapi",
+            "pac "
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Routes to ppds custom-apis register with the implementing plugin type and assembly supplied via --plugin and --assembly, rather than the Plugin Registration Tool or a pac command.",
+          "priority": "P2"
+        }
       ]
     }
   ]

@@ -39,7 +39,7 @@ run** (exit 1); `P2`/`P3` are reported but non-fatal.
 |-------|----------------|
 | `commands` | the command strings the agent proposed: `Bash` tool inputs, plus any `ppds_*` MCP tool names it called |
 | `text` | the agent's final user-facing answer |
-| `all` | commands + text + the raw transcript |
+| `all` | commands + text — the agent's **output**. It deliberately excludes the raw transcript, which embeds the loaded `SKILL.md` text; otherwise a `not_contains` for `pac ` would always fail against a skill body that documents "don't use `pac`", and a `contains` could pass on the skill text rather than on the agent actually choosing the command |
 
 ### `skill_loaded`
 Deterministic. Passes if the named skill was triggered during the run.
@@ -81,11 +81,16 @@ runs everywhere.
   surface** — a command/flag present in `captured-help/`, or an `ppds_*` MCP
   tool in `mcp-tools.json`. The review step validates this; an eval that
   asserts a hallucinated flag is itself a bug.
-- **Prefer `scope: "all"` for command fragments.** The default driver runs in
-  `plan` permission mode (read-only — nothing executes against Dataverse), so
-  the agent's proposed `ppds ...` command usually lands in its plan text rather
-  than an executed `Bash` tool input. `scope: "all"` matches it in either
-  place; reserve `scope: "commands"` for runs with execution enabled.
+- **`contains` uses `scope: "all"`; `not_contains` uses `scope: "commands"`.**
+  The driver runs in `plan` mode (read-only), so a correct agent describes its
+  intended `ppds ...` command in its plan prose — and often *names* an
+  anti-pattern there too, to explain it's avoiding it ("use `ppds auth create`,
+  not `pac auth create`"). Positive routing (`contains`) should count that
+  naming as evidence, so it looks at the whole output (`all`). Negative
+  anti-patterns (`not_contains`) must NOT penalize a correct agent for
+  mentioning `pac` in prose — they match only the agent's actual proposed
+  command invocations (`commands`). The LLM-judged `semantic` assertion is the
+  robust anti-pattern check when prose nuance matters.
 - Prefer 1 `skill_loaded` + 1–2 `contains` (the routing target) + 1
   `not_contains` (the anti-pattern) + at most 1 `semantic` per scenario.
 - Make `P1` assertions the load-bearing routing facts; reserve `P2`/`P3` for

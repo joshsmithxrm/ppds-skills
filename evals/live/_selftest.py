@@ -107,6 +107,20 @@ def test_assertions() -> None:
         r = evaluate(a, run, "P1")
         check(r.passed == want and not r.skipped, f"assert {a} -> {r.passed} (want {want}): {r.detail}")
 
+    # `all` scope must EXCLUDE the raw transcript (which embeds the loaded
+    # SKILL.md text) — else a `not_contains` for `pac ` always false-fails
+    # against a skill body that documents "don't use pac".
+    polluted = AgentRun(
+        prompt="p",
+        final_text="Run the env listing.",
+        command_strings=["ppds env list"],
+        raw="<loaded skill text> never use `pac env list`; `ppds env switch` exists",
+    )
+    r = evaluate({"type": "not_contains", "scope": "all", "any": ["pac ", "ppds env switch"]}, polluted, "P1")
+    check(r.passed, f"not_contains must ignore raw transcript: {r.detail}")
+    r = evaluate({"type": "contains", "scope": "all", "value": "pac env list"}, polluted, "P1")
+    check(not r.passed, "contains must not match raw-only (skill-body) text")
+
     # semantic without a key must skip, never hard-fail
     r = evaluate({"type": "semantic", "rubric": "x"}, run, "P2")
     check(r.skipped, "semantic without API key should skip")
