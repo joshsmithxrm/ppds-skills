@@ -5,11 +5,10 @@ description: Cut a PPDS Skills package release — get the recapture, decide the
 
 # Release (PPDS Skills package)
 
-A *lightweight* release flow for **this** package — not the multi-surface engine
-release. There is no NuGet/npm publish pipeline: users install from the repo /
-plugin marketplace, so "release" means a reviewed version bump on `main` plus a
-tag and GitHub Release. The mechanical capture is automated; this skill covers
-the judgment + finalization the automation deliberately leaves to a human.
+No NuGet/npm pipeline — users install from the repo / plugin marketplace, so a
+"release" is a reviewed version bump on `main` plus a tag and GitHub Release. The
+recapture is automated; this skill covers the judgment + finalization left to a
+human.
 
 ## When
 
@@ -53,9 +52,8 @@ hand-check these when moving rc → stable:
   `DESIGN.md`, `skills/*/SKILL.md`, and hand-written `skills/*/references/*.md`.
 - **Leave alone:** `CHANGELOG.md` (immutable history) and `CONTRIBUTING.md`
   (intentionally version-agnostic runbook guidance).
-- Note the MCP pin: `ppds-mcp-server` may self-report a version that lags its
-  NuGet package; the pin tracks the **self-reported** version, so only bump
-  `ppds_mcp_version_tested` if the captured `serverInfo.version` actually changed.
+- MCP pin tracks the captured `serverInfo.version` (which can lag the NuGet
+  package), so bump `ppds_mcp_version_tested` only if that value changed.
 
 ## 4. Version + CHANGELOG
 
