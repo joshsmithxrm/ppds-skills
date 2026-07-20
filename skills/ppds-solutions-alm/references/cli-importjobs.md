@@ -1,9 +1,9 @@
 # `ppds importjobs` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.0. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.0**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds importjobs`
 
@@ -12,7 +12,7 @@ Description:
   Monitor solution import jobs: list, get, data, wait
 
 Usage:
-  ppds importjobs [command] [options]
+  ppds import-jobs [command] [options]
 
 Options:
   -?, -h, --help  Show help and usage information
@@ -32,21 +32,21 @@ Description:
   Get the raw XML data for an import job
 
 Usage:
-  ppds importjobs data <id> [options]
+  ppds import-jobs data <id> [options]
 
 Arguments:
   <id>  The import job ID
 
 Options:
-  -o, --output <output>                Output file path (default: stdout)
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -o, --output <output>              Output file path (default: stdout)
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds importjobs get`
@@ -56,20 +56,20 @@ Description:
   Get details for a specific import job
 
 Usage:
-  ppds importjobs get <id> [options]
+  ppds import-jobs get <id> [options]
 
 Arguments:
   <id>  The import job ID
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds importjobs list`
@@ -79,19 +79,19 @@ Description:
   List import jobs in the environment
 
 Usage:
-  ppds importjobs list [options]
+  ppds import-jobs list [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Filter by solution name
-  -n, --top <top>                      Maximum number of results to return [default: 50]
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Filter by solution name
+  -n, --top <top>                    Maximum number of results to return [default: 50]
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds importjobs url`
@@ -101,20 +101,20 @@ Description:
   Get the Maker portal URL for an import job
 
 Usage:
-  ppds importjobs url <id> [options]
+  ppds import-jobs url <id> [options]
 
 Arguments:
   <id>  The import job ID
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds importjobs wait`
@@ -124,21 +124,21 @@ Description:
   Wait for an import job to complete
 
 Usage:
-  ppds importjobs wait <id> [options]
+  ppds import-jobs wait <id> [options]
 
 Arguments:
   <id>  The import job ID
 
 Options:
-  -t, --timeout <timeout>              Maximum wait time in minutes [default: 30]
-  -i, --interval <interval>            Poll interval in seconds [default: 5]
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -t, --timeout <timeout>            Maximum wait time in minutes [default: 30]
+  -i, --interval <interval>          Poll interval in seconds [default: 5]
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 

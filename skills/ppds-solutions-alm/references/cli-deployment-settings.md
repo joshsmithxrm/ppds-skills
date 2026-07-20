@@ -1,9 +1,9 @@
 # `ppds deployment-settings` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.0. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.0**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds deployment-settings`
 
@@ -33,16 +33,16 @@ Usage:
   ppds deployment-settings generate [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name
-  -o, --output <output>                [Required] Output file path
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name
+  -o, --output <output>              [Required] Output file path
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds deployment-settings sync`
@@ -55,17 +55,17 @@ Usage:
   ppds deployment-settings sync [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name
-  -f, --file <file>                    [Required] Deployment settings file path
-  --dry-run                            Show what would change without modifying the file
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name
+  -f, --file <file>                  [Required] Deployment settings file path
+  --dry-run                          Show what would change without modifying the file
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds deployment-settings validate`
@@ -78,15 +78,15 @@ Usage:
   ppds deployment-settings validate [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name
-  --file <file>                        [Required] Deployment settings file path
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name
+  --file <file>                      [Required] Deployment settings file path
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 

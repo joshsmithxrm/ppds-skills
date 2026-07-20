@@ -20,5 +20,6 @@ Options:
   -p, --password <password>                             Optional: The password to authenticate with
   -ghf, --githubFederated                               Use GitHub Federation for Service Principal Auth; requires --tenant and --applicationId arguments
   -adof, --azureDevOpsFederated                         Use Azure DevOps Federation for Service Principal Auth; requires --tenant and --applicationId arguments
+  --accept-cleartext-caching                            Accept cleartext credential storage on Linux when secure storage (libsecret) is unavailable
   -?, -h, --help                                        Show help and usage information
 

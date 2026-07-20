@@ -1,9 +1,9 @@
 # `ppds env` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.0. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.0**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds env`
 
@@ -57,9 +57,9 @@ Usage:
   ppds env list [options]
 
 Options:
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -fl, --filter <filter>               Filter environments by name, URL, or ID (case-insensitive)
-  -?, -h, --help                       Show help and usage information
+  -f, --output-format <Text|Json>  Output format [default: Text]
+  -fl, --filter <filter>           Filter environments by name, URL, or ID (case-insensitive)
+  -?, -h, --help                   Show help and usage information
 ```
 
 ## `ppds env select`
@@ -105,8 +105,8 @@ Usage:
   ppds env who [options]
 
 Options:
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -env, --environment <environment>    Environment to query (ID, URL, unique name, or partial name). Uses profile default if not specified.
-  -?, -h, --help                       Show help and usage information
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -env, --environment <environment>  Environment to query (ID, URL, unique name, or partial name). Uses profile default if not specified.
+  -?, -h, --help                     Show help and usage information
 ```
 

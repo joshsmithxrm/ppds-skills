@@ -9,13 +9,13 @@ Arguments:
   <file>  Local file whose content replaces the web resource content
 
 Options:
-  --publish                            Publish the web resource after the update (required before the change is visible to apps)
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --publish                          Publish the web resource after the update (required before the change is visible to apps)
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 

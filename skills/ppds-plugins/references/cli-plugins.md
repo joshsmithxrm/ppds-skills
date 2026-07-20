@@ -1,9 +1,9 @@
 # `ppds plugins` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.0. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.0**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds plugins`
 
@@ -18,7 +18,7 @@ Options:
   -?, -h, --help  Show help and usage information
 
 Commands:
-  extract                         Extract plugin step/image attributes from assembly to JSON configuration
+  extract                         Extract plugin step/image attributes from an assembly (.dll) or plugin package (.nupkg) to JSON configuration. Works against .NET Framework 4.6.2 plugin assemblies regardless of how the CLI is packaged (single-file, self-contained, or framework-dependent).
   deploy                          Deploy plugin registrations to environment
   register                        Register plugin components: assembly, package, type, step, image
   diff                            Compare configuration against environment state
@@ -42,16 +42,16 @@ Usage:
   ppds plugins clean [options]
 
 Options:
-  -c, --config <config>                [Required] Path to registrations.json
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  --dry-run                            Preview deletions without applying
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -c, --config <config>              [Required] Path to registrations.json
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --dry-run                          Preview deletions without applying
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins deploy`
@@ -64,18 +64,18 @@ Usage:
   ppds plugins deploy [options]
 
 Options:
-  -c, --config <config>                [Required] Path to registrations.json
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
-  --clean                              Also remove orphaned registrations not in config
-  --dry-run                            Preview changes without applying
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -c, --config <config>              [Required] Path to registrations.json
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
+  --clean                            Also remove orphaned registrations not in config
+  --dry-run                          Preview changes without applying
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins diff`
@@ -88,15 +88,15 @@ Usage:
   ppds plugins diff [options]
 
 Options:
-  -c, --config <config>                [Required] Path to registrations.json
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -c, --config <config>              [Required] Path to registrations.json
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins disable`
@@ -112,14 +112,14 @@ Arguments:
   <step-name-or-id>  Step name or GUID to disable
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins download`
@@ -152,36 +152,37 @@ Arguments:
   <step-name-or-id>  Step name or GUID to enable
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins extract`
 
 ```text
 Description:
-  Extract plugin step/image attributes from assembly to JSON configuration
+  Extract plugin step/image attributes from an assembly (.dll) or plugin package (.nupkg) to JSON configuration. Works against .NET Framework 4.6.2 plugin assemblies regardless of how the CLI is packaged (single-file, self-contained, or framework-dependent).
 
 Usage:
   ppds plugins extract [options]
 
 Options:
-  -i, --input <input>                  [Required] Path to assembly (.dll) or plugin package (.nupkg)
-  -o, --output <output>                Output file path (default: registrations.json in input directory)
-  -s, --solution <solution>            Solution unique name to add components to
-  -f, --force                          Overwrite existing file without merging
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -i, --input <input>                [Required] Path to assembly (.dll) or plugin package (.nupkg)
+  -o, --output <output>              Output file path (default: registrations.json in input directory)
+  -s, --solution <solution>          Solution unique name to add components to
+  -f, --force                        Overwrite existing file without merging
+  --reference-dir <reference-dir>    Additional directory to search for referenced assemblies (repeatable). Use when a plugin's dependencies live outside the input assembly's own folder.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins get`
@@ -198,14 +199,14 @@ Arguments:
   <name-or-id>  Entity name or GUID
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins list`
@@ -218,19 +219,19 @@ Usage:
   ppds plugins list [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -a, --assembly <assembly>            Filter by assembly name (classic DLL plugins)
-  -pkg, --package <package>            Filter by package name or unique name (NuGet plugin packages)
-  --include-hidden                     Include hidden steps (excluded by default)
-  --include-microsoft                  Include Microsoft.* assemblies (excluded by default, except Microsoft.Crm.ServiceBus)
-  --all                                Show all plugins (equivalent to --include-hidden --include-microsoft)
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -a, --assembly <assembly>          Filter by assembly name (classic DLL plugins)
+  -pkg, --package <package>          Filter by package name or unique name (NuGet plugin packages)
+  --include-hidden                   Include hidden steps (excluded by default)
+  --include-microsoft                Include Microsoft.* assemblies (excluded by default, except Microsoft.Crm.ServiceBus)
+  --all                              Show all plugins (equivalent to --include-hidden --include-microsoft)
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins register`
@@ -267,15 +268,15 @@ Arguments:
   <name-or-id>  Name or GUID of the entity to unregister
 
 Options:
-  -f, --force                          Force cascade delete of all child entities
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -f, --force                        Force cascade delete of all child entities
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins update`
@@ -310,16 +311,16 @@ Arguments:
   <name-or-id>  Assembly name or GUID
 
 Options:
-  -o, --output <output>                [Required] Output file path or directory
-  -f, --force                          Overwrite existing file
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -o, --output <output>              [Required] Output file path or directory
+  -f, --force                        Overwrite existing file
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins download package`
@@ -335,16 +336,16 @@ Arguments:
   <name-or-id>  Package name, unique name, or GUID
 
 Options:
-  -o, --output <output>                [Required] Output file path or directory
-  -f, --force                          Overwrite existing file
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -o, --output <output>              [Required] Output file path or directory
+  -f, --force                        Overwrite existing file
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins register assembly`
@@ -360,15 +361,15 @@ Arguments:
   <path>  Path to the plugin assembly DLL file
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins register image`
@@ -384,18 +385,18 @@ Arguments:
   <step>  Step name to attach the image to
 
 Options:
-  --name <name>                        [Required] Image name
-  --type <type>                        [Required] Image type: pre, post, or both
-  --attributes <attributes>            Comma-separated list of attributes to include (all if not specified)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --name <name>                      [Required] Image name
+  --type <type>                      [Required] Image type: pre, post, or both
+  --attributes <attributes>          Comma-separated list of attributes to include (all if not specified)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins register package`
@@ -411,15 +412,15 @@ Arguments:
   <path>  Path to the plugin package (.nupkg) file
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins register step`
@@ -451,7 +452,7 @@ Options:
   -v, --verbose                                  Show detailed output including debug messages
   --debug                                        Show trace-level diagnostic output
   --correlation-id <correlation-id>              Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>            Output format [default: Text]
+  -f, --output-format <Text|Json>                Output format [default: Text]
   -?, -h, --help                                 Show help and usage information
 ```
 
@@ -468,16 +469,16 @@ Arguments:
   <assembly>  Assembly name containing the plugin type
 
 Options:
-  --typename <typename>                [Required] Fully qualified type name (namespace.classname)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --typename <typename>              [Required] Fully qualified type name (namespace.classname)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins update assembly`
@@ -494,15 +495,15 @@ Arguments:
   <path>  Path to the assembly DLL
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins update image`
@@ -518,16 +519,16 @@ Arguments:
   <name-or-id>  Image name or GUID
 
 Options:
-  --attributes <attributes>            Comma-separated list of attributes to include in the image
-  --name <name>                        New name for the image
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --attributes <attributes>          Comma-separated list of attributes to include in the image
+  --name <name>                      New name for the image
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins update package`
@@ -544,15 +545,15 @@ Arguments:
   <path>  Path to the .nupkg file
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Solution unique name. Overrides value in configuration file.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds plugins update step`
@@ -582,7 +583,7 @@ Options:
   -v, --verbose                                  Show detailed output including debug messages
   --debug                                        Show trace-level diagnostic output
   --correlation-id <correlation-id>              Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>            Output format [default: Text]
+  -f, --output-format <Text|Json>                Output format [default: Text]
   -?, -h, --help                                 Show help and usage information
 ```
 

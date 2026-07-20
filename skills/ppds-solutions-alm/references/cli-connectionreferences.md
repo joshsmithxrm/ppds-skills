@@ -1,9 +1,9 @@
 # `ppds connectionreferences` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.0. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.0**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds connectionreferences`
 
@@ -12,7 +12,7 @@ Description:
   Manage connection references
 
 Usage:
-  ppds connectionreferences [command] [options]
+  ppds connection-references [command] [options]
 
 Options:
   -?, -h, --help  Show help and usage information
@@ -32,19 +32,19 @@ Description:
   Analyze flow-connection reference relationships (orphan detection)
 
 Usage:
-  ppds connectionreferences analyze [options]
+  ppds connection-references analyze [options]
 
 Options:
-  -s, --solution <solution>            Filter by solution unique name
-  --orphans-only                       Only show orphaned relationships
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          Filter by solution unique name
+  --orphans-only                     Only show orphaned relationships
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds connectionreferences connections`
@@ -54,20 +54,20 @@ Description:
   Show bound connection for a connection reference
 
 Usage:
-  ppds connectionreferences connections <name> [options]
+  ppds connection-references connections <name> [options]
 
 Arguments:
   <name>  The logical name of the connection reference
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds connectionreferences flows`
@@ -77,20 +77,20 @@ Description:
   List flows that use a connection reference
 
 Usage:
-  ppds connectionreferences flows <name> [options]
+  ppds connection-references flows <name> [options]
 
 Arguments:
   <name>  The logical name of the connection reference
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds connectionreferences get`
@@ -100,20 +100,20 @@ Description:
   Get a connection reference by logical name
 
 Usage:
-  ppds connectionreferences get <name> [options]
+  ppds connection-references get <name> [options]
 
 Arguments:
   <name>  The logical name of the connection reference
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds connectionreferences list`
@@ -123,18 +123,18 @@ Description:
   List connection references
 
 Usage:
-  ppds connectionreferences list [options]
+  ppds connection-references list [options]
 
 Options:
-  -s, --solution <solution>            Filter by solution unique name
-  --unbound                            Only show connection references without a bound connection
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          Filter by solution unique name
+  --unbound                          Only show connection references without a bound connection
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
