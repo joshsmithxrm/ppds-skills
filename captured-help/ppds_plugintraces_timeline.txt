@@ -2,10 +2,10 @@ Description:
   Display plugin execution timeline as a hierarchy tree
 
 Usage:
-  ppds plugintraces timeline [<trace-id>] [options]
+  ppds plugin-traces timeline [<trace-id>] [options]
 
 Arguments:
-  <trace-id>  Trace ID of any execution in the request - the timeline shows all related traces via the correlation ID
+  <trace-id>  Trace ID of any execution in the request — the timeline shows all related traces via the correlation ID
 
 Options:
   -c, --correlation-id <correlation-id>  Correlation ID to look up directly (use this if you already have the correlation ID)
@@ -15,6 +15,6 @@ Options:
   -v, --verbose                          Show detailed output including debug messages
   --debug                                Show trace-level diagnostic output
   --correlation-id <correlation-id>      Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>    Output format [default: Text]
+  -f, --output-format <Text|Json>        Output format [default: Text]
   -?, -h, --help                         Show help and usage information
 

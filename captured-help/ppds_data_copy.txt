@@ -11,7 +11,7 @@ Options:
   -se, --source-env <source-env>          [Required] Source environment - accepts URL, friendly name, unique name, or ID
   -te, --target-env <target-env>          [Required] Target environment - accepts URL, friendly name, unique name, or ID
   --temp-dir <temp-dir>                   Temporary directory for intermediate data file (default: system temp)
-  --parallel <parallel>                   Maximum concurrent entity exports (only applies when schema contains multiple entities) [default: 64]
+  --parallel <parallel>                   Maximum concurrent entity exports (only applies when schema contains multiple entities) [default: 8]
   --batch-size <batch-size>               Records per API request (all records are exported; this controls request size) [default: 5000]
   --bypass-plugins <all|async|sync>       Bypass custom plugin execution on target: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
   --bypass-flows                          Bypass Power Automate flow triggers on target (no special privilege required)
@@ -19,7 +19,7 @@ Options:
   --continue-on-error                     Continue import on individual record failures
   --strip-owner-fields                    Strip ownership fields (ownerid, createdby, modifiedby) allowing Dataverse to assign current user
   -u, --user-mapping <user-mapping>       Path to user mapping XML file for remapping user references
-  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -f, --output-format <Text|Json>         Output format [default: Text]
   -v, --verbose                           Enable verbose logging output
   --debug                                 Enable diagnostic logging output
   -?, -h, --help                          Show help and usage information

@@ -5,19 +5,19 @@ Usage:
   ppds api request [options]
 
 Options:
-  --path <path>                        [Required] Relative URL path (e.g., /api/data/v9.2/accounts)
-  -X, --method <method>                HTTP method (default: GET)
-  --body <body>                        Request body as inline JSON string
-  --body-file <body-file>              Request body from file (mutually exclusive with --body)
-  -H, --header <header>                Additional header, repeatable (format: "Name: Value")
-  -i, --include                        Include HTTP status line and response headers in output
-  -env, --environment <environment>    Target environment URL (default: active profile)
-  -p, --profile <profile>              Authentication profile to use (default: active profile)
-  --confirm                            Bypass write protection on production environments
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --path <path>                      [Required] Relative URL path (e.g., /api/data/v9.2/accounts)
+  -X, --method <method>              HTTP method (default: GET)
+  --body <body>                      Request body as inline JSON string
+  --body-file <body-file>            Request body from file (mutually exclusive with --body)
+  -H, --header <header>              Additional header, repeatable (format: "Name: Value")
+  -i, --include                      Include HTTP status line and response headers in output
+  -env, --environment <environment>  Target environment URL (default: active profile)
+  -p, --profile <profile>            Authentication profile to use (default: active profile)
+  --confirm                          Bypass write protection on production environments
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 

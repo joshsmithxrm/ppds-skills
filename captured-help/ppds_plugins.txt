@@ -8,7 +8,7 @@ Options:
   -?, -h, --help  Show help and usage information
 
 Commands:
-  extract                         Extract plugin step/image attributes from assembly to JSON configuration
+  extract                         Extract plugin step/image attributes from an assembly (.dll) or plugin package (.nupkg) to JSON configuration. Works against .NET Framework 4.6.2 plugin assemblies regardless of how the CLI is packaged (single-file, self-contained, or framework-dependent).
   deploy                          Deploy plugin registrations to environment
   register                        Register plugin components: assembly, package, type, step, image
   diff                            Compare configuration against environment state

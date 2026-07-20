@@ -1,5 +1,5 @@
 Description:
-  Create, update, or delete Dataverse tables (deprecated - use 'entity')
+  Create, update, or delete Dataverse tables (deprecated — use 'entity')
 
 Usage:
   ppds metadata table [command] [options]

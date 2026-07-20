@@ -1,9 +1,9 @@
 # `ppds webresources` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.0. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.0**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds webresources`
 
@@ -41,19 +41,19 @@ Arguments:
   <file>  Local file to upload as the web resource content
 
 Options:
-  --name <name>                        [Required] Logical name for the new web resource (e.g., new_/icons/vet.svg)
-  --display-name <display-name>        Display name (defaults to the logical name)
-  --type <type>                        Web resource type override; inferred from the file extension when omitted. One of: html, css, js, xml, png, jpg, gif, xap, xsl, ico, svg, resx
-  -s, --solution <solution>            Solution unique name to add the web resource to
-  --publish                            Publish the web resource after creation (required before it is visible to apps)
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --name <name>                      [Required] Logical name for the new web resource (e.g., new_/icons/vet.svg)
+  --display-name <display-name>      Display name (defaults to the logical name)
+  --type <type>                      Web resource type override; inferred from the file extension when omitted. One of: html, css, js, xml, png, jpg, gif, xap, xsl, ico, svg, resx
+  -s, --solution <solution>          Solution unique name to add the web resource to
+  --publish                          Publish the web resource after creation (required before it is visible to apps)
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds webresources get`
@@ -69,16 +69,16 @@ Arguments:
   <name>  Web resource name, partial name, or GUID
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  --unpublished                        Get the unpublished (latest draft) version instead of published
-  -o, --output <output>                Write content to file instead of stdout
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  --unpublished                      Get the unpublished (latest draft) version instead of published
+  -o, --output <output>              Write content to file instead of stdout
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds webresources list`
@@ -94,17 +94,17 @@ Arguments:
   <name-pattern>  Filter by partial name match (e.g., 'app.js', 'new_/scripts/')
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Filter by solution unique name
-  -t, --type <type>                    Filter by type: text, image, data, or specific type (js, css, html, xml, png, etc.)
-  --top <top>                          Maximum number of results (default: 5000)
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Filter by solution unique name
+  -t, --type <type>                  Filter by type: text, image, data, or specific type (js, css, html, xml, png, etc.)
+  --top <top>                        Maximum number of results (default: 5000)
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds webresources publish`
@@ -120,15 +120,15 @@ Arguments:
   <names>  Web resource names, partial names, or GUIDs to publish
 
 Options:
-  -s, --solution <solution>            Publish all web resources in this solution
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          Publish all web resources in this solution
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds webresources pull`
@@ -144,19 +144,19 @@ Arguments:
   <folder>  Target directory (created if missing)
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -s, --solution <solution>            Filter by solution unique name
-  -t, --type <type>                    Filter by type: text, image, data, or specific type (js, css, html, xml, png, etc.)
-  --name <name>                        Filter by partial name match
-  --strip-prefix                       Remove the solution publisher prefix from local file paths (e.g., new_/scripts/app.js -> scripts/app.js). The prefix is org-specific and set by the solution publisher.
-  --force                              Overwrite local files even when they have been edited since the last pull
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -s, --solution <solution>          Filter by solution unique name
+  -t, --type <type>                  Filter by type: text, image, data, or specific type (js, css, html, xml, png, etc.)
+  --name <name>                      Filter by partial name match
+  --strip-prefix                     Remove the solution publisher prefix from local file paths (e.g., new_/scripts/app.js -> scripts/app.js). The prefix is org-specific and set by the solution publisher.
+  --force                            Overwrite local files even when they have been edited since the last pull
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds webresources push`
@@ -172,17 +172,17 @@ Arguments:
   <folder>  Folder previously populated by 'ppds webresources pull'
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  --force                              Skip safety checks: server-conflict detection (someone edited since last pull) and environment URL validation (pulled from a different env than the current connection)
-  --dry-run                            Preview what would be pushed without uploading. Still authenticates and queries the server for conflict detection.
-  --publish                            After upload, run the Dataverse Publish step on the uploaded resources (required before changes take effect in apps)
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  --force                            Skip safety checks: server-conflict detection (someone edited since last pull) and environment URL validation (pulled from a different env than the current connection)
+  --dry-run                          Preview what would be pushed without uploading. Still authenticates and queries the server for conflict detection.
+  --publish                          After upload, run the Dataverse Publish step on the uploaded resources (required before changes take effect in apps)
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds webresources update`
@@ -199,15 +199,15 @@ Arguments:
   <file>  Local file whose content replaces the web resource content
 
 Options:
-  --publish                            Publish the web resource after the update (required before the change is visible to apps)
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --publish                          Publish the web resource after the update (required before the change is visible to apps)
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds webresources url`
@@ -223,13 +223,13 @@ Arguments:
   <name>  Web resource name, partial name, or GUID
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
