@@ -2,7 +2,7 @@ Description:
   View or set plugin trace logging settings
 
 Usage:
-  ppds plugintraces settings [command] [options]
+  ppds plugin-traces settings [command] [options]
 
 Options:
   -?, -h, --help  Show help and usage information

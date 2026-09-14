@@ -1,9 +1,9 @@
 # `ppds views` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.1. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.1**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds views`
 
@@ -71,7 +71,7 @@ Options:
   -v, --verbose                          Show detailed output including debug messages
   --debug                                Show trace-level diagnostic output
   --correlation-id <correlation-id>      Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>    Output format [default: Text]
+  -f, --output-format <Text|Json>        Output format [default: Text]
   -?, -h, --help                         Show help and usage information
 ```
 
@@ -85,18 +85,18 @@ Usage:
   ppds views clear-filter [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  --solution <solution>                Add the view to this solution after the operation
-  --publish                            Publish the entity after the operation
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  --solution <solution>              Add the view to this solution after the operation
+  --publish                          Publish the entity after the operation
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views clear-sort`
@@ -109,18 +109,18 @@ Usage:
   ppds views clear-sort [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  --solution <solution>                Add the view to this solution after the operation
-  --publish                            Publish the entity after the operation
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  --solution <solution>              Add the view to this solution after the operation
+  --publish                          Publish the entity after the operation
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views get`
@@ -133,18 +133,18 @@ Usage:
   ppds views get [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  --unpublished                        Show the unpublished (latest draft) view instead of the published version
-  --raw                                Write raw fetchxml to stdout instead of the structured summary
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  --unpublished                      Show the unpublished (latest draft) view instead of the published version
+  --raw                              Write raw fetchxml to stdout instead of the structured summary
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views list`
@@ -157,15 +157,15 @@ Usage:
   ppds views list [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views remove-column`
@@ -178,19 +178,19 @@ Usage:
   ppds views remove-column [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  -c, --column <column>                [Required] Attribute name of the column to remove
-  --solution <solution>                Add the view to this solution after the operation
-  --publish                            Publish the entity after the operation
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  -c, --column <column>              [Required] Attribute name of the column to remove
+  --solution <solution>              Add the view to this solution after the operation
+  --publish                          Publish the entity after the operation
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views reorder-columns`
@@ -203,19 +203,19 @@ Usage:
   ppds views reorder-columns [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  --columns <columns>                  [Required] Comma-separated list of attribute names in desired order. Columns not in the list are dropped.
-  --solution <solution>                Add the view to this solution after the operation
-  --publish                            Publish the entity after the operation
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  --columns <columns>                [Required] Comma-separated list of attribute names in desired order. Columns not in the list are dropped.
+  --solution <solution>              Add the view to this solution after the operation
+  --publish                          Publish the entity after the operation
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views set-fetchxml`
@@ -239,19 +239,19 @@ Usage:
   ppds views set-fetchxml [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  --fetchxml <fetchxml>                [Required] Path to a file containing a complete FetchXML document with <fetch> root element.
-  --solution <solution>                Add the view to this solution after the operation
-  --publish                            Publish the entity after the operation
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  --fetchxml <fetchxml>              [Required] Path to a file containing a complete FetchXML document with <fetch> root element.
+  --solution <solution>              Add the view to this solution after the operation
+  --publish                          Publish the entity after the operation
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views set-filter`
@@ -271,20 +271,20 @@ Usage:
   ppds views set-filter [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  --filter-file <filter-file>          Path to a file containing a <filter> XML fragment. Mutually exclusive with --condition.
-  --condition <condition>              Inline single condition in format 'attribute:operator:value' (e.g. statecode:eq:0). Mutually exclusive with --filter-file.
-  --solution <solution>                Add the view to this solution after the operation
-  --publish                            Publish the entity after the operation
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  --filter-file <filter-file>        Path to a file containing a <filter> XML fragment. Mutually exclusive with --condition.
+  --condition <condition>            Inline single condition in format 'attribute:operator:value' (e.g. statecode:eq:0). Mutually exclusive with --filter-file.
+  --solution <solution>              Add the view to this solution after the operation
+  --publish                          Publish the entity after the operation
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views set-sort`
@@ -297,19 +297,19 @@ Usage:
   ppds views set-sort [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  --sort <sort>                        [Required] Sort specification: 'attributename:asc' or 'attributename:desc'. Repeatable; applied in declaration order (first = primary).
-  --solution <solution>                Add the view to this solution after the operation
-  --publish                            Publish the entity after the operation
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  --sort <sort>                      [Required] Sort specification: 'attributename:asc' or 'attributename:desc'. Repeatable; applied in declaration order (first = primary).
+  --solution <solution>              Add the view to this solution after the operation
+  --publish                          Publish the entity after the operation
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds views update-column`
@@ -322,19 +322,19 @@ Usage:
   ppds views update-column [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL.
-  --entity <entity>                    [Required] Entity logical name (e.g., account)
-  -v, --view <view>                    [Required] View name or ID
-  -c, --column <column>                [Required] Attribute name of the column to update
-  --width <width>                      [Required] New column width in pixels (positive integer)
-  --solution <solution>                Add the view to this solution after the operation
-  --publish                            Publish the entity after the operation
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL.
+  --entity <entity>                  [Required] Entity logical name (e.g., account)
+  -v, --view <view>                  [Required] View name or ID
+  -c, --column <column>              [Required] Attribute name of the column to update
+  --width <width>                    [Required] New column width in pixels (positive integer)
+  --solution <solution>              Add the view to this solution after the operation
+  --publish                          Publish the entity after the operation
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
