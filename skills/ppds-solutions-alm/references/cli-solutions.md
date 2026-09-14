@@ -1,9 +1,9 @@
 # `ppds solutions` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.1. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.1**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds solutions`
 
@@ -40,15 +40,15 @@ Arguments:
   <unique-name>  The solution unique name
 
 Options:
-  -t, --type <type>                    Filter by component type (e.g., 61 for WebResource, 69 for PluginAssembly)
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -t, --type <type>                  Filter by component type (e.g., 61 for WebResource, 69 for PluginAssembly)
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds solutions export`
@@ -64,17 +64,17 @@ Arguments:
   <unique-name>  The solution unique name
 
 Options:
-  -o, --output <output>                Output file path (default: <unique-name>.zip or <unique-name>_managed.zip)
-  --managed                            Export as managed solution
-  --allow-outside-workspace            Permit --output paths that resolve outside the current working directory. Off by default to prevent a mistyped or redirected path from writing anywhere on disk.
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -o, --output <output>              Output file path (default: <unique-name>.zip or <unique-name>_managed.zip)
+  --managed                          Export as managed solution
+  --allow-outside-workspace          Permit --output paths that resolve outside the current working directory. Off by default to prevent a mistyped or redirected path from writing anywhere on disk.
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds solutions get`
@@ -90,14 +90,14 @@ Arguments:
   <unique-name>  The solution unique name
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds solutions import`
@@ -113,16 +113,16 @@ Arguments:
   <file>  The solution ZIP file to import
 
 Options:
-  -w, --overwrite                      Overwrite unmanaged customizations (default: true)
-  --publish-workflows                  Automatically publish workflows (default: true)
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -w, --overwrite                    Overwrite unmanaged customizations (default: true)
+  --publish-workflows                Automatically publish workflows (default: true)
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds solutions list`
@@ -135,16 +135,16 @@ Usage:
   ppds solutions list [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  --filter <filter>                    Filter by solution unique name or friendly name
-  -m, --include-managed                Include managed solutions in the list
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  --filter <filter>                  Filter by solution unique name or friendly name
+  -m, --include-managed              Include managed solutions in the list
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds solutions publish`
@@ -157,14 +157,14 @@ Usage:
   ppds solutions publish [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds solutions url`
@@ -180,13 +180,13 @@ Arguments:
   <unique-name>  The solution unique name
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 

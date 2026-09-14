@@ -1,7 +1,7 @@
 {
   "server": {
     "name": "ppds-mcp-server",
-    "version": "1.0.0.0"
+    "version": "1.2.1"
   },
   "tool_count": 41,
   "tools": [

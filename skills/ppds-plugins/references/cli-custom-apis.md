@@ -1,9 +1,9 @@
 # `ppds custom-apis` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.1. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.1**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds custom-apis`
 
@@ -43,20 +43,20 @@ Arguments:
   <param-name>  Unique parameter name
 
 Options:
-  --type <type>                        [Required] Data type: Boolean, DateTime, Decimal, Entity, EntityCollection, EntityReference, Float, Integer, Money, Picklist, String, StringArray, or Guid
-  --direction <direction>              [Required] Direction: input or output
-  --optional                           Mark the parameter as optional (input parameters only)
-  --entity <entity>                    Logical entity name (required for Entity, EntityCollection, EntityReference types)
-  --description <description>          Optional description
-  --display-name <display-name>        Display name (defaults to param-name)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --type <type>                      [Required] Data type: Boolean, DateTime, Decimal, Entity, EntityCollection, EntityReference, Float, Integer, Money, Picklist, String, StringArray, or Guid
+  --direction <direction>            [Required] Direction: input or output
+  --optional                         Mark the parameter as optional (input parameters only)
+  --entity <entity>                  Logical entity name (required for Entity, EntityCollection, EntityReference types)
+  --description <description>        Optional description
+  --display-name <display-name>      Display name (defaults to param-name)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds custom-apis get`
@@ -72,14 +72,14 @@ Arguments:
   <unique-name-or-id>  Custom API unique name or GUID
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds custom-apis list`
@@ -92,15 +92,15 @@ Usage:
   ppds custom-apis list [options]
 
 Options:
-  --solution <solution>                Filter by solution name
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --solution <solution>              Filter by solution name
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds custom-apis register`
@@ -132,7 +132,7 @@ Options:
   -v, --verbose                            Show detailed output including debug messages
   --debug                                  Show trace-level diagnostic output
   --correlation-id <correlation-id>        Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>      Output format [default: Text]
+  -f, --output-format <Text|Json>          Output format [default: Text]
   -?, -h, --help                           Show help and usage information
 ```
 
@@ -150,14 +150,14 @@ Arguments:
   <param-name>  Parameter unique name to remove
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds custom-apis set-plugin`
@@ -173,17 +173,17 @@ Arguments:
   <unique-name-or-id>  Custom API unique name or GUID
 
 Options:
-  --plugin <plugin>                    Plugin type name to set as the implementing type
-  --assembly <assembly>                Assembly name for disambiguation (optional)
-  --none                               Clear the plugin type (mutually exclusive with --plugin)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --plugin <plugin>                  Plugin type name to set as the implementing type
+  --assembly <assembly>              Assembly name for disambiguation (optional)
+  --none                             Clear the plugin type (mutually exclusive with --plugin)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds custom-apis unregister`
@@ -199,15 +199,15 @@ Arguments:
   <unique-name-or-id>  Custom API unique name or GUID
 
 Options:
-  -f, --force                          Force cascade delete of dependent parameters and response properties
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -f, --force                        Force cascade delete of dependent parameters and response properties
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds custom-apis update`
@@ -223,18 +223,18 @@ Arguments:
   <unique-name-or-id>  Custom API unique name or GUID
 
 Options:
-  --display-name <display-name>        New display name
-  --description <description>          New description
-  --is-function                        Mark as function (returns a value)
-  --is-private                         Mark as private
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --display-name <display-name>      New display name
+  --description <description>        New description
+  --is-function                      Mark as function (returns a value)
+  --is-private                       Mark as private
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds custom-apis update-parameter`
@@ -251,15 +251,15 @@ Arguments:
   <param-name>  Parameter unique name to update
 
 Options:
-  --display-name <display-name>        New display name for the parameter
-  --description <description>          New description for the parameter
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --display-name <display-name>      New display name for the parameter
+  --description <description>        New description for the parameter
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
