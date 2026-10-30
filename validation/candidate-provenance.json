@@ -1,15 +1,34 @@
 {
   "status": "unpublished-stable-version-simulation",
   "repository": "https://github.com/joshsmithxrm/power-platform-developer-suite",
-  "commit": "ce615d8046ea23fa9df0343cb9b23e8ad9027b9c",
+  "commit": "6fec5a6909900b5356defdef3eea893fdaece685",
   "runtime": "net10.0 framework-dependent artifacts from candidate owner: disposable clone with local-only simulated release tags and no remote; no public release",
-  "cli_version": "1.4.2+ce615d8046ea23fa9df0343cb9b23e8ad9027b9c",
+  "cli_version": "1.4.2+6fec5a6909900b5356defdef3eea893fdaece685",
   "mcp_version": "1.2.2",
   "binary_sha256": {
-    "ppds.dll": "378d55099f8512b7f75b13c1f47ab0f2aeafd5a1954eee6c6bbe269cbd0a5c35",
-    "ppds-mcp-server.dll": "cb0d72aa82fd082e5ec4521b90439ffd00865b0ff2de8696c26ff8195fb83a2e"
+    "ppds.dll": "1466db34d01d2f46d3a67265d849a009fa17062e65faec22a0657e4f08f1e744",
+    "ppds-mcp-server.dll": "ae3bda4fb2cbad77b1280673f1bc0c6090665d24038fa24c25e303f1aa6f1fdf"
   },
   "capture": "Existing capture scripts, with subprocess executable resolution pinned to dotnet plus the named candidate DLL. Logical command names and captured output are unchanged.",
   "isolation": "Empty PPDS_CONFIG_DIR; inherited PPDS/DATAVERSE/POWERPLATFORM/AZURE variables removed. Only CLI --version/--help and MCP initialize/tools/list; no tools/call or Dataverse operations.",
-  "remaining": "Re-capture from public CLI 1.4.2 / MCP 1.2.2 after publication; simulated stable version strings do not establish public availability."
+  "remaining": "Re-capture from public CLI 1.4.2 / MCP 1.2.2 after publication; simulated stable version strings do not establish public availability.",
+  "artifact_manifest_verification": {
+    "file_count": 244,
+    "manifest_sha256": "d98fc9691b4e504d54757ba14f6e0aa245315291a8d939811f547364115fd401",
+    "result": "All paths, lengths, and SHA256 values matched before and after copying; CLI and MCP additionally matched the coordinator-supplied hashes."
+  },
+  "candidate_pr": "https://github.com/joshsmithxrm/power-platform-developer-suite/pull/1473",
+  "recapture_comparison": {
+    "changed_files": [
+      "captured-help/manifest.json"
+    ],
+    "previous_source_commit": "ce615d8046ea23fa9df0343cb9b23e8ad9027b9c",
+    "mcp_tools": 41,
+    "examined_capture_and_generated_reference_files": 297,
+    "command_nodes": 271,
+    "comparison_method": "Compared to previous committed captures/references after normalizing CRLF to LF.",
+    "changed_manifest_keys": [
+      "cli_version_raw"
+    ]
+  }
 }

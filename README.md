@@ -38,7 +38,7 @@ errors while these skills were being authored.
 
 This branch prepares skills **0.1.2** against unpublished CLI **1.4.2**
 and MCP **1.2.2** from candidate commit
-`ce615d8046ea23fa9df0343cb9b23e8ad9027b9c` (271 CLI command nodes,
+`6fec5a6909900b5356defdef3eea893fdaece685` (271 CLI command nodes,
 41 MCP tools). The exact versions are in each skill's frontmatter
 and enforced by the eval suite. [Capture provenance](validation/candidate-provenance.json)
 records the binary hashes and isolated offline procedure.
