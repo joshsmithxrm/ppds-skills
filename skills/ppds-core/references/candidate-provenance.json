@@ -20,7 +20,6 @@
   },
   "recapture_comparison": {
     "previous_source_commit": "6fec5a6909900b5356defdef3eea893fdaece685",
-    "examined_capture_and_generated_reference_files": 297,
     "changed_files": [
       "captured-help/manifest.json"
     ],
@@ -30,6 +29,11 @@
     "command_nodes": 271,
     "mcp_tools": 41,
     "comparison_method": "Fresh real captures and generated references compared with the previous working tree, with newline normalization.",
-    "examined_capture_and_reference_files": 303
+    "examined_capture_and_reference_files": 303,
+    "examined_file_breakdown": {
+      "captured_help_files": 273,
+      "generated_reference_markdown": 24,
+      "curated_reference_markdown": 6
+    }
   }
 }
