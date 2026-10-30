@@ -9,8 +9,8 @@ skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
 
 ### Changed
 
-- Re-captured 271 CLI command nodes and 41 MCP tools from commit
-  `6fec5a6909900b5356defdef3eea893fdaece685`: CLI `1.4.2` and
+- Re-captured 271 CLI command nodes and 41 MCP tools from final-main commit
+  `d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6`: CLI `1.4.2` and
   MCP `1.2.2`. Regenerated references and all seven tested-version
   pins from actual output of a local stable-version simulation; retained
   source/binary provenance. These are not captures of public packages.

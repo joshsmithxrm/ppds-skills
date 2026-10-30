@@ -37,16 +37,16 @@ errors while these skills were being authored.
 | `ppds-webresources` | Pull/edit/push/publish loop with conflict detection |
 
 This branch prepares skills **0.1.2** against unpublished CLI **1.4.2**
-and MCP **1.2.2** from candidate commit
-`6fec5a6909900b5356defdef3eea893fdaece685` (271 CLI command nodes,
+and MCP **1.2.2** from final-main commit
+`d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6` (271 CLI command nodes,
 41 MCP tools). The exact versions are in each skill's frontmatter
 and enforced by the eval suite. [Capture provenance](skills/ppds-core/references/candidate-provenance.json)
 records the binary hashes and isolated offline procedure.
 
 These candidate builds are not public releases. Re-capture from public CLI
 1.4.2 and MCP 1.2.2 after publication before treating this as stable-release
-coverage. The version strings come from a disposable local release simulation
-with no remote; they do not establish public availability.
+coverage. The version strings come from a local stable-version simulation;
+they do not establish public availability.
 
 ## Prerequisite
 
