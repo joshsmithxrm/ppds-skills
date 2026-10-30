@@ -11,7 +11,7 @@ Options:
   -te, --target-env <target-env>          [Required] Target environment - accepts URL, friendly name, unique name, or ID
   -o, --output <output>                   [Required] Output user mapping XML file path
   --analyze                               Analyze user differences without generating mapping file
-  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -f, --output-format <Text|Json>         Output format [default: Text]
   -v, --verbose                           Enable verbose logging output
   --debug                                 Enable diagnostic logging output
   -?, -h, --help                          Show help and usage information

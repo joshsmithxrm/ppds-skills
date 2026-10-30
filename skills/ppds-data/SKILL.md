@@ -3,8 +3,8 @@ name: ppds-data
 description: Bulk Dataverse data operations with PPDS — schema-driven export/import (CMT-compatible), direct environment-to-environment copy, CSV load, bulk update/delete, truncate, user mapping, and dependency analysis. Use when the user wants to move records between environments, seed reference data, export data to a ZIP, load a CSV into a table, bulk-delete records, or migrate data with lookup and owner remapping. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.2.0"
-  ppds_mcp_version_tested: "1.0.0"
+  ppds_cli_version_tested: "1.4.2"
+  ppds_mcp_version_tested: "1.2.2"
 ---
 
 # PPDS Data — bulk movement with a schema, not a script

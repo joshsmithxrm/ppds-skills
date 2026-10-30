@@ -5,6 +5,34 @@ All notable changes to this package are documented here. The format follows
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html): MAJOR =
 skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
 
+## [0.1.2] - Unreleased
+
+### Changed
+
+- Re-captured 271 CLI command nodes and 41 MCP tools from commit
+  `ce615d8046ea23fa9df0343cb9b23e8ad9027b9c`: CLI `1.4.2` and
+  MCP `1.2.2`. Regenerated references and all seven tested-version
+  pins from actual output of a local stable-version simulation; retained
+  source/binary provenance. These are not captures of public packages.
+- Added four regression scenarios for complete view payloads, managed-view
+  verification recovery, net48 acceptance, and unsafe reference-cache advice.
+  The free harness validates their structure; semantic model runs are separate.
+
+### Fixed
+
+- Correct view terminology to `savedquery`, qualify managed-layer editing,
+  and document complete view payloads, related-column identities, intended
+  draft verification, partial-write inspection, and scoped publication.
+- Explain the CLI maintenance candidate's `net48` package acceptance,
+  supported-framework and signing requirements for loose assemblies, package
+  identity validation, and protected reference-cache recovery.
+- Document the bounded Timeline FormXML validation correction without
+  promising support for arbitrary unknown control parameters.
+
+This release is in preparation. Candidate capture provenance and final
+public-artifact recapture are recorded separately; no package publication is
+implied by these manifest version changes.
+
 ## [0.1.1] - 2026-06-17
 
 Re-captured against **PPDS CLI 1.2.0 stable** (previously 1.2.0-rc.6). The

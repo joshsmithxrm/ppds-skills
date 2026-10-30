@@ -3,8 +3,8 @@ name: ppds-metadata
 description: Browse and author Dataverse schema with PPDS — list entities/tables, inspect attributes/columns and relationships, create or update tables, columns, relationships, alternate keys, and global choices/option sets, compare schemas across environments, and adjust views and forms. Use when the user wants to know what columns or relationships an entity has, create or modify a table or column, manage option sets or keys, diff schema between environments, or edit a view or form definition. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.2.0"
-  ppds_mcp_version_tested: "1.0.0"
+  ppds_cli_version_tested: "1.4.2"
+  ppds_mcp_version_tested: "1.2.2"
 ---
 
 # PPDS Metadata — schema as a first-class surface
@@ -70,9 +70,16 @@ Use this before solution import to spot drift between source and target.
 
 Saved queries (views) and system forms are editable from the CLI — column
 layout, sort, filter, raw FetchXML on views; tabs/sections/fields on forms.
-These write **systemquery/systemform** records: unmanaged-layer mutations,
-so confirm the environment first, and managed components will refuse edits
-(`View.ManagedComponentNotEditable`).
+These write **savedquery/systemform** records. Confirm the profile and
+environment first. A managed view can accept an unmanaged-layer edit when its
+managed properties allow it; `View.ManagedComponentNotEditable` reports a
+rejected write, not a universal ban on managed components.
+
+For the CLI 1.4.2 maintenance candidate's view projections, qualified related
+columns, draft verification, app selections, and Timeline fix, read
+[references/metadata-editing.md](references/metadata-editing.md). Inspect the
+draft before retrying a verification or partial-write error; a failed command
+does not prove that no write occurred. Publish only the intended table/app.
 
 ```bash
 ppds views list --entity account
@@ -87,7 +94,7 @@ ppds forms list --entity account
 | `ppds metadata list-entities` | `ppds metadata entities` |
 | `ppds metadata entity account --attributes` | `ppds metadata attributes account` |
 | `ppds metadata create-table` | `ppds metadata entity create ...` (check `--help` for flags) |
-| Editing managed views/forms | edit in the unmanaged source environment instead |
+| Assuming every managed view rejects edits | check managed properties; inspect any draft change before publishing |
 | Forgetting publish | metadata edits need `ppds metadata publish <names>` (or `ppds publish`) to take effect in apps |
 
 ## Skill boundaries

@@ -254,6 +254,58 @@
           "priority": "P2"
         }
       ]
+    },
+    {
+      "id": "managed-view-verification-recovery",
+      "priority": "P1",
+      "prompt": "Using the CLI 1.4.2 maintenance candidate, I edited a managed account view and got View.VerificationFailed. Should I repeat the edit and publish everything?",
+      "assertions": [
+        {
+          "type": "contains",
+          "scope": "all",
+          "all": [
+            "ppds views get",
+            "--unpublished"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Explains that a managed view can accept an unmanaged-layer edit when managed properties allow it, that verification failure can follow an applied write, and inspects the intended draft before retrying or scoped publication. Does not assume the write was rolled back or recommend publishing all customizations.",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "id": "create-view-complete-payload",
+      "priority": "P1",
+      "prompt": "In our reviewed dev environment, prepare a new account view showing name and telephone1 with the CLI 1.4.2 maintenance candidate. Give me the payload for review; do not send it yet.",
+      "assertions": [
+        {
+          "type": "contains",
+          "scope": "all",
+          "all": [
+            "savedqueries",
+            "fetchxml",
+            "layoutxml",
+            "telephone1"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "not_contains",
+          "scope": "commands",
+          "any": [
+            "ppds views create"
+          ],
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Prepares a savedquery payload containing returnedtypecode, querytype, FetchXML projecting both visible columns and the primary key, and layout XML with matching cells and a valid table ObjectTypeCode. Keeps the write pending review rather than claiming to execute it.",
+          "priority": "P1"
+        }
+      ]
     }
   ]
 }

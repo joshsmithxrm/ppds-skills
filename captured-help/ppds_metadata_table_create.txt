@@ -19,6 +19,6 @@ Options:
   -v, --verbose                              Show detailed output including debug messages
   --debug                                    Show trace-level diagnostic output
   --correlation-id <correlation-id>          Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>        Output format [default: Text]
+  -f, --output-format <Text|Json>            Output format [default: Text]
   -?, -h, --help                             Show help and usage information
 

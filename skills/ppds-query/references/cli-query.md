@@ -1,9 +1,9 @@
 # `ppds query` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.2. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.2**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds query`
 
@@ -37,14 +37,14 @@ Arguments:
   <sql>  SQL query to explain
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds query fetch`
@@ -72,7 +72,7 @@ Options:
   -v, --verbose                        Show detailed output including debug messages
   --debug                              Show trace-level diagnostic output
   --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -f, --output-format <Text|Json|Csv>  Output format [default: Text]
   -?, -h, --help                       Show help and usage information
 ```
 
@@ -127,7 +127,7 @@ Options:
   -v, --verbose                        Show detailed output including debug messages
   --debug                              Show trace-level diagnostic output
   --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -f, --output-format <Text|Json|Csv>  Output format [default: Text]
   -?, -h, --help                       Show help and usage information
 ```
 
@@ -141,15 +141,15 @@ Usage:
   ppds query history clear [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -f, --force                          Skip confirmation prompt
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -f, --force                        Skip confirmation prompt
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds query history delete`
@@ -165,14 +165,14 @@ Arguments:
   <id>  The history entry ID to delete
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds query history execute`
@@ -195,7 +195,7 @@ Options:
   -v, --verbose                        Show detailed output including debug messages
   --debug                              Show trace-level diagnostic output
   --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
+  -f, --output-format <Text|Json|Csv>  Output format [default: Text]
   -?, -h, --help                       Show help and usage information
 ```
 
@@ -212,14 +212,14 @@ Arguments:
   <id>  The history entry ID to retrieve
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds query history list`
@@ -232,15 +232,15 @@ Usage:
   ppds query history list [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -l, --limit <limit>                  Maximum number of entries to return [default: 20]
-  --filter <filter>                    Filter queries by substring match (case-insensitive)
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -l, --limit <limit>                Maximum number of entries to return [default: 20]
+  --filter <filter>                  Filter queries by substring match (case-insensitive)
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 

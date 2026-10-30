@@ -19,7 +19,7 @@ Options:
   --analyze                              Analyze mapping without loading data (preview which columns match)
   -p, --profile <profile>                Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
   -env, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -o, --output-format <Csv|Json|Text>    Output format [default: Text]
+  -o, --output-format <Text|Json>        Output format [default: Text]
   -v, --verbose                          Enable verbose logging output
   --debug                                Enable diagnostic logging output
   -?, -h, --help                         Show help and usage information

@@ -1,0 +1,15 @@
+{
+  "status": "unpublished-stable-version-simulation",
+  "repository": "https://github.com/joshsmithxrm/power-platform-developer-suite",
+  "commit": "ce615d8046ea23fa9df0343cb9b23e8ad9027b9c",
+  "runtime": "net10.0 framework-dependent artifacts from candidate owner: disposable clone with local-only simulated release tags and no remote; no public release",
+  "cli_version": "1.4.2+ce615d8046ea23fa9df0343cb9b23e8ad9027b9c",
+  "mcp_version": "1.2.2",
+  "binary_sha256": {
+    "ppds.dll": "378d55099f8512b7f75b13c1f47ab0f2aeafd5a1954eee6c6bbe269cbd0a5c35",
+    "ppds-mcp-server.dll": "cb0d72aa82fd082e5ec4521b90439ffd00865b0ff2de8696c26ff8195fb83a2e"
+  },
+  "capture": "Existing capture scripts, with subprocess executable resolution pinned to dotnet plus the named candidate DLL. Logical command names and captured output are unchanged.",
+  "isolation": "Empty PPDS_CONFIG_DIR; inherited PPDS/DATAVERSE/POWERPLATFORM/AZURE variables removed. Only CLI --version/--help and MCP initialize/tools/list; no tools/call or Dataverse operations.",
+  "remaining": "Re-capture from public CLI 1.4.2 / MCP 1.2.2 after publication; simulated stable version strings do not establish public availability."
+}
