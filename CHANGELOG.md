@@ -20,8 +20,12 @@ skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
 
 ### Fixed
 
-- Pin Linux static checks to Ubuntu 24.04, which has setup-python artifacts
+- Pin Linux static checks, release recapture, and opt-in live evals to Ubuntu
+  24.04, which has setup-python artifacts
   for the documented Python 3.8 floor; Ubuntu 26.04 setup fails before evals.
+- Preserve required static-check names independently of the runner image.
+- Include candidate provenance in the core skill's references so copy-only
+  installs retain it; reject relative links outside the installed skills tree.
 - Correct view terminology to `savedquery`, qualify managed-layer editing,
   and document complete view payloads, related-column identities, intended
   draft verification, partial-write inspection, and scoped publication.
@@ -72,5 +76,6 @@ surface (flag tables captured at 1.2.0-rc.6) and PPDS.Mcp server 1.0.0.
 - `captured-help/` verbatim CLI/MCP surface, the `evals/check_skills.py` static
   authoring gate, and the `evals/live/` behavioral eval suite.
 
+[0.1.2]: https://github.com/joshsmithxrm/ppds-skills/compare/v0.1.1...codex/maintenance-skills-20261029
 [0.1.1]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.1
 [0.1.0]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.0

@@ -18,7 +18,7 @@ generates them verbatim from the selected CLI build:
   at candidate 1.4.2) into `captured-help/*.txt` + `manifest.json`.
 - `tools/capture_mcp_tools.py` records the MCP server's actual `tools/list`
   response (41 tools at candidate 1.2.2).
-- `validation/candidate-provenance.json` records the exact source commit and
+- `skills/ppds-core/references/candidate-provenance.json` records the exact source commit and
   binary hashes. These captures come from a local stable-version simulation, not public packages.
 - `tools/generate_flag_tables.py` embeds those captures **verbatim** into
   `skills/*/references/cli-*.md` and `mcp-tools.md`.

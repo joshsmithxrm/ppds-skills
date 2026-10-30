@@ -40,7 +40,7 @@ This branch prepares skills **0.1.2** against unpublished CLI **1.4.2**
 and MCP **1.2.2** from candidate commit
 `6fec5a6909900b5356defdef3eea893fdaece685` (271 CLI command nodes,
 41 MCP tools). The exact versions are in each skill's frontmatter
-and enforced by the eval suite. [Capture provenance](validation/candidate-provenance.json)
+and enforced by the eval suite. [Capture provenance](skills/ppds-core/references/candidate-provenance.json)
 records the binary hashes and isolated offline procedure.
 
 These candidate builds are not public releases. Re-capture from public CLI
@@ -72,6 +72,7 @@ Or without the plugin system, copy the skill directories:
 
 ```bash
 git clone https://github.com/joshsmithxrm/ppds-skills
+mkdir -p ~/.claude/skills
 cp -r ppds-skills/skills/* ~/.claude/skills/          # personal, all projects
 # or into a repo:  cp -r ppds-skills/skills/* <your-repo>/.claude/skills/
 ```
@@ -88,6 +89,10 @@ mkdir -p ~/.copilot/skills && cp -r ppds-skills/skills/* ~/.copilot/skills/
 
 Then in a Copilot session: `/skills list` should show the seven `ppds-*`
 skills (`/skills reload` after copying mid-session).
+
+Copy all seven folders, including their `references/` files. The core skill
+contains the capture provenance, so it remains available after a copy-only
+installation; the other skills link to core and to one another.
 
 ## Smoke test
 

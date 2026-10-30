@@ -22,7 +22,7 @@ dotnet tool install -g PPDS.Mcp   # MCP server: `ppds-mcp-server`
 Verify: `ppds --version`. This branch captures unpublished candidate
 **1.4.2** from a local release simulation; install commands select public tools.
 If the installed version differs, prefer live `--help`. See
-[candidate provenance](../../validation/candidate-provenance.json); stable
+[candidate provenance](references/candidate-provenance.json); stable
 CLI 1.4.2 / MCP 1.2.2 recapture remains pending publication.
 
 ## Surface routing (applies to every ppds-* skill)
