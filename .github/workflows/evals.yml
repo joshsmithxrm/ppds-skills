@@ -19,12 +19,18 @@ permissions:
 
 jobs:
   static-checks:
+    # Preserve the required status identities independently of runner versions.
+    name: static-checks (${{ matrix.check_name }})
     strategy:
       fail-fast: false
       matrix:
         # setup-python provides the documented Python 3.8 floor on 24.04,
         # but not on 26.04 (now selected by ubuntu-latest).
-        os: [ubuntu-24.04, windows-latest]
+        include:
+          - os: ubuntu-24.04
+            check_name: ubuntu-latest
+          - os: windows-latest
+            check_name: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
