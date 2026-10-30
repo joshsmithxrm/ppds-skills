@@ -20,6 +20,8 @@ skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
 
 ### Fixed
 
+- Pin Linux static checks to Ubuntu 24.04, which has setup-python artifacts
+  for the documented Python 3.8 floor; Ubuntu 26.04 setup fails before evals.
 - Correct view terminology to `savedquery`, qualify managed-layer editing,
   and document complete view payloads, related-column identities, intended
   draft verification, partial-write inspection, and scoped publication.
