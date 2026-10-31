@@ -1,9 +1,9 @@
 # `ppds service-endpoints` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.2. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.2**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds service-endpoints`
 
@@ -38,14 +38,14 @@ Arguments:
   <name-or-id>  Service endpoint name or GUID
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds service-endpoints list`
@@ -58,14 +58,14 @@ Usage:
   ppds service-endpoints list [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds service-endpoints register`
@@ -100,15 +100,15 @@ Arguments:
   <name-or-id>  Service endpoint name or GUID
 
 Options:
-  -f, --force                          Force cascade delete of dependent step registrations
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -f, --force                        Force cascade delete of dependent step registrations
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds service-endpoints update`
@@ -124,19 +124,19 @@ Arguments:
   <name-or-id>  Service endpoint name or GUID
 
 Options:
-  --name <name>                        New display name for the endpoint
-  --description <description>          New description for the endpoint
-  --url <url>                          New webhook URL (webhooks only)
-  --auth-type <auth-type>              New authentication type
-  --auth-value <auth-value>            New auth secret value
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --name <name>                      New display name for the endpoint
+  --description <description>        New description for the endpoint
+  --url <url>                        New webhook URL (webhooks only)
+  --auth-type <auth-type>            New authentication type
+  --auth-value <auth-value>          New auth secret value
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds service-endpoints register eventhub`
@@ -152,18 +152,18 @@ Arguments:
   <name>  Unique display name for the endpoint
 
 Options:
-  --namespace <namespace>              [Required] Service Bus namespace address (e.g. sb://myns.servicebus.windows.net)
-  --path <path>                        [Required] EventHub name
-  --sas-key-name <sas-key-name>        [Required] SAS key name
-  --sas-key <sas-key>                  [Required] SAS key value (exactly 44 characters)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --namespace <namespace>            [Required] Service Bus namespace address (e.g. sb://myns.servicebus.windows.net)
+  --path <path>                      [Required] EventHub name
+  --sas-key-name <sas-key-name>      [Required] SAS key name
+  --sas-key <sas-key>                [Required] SAS key value (exactly 44 characters)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds service-endpoints register queue`
@@ -179,18 +179,18 @@ Arguments:
   <name>  Unique display name for the endpoint
 
 Options:
-  --namespace <namespace>              [Required] Service Bus namespace address (e.g. sb://myns.servicebus.windows.net)
-  --path <path>                        [Required] Queue name
-  --sas-key-name <sas-key-name>        [Required] SAS key name
-  --sas-key <sas-key>                  [Required] SAS key value (exactly 44 characters)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --namespace <namespace>            [Required] Service Bus namespace address (e.g. sb://myns.servicebus.windows.net)
+  --path <path>                      [Required] Queue name
+  --sas-key-name <sas-key-name>      [Required] SAS key name
+  --sas-key <sas-key>                [Required] SAS key value (exactly 44 characters)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds service-endpoints register topic`
@@ -206,18 +206,18 @@ Arguments:
   <name>  Unique display name for the endpoint
 
 Options:
-  --namespace <namespace>              [Required] Service Bus namespace address (e.g. sb://myns.servicebus.windows.net)
-  --path <path>                        [Required] Topic name
-  --sas-key-name <sas-key-name>        [Required] SAS key name
-  --sas-key <sas-key>                  [Required] SAS key value (exactly 44 characters)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --namespace <namespace>            [Required] Service Bus namespace address (e.g. sb://myns.servicebus.windows.net)
+  --path <path>                      [Required] Topic name
+  --sas-key-name <sas-key-name>      [Required] SAS key name
+  --sas-key <sas-key>                [Required] SAS key value (exactly 44 characters)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds service-endpoints register webhook`
@@ -233,17 +233,17 @@ Arguments:
   <name>  Unique display name for the webhook endpoint
 
 Options:
-  --url <url>                          [Required] Absolute HTTPS/HTTP URL of the webhook receiver
-  --auth-type <auth-type>              [Required] Authentication type: WebhookKey, HttpHeader, or HttpQueryString
-  --auth-key <auth-key>                Auth key name (for HttpHeader or HttpQueryString auth types)
-  --auth-value <auth-value>            Auth secret value. For WebhookKey: plain string. For HttpHeader/HttpQueryString: name=value pairs.
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --url <url>                        [Required] Absolute HTTPS/HTTP URL of the webhook receiver
+  --auth-type <auth-type>            [Required] Authentication type: WebhookKey, HttpHeader, or HttpQueryString
+  --auth-key <auth-key>              Auth key name (for HttpHeader or HttpQueryString auth types)
+  --auth-value <auth-value>          Auth secret value. For WebhookKey: plain string. For HttpHeader/HttpQueryString: name=value pairs.
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 

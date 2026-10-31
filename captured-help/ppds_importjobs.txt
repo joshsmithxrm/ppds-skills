@@ -2,7 +2,7 @@ Description:
   Monitor solution import jobs: list, get, data, wait
 
 Usage:
-  ppds importjobs [command] [options]
+  ppds import-jobs [command] [options]
 
 Options:
   -?, -h, --help  Show help and usage information

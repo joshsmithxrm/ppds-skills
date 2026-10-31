@@ -13,7 +13,7 @@ Options:
   --batch-size <batch-size>                            Records per API request (all records are exported; this controls request size) [default: 5000]
   --page-parallel <page-parallel>                      Partitions per entity for page-level parallelism (0=auto, 1=disabled) [default: 0]
   --page-parallel-threshold <page-parallel-threshold>  Minimum records before page-level parallelism activates [default: 5000]
-  -f, --output-format <Csv|Json|Text>                  Output format [default: Text]
+  -f, --output-format <Text|Json>                      Output format [default: Text]
   --format <Cmt|Json>                                  Data export format: cmt (CMT-compatible XML ZIP) or json (PPDS-native JSON) [default: Cmt]
   -v, --verbose                                        Enable verbose logging output
   --debug                                              Enable diagnostic logging output

@@ -5,7 +5,7 @@ Usage:
   ppds env list [options]
 
 Options:
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -fl, --filter <filter>               Filter environments by name, URL, or ID (case-insensitive)
-  -?, -h, --help                       Show help and usage information
+  -f, --output-format <Text|Json>  Output format [default: Text]
+  -fl, --filter <filter>           Filter environments by name, URL, or ID (case-insensitive)
+  -?, -h, --help                   Show help and usage information
 

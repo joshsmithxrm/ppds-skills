@@ -36,10 +36,13 @@ errors while these skills were being authored.
 | `ppds-data` | Schema-driven bulk export/import/copy, CSV load, bulk update/delete/truncate, user mapping |
 | `ppds-webresources` | Pull/edit/push/publish loop with conflict detection |
 
-These skills target the **1.2.0** CLI surface (flag tables captured at
-1.2.0) and **PPDS.Mcp server 1.0.0**. The exact tested versions live in
-each skill's frontmatter (`metadata.ppds_cli_version_tested` /
-`ppds_mcp_version_tested`) and are enforced by the eval suite.
+Skills **0.1.2** captures the published CLI **1.4.2** and MCP **1.2.2**
+packages from release commit `60dbd696d28c79447fe6490924a462c91f9b2d35`
+(271 CLI command nodes, 41 MCP tools). The exact versions are in each skill's
+frontmatter and enforced by the eval suite.
+[Capture provenance](skills/ppds-core/references/candidate-provenance.json)
+records public package URLs, package and installed binary hashes, the verified
+source commit, and the isolated offline recapture procedure.
 
 ## Prerequisite
 
@@ -48,8 +51,8 @@ dotnet tool install -g PPDS.Cli    # the `ppds` CLI
 dotnet tool install -g PPDS.Mcp    # optional: `ppds-mcp-server`
 ```
 
-Update later with `dotnet tool update -g PPDS.Cli`. These skills target the
-**1.2.0** surface, which now ships as a stable release.
+Update later with `dotnet tool update -g PPDS.Cli`. These commands install the
+published tools. Prefer the installed tool's live `--help` when versions differ.
 
 ## Install — Claude Code
 
@@ -64,6 +67,7 @@ Or without the plugin system, copy the skill directories:
 
 ```bash
 git clone https://github.com/joshsmithxrm/ppds-skills
+mkdir -p ~/.claude/skills
 cp -r ppds-skills/skills/* ~/.claude/skills/          # personal, all projects
 # or into a repo:  cp -r ppds-skills/skills/* <your-repo>/.claude/skills/
 ```
@@ -80,6 +84,10 @@ mkdir -p ~/.copilot/skills && cp -r ppds-skills/skills/* ~/.copilot/skills/
 
 Then in a Copilot session: `/skills list` should show the seven `ppds-*`
 skills (`/skills reload` after copying mid-session).
+
+Copy all seven folders, including their `references/` files. The core skill
+contains the capture provenance, so it remains available after a copy-only
+installation; the other skills link to core and to one another.
 
 ## Smoke test
 

@@ -2,7 +2,7 @@ Description:
   Query and manage plugin trace logs: list, get, related, timeline, settings, delete
 
 Usage:
-  ppds plugintraces [command] [options]
+  ppds plugin-traces [command] [options]
 
 Options:
   -?, -h, --help  Show help and usage information
