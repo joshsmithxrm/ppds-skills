@@ -5,15 +5,16 @@ All notable changes to this package are documented here. The format follows
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html): MAJOR =
 skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
 
-## [0.1.2] - Unreleased
+## [0.1.2] - 2026-10-30
 
 ### Changed
 
-- Re-captured 271 CLI command nodes and 41 MCP tools from final-main commit
-  `d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6`: CLI `1.4.2` and
-  MCP `1.2.2`. Regenerated references and all seven tested-version
-  pins from actual output of a local stable-version simulation; retained
-  source/binary provenance. These are not captures of public packages.
+- Re-captured 271 CLI command nodes and 41 MCP tools from public NuGet
+  CLI `1.4.2` and MCP `1.2.2`, release commit
+  `60dbd696d28c79447fe6490924a462c91f9b2d35`. Regenerated references
+  and verified all seven tested-version pins using the real public tools;
+  retained package URLs, package/binary hashes, and source provenance.
+  Help bodies and MCP names/descriptions match the reviewed simulation.
 - Added four regression scenarios for complete view payloads, managed-view
   verification recovery, net48 acceptance, and unsafe reference-cache advice.
   The free harness validates their structure; semantic model runs are separate.
@@ -24,20 +25,20 @@ skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
   24.04, which has setup-python artifacts
   for the documented Python 3.8 floor; Ubuntu 26.04 setup fails before evals.
 - Preserve required static-check names independently of the runner image.
-- Include candidate provenance in the core skill's references so copy-only
+- Include public capture provenance in the core skill's references so copy-only
   installs retain it; reject relative links outside the installed skills tree.
 - Correct view terminology to `savedquery`, qualify managed-layer editing,
   and document complete view payloads, related-column identities, intended
   draft verification, partial-write inspection, and scoped publication.
-- Explain the CLI maintenance candidate's `net48` package acceptance,
+- Explain the CLI maintenance release's `net48` package acceptance,
   supported-framework and signing requirements for loose assemblies, package
   identity validation, and protected reference-cache recovery.
 - Document the bounded Timeline FormXML validation correction without
   promising support for arbitrary unknown control parameters.
 
-This release is in preparation. Candidate capture provenance and final
-public-artifact recapture are recorded separately; no package publication is
-implied by these manifest version changes.
+The full manual public-artifact recapture ran at equal semantic versions.
+It used only CLI help/version and MCP initialize/tools/list in an empty
+configuration; no paid evaluations or Dataverse operations were performed.
 
 ## [0.1.1] - 2026-06-17
 
@@ -76,6 +77,6 @@ surface (flag tables captured at 1.2.0-rc.6) and PPDS.Mcp server 1.0.0.
 - `captured-help/` verbatim CLI/MCP surface, the `evals/check_skills.py` static
   authoring gate, and the `evals/live/` behavioral eval suite.
 
-[0.1.2]: https://github.com/joshsmithxrm/ppds-skills/compare/v0.1.1...codex/maintenance-skills-20261029
+[0.1.2]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.2
 [0.1.1]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.1
 [0.1.0]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.0

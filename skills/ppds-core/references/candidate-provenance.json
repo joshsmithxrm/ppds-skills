@@ -1,25 +1,39 @@
 {
-  "status": "unpublished-stable-version-simulation",
+  "status": "verified-public-package-capture",
   "repository": "https://github.com/joshsmithxrm/power-platform-developer-suite",
-  "commit": "d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6",
-  "source_tree": "bf240e8c3afb1cd0a1ce37fdd1c6bb3d187002b5",
-  "runtime": "net10.0 framework-dependent artifacts in two complete publish directories from the final-main local stable-version simulation; no public release",
-  "cli_version": "1.4.2+d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6",
+  "commit": "60dbd696d28c79447fe6490924a462c91f9b2d35",
+  "source_tree": "8f74bb09ee71ce2193a2be27ffb31bef8950b789",
+  "runtime": "Public NuGet .NET global tools installed into an isolated tool directory; no source-build substitution.",
+  "cli_version": "1.4.2+60dbd696d28c79447fe6490924a462c91f9b2d35",
   "mcp_version": "1.2.2",
+  "packages": [
+    {
+      "id": "PPDS.Cli",
+      "version": "1.4.2",
+      "url": "https://api.nuget.org/v3-flatcontainer/ppds.cli/1.4.2/ppds.cli.1.4.2.nupkg",
+      "sha256": "d16f876bc018c4b2e180b46a931e1c4744f6800de2e7e35faf415ccc45772755",
+      "nuspec_repository_commit": "60dbd696d28c79447fe6490924a462c91f9b2d35"
+    },
+    {
+      "id": "PPDS.Mcp",
+      "version": "1.2.2",
+      "url": "https://api.nuget.org/v3-flatcontainer/ppds.mcp/1.2.2/ppds.mcp.1.2.2.nupkg",
+      "sha256": "d1960c0555ec1c7a11222ea78eb525874f6816ef998e3280970bae2f474c11e9",
+      "nuspec_repository_commit": "60dbd696d28c79447fe6490924a462c91f9b2d35"
+    }
+  ],
   "binary_sha256": {
-    "ppds.dll": "c0a31a0b3d07b6dbc57036ebba1fbb8700c8726ae0217469fa660a1d10e32495",
-    "ppds-mcp-server.dll": "459f8aa7ece3b0ef991542733273bc4f808afa6b9d6959465904ec4ed6b2296e"
+    "net9.0/ppds.dll": "2e8e23144bd785a8112fa248edbce13273292af6a81f067b251ba6aaa6e03317",
+    "net8.0/ppds.dll": "6437fc32620ed334067d534bdd95cec53f14ce43e794bf0603b50fffa9e01be8",
+    "net10.0/ppds.dll": "e4a5e85442c27a80594ce6dddea863c2d67caf67c71e8e9b357bd03417a27ad5",
+    "net9.0/ppds-mcp-server.dll": "e54b8e65a5913eab3895603e6b7b69975812e97e80b1a3844ee012ee51400260",
+    "net8.0/ppds-mcp-server.dll": "cede03a056bc3bc19903f2d5abd892a4824d7e460443e2af1cb406488a831b36",
+    "net10.0/ppds-mcp-server.dll": "26e90b9fa8849b4db412ebf8c717cd668c3be6a43b864fdd39bd99a7d0d314c7"
   },
-  "capture": "Existing capture scripts with executable resolution pinned to dotnet plus the verified CLI/MCP DLL in its respective complete publish directory. MCP capture retains names and descriptions, not full input schemas.",
-  "isolation": "Empty PPDS_CONFIG_DIR; inherited PPDS/DATAVERSE/POWERPLATFORM/AZURE variables removed. Only CLI --version/--help and MCP initialize/tools/list; no tools/call or Dataverse operations.",
-  "remaining": "Re-capture from public CLI 1.4.2 / MCP 1.2.2 after publication; simulated stable version strings do not establish public availability.",
-  "artifact_manifest_verification": {
-    "file_count": 468,
-    "manifest_sha256": "b2135aa1e4697bd2b39207dfe9484f2909822847e934544c56eeebb2573860fe",
-    "result": "All 468 paths and SHA256 values matched before and after copying the two complete publish directories. Measured source and copy lengths matched; the supplied manifest contains hashes, not lengths."
-  },
+  "capture": "Full tools/recapture.py at equal semantic versions: 271 CLI command nodes and 41 MCP tool names/descriptions. MCP input schemas were verified separately and are not retained by this capture script.",
+  "isolation": "Empty PPDS_CONFIG_DIR; inherited PPDS/DATAVERSE/POWERPLATFORM/AZURE variables removed. CLI --version/--help and MCP initialize/tools/list only; no tools/call or Dataverse operations.",
   "recapture_comparison": {
-    "previous_source_commit": "6fec5a6909900b5356defdef3eea893fdaece685",
+    "previous_source_commit": "d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6",
     "changed_files": [
       "captured-help/manifest.json"
     ],
@@ -28,12 +42,11 @@
     ],
     "command_nodes": 271,
     "mcp_tools": 41,
-    "comparison_method": "Fresh real captures and generated references compared with the previous working tree, with newline normalization.",
-    "examined_capture_and_reference_files": 303,
-    "examined_file_breakdown": {
-      "captured_help_files": 273,
-      "generated_reference_markdown": 24,
-      "curated_reference_markdown": 6
-    }
+    "comparison_method": "Fresh captures and generated references compared with simulation using newline normalization; help bodies and MCP names/descriptions unchanged."
+  },
+  "previous_simulation_record": {
+    "commit": "d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6",
+    "sha256": "6a120cf1d39d11c0f8d1c8aead464fae80b8b29f24c7927885e152f09942df91",
+    "retained_in": "Release execution evidence; the earlier simulation is not public-package evidence."
   }
 }

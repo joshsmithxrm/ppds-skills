@@ -36,17 +36,13 @@ errors while these skills were being authored.
 | `ppds-data` | Schema-driven bulk export/import/copy, CSV load, bulk update/delete/truncate, user mapping |
 | `ppds-webresources` | Pull/edit/push/publish loop with conflict detection |
 
-This branch prepares skills **0.1.2** against unpublished CLI **1.4.2**
-and MCP **1.2.2** from final-main commit
-`d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6` (271 CLI command nodes,
-41 MCP tools). The exact versions are in each skill's frontmatter
-and enforced by the eval suite. [Capture provenance](skills/ppds-core/references/candidate-provenance.json)
-records the binary hashes and isolated offline procedure.
-
-These candidate builds are not public releases. Re-capture from public CLI
-1.4.2 and MCP 1.2.2 after publication before treating this as stable-release
-coverage. The version strings come from a local stable-version simulation;
-they do not establish public availability.
+Skills **0.1.2** captures the published CLI **1.4.2** and MCP **1.2.2**
+packages from release commit `60dbd696d28c79447fe6490924a462c91f9b2d35`
+(271 CLI command nodes, 41 MCP tools). The exact versions are in each skill's
+frontmatter and enforced by the eval suite.
+[Capture provenance](skills/ppds-core/references/candidate-provenance.json)
+records public package URLs, package and installed binary hashes, the verified
+source commit, and the isolated offline recapture procedure.
 
 ## Prerequisite
 
@@ -56,8 +52,7 @@ dotnet tool install -g PPDS.Mcp    # optional: `ppds-mcp-server`
 ```
 
 Update later with `dotnet tool update -g PPDS.Cli`. These commands install the
-published tools; they do not install the unpublished candidate captured on
-this branch. Prefer the installed tool's live `--help` when versions differ.
+published tools. Prefer the installed tool's live `--help` when versions differ.
 
 ## Install — Claude Code
 

@@ -19,11 +19,11 @@ dotnet tool install -g PPDS.Cli   # CLI: `ppds`   (update: dotnet tool update -g
 dotnet tool install -g PPDS.Mcp   # MCP server: `ppds-mcp-server`
 ```
 
-Verify: `ppds --version`. This branch captures unpublished candidate
-**1.4.2** from a local release simulation; install commands select public tools.
+Verify: `ppds --version`. These skills capture published CLI **1.4.2**
+and MCP **1.2.2** from independently verified public NuGet packages.
 If the installed version differs, prefer live `--help`. See
-[candidate provenance](references/candidate-provenance.json); stable
-CLI 1.4.2 / MCP 1.2.2 recapture remains pending publication.
+[public capture provenance](references/candidate-provenance.json) for package
+URLs, hashes, the release commit, and the offline capture procedure.
 
 ## Surface routing (applies to every ppds-* skill)
 
@@ -37,7 +37,7 @@ instead when either holds:
    [references/mcp-server.md](references/mcp-server.md).
 
 Where an MCP tool mirrors a CLI command this package names it, e.g.
-`ppds env list` ↔ `ppds_env_list`. The captured MCP candidate (1.2.2) exposes 41
+`ppds env list` ↔ `ppds_env_list`. The captured public MCP server (1.2.2) exposes 41
 tools — the authoritative list is
 [references/mcp-tools.md](references/mcp-tools.md). The CLI surface is wider;
 anything without an MCP tool routes to the CLI.
