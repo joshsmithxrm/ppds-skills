@@ -12,7 +12,7 @@ Prepared as Skills 0.2.0; no publication is implied by this branch.
 ### Added
 
 - Capture 273 CLI command nodes and 45 MCP tools from source candidate
-  `6932dcd52a38c5fe65bff19e7ce7d1c2d5709304`, with exact binary hashes and
+  `a9761537c4ad5d7f2276fd593b5924074484421c`, with exact binary hashes and
   offline provenance. These captures do not claim public package availability.
 - Bounded MCP Main-form authoring: inspect a draft, add an existing field to an
   existing section, verify phase results, and explicitly publish the table.

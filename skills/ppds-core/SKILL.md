@@ -3,8 +3,8 @@ name: ppds-core
 description: Install, authenticate, and safely operate the Power Platform Developer Suite (PPDS) CLI and MCP server against Microsoft Dataverse — auth profiles, environment selection, the environment-safety model, and error interpretation. Use when the user wants to connect to Dataverse with PPDS, set up `ppds` or `ppds-mcp-server`, manage auth profiles or environments, decide between the PPDS CLI and MCP surfaces, or interpret a PPDS error or exit code. Load this skill first before any other ppds-* skill.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.4.3-alpha.0.8"
-  ppds_mcp_version_tested: "1.2.3-alpha.0.8"
+  ppds_cli_version_tested: "1.4.3-alpha.0.20"
+  ppds_mcp_version_tested: "1.2.3-alpha.0.20"
 ---
 
 # PPDS Core — connect, select, stay safe

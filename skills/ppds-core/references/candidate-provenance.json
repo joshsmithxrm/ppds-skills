@@ -1,19 +1,19 @@
 {
-  "status": "unpublished-local-source-candidate",
-  "source_commit": "6932dcd52a38c5fe65bff19e7ce7d1c2d5709304",
+  "status": "unpublished-feature-draft-candidate",
+  "source_commit": "a9761537c4ad5d7f2276fd593b5924074484421c",
   "build_configuration": "Release",
   "target_framework": "net8.0",
   "capture_platform": "Windows x64",
   "binaries": {
     "cli": {
       "path": "src/PPDS.Cli/bin/Release/net8.0/ppds.dll",
-      "version": "1.4.3-alpha.0.8+6932dcd52a38c5fe65bff19e7ce7d1c2d5709304",
-      "sha256": "88ae34ef7c002897d25c7843bac30716460e44b01619558f71551b89e5f54be1"
+      "version": "1.4.3-alpha.0.20+a9761537c4ad5d7f2276fd593b5924074484421c",
+      "sha256": "53f4ec4dc827b3ea557733d9b07b3eca49baff3fdc907cf119b4098765e37564"
     },
     "mcp": {
       "path": "src/PPDS.Mcp/bin/Release/net8.0/ppds-mcp-server.dll",
-      "version": "1.2.3-alpha.0.8+6932dcd52a38c5fe65bff19e7ce7d1c2d5709304",
-      "sha256": "b4b5f7cf8e44638dff349c965ccb7bdd102b6b5c3f841eef8b4d3a529aeb9b93"
+      "version": "1.2.3-alpha.0.20+a9761537c4ad5d7f2276fd593b5924074484421c",
+      "sha256": "f5454d3cf59aedd36ea3e8453696b8e4c4f722195701b2097d1f9d8995cba554"
     }
   },
   "publication_claim": false,
@@ -28,15 +28,16 @@
     "Run evals/check_skills.py with candidate PATH and freshness enabled; run evals/live/_selftest.py."
   ],
   "normalized_lf_sha256": {
-    "captured-help/manifest.json": "40e5bc0449f5014b82ba2fa7cc560d220b2c66ab721c1ddaa65cb39382790b7b",
-    "captured-help/mcp-tools.json": "14fddc5bd4a3b5fe25aed451dee427adec2bc25cd479f6cee4c32c3789255e43"
+    "captured-help/manifest.json": "3658a1a7ea2404a409df8181cb816f729233a8d481d5bfc8c3db27df8443fbcf",
+    "captured-help/mcp-tools.json": "b97bc7461d9efbc5f1564ede4205b5c8c0c347c51b81d92bf5d2abbc6c3a2cff"
   },
-  "full_protocol_tools_list_sha256": "9091e34ec6f0967df49d998515a1a01b5e64ec3f7dc62582753c920138d6be52",
+  "full_protocol_tools_list_sha256": "96478cb4d07ee7da33d846cce5da21794a92bf9bddfb311748fbaa8cb6edf20c",
   "validation": {
-    "static_gate": "passed for all seven skills",
-    "harness_selftest": "passed including four new scenarios",
+    "static_gate": "passed for all seven skills after final a976 recapture, including freshness and host quick validation",
+    "harness_selftest": "passed including four new scenarios after final a976 recapture",
     "paid_semantic_evals": "not run",
     "configuration_directory_after_capture": "empty"
   },
-  "prior_public_record": "Previous public-package provenance retained in the release review artifacts; prior released Skills version is 0.1.2."
+  "prior_public_record": "Previous public-package provenance retained in the release review artifacts; prior released Skills version is 0.1.2.",
+  "prior_candidate_record": "Historical 6932 captures and provenance retained in release-review artifacts under historical-capture-6932; source history remains in this branch."
 }
