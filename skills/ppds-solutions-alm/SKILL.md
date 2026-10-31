@@ -69,7 +69,7 @@ or a capped `--all --solution` batch. Read
 [captured flags](references/cli-flows.md). Preview first, inspect reference
 blockers, and retain the expected plan hash and explicit target acknowledgement.
 Already matching is `unchanged`; preserve partial/unknown outcomes and inspect
-before retrying. Import never activates flows implicitly. No MCP mutation tool
+before retrying. PPDS does not auto-run activation after import; inspect imported state. No MCP mutation tool
 is added for this workflow.
 
 ## Common mistakes (do not invent these)

@@ -38,7 +38,7 @@ call time:
 |------|--------|
 | `--read-only` | DML and other actual tool writes, including form save/publication, are rejected for the session. Reads and supported write-free previews still work. |
 | `--allowed-env <url>` | Allowlist for the `ppds_env_select` tool; repeat the flag for multiple environments. **If no `--allowed-env` is given, environment switching is disabled entirely** — the session stays locked to the startup environment. |
-| `--profile <name>` | Lock the session to a named auth profile (default: active profile at first tool call). |
+| `--profile <name>` | Lock the session to a named auth profile (default: active profile at server startup). Restart the server to capture a changed active profile. |
 | `--environment <url>` | Lock the session to an environment URL (default: the profile's selected environment). |
 
 Recommended default posture for agent sessions:
