@@ -1,6 +1,7 @@
 # ppds-mcp-server — setup and session safety flags
 
-Source of truth: released `PPDS.Mcp` 1.0.0 (NuGet) and its public README.
+Source of truth: the candidate source and binary identified in
+[capture provenance](candidate-provenance.json).
 The tool list lives in [mcp-tools.md](mcp-tools.md), captured from a live
 `tools/list` call — never cite a tool that is not in that file.
 
@@ -35,7 +36,7 @@ call time:
 
 | Flag | Effect |
 |------|--------|
-| `--read-only` | Every DML operation (INSERT / UPDATE / DELETE) is rejected for the whole session. SELECT and metadata reads still work. |
+| `--read-only` | DML and other actual tool writes, including form save/publication, are rejected for the session. Reads and supported write-free previews still work. |
 | `--allowed-env <url>` | Allowlist for the `ppds_env_select` tool; repeat the flag for multiple environments. **If no `--allowed-env` is given, environment switching is disabled entirely** — the session stays locked to the startup environment. |
 | `--profile <name>` | Lock the session to a named auth profile (default: active profile at first tool call). |
 | `--environment <url>` | Lock the session to an environment URL (default: the profile's selected environment). |
@@ -51,8 +52,9 @@ ppds-mcp-server --environment https://yourorg-dev.crm.dynamics.com \
   --allowed-env https://yourorg-dev.crm.dynamics.com
 ```
 
-Note: the server prints nothing when invoked with `--help` in 1.0.0 — the
-flags above come from the released source and README, both public.
+The startup flags above are verified against `McpSessionOptions` and
+`Program` in the pinned source. An allowlist permits target selection; it
+does not replace the form mutation's `confirmEnvironment` acknowledgement.
 
 ## Logging
 

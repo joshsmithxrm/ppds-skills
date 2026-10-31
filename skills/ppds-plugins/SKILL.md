@@ -3,8 +3,8 @@ name: ppds-plugins
 description: Register, deploy, and debug Dataverse plugins declaratively with PPDS — attribute-driven registration ([PluginStep]/[PluginImage]/[CustomApi]), the extract → diff → deploy loop, assembly management, Custom APIs, service endpoints, and plugin trace log debugging (list/get/timeline). Use when the user wants to register or deploy a plugin assembly, sync plugin steps from code, diagnose a plugin error or performance problem, read plugin trace logs, or manage Custom APIs. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.4.2"
-  ppds_mcp_version_tested: "1.2.2"
+  ppds_cli_version_tested: "1.4.3-alpha.0.8"
+  ppds_mcp_version_tested: "1.2.3-alpha.0.8"
 ---
 
 # PPDS Plugins — registration as code, traces as evidence
@@ -44,12 +44,15 @@ ppds plugins list --assembly MyPlugins
 ```
 
 For NuGet package framework selection, identity validation, and reference-cache
-troubleshooting in the CLI 1.4.2 maintenance candidate, read
+troubleshooting retained from the CLI 1.4.2 maintenance release, read
 [references/plugin-packages.md](references/plugin-packages.md). Keep the
 installed version and the candidate-only fixes distinct.
 
 Key facts:
 
+- Deployment errors retain earlier step failures even if cleanup later fails.
+  Diagnose both; inspect partial state before retrying. Cancelling diff stops
+  further drift reads/comparisons rather than continuing in the background.
 - `deploy` takes `--config registrations.json` (**required**) — it does not
   take an assembly path. `extract` is the step that reads the DLL.
 - `deploy --clean` also removes registrations in the environment that are

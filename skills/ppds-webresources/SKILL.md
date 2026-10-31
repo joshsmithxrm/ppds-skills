@@ -3,8 +3,8 @@ name: ppds-webresources
 description: Manage Dataverse web resources with PPDS — pull JavaScript/CSS/HTML/image web resources to a local folder with tracking metadata, edit locally, push changes back with conflict detection, and publish. Use when the user wants to download web resources for editing, sync local script changes to Dataverse, publish a web resource, or get its Maker portal URL. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.4.2"
-  ppds_mcp_version_tested: "1.2.2"
+  ppds_cli_version_tested: "1.4.3-alpha.0.8"
+  ppds_mcp_version_tested: "1.2.3-alpha.0.8"
 ---
 
 # PPDS Web Resources — pull, edit, push, publish
@@ -31,7 +31,7 @@ ppds webresources push ./webres --dry-run
 ppds webresources push ./webres --publish
 ```
 
-Key behaviors (verified against the released CLI):
+Key behaviors (check the captured candidate version against your installed CLI):
 
 - `pull` filters: `--solution`, `--type` (`text`, `image`, `data`, or a
   specific type like `js`, `css`, `html`, `png`), `--name` (partial match).
@@ -51,6 +51,10 @@ Key behaviors (verified against the released CLI):
   conflict detection — but these are the right tool for a one-off create/update.
 - Browse/read: `ppds webresources list "<name-pattern>"`,
   `ppds webresources get <name>`, `ppds webresources url <name>`.
+- Creation warns when the root publisher prefix is missing or mismatches the
+  supplied solution's publisher. Keep warnings from JSON and stderr; do not
+  rename automatically. Put the prefix before folders, e.g.
+  `contoso_scripts/app.js`. An unresolved solution/publisher remains an error.
 
 ## Common mistakes (do not invent these)
 
