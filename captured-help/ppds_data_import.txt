@@ -18,7 +18,7 @@ Options:
   --resolve-lookups                       Enable external lookup resolution (ID check, then name-based query)
   --skip-unresolved-lookups               Null unresolved lookups instead of failing the record [default: True] (requires --resolve-lookups)
   --impersonate-owners                    Preserve record ownership via CallerAADObjectId impersonation (requires --user-mapping)
-  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -f, --output-format <Text|Json>         Output format [default: Text]
   -v, --verbose                           Enable verbose logging output
   --debug                                 Enable diagnostic logging output
   --error-report <error-report>           Base path for output files (creates .errors.jsonl, .progress.log, .summary.json). Errors are streamed in real-time.

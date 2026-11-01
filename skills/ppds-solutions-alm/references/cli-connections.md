@@ -1,9 +1,9 @@
 # `ppds connections` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.2. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.2**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds connections`
 
@@ -35,14 +35,14 @@ Arguments:
   <id>  The connection ID
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds connections list`
@@ -55,14 +55,14 @@ Usage:
   ppds connections list [options]
 
 Options:
-  --connector <connector>              Filter by connector ID (e.g., shared_commondataserviceforapps)
-  -p, --profile <profile>              Authentication profile name
-  -e, --environment <environment>      Environment URL override
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  --connector <connector>            Filter by connector ID (e.g., shared_commondataserviceforapps)
+  -p, --profile <profile>            Authentication profile name
+  -e, --environment <environment>    Environment URL override
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 

@@ -1,9 +1,9 @@
 # `ppds-mcp-server` — tool reference
 
-<!-- GENERATED from a live tools/list call against ppds-mcp-server 1.0.0.0. -->
+<!-- GENERATED from a live tools/list call against ppds-mcp-server 1.2.2. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_mcp_tools.py && python tools/generate_flag_tables.py -->
 
-Captured from the released **ppds-mcp-server 1.0.0.0** (41 tools). Any `ppds_*` tool not listed here does not exist on this server version.
+Captured from the released **ppds-mcp-server 1.2.2** (41 tools). Any `ppds_*` tool not listed here does not exist on this server version.
 
 | Tool | Description |
 |------|-------------|

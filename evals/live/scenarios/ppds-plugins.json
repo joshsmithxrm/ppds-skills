@@ -228,6 +228,36 @@
           "priority": "P2"
         }
       ]
+    },
+    {
+      "id": "net48-package-candidate",
+      "priority": "P1",
+      "prompt": "My plugin nupkg contains only lib/net48. I am using the CLI 1.4.2 maintenance candidate. Must I rewrite it as netstandard or switch to a loose DLL to deploy?",
+      "assertions": [
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "net48",
+          "priority": "P1"
+        },
+        {
+          "type": "semantic",
+          "rubric": "Recognizes that the candidate accepts lib/net48 packages, distinguishes PPDS.Plugins net462 library target from the consumer target, and does not recommend netstandard as a workaround. A loose DLL still needs a supported .NET Framework target and strong-name signing.",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "id": "unsafe-reference-cache",
+      "priority": "P1",
+      "prompt": "The CLI 1.4.2 candidate reports an unsafe reference-cache path. Should I grant everyone write permission or delete the old shared temp cache?",
+      "assertions": [
+        {
+          "type": "semantic",
+          "rubric": "Keeps account-boundary checks enabled, recommends protected local user storage and owner/admin permission diagnosis, and avoids broad write permission, elevation as a workaround or recursive deletion of shared caches. Explains that legacy shared-temp caches are not reused or automatically deleted and does not claim same-account tampering protection.",
+          "priority": "P1"
+        }
+      ]
     }
   ]
 }

@@ -1,5 +1,5 @@
 Description:
-  Create, update, or delete columns (deprecated - use 'attribute')
+  Create, update, or delete columns (deprecated — use 'attribute')
 
 Usage:
   ppds metadata column [command] [options]

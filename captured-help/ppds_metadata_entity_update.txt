@@ -9,22 +9,22 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
-  --display-name <display-name>        Updated display name
-  --plural-name <plural-name>          Updated plural display name
-  --description <description>          Updated description
-  --icon-small <icon-small>            16x16 icon: web resource logical name (e.g. new_icons/myentity16.png). Use empty string to clear.
-  --icon-medium <icon-medium>          32x32 icon: web resource logical name. Use empty string to clear.
-  --icon-vector <icon-vector>          SVG vector icon: web resource logical name (primary icon in modern Dataverse). Use empty string to clear.
-  --dry-run                            Validate only, do not persist changes
-  --publish                            Publish the entity after the change
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  --display-name <display-name>      Updated display name
+  --plural-name <plural-name>        Updated plural display name
+  --description <description>        Updated description
+  --icon-small <icon-small>          16×16 icon: web resource logical name (e.g. new_icons/myentity16.png). Use empty string to clear.
+  --icon-medium <icon-medium>        32×32 icon: web resource logical name. Use empty string to clear.
+  --icon-vector <icon-vector>        SVG vector icon: web resource logical name (primary icon in modern Dataverse). Use empty string to clear.
+  --dry-run                          Validate only, do not persist changes
+  --publish                          Publish the entity after the change
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 

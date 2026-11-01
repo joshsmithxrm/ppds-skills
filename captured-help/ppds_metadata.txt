@@ -17,9 +17,9 @@ Commands:
   optionsets              List global option sets
   optionset <name>        Get details for or manage a global option set (choice)
   publish <names>         Publish entity metadata (alias for ppds publish --type entity)
-  table                   Create, update, or delete Dataverse tables (deprecated - use 'entity')
-  column                  Create, update, or delete columns (deprecated - use 'attribute')
+  table                   Create, update, or delete Dataverse tables (deprecated — use 'entity')
+  column                  Create, update, or delete columns (deprecated — use 'attribute')
   relationship            Create, update, or delete Dataverse relationships
-  choice                  Manage global choices/option sets (deprecated - use 'optionset')
+  choice                  Manage global choices/option sets (deprecated — use 'optionset')
   key                     Create, delete, or reactivate alternate keys on Dataverse tables
 
