@@ -1,5 +1,5 @@
 Description:
-  Manage global choices/option sets (deprecated - use 'optionset')
+  Manage global choices/option sets (deprecated — use 'optionset')
 
 Usage:
   ppds metadata choice [command] [options]

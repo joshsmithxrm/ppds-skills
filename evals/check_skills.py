@@ -15,7 +15,7 @@ Zero-dependency checks, run locally and in CI:
      in that command's real --help output.
   4. MCP tool names — every `ppds_*` tool mention exists in the captured
      tools/list response (captured-help/mcp-tools.json).
-  5. Links — relative markdown links in skill files resolve.
+  5. Links — relative markdown links resolve within the copied skills tree.
   6. Reference freshness — generated cli-*.md files carry the same CLI
      version as the manifest.
   7. Line cap — SKILL.md files stay within MAX_SKILL_LINES.
@@ -367,7 +367,13 @@ def check_links(path: Path, text: str) -> None:
             target = m.group(1).split("#")[0].strip()
             if not target or "://" in target or target.startswith("mailto:"):
                 continue
-            if not (path.parent / target).exists():
+            resolved = (path.parent / target).resolve()
+            try:
+                resolved.relative_to(SKILLS_DIR.resolve())
+            except ValueError:
+                err(path, i, f"relative link escapes the installed skills: {target}")
+                continue
+            if not resolved.exists():
                 err(path, i, f"broken relative link: {target}")
 
 

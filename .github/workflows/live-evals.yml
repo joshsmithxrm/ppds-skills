@@ -29,7 +29,8 @@ permissions:
 
 jobs:
   live:
-    runs-on: ubuntu-latest
+    # setup-python provides the documented Python 3.8 floor on this image.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 

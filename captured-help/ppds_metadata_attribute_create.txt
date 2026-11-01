@@ -20,7 +20,7 @@ Options:
   --date-time-behavior <date-time-behavior>                                                                   DateTime behavior: UserLocal, DateOnly, or TimeZoneIndependent
   --choice <choice>                                                                                           Attach the Choice/Choices column to an existing GLOBAL option set by name (mutually exclusive with --option/--options/--options-file)
   --options <options>                                                                                         [Legacy] Local Choice options as CSV: "Label1=1,Label2=2"
-  --option <option>                                                                                           Local Choice option "Label[:Value][:#Color]" - repeatable; value derived from --solution when omitted
+  --option <option>                                                                                           Local Choice option "Label[:Value][:#Color]" — repeatable; value derived from --solution when omitted
   --options-file <options-file>                                                                               Path to a JSON file of local Choice options: [{"label":"..","value":1,"color":"#RRGGBB"}]
   --default-value <default-value>                                                                             Default value for Choice or Boolean columns
   --true-label <true-label>                                                                                   Label for the true value of a Boolean column
@@ -34,6 +34,6 @@ Options:
   -v, --verbose                                                                                               Show detailed output including debug messages
   --debug                                                                                                     Show trace-level diagnostic output
   --correlation-id <correlation-id>                                                                           Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>                                                                         Output format [default: Text]
+  -f, --output-format <Text|Json>                                                                             Output format [default: Text]
   -?, -h, --help                                                                                              Show help and usage information
 

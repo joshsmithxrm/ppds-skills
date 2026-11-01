@@ -2,7 +2,7 @@ Description:
   Manage environment variables
 
 Usage:
-  ppds environmentvariables [command] [options]
+  ppds environment-variables [command] [options]
 
 Options:
   -?, -h, --help  Show help and usage information

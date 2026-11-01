@@ -3,8 +3,8 @@ name: ppds-core
 description: Install, authenticate, and safely operate the Power Platform Developer Suite (PPDS) CLI and MCP server against Microsoft Dataverse — auth profiles, environment selection, the environment-safety model, and error interpretation. Use when the user wants to connect to Dataverse with PPDS, set up `ppds` or `ppds-mcp-server`, manage auth profiles or environments, decide between the PPDS CLI and MCP surfaces, or interpret a PPDS error or exit code. Load this skill first before any other ppds-* skill.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.2.0"
-  ppds_mcp_version_tested: "1.0.0"
+  ppds_cli_version_tested: "1.4.2"
+  ppds_mcp_version_tested: "1.2.2"
 ---
 
 # PPDS Core — connect, select, stay safe
@@ -19,9 +19,11 @@ dotnet tool install -g PPDS.Cli   # CLI: `ppds`   (update: dotnet tool update -g
 dotnet tool install -g PPDS.Mcp   # MCP server: `ppds-mcp-server`
 ```
 
-Verify: `ppds --version`. These skills target the **1.2.0** surface (flag
-tables generated from 1.2.0 stable). If the installed major/minor differs,
-prefer live `--help`.
+Verify: `ppds --version`. These skills capture published CLI **1.4.2**
+and MCP **1.2.2** from independently verified public NuGet packages.
+If the installed version differs, prefer live `--help`. See
+[public capture provenance](references/candidate-provenance.json) for package
+URLs, hashes, the release commit, and the offline capture procedure.
 
 ## Surface routing (applies to every ppds-* skill)
 
@@ -35,7 +37,7 @@ instead when either holds:
    [references/mcp-server.md](references/mcp-server.md).
 
 Where an MCP tool mirrors a CLI command this package names it, e.g.
-`ppds env list` ↔ `ppds_env_list`. The released server (1.0.0) exposes 41
+`ppds env list` ↔ `ppds_env_list`. The captured public MCP server (1.2.2) exposes 41
 tools — the authoritative list is
 [references/mcp-tools.md](references/mcp-tools.md). The CLI surface is wider;
 anything without an MCP tool routes to the CLI.

@@ -2,7 +2,7 @@ Description:
   Manage connection references
 
 Usage:
-  ppds connectionreferences [command] [options]
+  ppds connection-references [command] [options]
 
 Options:
   -?, -h, --help  Show help and usage information

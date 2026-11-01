@@ -111,7 +111,17 @@ python3 evals/check_skills.py
 `tools/recapture.py` wraps `capture_cli_help.py`, `capture_mcp_tools.py`, and
 `generate_flag_tables.py`, then bumps `metadata.ppds_cli_version_tested` /
 `ppds_mcp_version_tested` in every `skills/*/SKILL.md` from the fresh manifests.
-Run against the currently installed CLI it is a no-op (zero diff).
+It always captures again, even when the version matches the committed pin.
+Identical output produces no diff. Use this manual path when replacing local
+candidate captures with public packages of the same version: the scheduled
+workflow's strict newer-version check intentionally skips that case, including
+when `cli_version` is supplied on manual dispatch.
+
+After a candidate recapture, update
+`skills/ppds-core/references/candidate-provenance.json` from the actual source
+commit, package and DLL hashes, and capture evidence. Keep the previous record
+in the review artifacts. The recapture scripts do not rewrite provenance or
+turn simulated version strings into proof of public availability.
 
 ## Branch strategy
 
@@ -143,9 +153,13 @@ reference:
 1. Re-capture against the target CLI/MCP versions (above) and bump frontmatter.
 2. Bump the version in `plugin.json` **and** the `marketplace.json` plugin
    entry (they must match — the eval enforces it).
-3. Add a `CHANGELOG.md` entry.
+3. Add a `CHANGELOG.md` entry. Keep it `Unreleased` with a comparison link
+   during preparation; finalize its date and tag link when publication is approved.
 4. `python3 evals/check_skills.py` must pass.
-5. Tag `vX.Y.Z` and cut a GitHub Release.
+5. Review and merge the PR only when plugin publication is approved. The
+   documented marketplace installs from `main`, so merging the version bump
+   distributes it before a separate tag or GitHub Release exists.
+6. Tag the reviewed merge commit `vX.Y.Z` and cut a GitHub Release.
 
 ## Getting help
 

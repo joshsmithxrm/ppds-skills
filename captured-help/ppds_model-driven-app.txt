@@ -20,5 +20,5 @@ Commands:
   add-copilot            Wire a Copilot Studio agent (bot) into the app
   remove-copilot         Remove a Copilot Studio agent (bot) from the app
   list-copilots          List the Copilot Studio agents (bots) wired into the app
-  inspect-app-assistant  Diagnose Copilot (app assistant) bindings for the app - read-only, no changes
+  inspect-app-assistant  Diagnose Copilot (app assistant) bindings for the app — read-only, no changes
 

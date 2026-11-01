@@ -1,9 +1,9 @@
 # `ppds data` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.2. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.2**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds data`
 
@@ -40,11 +40,11 @@ Usage:
   ppds data analyze [options]
 
 Options:
-  -s, --schema <schema>                [Required] Path to schema.xml file
-  -f, --output-format <Csv|Json|Text>  Output format: text or json [default: Text]
-  -v, --verbose                        Enable verbose logging output
-  --debug                              Enable diagnostic logging output
-  -?, -h, --help                       Show help and usage information
+  -s, --schema <schema>            [Required] Path to schema.xml file
+  -f, --output-format <Text|Json>  Output format [default: Text]
+  -v, --verbose                    Enable verbose logging output
+  --debug                          Enable diagnostic logging output
+  -?, -h, --help                   Show help and usage information
 ```
 
 ## `ppds data copy`
@@ -71,7 +71,7 @@ Options:
   --continue-on-error                     Continue import on individual record failures
   --strip-owner-fields                    Strip ownership fields (ownerid, createdby, modifiedby) allowing Dataverse to assign current user
   -u, --user-mapping <user-mapping>       Path to user mapping XML file for remapping user references
-  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -f, --output-format <Text|Json>         Output format [default: Text]
   -v, --verbose                           Enable verbose logging output
   --debug                                 Enable diagnostic logging output
   -?, -h, --help                          Show help and usage information
@@ -87,27 +87,27 @@ Usage:
   ppds data delete [options]
 
 Options:
-  -e, --entity <entity>                [Required] Target entity logical name
-  --id <id>                            Record ID (GUID) to delete
-  -k, --key <key>                      Alternate key field(s) for lookup. Format: field=value or field1=value1,field2=value2 for composite keys.
-  --file <file>                        Path to file containing record IDs (JSON array or CSV with ID column)
-  --id-column <id-column>              Column name containing record IDs in CSV file (default: entity primary key)
-  --filter <filter>                    SQL-like filter expression to match records for deletion (e.g., "name like '%test%'")
-  --force                              Skip confirmation prompt (required for non-interactive execution)
-  --dry-run                            Preview records that would be deleted without actually deleting
-  --limit <limit>                      Maximum number of records to delete (fails if query returns more)
-  --batch-size <batch-size>            Records per batch (default: 100) [default: 100]
-  --bypass-plugins <all|async|sync>    Bypass custom plugin execution: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
-  --bypass-flows                       Bypass Power Automate flow triggers
-  --continue-on-error                  Continue deleting on individual record failures
-  -p, --profile <profile>              Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -e, --entity <entity>              [Required] Target entity logical name
+  --id <id>                          Record ID (GUID) to delete
+  -k, --key <key>                    Alternate key field(s) for lookup. Format: field=value or field1=value1,field2=value2 for composite keys.
+  --file <file>                      Path to file containing record IDs (JSON array or CSV with ID column)
+  --id-column <id-column>            Column name containing record IDs in CSV file (default: entity primary key)
+  --filter <filter>                  SQL-like filter expression to match records for deletion (e.g., "name like '%test%'")
+  --force                            Skip confirmation prompt (required for non-interactive execution)
+  --dry-run                          Preview records that would be deleted without actually deleting
+  --limit <limit>                    Maximum number of records to delete (fails if query returns more)
+  --batch-size <batch-size>          Records per batch (default: 100) [default: 100]
+  --bypass-plugins <all|async|sync>  Bypass custom plugin execution: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
+  --bypass-flows                     Bypass Power Automate flow triggers
+  --continue-on-error                Continue deleting on individual record failures
+  -p, --profile <profile>            Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds data export`
@@ -128,7 +128,7 @@ Options:
   --batch-size <batch-size>                            Records per API request (all records are exported; this controls request size) [default: 5000]
   --page-parallel <page-parallel>                      Partitions per entity for page-level parallelism (0=auto, 1=disabled) [default: 0]
   --page-parallel-threshold <page-parallel-threshold>  Minimum records before page-level parallelism activates [default: 5000]
-  -f, --output-format <Csv|Json|Text>                  Output format [default: Text]
+  -f, --output-format <Text|Json>                      Output format [default: Text]
   --format <Cmt|Json>                                  Data export format: cmt (CMT-compatible XML ZIP) or json (PPDS-native JSON) [default: Cmt]
   -v, --verbose                                        Enable verbose logging output
   --debug                                              Enable diagnostic logging output
@@ -158,7 +158,7 @@ Options:
   --resolve-lookups                       Enable external lookup resolution (ID check, then name-based query)
   --skip-unresolved-lookups               Null unresolved lookups instead of failing the record [default: True] (requires --resolve-lookups)
   --impersonate-owners                    Preserve record ownership via CallerAADObjectId impersonation (requires --user-mapping)
-  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -f, --output-format <Text|Json>         Output format [default: Text]
   -v, --verbose                           Enable verbose logging output
   --debug                                 Enable diagnostic logging output
   --error-report <error-report>           Base path for output files (creates .errors.jsonl, .progress.log, .summary.json). Errors are streamed in real-time.
@@ -189,7 +189,7 @@ Options:
   --analyze                              Analyze mapping without loading data (preview which columns match)
   -p, --profile <profile>                Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
   -env, --environment <environment>      Override the environment URL. Takes precedence over profile's bound environment.
-  -o, --output-format <Csv|Json|Text>    Output format [default: Text]
+  -o, --output-format <Text|Json>        Output format [default: Text]
   -v, --verbose                          Enable verbose logging output
   --debug                                Enable diagnostic logging output
   -?, -h, --help                         Show help and usage information
@@ -214,7 +214,7 @@ Options:
   -a, --include-attributes <include-attributes>  Only include these attributes (whitelist, comma-separated or multiple flags)
   --exclude-attributes <exclude-attributes>      Exclude these attributes (blacklist, comma-separated)
   --filter <filter>                              SQL-like filter per entity. Format: entity:expression (e.g., "account:statecode = 0"). Repeatable.
-  -f, --output-format <Csv|Json|Text>            Output format [default: Text]
+  -f, --output-format <Text|Json>                Output format [default: Text]
   -v, --verbose                                  Enable verbose logging output
   --debug                                        Enable diagnostic logging output
   -?, -h, --help                                 Show help and usage information
@@ -230,21 +230,21 @@ Usage:
   ppds data truncate [options]
 
 Options:
-  -e, --entity <entity>                [Required] Entity logical name to truncate (delete ALL records)
-  --dry-run                            Preview record count without deleting
-  --force                              Skip confirmation prompt (required for non-interactive execution)
-  --batch-size <batch-size>            Records per delete batch (default: 1000) [default: 1000]
-  --bypass-plugins <all|async|sync>    Bypass custom plugin execution: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
-  --bypass-flows                       Bypass Power Automate flow triggers
-  --continue-on-error                  Continue deleting on individual record failures
-  -p, --profile <profile>              Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -e, --entity <entity>              [Required] Entity logical name to truncate (delete ALL records)
+  --dry-run                          Preview record count without deleting
+  --force                            Skip confirmation prompt (required for non-interactive execution)
+  --batch-size <batch-size>          Records per delete batch (default: 1000) [default: 1000]
+  --bypass-plugins <all|async|sync>  Bypass custom plugin execution: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
+  --bypass-flows                     Bypass Power Automate flow triggers
+  --continue-on-error                Continue deleting on individual record failures
+  -p, --profile <profile>            Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds data update`
@@ -257,29 +257,29 @@ Usage:
   ppds data update [options]
 
 Options:
-  -e, --entity <entity>                [Required] Target entity logical name
-  --id <id>                            Record ID (GUID) to update
-  -k, --key <key>                      Alternate key field(s) for lookup. Format: field=value or field1=value1,field2=value2 for composite keys.
-  --file <file>                        Path to CSV file containing records to update (must include ID column and columns to update)
-  --id-column <id-column>              Column name containing record IDs in CSV file (default: entity primary key)
-  --filter <filter>                    SQL-like filter expression to match records for update (e.g., "statecode eq 0")
-  -s, --set <set>                      Field values to set. Format: field=value or field1=value1,field2=value2. Required for --id, --key, or --filter modes.
-  -m, --mapping <mapping>              Path to column mapping JSON file (for --file mode)
-  --force                              Skip confirmation prompt (required for non-interactive execution)
-  --dry-run                            Preview records that would be updated without actually updating
-  --limit <limit>                      Maximum number of records to update (fails if query returns more)
-  --batch-size <batch-size>            Records per batch (default: 100) [default: 100]
-  --bypass-plugins <all|async|sync>    Bypass custom plugin execution: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
-  --bypass-flows                       Bypass Power Automate flow triggers
-  --continue-on-error                  Continue updating on individual record failures
-  -p, --profile <profile>              Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -e, --entity <entity>              [Required] Target entity logical name
+  --id <id>                          Record ID (GUID) to update
+  -k, --key <key>                    Alternate key field(s) for lookup. Format: field=value or field1=value1,field2=value2 for composite keys.
+  --file <file>                      Path to CSV file containing records to update (must include ID column and columns to update)
+  --id-column <id-column>            Column name containing record IDs in CSV file (default: entity primary key)
+  --filter <filter>                  SQL-like filter expression to match records for update (e.g., "statecode eq 0")
+  -s, --set <set>                    Field values to set. Format: field=value or field1=value1,field2=value2. Required for --id, --key, or --filter modes.
+  -m, --mapping <mapping>            Path to column mapping JSON file (for --file mode)
+  --force                            Skip confirmation prompt (required for non-interactive execution)
+  --dry-run                          Preview records that would be updated without actually updating
+  --limit <limit>                    Maximum number of records to update (fails if query returns more)
+  --batch-size <batch-size>          Records per batch (default: 100) [default: 100]
+  --bypass-plugins <all|async|sync>  Bypass custom plugin execution: sync, async, or all (requires prvBypassCustomBusinessLogic privilege)
+  --bypass-flows                     Bypass Power Automate flow triggers
+  --continue-on-error                Continue updating on individual record failures
+  -p, --profile <profile>            Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds data users`
@@ -298,7 +298,7 @@ Options:
   -te, --target-env <target-env>          [Required] Target environment - accepts URL, friendly name, unique name, or ID
   -o, --output <output>                   [Required] Output user mapping XML file path
   --analyze                               Analyze user differences without generating mapping file
-  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -f, --output-format <Text|Json>         Output format [default: Text]
   -v, --verbose                           Enable verbose logging output
   --debug                                 Enable diagnostic logging output
   -?, -h, --help                          Show help and usage information
