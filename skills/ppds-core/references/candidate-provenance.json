@@ -1,19 +1,19 @@
 {
-  "status": "unpublished-feature-draft-candidate",
-  "source_commit": "a9761537c4ad5d7f2276fd593b5924074484421c",
+  "status": "unpublished-merge-validation-candidate",
+  "source_commit": "1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
   "build_configuration": "Release",
   "target_framework": "net8.0",
   "capture_platform": "Windows x64",
   "binaries": {
     "cli": {
       "path": "src/PPDS.Cli/bin/Release/net8.0/ppds.dll",
-      "version": "1.4.3-alpha.0.20+a9761537c4ad5d7f2276fd593b5924074484421c",
-      "sha256": "53f4ec4dc827b3ea557733d9b07b3eca49baff3fdc907cf119b4098765e37564"
+      "version": "1.4.3-alpha.0.28+1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+      "sha256": "2990982bd7f56dc66a27f4bafcdfc565edd845c68b82785f4835be45ea89cfda"
     },
     "mcp": {
       "path": "src/PPDS.Mcp/bin/Release/net8.0/ppds-mcp-server.dll",
-      "version": "1.2.3-alpha.0.20+a9761537c4ad5d7f2276fd593b5924074484421c",
-      "sha256": "f5454d3cf59aedd36ea3e8453696b8e4c4f722195701b2097d1f9d8995cba554"
+      "version": "1.2.3-alpha.0.28+1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+      "sha256": "f7b60042d6bde8a991ffd9be8fc6ceff9d61a22af05fc9a8bb9b591d01d80b20"
     }
   },
   "publication_claim": false,
@@ -22,22 +22,24 @@
   "cli_command_count": 273,
   "mcp_tool_count": 45,
   "procedure": [
-    "Use candidate CLI/MCP apphosts on process PATH without installing or replacing global tools.",
-    "Clear inherited PPDS/DATAVERSE/POWERPLATFORM/AZURE environment configuration and use an empty isolated PPDS_CONFIG_DIR.",
-    "Run tools/recapture.py: CLI --version/--help, MCP --read-only initialize and tools/list only; no tools/call.",
-    "Run evals/check_skills.py with candidate PATH and freshness enabled; run evals/live/_selftest.py."
+    "Use exact immutable candidate runtimes with isolated empty profile configuration.",
+    "Run repository CLI help capture, bounded readonly MCP initialize/tools/list, repository table generation and recapture.py --no-capture.",
+    "Validate static gates with candidate freshness enabled; no tools/call or live Dataverse operation."
   ],
   "normalized_lf_sha256": {
-    "captured-help/manifest.json": "3658a1a7ea2404a409df8181cb816f729233a8d481d5bfc8c3db27df8443fbcf",
-    "captured-help/mcp-tools.json": "b97bc7461d9efbc5f1564ede4205b5c8c0c347c51b81d92bf5d2abbc6c3a2cff"
+    "captured-help/manifest.json": "f0409294123b90877a2989eba1556d95b4080611bca4c80ad3d2b876b18951cc",
+    "captured-help/mcp-tools.json": "9ba8d0e97e939240446b21af1e7a28ab0afa8633e2cdbe4648d970402446b291"
   },
   "full_protocol_tools_list_sha256": "96478cb4d07ee7da33d846cce5da21794a92bf9bddfb311748fbaa8cb6edf20c",
   "validation": {
-    "static_gate": "passed for all seven skills after final a976 recapture, including freshness and host quick validation",
-    "harness_selftest": "passed including four new scenarios after final a976 recapture",
+    "static_gate": "passed for all seven skills against CLI 1.4.3-alpha.0.28 and MCP 1.2.3-alpha.0.28, with pinned CLI freshness enabled and no bypass",
+    "harness_selftest": "passed: offline evals/live/_selftest.py; no semantic model execution",
     "paid_semantic_evals": "not run",
-    "configuration_directory_after_capture": "empty"
+    "configuration_directory_after_capture": "empty",
+    "independent_review": "Staged capture passed independent review; coordinator review of installed prose and provenance passed on 2026-11-01. Fresh hosted CI and live validation gates remain separate.",
+    "host_validator": "passed: host quick_validate.py for all seven skills",
+    "configuration_directory_after_checks": "empty"
   },
   "prior_public_record": "Previous public-package provenance retained in the release review artifacts; prior released Skills version is 0.1.2.",
-  "prior_candidate_record": "Historical 6932 captures and provenance retained in release-review artifacts under historical-capture-6932; source history remains in this branch."
+  "prior_candidate_record": "Previous candidate a9761537c4ad5d7f2276fd593b5924074484421c retained unchanged in review artifacts: prior-docs-provenance.json, prior-skills-provenance.json and prior-captured-help/."
 }
