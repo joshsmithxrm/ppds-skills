@@ -1,9 +1,9 @@
 # `ppds metadata` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.2. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.2**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds metadata`
 
@@ -27,10 +27,10 @@ Commands:
   optionsets              List global option sets
   optionset <name>        Get details for or manage a global option set (choice)
   publish <names>         Publish entity metadata (alias for ppds publish --type entity)
-  table                   Create, update, or delete Dataverse tables (deprecated - use 'entity')
-  column                  Create, update, or delete columns (deprecated - use 'attribute')
+  table                   Create, update, or delete Dataverse tables (deprecated — use 'entity')
+  column                  Create, update, or delete columns (deprecated — use 'attribute')
   relationship            Create, update, or delete Dataverse relationships
-  choice                  Manage global choices/option sets (deprecated - use 'optionset')
+  choice                  Manage global choices/option sets (deprecated — use 'optionset')
   key                     Create, delete, or reactivate alternate keys on Dataverse tables
 ```
 
@@ -68,22 +68,23 @@ Arguments:
   <entity>  The entity logical name (e.g., 'account')
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -t, --type <type>                    Filter by attribute type (e.g., 'Lookup', 'String', 'DateTime', 'Picklist')
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -t, --type <type>                  Filter by attribute type (e.g., 'Lookup', 'String', 'DateTime', 'Picklist')
+  --exclude-auxiliary                Exclude auxiliary attributes (lookup name/yomi companions marked with AttributeOf)
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata choice`
 
 ```text
 Description:
-  Manage global choices/option sets (deprecated - use 'optionset')
+  Manage global choices/option sets (deprecated — use 'optionset')
 
 Usage:
   ppds metadata choice [command] [options]
@@ -105,7 +106,7 @@ Commands:
 
 ```text
 Description:
-  Create, update, or delete columns (deprecated - use 'attribute')
+  Create, update, or delete columns (deprecated — use 'attribute')
 
 Usage:
   ppds metadata column [command] [options]
@@ -129,16 +130,16 @@ Usage:
   ppds metadata entities [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  --filter <filter>                    Filter by name. Without wildcards, matches names containing the text. Use * for patterns: 'foo*' (starts with), '*foo' (ends with)
-  --custom-only                        Only show custom entities
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --filter <filter>                  Filter by name. Without wildcards, matches names containing the text. Use * for patterns: 'foo*' (starts with), '*foo' (ends with)
+  --custom-only                      Only show custom entities
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata entity`
@@ -154,15 +155,15 @@ Arguments:
   <entity>  The entity logical name (e.g., 'account')
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  --include <include>                  Include specific metadata sections: attributes, relationships, keys, privileges (comma-separated or multiple flags)
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --include <include>                Include specific metadata sections: attributes, relationships, keys, privileges (comma-separated or multiple flags)
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 
 Commands:
   create                        Create a new Dataverse table (entity)
@@ -205,14 +206,14 @@ Arguments:
   <entity>  The entity logical name (e.g., 'account')
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata optionset`
@@ -228,14 +229,14 @@ Arguments:
   <name>  The option set name (e.g., 'new_customstatus')
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 
 Commands:
   create         Create a new global option set
@@ -257,15 +258,15 @@ Usage:
   ppds metadata optionsets [options]
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  --filter <filter>                    Filter by name. Without wildcards, matches names containing the text. Use * for patterns: 'foo*' (starts with), '*foo' (ends with)
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --filter <filter>                  Filter by name. Without wildcards, matches names containing the text. Use * for patterns: 'foo*' (starts with), '*foo' (ends with)
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata publish`
@@ -281,15 +282,15 @@ Arguments:
   <names>  Entity logical names to publish
 
 Options:
-  -s, --solution <solution>            Publish all entities in this solution
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          Publish all entities in this solution
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata relationship`
@@ -323,22 +324,22 @@ Arguments:
   <entity>  The entity logical name (e.g., 'account')
 
 Options:
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -t, --type <type>                    Filter by relationship type: OneToMany, ManyToOne, ManyToMany
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -t, --type <type>                  Filter by relationship type: OneToMany, ManyToOne, ManyToMany
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata table`
 
 ```text
 Description:
-  Create, update, or delete Dataverse tables (deprecated - use 'entity')
+  Create, update, or delete Dataverse tables (deprecated — use 'entity')
 
 Usage:
   ppds metadata table [command] [options]
@@ -362,20 +363,20 @@ Usage:
   ppds metadata attribute add-option [options]
 
 Options:
-  -s, --solution <solution>            Solution unique name (required for value derivation when --option has no explicit value)
-  -e, --entity <entity>                [Required] Logical name of the entity
-  -c, --column <column>                [Required] Logical name of the Choice/Choices column
-  --option <option>                    [Required] Option to add: "Label[:Value][:#Color]"
-  --publish                            Publish the entity after the change
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          Solution unique name (required for value derivation when --option has no explicit value)
+  -e, --entity <entity>              [Required] Logical name of the entity
+  -c, --column <column>              [Required] Logical name of the Choice/Choices column
+  --option <option>                  [Required] Option to add: "Label[:Value][:#Color]"
+  --publish                          Publish the entity after the change
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata attribute create`
@@ -403,7 +404,7 @@ Options:
   --date-time-behavior <date-time-behavior>                                                                   DateTime behavior: UserLocal, DateOnly, or TimeZoneIndependent
   --choice <choice>                                                                                           Attach the Choice/Choices column to an existing GLOBAL option set by name (mutually exclusive with --option/--options/--options-file)
   --options <options>                                                                                         [Legacy] Local Choice options as CSV: "Label1=1,Label2=2"
-  --option <option>                                                                                           Local Choice option "Label[:Value][:#Color]" - repeatable; value derived from --solution when omitted
+  --option <option>                                                                                           Local Choice option "Label[:Value][:#Color]" — repeatable; value derived from --solution when omitted
   --options-file <options-file>                                                                               Path to a JSON file of local Choice options: [{"label":"..","value":1,"color":"#RRGGBB"}]
   --default-value <default-value>                                                                             Default value for Choice or Boolean columns
   --true-label <true-label>                                                                                   Label for the true value of a Boolean column
@@ -417,7 +418,7 @@ Options:
   -v, --verbose                                                                                               Show detailed output including debug messages
   --debug                                                                                                     Show trace-level diagnostic output
   --correlation-id <correlation-id>                                                                           Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>                                                                         Output format [default: Text]
+  -f, --output-format <Text|Json>                                                                             Output format [default: Text]
   -?, -h, --help                                                                                              Show help and usage information
 ```
 
@@ -431,19 +432,19 @@ Usage:
   ppds metadata attribute delete [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity containing the attribute
-  -c, --column <column>                [Required] Logical name of the attribute to delete
-  --force                              Skip confirmation prompt
-  --dry-run                            Show dependencies without deleting
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity containing the attribute
+  -c, --column <column>              [Required] Logical name of the attribute to delete
+  --force                            Skip confirmation prompt
+  --dry-run                          Show dependencies without deleting
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata attribute remove-option`
@@ -456,22 +457,22 @@ Usage:
   ppds metadata attribute remove-option [options]
 
 Options:
-  -s, --solution <solution>            Solution unique name
-  -e, --entity <entity>                [Required] Logical name of the entity
-  -c, --column <column>                [Required] Logical name of the Choice/Choices column
-  --value <value>                      Target option by value (mutually exclusive with --label)
-  --label <label>                      Target option by label (mutually exclusive with --value)
-  --force                              Skip confirmation prompt
-  --publish                            Publish the entity after the change
-  --dry-run                            Validate that the target option exists, without removing it
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          Solution unique name
+  -e, --entity <entity>              [Required] Logical name of the entity
+  -c, --column <column>              [Required] Logical name of the Choice/Choices column
+  --value <value>                    Target option by value (mutually exclusive with --label)
+  --label <label>                    Target option by label (mutually exclusive with --value)
+  --force                            Skip confirmation prompt
+  --publish                          Publish the entity after the change
+  --dry-run                          Validate that the target option exists, without removing it
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata attribute update`
@@ -484,23 +485,23 @@ Usage:
   ppds metadata attribute update [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity containing the attribute
-  -c, --column <column>                [Required] Logical name of the attribute to update
-  --display-name <display-name>        Updated display name
-  --description <description>          Updated description
-  --required-level <required-level>    Updated requirement level: None, Recommended, or Required
-  --max-length <max-length>            Updated maximum length
-  --dry-run                            Validate only, do not persist changes
-  --publish                            Publish the entity after the change
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity containing the attribute
+  -c, --column <column>              [Required] Logical name of the attribute to update
+  --display-name <display-name>      Updated display name
+  --description <description>        Updated description
+  --required-level <required-level>  Updated requirement level: None, Recommended, or Required
+  --max-length <max-length>          Updated maximum length
+  --dry-run                          Validate only, do not persist changes
+  --publish                          Publish the entity after the change
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata attribute update-option`
@@ -513,23 +514,23 @@ Usage:
   ppds metadata attribute update-option [options]
 
 Options:
-  -s, --solution <solution>            Solution unique name
-  -e, --entity <entity>                [Required] Logical name of the entity
-  -c, --column <column>                [Required] Logical name of the Choice/Choices column
-  --value <value>                      Target option by value (mutually exclusive with --label)
-  --label <label>                      Target option by current label (mutually exclusive with --value)
-  --new-label <new-label>              New label to apply
-  --color <color>                      New hex color (e.g. #FF0000)
-  --publish                            Publish the entity after the change
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          Solution unique name
+  -e, --entity <entity>              [Required] Logical name of the entity
+  -c, --column <column>              [Required] Logical name of the Choice/Choices column
+  --value <value>                    Target option by value (mutually exclusive with --label)
+  --label <label>                    Target option by current label (mutually exclusive with --value)
+  --new-label <new-label>            New label to apply
+  --color <color>                    New hex color (e.g. #FF0000)
+  --publish                          Publish the entity after the change
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata choice add-option`
@@ -542,19 +543,19 @@ Usage:
   ppds metadata choice add-option [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the option set
-  --name <name>                        [Required] Name of the option set
-  --label <label>                      [Required] Label for the new option
-  --value <value>                      Numeric value for the option (auto-assigned if not specified)
-  --color <color>                      Color for the option (hex string, e.g., #FF0000)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the option set
+  --name <name>                      [Required] Name of the option set
+  --label <label>                    [Required] Label for the new option
+  --value <value>                    Numeric value for the option (auto-assigned if not specified)
+  --color <color>                    Color for the option (hex string, e.g., #FF0000)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata choice create`
@@ -567,20 +568,20 @@ Usage:
   ppds metadata choice create [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name to add the choice to
-  --name <name>                        [Required] Schema name for the global choice
-  --display-name <display-name>        [Required] Display name of the global choice
-  --options <options>                  [Required] Option definitions: "Label1=1,Label2=2"
-  --description <description>          Description of the global choice
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name to add the choice to
+  --name <name>                      [Required] Schema name for the global choice
+  --display-name <display-name>      [Required] Display name of the global choice
+  --options <options>                [Required] Option definitions: "Label1=1,Label2=2"
+  --description <description>        Description of the global choice
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata choice delete`
@@ -593,18 +594,18 @@ Usage:
   ppds metadata choice delete [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the global choice
-  --name <name>                        [Required] Name of the global choice to delete
-  --force                              Skip confirmation prompt
-  --dry-run                            Show dependencies without deleting
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the global choice
+  --name <name>                      [Required] Name of the global choice to delete
+  --force                            Skip confirmation prompt
+  --dry-run                          Show dependencies without deleting
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata choice remove-option`
@@ -617,18 +618,18 @@ Usage:
   ppds metadata choice remove-option [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the option set
-  --name <name>                        [Required] Name of the option set
-  --value <value>                      [Required] Numeric value of the option to remove
-  --force                              Skip confirmation prompt
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the option set
+  --name <name>                      [Required] Name of the option set
+  --value <value>                    [Required] Numeric value of the option to remove
+  --force                            Skip confirmation prompt
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata choice reorder`
@@ -641,17 +642,17 @@ Usage:
   ppds metadata choice reorder [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the option set
-  --name <name>                        [Required] Name of the option set
-  --order <order>                      [Required] Comma-separated list of option values in the desired order: "1,3,2,4"
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the option set
+  --name <name>                      [Required] Name of the option set
+  --order <order>                    [Required] Comma-separated list of option values in the desired order: "1,3,2,4"
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata choice update`
@@ -664,19 +665,19 @@ Usage:
   ppds metadata choice update [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the global choice
-  --name <name>                        [Required] Name of the global choice to update
-  --display-name <display-name>        Updated display name
-  --description <description>          Updated description
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the global choice
+  --name <name>                      [Required] Name of the global choice to update
+  --display-name <display-name>      Updated display name
+  --description <description>        Updated description
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata choice update-option`
@@ -689,19 +690,19 @@ Usage:
   ppds metadata choice update-option [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the option set
-  --name <name>                        [Required] Name of the option set
-  --value <value>                      [Required] Numeric value of the option to update
-  --label <label>                      [Required] New label for the option
-  --color <color>                      New color for the option (hex string, e.g., #FF0000)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the option set
+  --name <name>                      [Required] Name of the option set
+  --value <value>                    [Required] Numeric value of the option to update
+  --label <label>                    [Required] New label for the option
+  --color <color>                    New color for the option (hex string, e.g., #FF0000)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata column create`
@@ -740,7 +741,7 @@ Options:
   -v, --verbose                                                                                               Show detailed output including debug messages
   --debug                                                                                                     Show trace-level diagnostic output
   --correlation-id <correlation-id>                                                                           Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>                                                                         Output format [default: Text]
+  -f, --output-format <Text|Json>                                                                             Output format [default: Text]
   -?, -h, --help                                                                                              Show help and usage information
 ```
 
@@ -754,19 +755,19 @@ Usage:
   ppds metadata column delete [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity containing the column
-  -c, --column <column>                [Required] Logical name of the column to delete
-  --force                              Skip confirmation prompt
-  --dry-run                            Show dependencies without deleting
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity containing the column
+  -c, --column <column>              [Required] Logical name of the column to delete
+  --force                            Skip confirmation prompt
+  --dry-run                          Show dependencies without deleting
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata column update`
@@ -779,22 +780,22 @@ Usage:
   ppds metadata column update [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity containing the column
-  -c, --column <column>                [Required] Logical name of the column to update
-  --display-name <display-name>        Updated display name
-  --description <description>          Updated description
-  --required-level <required-level>    Updated requirement level: None, Recommended, or Required
-  --max-length <max-length>            Updated maximum length
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity containing the column
+  -c, --column <column>              [Required] Logical name of the column to update
+  --display-name <display-name>      Updated display name
+  --description <description>        Updated description
+  --required-level <required-level>  Updated requirement level: None, Recommended, or Required
+  --max-length <max-length>          Updated maximum length
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata entity add-statusreason`
@@ -811,23 +812,23 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
-  --label <label>                      [Required] Display label for the new status reason
-  --value <value>                      Explicit option value (mutually exclusive with --solution for derivation)
-  -s, --solution <solution>            [Required when --value is omitted] Solution unique name; publisher prefix x 10,000 is used to derive the option value
-  --state <Active|Inactive>            State the reason belongs to: Active or Inactive (use this OR --state-code, not both)
-  --state-code <state-code>            State code directly: 0 (Active) or 1 (Inactive) (use this OR --state, not both)
-  --color <color>                      Hex color for the status reason (e.g., #FF0000)
-  --publish                            Publish the entity after the change
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  --label <label>                    [Required] Display label for the new status reason
+  --value <value>                    Explicit option value (mutually exclusive with --solution for derivation)
+  -s, --solution <solution>          [Required when --value is omitted] Solution unique name; publisher prefix × 10,000 is used to derive the option value
+  --state <Active|Inactive>          State the reason belongs to: Active or Inactive (use this OR --state-code, not both)
+  --state-code <state-code>          State code directly: 0 (Active) or 1 (Inactive) (use this OR --state, not both)
+  --color <color>                    Hex color for the status reason (e.g., #FF0000)
+  --publish                          Publish the entity after the change
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata entity create`
@@ -857,7 +858,7 @@ Options:
   -v, --verbose                              Show detailed output including debug messages
   --debug                                    Show trace-level diagnostic output
   --correlation-id <correlation-id>          Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>        Output format [default: Text]
+  -f, --output-format <Text|Json>            Output format [default: Text]
   -?, -h, --help                             Show help and usage information
 ```
 
@@ -875,18 +876,18 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
-  --force                              Skip confirmation prompt
-  --dry-run                            Show dependencies without deleting
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  --force                            Skip confirmation prompt
+  --dry-run                          Show dependencies without deleting
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata entity list-statusreasons`
@@ -903,15 +904,15 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata entity remove-statusreason`
@@ -928,20 +929,20 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
-  --value <value>                      Target status reason by option value (mutually exclusive with --label)
-  --label <label>                      Target status reason by label (mutually exclusive with --value)
-  -s, --solution <solution>            Solution unique name
-  --force                              Skip confirmation prompt
-  --publish                            Publish the entity after the change
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  --value <value>                    Target status reason by option value (mutually exclusive with --label)
+  --label <label>                    Target status reason by label (mutually exclusive with --value)
+  -s, --solution <solution>          Solution unique name
+  --force                            Skip confirmation prompt
+  --publish                          Publish the entity after the change
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata entity update`
@@ -958,24 +959,24 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
-  --display-name <display-name>        Updated display name
-  --plural-name <plural-name>          Updated plural display name
-  --description <description>          Updated description
-  --icon-small <icon-small>            16x16 icon: web resource logical name (e.g. new_icons/myentity16.png). Use empty string to clear.
-  --icon-medium <icon-medium>          32x32 icon: web resource logical name. Use empty string to clear.
-  --icon-vector <icon-vector>          SVG vector icon: web resource logical name (primary icon in modern Dataverse). Use empty string to clear.
-  --dry-run                            Validate only, do not persist changes
-  --publish                            Publish the entity after the change
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  --display-name <display-name>      Updated display name
+  --plural-name <plural-name>        Updated plural display name
+  --description <description>        Updated description
+  --icon-small <icon-small>          16×16 icon: web resource logical name (e.g. new_icons/myentity16.png). Use empty string to clear.
+  --icon-medium <icon-medium>        32×32 icon: web resource logical name. Use empty string to clear.
+  --icon-vector <icon-vector>        SVG vector icon: web resource logical name (primary icon in modern Dataverse). Use empty string to clear.
+  --dry-run                          Validate only, do not persist changes
+  --publish                          Publish the entity after the change
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata entity update-statusreason`
@@ -992,21 +993,21 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>                Logical name of the entity (alternative to the positional <entity>)
-  --value <value>                      Target status reason by option value (mutually exclusive with --label)
-  --label <label>                      Target status reason by current label (mutually exclusive with --value)
-  --new-label <new-label>              New label to apply to the status reason
-  --color <color>                      New hex color for the status reason (e.g., #FF0000)
-  -s, --solution <solution>            Solution unique name
-  --publish                            Publish the entity after the change
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  --value <value>                    Target status reason by option value (mutually exclusive with --label)
+  --label <label>                    Target status reason by current label (mutually exclusive with --value)
+  --new-label <new-label>            New label to apply to the status reason
+  --color <color>                    New hex color for the status reason (e.g., #FF0000)
+  -s, --solution <solution>          Solution unique name
+  --publish                          Publish the entity after the change
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata key create`
@@ -1019,20 +1020,20 @@ Usage:
   ppds metadata key create [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity to add the key to
-  --name <name>                        [Required] Schema name for the alternate key
-  --display-name <display-name>        [Required] Display name of the alternate key
-  --attributes <attributes>            [Required] Comma-separated list of attribute logical names: "attr1,attr2"
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity to add the key to
+  --name <name>                      [Required] Schema name for the alternate key
+  --display-name <display-name>      [Required] Display name of the alternate key
+  --attributes <attributes>          [Required] Comma-separated list of attribute logical names: "attr1,attr2"
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata key delete`
@@ -1045,19 +1046,19 @@ Usage:
   ppds metadata key delete [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity containing the key
-  --name <name>                        [Required] Logical name of the key to delete
-  --force                              Skip confirmation prompt
-  --dry-run                            Show dependencies without deleting
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity containing the key
+  --name <name>                      [Required] Logical name of the key to delete
+  --force                            Skip confirmation prompt
+  --dry-run                          Show dependencies without deleting
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata key reactivate`
@@ -1070,17 +1071,17 @@ Usage:
   ppds metadata key reactivate [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity containing the key
-  --name <name>                        [Required] Logical name of the key to reactivate
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity containing the key
+  --name <name>                      [Required] Logical name of the key to reactivate
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata optionset add-option`
@@ -1096,20 +1097,20 @@ Arguments:
   <name>  The option set name (e.g., 'new_customstatus')
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the option set
-  --name <name>                        [Required] Name of the option set
-  --label <label>                      [Required] Label for the new option
-  --value <value>                      Numeric value for the option (auto-assigned if not specified)
-  --color <color>                      Color for the option (hex string, e.g., #FF0000)
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the option set
+  --name <name>                      [Required] Name of the option set
+  --label <label>                    [Required] Label for the new option
+  --value <value>                    Numeric value for the option (auto-assigned if not specified)
+  --color <color>                    Color for the option (hex string, e.g., #FF0000)
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata optionset create`
@@ -1125,20 +1126,20 @@ Arguments:
   <name>  The option set name (e.g., 'new_customstatus')
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name to add the option set to
-  --name <name>                        [Required] Schema name for the global option set
-  --display-name <display-name>        [Required] Display name of the global option set
-  --options <options>                  [Required] Option definitions: "Label1=1,Label2=2"
-  --description <description>          Description of the global option set
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name to add the option set to
+  --name <name>                      [Required] Schema name for the global option set
+  --display-name <display-name>      [Required] Display name of the global option set
+  --options <options>                [Required] Option definitions: "Label1=1,Label2=2"
+  --description <description>        Description of the global option set
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata optionset delete`
@@ -1154,18 +1155,18 @@ Arguments:
   <name>  The option set name (e.g., 'new_customstatus')
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the global option set
-  --name <name>                        [Required] Name of the global option set to delete
-  --force                              Skip confirmation prompt
-  --dry-run                            Show dependencies without deleting
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the global option set
+  --name <name>                      [Required] Name of the global option set to delete
+  --force                            Skip confirmation prompt
+  --dry-run                          Show dependencies without deleting
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata optionset remove-option`
@@ -1181,20 +1182,20 @@ Arguments:
   <name>  The option set name (e.g., 'new_customstatus')
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the option set
-  --name <name>                        [Required] Name of the option set
-  --value <value>                      Target option by value (mutually exclusive with --label)
-  --label <label>                      Target option by label (mutually exclusive with --value)
-  --force                              Skip confirmation prompt
-  --dry-run                            Validate that the target option exists, without removing it
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the option set
+  --name <name>                      [Required] Name of the option set
+  --value <value>                    Target option by value (mutually exclusive with --label)
+  --label <label>                    Target option by label (mutually exclusive with --value)
+  --force                            Skip confirmation prompt
+  --dry-run                          Validate that the target option exists, without removing it
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata optionset reorder`
@@ -1210,17 +1211,17 @@ Arguments:
   <name>  The option set name (e.g., 'new_customstatus')
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the option set
-  --name <name>                        [Required] Name of the option set
-  --order <order>                      [Required] Comma-separated list of option values in the desired order: "1,3,2,4"
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the option set
+  --name <name>                      [Required] Name of the option set
+  --order <order>                    [Required] Comma-separated list of option values in the desired order: "1,3,2,4"
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata optionset update`
@@ -1236,19 +1237,19 @@ Arguments:
   <name>  The option set name (e.g., 'new_customstatus')
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the global option set
-  --name <name>                        [Required] Name of the global option set to update
-  --display-name <display-name>        Updated display name
-  --description <description>          Updated description
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the global option set
+  --name <name>                      [Required] Name of the global option set to update
+  --display-name <display-name>      Updated display name
+  --description <description>        Updated description
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata optionset update-option`
@@ -1264,21 +1265,21 @@ Arguments:
   <name>  The option set name (e.g., 'new_customstatus')
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the option set
-  --name <name>                        [Required] Name of the option set
-  --value <value>                      Target option by value (mutually exclusive with --label)
-  --label <label>                      Target option by current label (mutually exclusive with --value)
-  --new-label <new-label>              New label to apply
-  --color <color>                      New hex color (e.g. #FF0000)
-  --dry-run                            Validate only, do not persist changes
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the option set
+  --name <name>                      [Required] Name of the option set
+  --value <value>                    Target option by value (mutually exclusive with --label)
+  --label <label>                    Target option by current label (mutually exclusive with --value)
+  --new-label <new-label>            New label to apply
+  --color <color>                    New hex color (e.g. #FF0000)
+  --dry-run                          Validate only, do not persist changes
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata relationship create`
@@ -1308,7 +1309,7 @@ Options:
   -v, --verbose                                                              Show detailed output including debug messages
   --debug                                                                    Show trace-level diagnostic output
   --correlation-id <correlation-id>                                          Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>                                        Output format [default: Text]
+  -f, --output-format <Text|Json>                                            Output format [default: Text]
   -?, -h, --help                                                             Show help and usage information
 ```
 
@@ -1322,18 +1323,18 @@ Usage:
   ppds metadata relationship delete [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the relationship
-  --name <name>                        [Required] Schema name of the relationship to delete
-  --force                              Skip confirmation prompt
-  --dry-run                            Show dependencies without deleting
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the relationship
+  --name <name>                      [Required] Schema name of the relationship to delete
+  --force                            Skip confirmation prompt
+  --dry-run                          Show dependencies without deleting
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata relationship update`
@@ -1361,7 +1362,7 @@ Options:
   -v, --verbose                                                                Show detailed output including debug messages
   --debug                                                                      Show trace-level diagnostic output
   --correlation-id <correlation-id>                                            Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>                                          Output format [default: Text]
+  -f, --output-format <Text|Json>                                              Output format [default: Text]
   -?, -h, --help                                                               Show help and usage information
 ```
 
@@ -1389,7 +1390,7 @@ Options:
   -v, --verbose                              Show detailed output including debug messages
   --debug                                    Show trace-level diagnostic output
   --correlation-id <correlation-id>          Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>        Output format [default: Text]
+  -f, --output-format <Text|Json>            Output format [default: Text]
   -?, -h, --help                             Show help and usage information
 ```
 
@@ -1403,18 +1404,18 @@ Usage:
   ppds metadata table delete [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity to delete
-  --force                              Skip confirmation prompt
-  --dry-run                            Show dependencies without deleting
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity to delete
+  --force                            Skip confirmation prompt
+  --dry-run                          Show dependencies without deleting
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 
 ## `ppds metadata table update`
@@ -1427,23 +1428,23 @@ Usage:
   ppds metadata table update [options]
 
 Options:
-  -s, --solution <solution>            [Required] Solution unique name containing the table
-  -e, --entity <entity>                [Required] Logical name of the entity to update
-  --display-name <display-name>        Updated display name
-  --plural-name <plural-name>          Updated plural display name
-  --description <description>          Updated description
-  --icon-small <icon-small>            16x16 icon: web resource logical name. Use empty string to clear.
-  --icon-medium <icon-medium>          32x32 icon: web resource logical name. Use empty string to clear.
-  --icon-vector <icon-vector>          SVG vector icon: web resource logical name. Use empty string to clear.
-  --dry-run                            Validate only, do not persist changes
-  --publish                            Publish the entity after the change
-  -p, --profile <profile>              Authentication profile name
-  -env, --environment <environment>    Override the environment URL. Takes precedence over profile's bound environment.
-  -q, --quiet                          Show only warnings and errors
-  -v, --verbose                        Show detailed output including debug messages
-  --debug                              Show trace-level diagnostic output
-  --correlation-id <correlation-id>    Correlation ID for distributed tracing
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -s, --solution <solution>          [Required] Solution unique name containing the table
+  -e, --entity <entity>              [Required] Logical name of the entity to update
+  --display-name <display-name>      Updated display name
+  --plural-name <plural-name>        Updated plural display name
+  --description <description>        Updated description
+  --icon-small <icon-small>          16×16 icon: web resource logical name. Use empty string to clear.
+  --icon-medium <icon-medium>        32×32 icon: web resource logical name. Use empty string to clear.
+  --icon-vector <icon-vector>        SVG vector icon: web resource logical name. Use empty string to clear.
+  --dry-run                          Validate only, do not persist changes
+  --publish                          Publish the entity after the change
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
 ```
 

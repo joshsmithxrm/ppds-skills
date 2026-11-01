@@ -19,7 +19,7 @@ Options:
   --continue-on-error                     Continue import on individual record failures
   --strip-owner-fields                    Strip ownership fields (ownerid, createdby, modifiedby) allowing Dataverse to assign current user
   -u, --user-mapping <user-mapping>       Path to user mapping XML file for remapping user references
-  -f, --output-format <Csv|Json|Text>     Output format [default: Text]
+  -f, --output-format <Text|Json>         Output format [default: Text]
   -v, --verbose                           Enable verbose logging output
   --debug                                 Enable diagnostic logging output
   -?, -h, --help                          Show help and usage information

@@ -1,9 +1,9 @@
 # `ppds auth` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.2.0. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.2. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.2.0**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.2**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds auth`
 
@@ -94,8 +94,8 @@ Usage:
   ppds auth list [options]
 
 Options:
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -f, --output-format <Text|Json>  Output format [default: Text]
+  -?, -h, --help                   Show help and usage information
 ```
 
 ## `ppds auth name`
@@ -154,7 +154,7 @@ Usage:
   ppds auth who [options]
 
 Options:
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -f, --output-format <Text|Json>  Output format [default: Text]
+  -?, -h, --help                   Show help and usage information
 ```
 

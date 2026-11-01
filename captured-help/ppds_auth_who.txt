@@ -5,6 +5,6 @@ Usage:
   ppds auth who [options]
 
 Options:
-  -f, --output-format <Csv|Json|Text>  Output format [default: Text]
-  -?, -h, --help                       Show help and usage information
+  -f, --output-format <Text|Json>  Output format [default: Text]
+  -?, -h, --help                   Show help and usage information
 
