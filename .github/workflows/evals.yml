@@ -47,3 +47,36 @@ jobs:
         run: |
           python evals/check_skills.py
           python evals/live/_selftest.py
+
+  dotnet-install-smoke:
+    name: setup-dotnet .NET 8 install smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions: {}
+    env:
+      DOTNET_INSTALL_DIR: ${{ runner.temp }}/ppds-dotnet8-install-smoke
+      DOTNET_CLI_HOME: ${{ runner.temp }}/ppds-dotnet8-cli-home
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+    steps:
+      - name: Require a fresh SDK installation destination
+        shell: bash
+        run: test ! -e "$DOTNET_INSTALL_DIR"
+      - name: Install .NET 8 with the exact PR19 action
+        id: dotnet
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: '8.0.x'
+      - name: Verify the installed SDK and selected executable
+        shell: bash
+        env:
+          ACTION_SDK_VERSION: ${{ steps.dotnet.outputs.dotnet-version }}
+        run: |
+          set -euo pipefail
+          test "$(readlink -f "$(command -v dotnet)")" = "$(readlink -f "$DOTNET_INSTALL_DIR/dotnet")"
+          sdk="$(dotnet --version)"
+          [[ "$sdk" == 8.0.* ]]
+          test "$sdk" = "$ACTION_SDK_VERSION"
+          test -d "$DOTNET_INSTALL_DIR/sdk/$sdk"
+          dotnet --list-sdks
+          dotnet --info
