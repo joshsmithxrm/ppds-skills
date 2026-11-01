@@ -36,6 +36,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
@@ -116,7 +118,9 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git commit -m "chore(captures): re-capture CLI/MCP surface against PPDS $TARGET"
-          git push -u origin "$branch" --force-with-lease
+          # Use the step-scoped GH_TOKEN for this push only; write no credential config.
+          git -c credential.helper= -c 'credential.helper=!gh auth git-credential' \
+            push -u origin "$branch" --force-with-lease
 
           body="$(cat <<EOF
           Automated re-capture against **PPDS CLI \`$TARGET\`** (was \`$CURRENT\`), per #8.
