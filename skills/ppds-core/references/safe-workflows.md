@@ -2,6 +2,12 @@
 
 This branch prepares the next release increment. Generated captures identify the exact source candidate and binaries; they do not prove published packages or live Dataverse behavior. Prefer the installed surface's help/tool schema if it differs.
 
+## Approved release preparation
+
+The approved versions are CLI 1.5.0, MCP 1.3.0, Extension 1.8.0 stable and Skills 0.2.0. Publication is pending. Existing alpha captures retain their original provenance; regenerate and verify the references against the actual stable tools before distributing Skills 0.2.0.
+
+CLI/MCP use an explicitly approved one-release minor-version exception for safety hardening that changes existing behavior. Protected form writers require the environment acknowledgement described below; ambiguous form selectors fail closed; MCP sessions retain captured targets. Update the Extension with its matching daemon. Custom .NET consumers embedding CLI/MCP implementation assemblies must adapt to changed form and web-resource signatures. Do not describe this release as universally backward-compatible or weaken a guard to preserve an older workflow.
+
 ## Environment acknowledgement
 
 The shared guard is adopted by form writers and flow enable/disable, not every mutation domain. It binds acknowledgement to actual URL, profile identity, session and current environment policy. Effective Production/Test protection requires acknowledgement; Unknown defaults to Production unless explicitly overridden. Read-only denies actual writes but permits a supported write-free preview. CLI uses `--confirm-env`; MCP forms use `confirmEnvironment`. An allowed environment is a selectable destination, not write approval. Surface mismatches, unavailable policy and unresolved targets; do not change protection to evade a refusal.

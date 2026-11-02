@@ -44,6 +44,13 @@ records the source commit, binary hashes, command/tool counts and isolated
 offline capture procedure. This is not a claim of published NuGet packages
 or successful live Dataverse operations.
 
+Release preparation targets CLI **1.5.0**, MCP **1.3.0** and Extension **1.8.0
+stable**. The approved CLI/MCP minor-version safety exception and upgrade
+requirements are described in the
+[safe-workflows reference](skills/ppds-core/references/safe-workflows.md).
+Final stable recapture is required before distribution; current alpha captures
+have not been relabelled as public release evidence.
+
 ## Prerequisite
 
 ```bash

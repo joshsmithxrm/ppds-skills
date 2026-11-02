@@ -9,6 +9,11 @@ skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
 
 Prepared as Skills 0.2.0; no publication is implied by this branch.
 
+Approved target tools are CLI 1.5.0 and MCP 1.3.0, with Extension 1.8.0 stable.
+The one-release CLI/MCP minor-version safety exception and upgrade requirements
+are documented in the core skill's safe-workflows reference. Current alpha
+captures remain historical candidate evidence until stable recapture.
+
 ### Added
 
 - Capture 273 CLI command nodes and 45 MCP tools from source candidate
