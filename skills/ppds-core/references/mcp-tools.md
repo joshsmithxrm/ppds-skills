@@ -1,9 +1,9 @@
 # `ppds-mcp-server` — tool reference
 
-<!-- GENERATED from a live tools/list call against ppds-mcp-server 1.2.2. -->
+<!-- GENERATED from a live tools/list call against ppds-mcp-server 1.2.3-alpha.0.28. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_mcp_tools.py && python tools/generate_flag_tables.py -->
 
-Captured from the released **ppds-mcp-server 1.2.2** (41 tools). Any `ppds_*` tool not listed here does not exist on this server version.
+Captured from **ppds-mcp-server 1.2.3-alpha.0.28** (45 tools). Any `ppds_*` tool not listed here does not exist on this server version.
 
 | Tool | Description |
 |------|-------------|
@@ -20,6 +20,10 @@ Captured from the released **ppds-mcp-server 1.2.2** (41 tools). Any `ppds_*` to
 | `ppds_environment_variables_get` | Get full details of a specific environment variable including description, type, and values. Use the schemaName from ppds_environment_variables_list. |
 | `ppds_environment_variables_list` | List environment variable definitions and their current values. Shows default vs current values, type, and override status. Optionally filter by solution name. |
 | `ppds_environment_variables_set` | Set the current value of an environment variable. Creates the value record if none exists. AI agents can use this to fix misconfigurations during deployment troubleshooting. |
+| `ppds_forms_add_field` | Add one existing column to an existing Main-form section by stable IDs. Saves and verifies an unpublished draft; never publishes. Use dryRun=true for a write-free preview. Avoid simultaneous editors when concurrencyMode is preflight-only. |
+| `ppds_forms_get` | Inspect a form by ID. Use unpublished=true to inspect its draft and obtain the fingerprint required before editing or publishing. |
+| `ppds_forms_list` | List forms for a Dataverse table, including stable IDs, form types and managed status. |
+| `ppds_forms_publish` | Publish ALL pending customizations for the selected table, including changes beyond the selected form. Requires confirmPublishEntity equal to the table logical name. Verifies only the selected form after entity-scoped publication. |
 | `ppds_import_jobs_get` | Get full details of a specific import job including the XML import log. Use the id from ppds_import_jobs_list. The import log XML contains detailed component-level success/failure information for troubleshooting failed imports. |
 | `ppds_import_jobs_list` | List recent solution import jobs for the current environment. Shows import status, progress, solution name, and timing. Use this to check if a solution import succeeded or failed. |
 | `ppds_metadata_add_column` | Adds a new column (attribute) to an existing Dataverse table. Supports all standard column types. Use dry-run to validate before committing. |

@@ -1,7 +1,7 @@
 {
   "tool": "ppds",
-  "cli_version": "1.4.2",
-  "cli_version_raw": "1.4.2+60dbd696d28c79447fe6490924a462c91f9b2d35",
+  "cli_version": "1.4.3-alpha.0.28",
+  "cli_version_raw": "1.4.3-alpha.0.28+1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
   "command_tree": {
     "ppds": [
       "api",
@@ -181,7 +181,9 @@
     "ppds flows": [
       "list",
       "get",
-      "url"
+      "url",
+      "enable",
+      "disable"
     ],
     "ppds connections": [
       "list",
@@ -459,6 +461,8 @@
     "ppds flows list": [],
     "ppds flows get": [],
     "ppds flows url": [],
+    "ppds flows enable": [],
+    "ppds flows disable": [],
     "ppds connections list": [],
     "ppds connections get": [],
     "ppds connectionreferences list": [],

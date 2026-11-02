@@ -1,9 +1,9 @@
 {
   "server": {
     "name": "ppds-mcp-server",
-    "version": "1.2.2"
+    "version": "1.2.3-alpha.0.28"
   },
-  "tool_count": 41,
+  "tool_count": 45,
   "tools": [
     {
       "name": "ppds_auth_who",
@@ -56,6 +56,22 @@
     {
       "name": "ppds_environment_variables_set",
       "description": "Set the current value of an environment variable. Creates the value record if none exists. AI agents can use this to fix misconfigurations during deployment troubleshooting."
+    },
+    {
+      "name": "ppds_forms_add_field",
+      "description": "Add one existing column to an existing Main-form section by stable IDs. Saves and verifies an unpublished draft; never publishes. Use dryRun=true for a write-free preview. Avoid simultaneous editors when concurrencyMode is preflight-only."
+    },
+    {
+      "name": "ppds_forms_get",
+      "description": "Inspect a form by ID. Use unpublished=true to inspect its draft and obtain the fingerprint required before editing or publishing."
+    },
+    {
+      "name": "ppds_forms_list",
+      "description": "List forms for a Dataverse table, including stable IDs, form types and managed status."
+    },
+    {
+      "name": "ppds_forms_publish",
+      "description": "Publish ALL pending customizations for the selected table, including changes beyond the selected form. Requires confirmPublishEntity equal to the table logical name. Verifies only the selected form after entity-scoped publication."
     },
     {
       "name": "ppds_import_jobs_get",

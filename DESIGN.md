@@ -14,12 +14,13 @@ Dataverse environments, a hallucinated flag is worse than a refusal.
 Rather than hand-write flag tables (which drift from the tool), this package
 generates them verbatim from the selected CLI build:
 
-- `tools/capture_cli_help.py` walks the CLI's full command tree (271 nodes
-  at published CLI 1.4.2) into `captured-help/*.txt` + `manifest.json`.
+- `tools/capture_cli_help.py` walks the CLI's full command tree into
+  `captured-help/*.txt` + `manifest.json`.
 - `tools/capture_mcp_tools.py` records the MCP server's actual `tools/list`
-  response (41 tools at published MCP 1.2.2).
+  response, including its reported version and tool count.
 - `skills/ppds-core/references/candidate-provenance.json` records the exact source commit and
-  public package URLs and package/binary hashes. These captures come from independently verified public NuGet tools.
+  binary hashes and capture method. The current captures use a local source
+  candidate; they are not proof that those versions are published on NuGet.
 - `tools/generate_flag_tables.py` embeds those captures **verbatim** into
   `skills/*/references/cli-*.md` and `mcp-tools.md`.
 

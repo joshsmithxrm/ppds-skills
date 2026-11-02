@@ -133,7 +133,7 @@ def main() -> int:
         f"\ndone: captured CLI {cli_version}, MCP {mcp_version}; "
         f"{changed} SKILL.md file(s) updated.\n"
     )
-    if "-rc." not in cli_version:
+    if "-" not in cli_version:
         sys.stderr.write(
             "NOTE: pin is now a STABLE version. check_skills.py no longer flags "
             "rc mentions in prose — manually drop any `--prerelease` guidance and "

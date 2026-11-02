@@ -1,10 +1,10 @@
 ---
 name: ppds-solutions-alm
-description: Dataverse solution ALM with PPDS — export/import solutions, watch import jobs, inspect components, manage environment variables and connection references, and generate/sync/validate deployment settings files for target environments. Use when the user wants to export or import a solution, move customizations between environments, check why a solution import failed, fix orphaned connection references, set environment variables, or prepare deployment settings for a pipeline. Read ppds-core first for auth and safety rules.
+description: Dataverse solution ALM with PPDS — export/import solutions, watch import jobs, inspect components, manage environment variables and connection references, activate deployed solution cloud flows, and generate/sync/validate deployment settings. Use when the user wants to move customizations, diagnose import failures or orphaned references, configure target environments, enable or disable solution flows, or prepare deployment settings. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.4.2"
-  ppds_mcp_version_tested: "1.2.2"
+  ppds_cli_version_tested: "1.4.3-alpha.0.28"
+  ppds_mcp_version_tested: "1.2.3-alpha.0.28"
 ---
 
 # PPDS Solutions ALM — move customizations, keep the receipts
@@ -60,6 +60,17 @@ ppds deployment-settings generate --solution MySolution --output ./deploy/dev.js
 ppds deployment-settings sync --solution MySolution --file ./deploy/dev.json
 ppds deployment-settings validate --solution MySolution --file ./deploy/dev.json
 ```
+
+## Enable or disable deployed flows
+
+Use `ppds flows enable` / `ppds flows disable` for exact single-flow selection
+or a capped `--all --solution` batch. Read
+[flow activation](references/flow-activation.md) and
+[captured flags](references/cli-flows.md). Preview first, inspect reference
+blockers, and retain the expected plan hash and explicit target acknowledgement.
+Already matching is `unchanged`; preserve partial/unknown outcomes and inspect
+before retrying. PPDS does not auto-run activation after import; inspect imported state. No MCP mutation tool
+is added for this workflow.
 
 ## Common mistakes (do not invent these)
 

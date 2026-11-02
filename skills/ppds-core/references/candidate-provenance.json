@@ -1,52 +1,45 @@
 {
-  "status": "verified-public-package-capture",
-  "repository": "https://github.com/joshsmithxrm/power-platform-developer-suite",
-  "commit": "60dbd696d28c79447fe6490924a462c91f9b2d35",
-  "source_tree": "8f74bb09ee71ce2193a2be27ffb31bef8950b789",
-  "runtime": "Public NuGet .NET global tools installed into an isolated tool directory; no source-build substitution.",
-  "cli_version": "1.4.2+60dbd696d28c79447fe6490924a462c91f9b2d35",
-  "mcp_version": "1.2.2",
-  "packages": [
-    {
-      "id": "PPDS.Cli",
-      "version": "1.4.2",
-      "url": "https://api.nuget.org/v3-flatcontainer/ppds.cli/1.4.2/ppds.cli.1.4.2.nupkg",
-      "sha256": "d16f876bc018c4b2e180b46a931e1c4744f6800de2e7e35faf415ccc45772755",
-      "nuspec_repository_commit": "60dbd696d28c79447fe6490924a462c91f9b2d35"
+  "status": "unpublished-merge-validation-candidate",
+  "source_commit": "1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+  "build_configuration": "Release",
+  "target_framework": "net8.0",
+  "capture_platform": "Windows x64",
+  "binaries": {
+    "cli": {
+      "path": "src/PPDS.Cli/bin/Release/net8.0/ppds.dll",
+      "version": "1.4.3-alpha.0.28+1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+      "sha256": "2990982bd7f56dc66a27f4bafcdfc565edd845c68b82785f4835be45ea89cfda"
     },
-    {
-      "id": "PPDS.Mcp",
-      "version": "1.2.2",
-      "url": "https://api.nuget.org/v3-flatcontainer/ppds.mcp/1.2.2/ppds.mcp.1.2.2.nupkg",
-      "sha256": "d1960c0555ec1c7a11222ea78eb525874f6816ef998e3280970bae2f474c11e9",
-      "nuspec_repository_commit": "60dbd696d28c79447fe6490924a462c91f9b2d35"
+    "mcp": {
+      "path": "src/PPDS.Mcp/bin/Release/net8.0/ppds-mcp-server.dll",
+      "version": "1.2.3-alpha.0.28+1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+      "sha256": "f7b60042d6bde8a991ffd9be8fc6ceff9d61a22af05fc9a8bb9b591d01d80b20"
     }
+  },
+  "publication_claim": false,
+  "live_dataverse_operations": false,
+  "skills_version_prepared": "0.2.0",
+  "cli_command_count": 273,
+  "mcp_tool_count": 45,
+  "procedure": [
+    "Use exact immutable candidate runtimes with isolated empty profile configuration.",
+    "Run repository CLI help capture, bounded readonly MCP initialize/tools/list, repository table generation and recapture.py --no-capture.",
+    "Validate static gates with candidate freshness enabled; no tools/call or live Dataverse operation."
   ],
-  "binary_sha256": {
-    "net9.0/ppds.dll": "2e8e23144bd785a8112fa248edbce13273292af6a81f067b251ba6aaa6e03317",
-    "net8.0/ppds.dll": "6437fc32620ed334067d534bdd95cec53f14ce43e794bf0603b50fffa9e01be8",
-    "net10.0/ppds.dll": "e4a5e85442c27a80594ce6dddea863c2d67caf67c71e8e9b357bd03417a27ad5",
-    "net9.0/ppds-mcp-server.dll": "e54b8e65a5913eab3895603e6b7b69975812e97e80b1a3844ee012ee51400260",
-    "net8.0/ppds-mcp-server.dll": "cede03a056bc3bc19903f2d5abd892a4824d7e460443e2af1cb406488a831b36",
-    "net10.0/ppds-mcp-server.dll": "26e90b9fa8849b4db412ebf8c717cd668c3be6a43b864fdd39bd99a7d0d314c7"
+  "normalized_lf_sha256": {
+    "captured-help/manifest.json": "f0409294123b90877a2989eba1556d95b4080611bca4c80ad3d2b876b18951cc",
+    "captured-help/mcp-tools.json": "9ba8d0e97e939240446b21af1e7a28ab0afa8633e2cdbe4648d970402446b291"
   },
-  "capture": "Full tools/recapture.py at equal semantic versions: 271 CLI command nodes and 41 MCP tool names/descriptions. MCP input schemas were verified separately and are not retained by this capture script.",
-  "isolation": "Empty PPDS_CONFIG_DIR; inherited PPDS/DATAVERSE/POWERPLATFORM/AZURE variables removed. CLI --version/--help and MCP initialize/tools/list only; no tools/call or Dataverse operations.",
-  "recapture_comparison": {
-    "previous_source_commit": "d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6",
-    "changed_files": [
-      "captured-help/manifest.json"
-    ],
-    "changed_manifest_keys": [
-      "cli_version_raw"
-    ],
-    "command_nodes": 271,
-    "mcp_tools": 41,
-    "comparison_method": "Fresh captures and generated references compared with simulation using newline normalization; help bodies and MCP names/descriptions unchanged."
+  "full_protocol_tools_list_sha256": "96478cb4d07ee7da33d846cce5da21794a92bf9bddfb311748fbaa8cb6edf20c",
+  "validation": {
+    "static_gate": "passed for all seven skills against CLI 1.4.3-alpha.0.28 and MCP 1.2.3-alpha.0.28, with pinned CLI freshness enabled and no bypass",
+    "harness_selftest": "passed: offline evals/live/_selftest.py; no semantic model execution",
+    "paid_semantic_evals": "not run",
+    "configuration_directory_after_capture": "empty",
+    "independent_review": "Staged capture passed independent review; coordinator review of installed prose and provenance passed on 2026-11-01. Fresh hosted CI and live validation gates remain separate.",
+    "host_validator": "passed: host quick_validate.py for all seven skills",
+    "configuration_directory_after_checks": "empty"
   },
-  "previous_simulation_record": {
-    "commit": "d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6",
-    "sha256": "6a120cf1d39d11c0f8d1c8aead464fae80b8b29f24c7927885e152f09942df91",
-    "retained_in": "Release execution evidence; the earlier simulation is not public-package evidence."
-  }
+  "prior_public_record": "Previous public-package provenance retained in the release review artifacts; prior released Skills version is 0.1.2.",
+  "prior_candidate_record": "Previous candidate a9761537c4ad5d7f2276fd593b5924074484421c retained unchanged in review artifacts: prior-docs-provenance.json, prior-skills-provenance.json and prior-captured-help/."
 }

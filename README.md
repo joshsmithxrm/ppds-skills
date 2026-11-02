@@ -31,18 +31,25 @@ errors while these skills were being authored.
 | `ppds-core` | Install, auth profiles (browser / device code / service principal / managed identity / federated), environment selection, **the safety model** (environment types, dry-run-first, MCP `--read-only` / `--allowed-env`, multi-environment confirmation), error/exit-code interpretation, CLI↔MCP routing |
 | `ppds-query` | SQL→FetchXML engine (joins, CTEs, aggregates, window functions), guarded DML, FetchXML fallback, explain/history, TDS routing |
 | `ppds-plugins` | Declarative plugin registration (attributes → extract → diff → deploy), Custom APIs, plugin trace debugging recipe (list/get/timeline) |
-| `ppds-solutions-alm` | Solution export/import, import jobs, environment variables, connection references, deployment settings |
+| `ppds-solutions-alm` | Solution export/import, import jobs, environment variables, connection references, deployment settings, explicit flow activation |
 | `ppds-metadata` | Browse + author tables, columns, relationships, keys, choices; schema compare; views and forms |
 | `ppds-data` | Schema-driven bulk export/import/copy, CSV load, bulk update/delete/truncate, user mapping |
 | `ppds-webresources` | Pull/edit/push/publish loop with conflict detection |
 
-Skills **0.1.2** captures the published CLI **1.4.2** and MCP **1.2.2**
-packages from release commit `60dbd696d28c79447fe6490924a462c91f9b2d35`
-(271 CLI command nodes, 41 MCP tools). The exact versions are in each skill's
-frontmatter and enforced by the eval suite.
+Skills **0.2.0 is prepared but unreleased**. Its references capture the local
+Safe multi-environment workflows source candidate. The exact CLI/MCP versions
+are in each skill's frontmatter and enforced by the eval suite.
 [Capture provenance](skills/ppds-core/references/candidate-provenance.json)
-records public package URLs, package and installed binary hashes, the verified
-source commit, and the isolated offline recapture procedure.
+records the source commit, binary hashes, command/tool counts and isolated
+offline capture procedure. This is not a claim of published NuGet packages
+or successful live Dataverse operations.
+
+Release preparation targets CLI **1.5.0**, MCP **1.3.0** and Extension **1.8.0
+stable**. The approved CLI/MCP minor-version safety exception and upgrade
+requirements are described in the
+[safe-workflows reference](skills/ppds-core/references/safe-workflows.md).
+Final stable recapture is required before distribution; current alpha captures
+have not been relabelled as public release evidence.
 
 ## Prerequisite
 
@@ -53,6 +60,8 @@ dotnet tool install -g PPDS.Mcp    # optional: `ppds-mcp-server`
 
 Update later with `dotnet tool update -g PPDS.Cli`. These commands install the
 published tools. Prefer the installed tool's live `--help` when versions differ.
+The new form/flow and notebook guidance requires the corresponding candidate
+capabilities; an install of the preceding stable version does not add them.
 
 ## Install — Claude Code
 

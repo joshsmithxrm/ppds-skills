@@ -5,6 +5,39 @@ All notable changes to this package are documented here. The format follows
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html): MAJOR =
 skill renames/removals, MINOR = new skills or capabilities, PATCH = fixes.
 
+## [Unreleased]
+
+Prepared as Skills 0.2.0; no publication is implied by this branch.
+
+Approved target tools are CLI 1.5.0 and MCP 1.3.0, with Extension 1.8.0 stable.
+The one-release CLI/MCP minor-version safety exception and upgrade requirements
+are documented in the core skill's safe-workflows reference. Current alpha
+captures remain historical candidate evidence until stable recapture.
+
+### Added
+
+- Capture 273 CLI command nodes and 45 MCP tools from source candidate
+  `1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7`, with exact binary hashes and
+  offline provenance. These captures do not claim public package availability.
+- Bounded MCP Main-form authoring: inspect a draft, add an existing field to an
+  existing section, verify phase results, and explicitly publish the table.
+- Flow activation guidance covering exact selection, preflight, plan hashes,
+  environment acknowledgement, per-flow results and bounded verification.
+- Notebook environment isolation and shared form/flow safety guidance, including
+  captured targets, profile-safe recovery and cancellation ownership.
+- Four regression scenarios for draft/publication boundaries, partial form
+  writes, flow activation review and notebook target retention. Free structural
+  validation is distinct from opt-in semantic model execution.
+
+### Fixed
+
+- Explain plugin double-fault diagnostics, diff cancellation, web-resource
+  publisher-prefix warnings and the managed-form validation boundary.
+- Distinguish test-only propagation polling, deterministic update-check tests
+  and the required Python status gate from runtime product capabilities.
+- Keep source prerelease captures from printing the stable-version cleanup
+  notice; alpha versions remain prereleases.
+
 ## [0.1.2] - 2026-10-30
 
 ### Changed
@@ -77,6 +110,7 @@ surface (flag tables captured at 1.2.0-rc.6) and PPDS.Mcp server 1.0.0.
 - `captured-help/` verbatim CLI/MCP surface, the `evals/check_skills.py` static
   authoring gate, and the `evals/live/` behavioral eval suite.
 
+[Unreleased]: https://github.com/joshsmithxrm/ppds-skills/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.2
 [0.1.1]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.1
 [0.1.0]: https://github.com/joshsmithxrm/ppds-skills/releases/tag/v0.1.0

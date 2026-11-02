@@ -3,8 +3,8 @@ name: ppds-core
 description: Install, authenticate, and safely operate the Power Platform Developer Suite (PPDS) CLI and MCP server against Microsoft Dataverse — auth profiles, environment selection, the environment-safety model, and error interpretation. Use when the user wants to connect to Dataverse with PPDS, set up `ppds` or `ppds-mcp-server`, manage auth profiles or environments, decide between the PPDS CLI and MCP surfaces, or interpret a PPDS error or exit code. Load this skill first before any other ppds-* skill.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.4.2"
-  ppds_mcp_version_tested: "1.2.2"
+  ppds_cli_version_tested: "1.4.3-alpha.0.28"
+  ppds_mcp_version_tested: "1.2.3-alpha.0.28"
 ---
 
 # PPDS Core — connect, select, stay safe
@@ -19,11 +19,11 @@ dotnet tool install -g PPDS.Cli   # CLI: `ppds`   (update: dotnet tool update -g
 dotnet tool install -g PPDS.Mcp   # MCP server: `ppds-mcp-server`
 ```
 
-Verify: `ppds --version`. These skills capture published CLI **1.4.2**
-and MCP **1.2.2** from independently verified public NuGet packages.
+Verify: `ppds --version`. These skills capture the local source candidate;
+the exact tested CLI/MCP versions are in the frontmatter above.
 If the installed version differs, prefer live `--help`. See
-[public capture provenance](references/candidate-provenance.json) for package
-URLs, hashes, the release commit, and the offline capture procedure.
+[capture provenance](references/candidate-provenance.json) for binary hashes,
+the source commit and offline procedure. The candidate is not yet published.
 
 ## Surface routing (applies to every ppds-* skill)
 
@@ -37,9 +37,8 @@ instead when either holds:
    [references/mcp-server.md](references/mcp-server.md).
 
 Where an MCP tool mirrors a CLI command this package names it, e.g.
-`ppds env list` ↔ `ppds_env_list`. The captured public MCP server (1.2.2) exposes 41
-tools — the authoritative list is
-[references/mcp-tools.md](references/mcp-tools.md). The CLI surface is wider;
+`ppds env list` ↔ `ppds_env_list`. See the captured
+[MCP tool list](references/mcp-tools.md). The CLI surface is wider;
 anything without an MCP tool routes to the CLI.
 
 ## Authentication profiles
@@ -113,6 +112,10 @@ These rules are not style; agents must follow them.
 
 ## Reading PPDS output
 
+For the candidate's form/flow acknowledgements, notebook isolation and fix
+interpretation, read [safe workflows](references/safe-workflows.md). This guard
+adoption is bounded to forms/flows; other domains retain their own contracts.
+
 - **stdout is data, stderr is status.** Pipe-safe by design. Parse stdout;
   show stderr to humans.
 - Machine-readable: add `-f json` (`--output-format Json`); CSV is `-f csv`.
@@ -138,10 +141,10 @@ These rules are not style; agents must follow them.
 |------|-------|
 | SQL / FetchXML queries, DML, explain, history | ppds-query |
 | Plugin registration, deployment, trace debugging | ppds-plugins |
-| Solutions, import jobs, env vars, connection refs | ppds-solutions-alm |
+| Solutions, import jobs, env vars, connection refs, flow enable/disable | ppds-solutions-alm |
 | Tables, columns, relationships, keys, choices, views, forms | ppds-metadata |
 | Bulk data export/import/copy/load/delete | ppds-data |
 | Web resources pull/push/publish | ppds-webresources |
 | Users, roles, diagnostics | [references/cli-users.md](references/cli-users.md), [references/cli-roles.md](references/cli-roles.md), [references/cli-logs.md](references/cli-logs.md) |
-| Model-driven apps, data sources/providers, flows | no dedicated skill yet — `ppds model-driven-app`, `ppds data-sources`, `ppds data-providers`, `ppds flows`, or `ppds api request` |
+| Model-driven apps, data sources/providers | `ppds model-driven-app`, `ppds data-sources`, `ppds data-providers`, or `ppds api request` |
 | Anything else (raw Web API escape hatch) | `ppds api request` — prefer a typed command when one exists |
