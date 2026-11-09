@@ -59,10 +59,10 @@ Key facts:
   further drift reads/comparisons rather than continuing in the background.
 - `deploy` takes `--config registrations.json` (**required**) — it does not
   take an assembly path. `extract` is the step that reads the DLL.
-- Cleanup is destructive and must follow the final captured mode/version contract.
-  The approved image-only amendment is pending integration; it does not grant parent
-  deletion authority. Review the registration reference and an authorized preview —
-  it deletes.
+- Cleanup follows the registration version: v1 retains legacy parent cleanup;
+  v2 deploy-with-clean and standalone clean prune only planned owned images on
+  configured steps, retaining parents. Explicit complete image lists are required.
+  Review the registration reference and an authorized dry-run before deletion.
 - `--solution <unique-name>` on extract/deploy adds components to a solution.
 - Step-level management: `ppds plugins enable` / `ppds plugins disable` /
   `ppds plugins unregister`, `ppds plugins update` (swap assembly bytes),
