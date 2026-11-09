@@ -9,21 +9,16 @@ metadata:
 
 # PPDS Core — connect, select, stay safe
 
-PPDS (Power Platform Developer Suite) is a single .NET global tool giving you
-a typed CLI, an MCP server, a TUI, and NuGet libraries over Microsoft
-Dataverse. One install, no Python, no PAC CLI dependency. Docs:
-https://joshsmithxrm.github.io/ppds-docs/
+Power Platform Developer Suite (PPDS) provides a CLI, MCP server, TUI and NuGet libraries for Microsoft Dataverse. It needs no Python or PAC CLI. Docs: https://joshsmithxrm.github.io/ppds-docs/
 
 ```bash
 dotnet tool install -g PPDS.Cli   # CLI: `ppds`   (update: dotnet tool update -g PPDS.Cli)
 dotnet tool install -g PPDS.Mcp   # MCP server: `ppds-mcp-server`
 ```
 
-Verify: `ppds --version`. These skills capture the local source candidate;
-the exact tested CLI/MCP versions are in the frontmatter above.
-If the installed version differs, prefer live `--help`. See
-[capture provenance](references/candidate-provenance.json) for binary hashes,
-the source commit and offline procedure. The candidate is not yet published.
+Use a supported .NET 10 SDK for new global-tool installations. CLI/MCP package targets remain .NET 8, 9 and 10. The upcoming native CLI and VS Code bundles carry .NET 10, requiring no separate runtime. Native Linux requires glibc 2.27; VS Code requires 2.28. Final supported-OS review and public availability remain release gates.
+
+Verify: `ppds --version`. Frontmatter identifies the captured source candidate. If the installed version differs, prefer live `--help`. [Capture provenance](references/candidate-provenance.json) records binary hashes, source and the offline procedure; publication is pending.
 
 ## Surface routing (applies to every ppds-* skill)
 
@@ -114,7 +109,7 @@ These rules are not style; agents must follow them.
 
 For the candidate's form/flow acknowledgements, notebook isolation and fix
 interpretation, read [safe workflows](references/safe-workflows.md). This guard
-adoption is bounded to forms/flows; other domains retain their own contracts.
+adoption covers forms, nine Views writers and flow activation; other domains retain their own contracts.
 
 - **stdout is data, stderr is status.** Pipe-safe by design. Parse stdout;
   show stderr to humans.
@@ -148,3 +143,7 @@ adoption is bounded to forms/flows; other domains retain their own contracts.
 | Users, roles, diagnostics | [references/cli-users.md](references/cli-users.md), [references/cli-roles.md](references/cli-roles.md), [references/cli-logs.md](references/cli-logs.md) |
 | Model-driven apps, data sources/providers | `ppds model-driven-app`, `ppds data-sources`, `ppds data-providers`, or `ppds api request` |
 | Anything else (raw Web API escape hatch) | `ppds api request` — prefer a typed command when one exists |
+
+## CLI transition guidance
+
+Prefer long `--environment`, `--entity` and `--entities` options. Existing `-e` meanings remain during this minor release; do not silently reinterpret old scripts. Every existing environment option also accepts `-env`; there is no opt-in mode. The later CLI 2.0 transition requires at least 90 days after the complete stable replacement guidance. Read [the transition contract](references/cli-transition.md); legacy warnings belong on stderr, never inside stdout JSON.

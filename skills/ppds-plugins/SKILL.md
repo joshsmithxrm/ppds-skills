@@ -48,6 +48,10 @@ troubleshooting retained from the CLI 1.4.2 maintenance release, read
 [references/plugin-packages.md](references/plugin-packages.md). Keep the
 installed version and the candidate-only fixes distinct.
 
+Review the candidate [registration versions and diff contract](references/plugin-registration-v2.md)
+before choosing the explicit 2.0 opt-in. The default extract loop above retains
+an existing file version or uses legacy 1.0; it does not silently adopt resets.
+
 Key facts:
 
 - Deployment errors retain earlier step failures even if cleanup later fails.
@@ -55,8 +59,9 @@ Key facts:
   further drift reads/comparisons rather than continuing in the background.
 - `deploy` takes `--config registrations.json` (**required**) — it does not
   take an assembly path. `extract` is the step that reads the DLL.
-- `deploy --clean` also removes registrations in the environment that are
-  missing from the config (orphans). Run `--dry-run` with `--clean` first —
+- Cleanup is destructive and must follow the final captured mode/version contract.
+  The approved image-only amendment is pending integration; it does not grant parent
+  deletion authority. Review the registration reference and an authorized preview —
   it deletes.
 - `--solution <unique-name>` on extract/deploy adds components to a solution.
 - Step-level management: `ppds plugins enable` / `ppds plugins disable` /

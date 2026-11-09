@@ -16,6 +16,10 @@ captures remain historical candidate evidence until stable recapture.
 
 ### Added
 
+- Authored candidate guidance for retry-safe same-section form additions, metadata labels, strict reorder and explicit movement. Legacy reorder retains its documented add/drop transition and stderr-only warning. Final help capture and validation are pending; no generated command/tool count is inferred.
+- Source-reconciled environment aliases and version-selected plugin cleanup guidance: retain existing `-e`, add `-env`, preserve v1 cleanup and require explicit image-list authority for v2 image-only cleanup.
+- Metadata preview scope, finite-label update boundaries and Choice omission/explicit-zero migration guidance, including the additive presence getter and MCP warning field. No generated captures or automation workflows were changed.
+
 - Capture 273 CLI command nodes and 45 MCP tools from source candidate
   `1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7`, with exact binary hashes and
   offline provenance. These captures do not claim public package availability.

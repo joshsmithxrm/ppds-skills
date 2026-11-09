@@ -51,6 +51,8 @@ requirements are described in the
 Final stable recapture is required before distribution; current alpha captures
 have not been relabelled as public release evidence.
 
+The expanded candidate also prepares explicit [form layout operations](skills/ppds-metadata/references/form-layout.md) and [CLI transition guidance](skills/ppds-core/references/cli-transition.md). Final capture/source identity and public tool availability remain pending; the historical captures have not been replaced or relabelled.
+
 ## Prerequisite
 
 ```bash

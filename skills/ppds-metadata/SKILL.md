@@ -58,6 +58,8 @@ After metadata changes, publish: `ppds metadata publish <names>` (alias for
 Note: the `table`, `column`, and `choice` subgroups are **deprecated
 aliases** of entity, attribute, and optionset — prefer the canonical names.
 
+Read [metadata previews and Choice values](references/metadata-previews-and-choices.md) before schema deletion or initial Choice/Choices creation. Omit a value for allocation; explicit zero stays zero. Read preview scope and warnings, and inspect uncertain writes before retrying.
+
 ## Cross-environment schema comparison
 
 ```bash
@@ -86,6 +88,10 @@ ppds views list --entity account
 ppds views set-filter --entity account --view "Active Accounts" --filter-file ./filter.xml
 ppds forms list --entity account
 ```
+
+## Explicit CLI form layout
+
+Use `forms add-field` for a placement, `forms reorder-fields-strict` for a complete permutation of existing fields and `forms move-field` for a unique existing control. Read [form layout and retries](references/form-layout.md) before writing. Same-section repeats preserve controls/custom labels and report actual outcomes; intentional other-section placements remain allowed. New cells use metadata labels. Legacy reorder retains authoritative add/drop during transition and warns on stderr only. Final generated flags/candidate provenance remain required; these CLI commands do not create new MCP tools.
 
 ## MCP Main-form authoring
 
