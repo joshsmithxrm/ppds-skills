@@ -5,7 +5,7 @@ Usage:
   ppds data truncate [options]
 
 Options:
-  -e, --entity <entity>              [Required] Entity logical name to truncate (delete ALL records)
+  -e, --entity <entity>              [Required] Entity logical name to truncate (delete ALL records) (-e is deprecated; use --entity.)
   --dry-run                          Preview record count without deleting
   --force                            Skip confirmation prompt (required for non-interactive execution)
   --batch-size <batch-size>          Records per delete batch (default: 1000) [default: 1000]

@@ -1,7 +1,14 @@
 {
   "tool": "ppds",
-  "cli_version": "1.4.3-alpha.0.28",
-  "cli_version_raw": "1.4.3-alpha.0.28+1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+  "cli_version": "1.4.3-alpha.0.35",
+  "cli_version_raw": "1.4.3-alpha.0.35+a0feb138f00575d35634565f3a733deb9e65ca98",
+  "capture_platform": "Windows x64",
+  "source_commit": "a0feb138f00575d35634565f3a733deb9e65ca98",
+  "source_tree": "904cce706d298d3f0ed62ea095bdcdd78d584101",
+  "canonical_runtime_capture_count": 275,
+  "alias_expanded_command_path_count": 302,
+  "alias_derived_path_count": 27,
+  "alias_derivation": "Each alias path is derived only from the same canonical parent and its exact shown_spellings; text is unchanged canonical help, not an independently executed alias capture. Deprecated command nodes remain their own captures.",
   "command_tree": {
     "ppds": [
       "api",
@@ -10,6 +17,7 @@
       "org",
       "data",
       "plugins",
+      "plugin-traces",
       "plugintraces",
       "service-endpoints",
       "custom-apis",
@@ -19,10 +27,13 @@
       "schema",
       "query",
       "solutions",
+      "import-jobs",
       "importjobs",
+      "environment-variables",
       "environmentvariables",
       "flows",
       "connections",
+      "connection-references",
       "connectionreferences",
       "deployment-settings",
       "users",
@@ -89,6 +100,14 @@
       "unregister",
       "enable",
       "disable"
+    ],
+    "ppds plugin-traces": [
+      "list",
+      "get",
+      "settings",
+      "related",
+      "timeline",
+      "delete"
     ],
     "ppds plugintraces": [
       "list",
@@ -164,11 +183,25 @@
       "publish",
       "url"
     ],
+    "ppds import-jobs": [
+      "list",
+      "get",
+      "data",
+      "wait",
+      "url"
+    ],
     "ppds importjobs": [
       "list",
       "get",
       "data",
       "wait",
+      "url"
+    ],
+    "ppds environment-variables": [
+      "list",
+      "get",
+      "set",
+      "export",
       "url"
     ],
     "ppds environmentvariables": [
@@ -188,6 +221,13 @@
     "ppds connections": [
       "list",
       "get"
+    ],
+    "ppds connection-references": [
+      "list",
+      "get",
+      "flows",
+      "connections",
+      "analyze"
     ],
     "ppds connectionreferences": [
       "list",
@@ -255,6 +295,8 @@
       "add-field",
       "remove-field",
       "reorder-fields",
+      "reorder-fields-strict",
+      "move-field",
       "add-subgrid",
       "remove-subgrid"
     ],
@@ -331,6 +373,15 @@
     "ppds plugins unregister": [],
     "ppds plugins enable": [],
     "ppds plugins disable": [],
+    "ppds plugin-traces list": [],
+    "ppds plugin-traces get": [],
+    "ppds plugin-traces settings": [
+      "get",
+      "set"
+    ],
+    "ppds plugin-traces related": [],
+    "ppds plugin-traces timeline": [],
+    "ppds plugin-traces delete": [],
     "ppds plugintraces list": [],
     "ppds plugintraces get": [],
     "ppds plugintraces settings": [
@@ -448,11 +499,21 @@
     "ppds solutions components": [],
     "ppds solutions publish": [],
     "ppds solutions url": [],
+    "ppds import-jobs list": [],
+    "ppds import-jobs get": [],
+    "ppds import-jobs data": [],
+    "ppds import-jobs wait": [],
+    "ppds import-jobs url": [],
     "ppds importjobs list": [],
     "ppds importjobs get": [],
     "ppds importjobs data": [],
     "ppds importjobs wait": [],
     "ppds importjobs url": [],
+    "ppds environment-variables list": [],
+    "ppds environment-variables get": [],
+    "ppds environment-variables set": [],
+    "ppds environment-variables export": [],
+    "ppds environment-variables url": [],
     "ppds environmentvariables list": [],
     "ppds environmentvariables get": [],
     "ppds environmentvariables set": [],
@@ -465,6 +526,11 @@
     "ppds flows disable": [],
     "ppds connections list": [],
     "ppds connections get": [],
+    "ppds connection-references list": [],
+    "ppds connection-references get": [],
+    "ppds connection-references flows": [],
+    "ppds connection-references connections": [],
+    "ppds connection-references analyze": [],
     "ppds connectionreferences list": [],
     "ppds connectionreferences get": [],
     "ppds connectionreferences flows": [],
@@ -518,6 +584,8 @@
     "ppds forms add-field": [],
     "ppds forms remove-field": [],
     "ppds forms reorder-fields": [],
+    "ppds forms reorder-fields-strict": [],
+    "ppds forms move-field": [],
     "ppds forms add-subgrid": [],
     "ppds forms remove-subgrid": [],
     "ppds webresources list": [],
@@ -541,6 +609,8 @@
     "ppds plugins update package": [],
     "ppds plugins update step": [],
     "ppds plugins update image": [],
+    "ppds plugin-traces settings get": [],
+    "ppds plugin-traces settings set": [],
     "ppds plugintraces settings get": [],
     "ppds plugintraces settings set": [],
     "ppds service-endpoints register webhook": [],

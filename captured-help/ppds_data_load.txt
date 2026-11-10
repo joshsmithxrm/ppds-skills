@@ -5,7 +5,7 @@ Usage:
   ppds data load [options]
 
 Options:
-  -e, --entity <entity>                  [Required] Target entity logical name
+  -e, --entity <entity>                  [Required] Target entity logical name (-e is deprecated; use --entity.)
   -f, --file <file>                      [Required] Path to CSV file
   -k, --key <key>                        Alternate key field(s) for upsert. Comma-separated for composite keys.
   -m, --mapping <mapping>                Path to column mapping JSON file

@@ -1,9 +1,9 @@
 # `ppds data` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.28. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.35. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.4.3-alpha.0.28**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.3-alpha.0.35**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds data`
 
@@ -87,7 +87,7 @@ Usage:
   ppds data delete [options]
 
 Options:
-  -e, --entity <entity>              [Required] Target entity logical name
+  -e, --entity <entity>              [Required] Target entity logical name (-e is deprecated; use --entity.)
   --id <id>                          Record ID (GUID) to delete
   -k, --key <key>                    Alternate key field(s) for lookup. Format: field=value or field1=value1,field2=value2 for composite keys.
   --file <file>                      Path to file containing record IDs (JSON array or CSV with ID column)
@@ -175,7 +175,7 @@ Usage:
   ppds data load [options]
 
 Options:
-  -e, --entity <entity>                  [Required] Target entity logical name
+  -e, --entity <entity>                  [Required] Target entity logical name (-e is deprecated; use --entity.)
   -f, --file <file>                      [Required] Path to CSV file
   -k, --key <key>                        Alternate key field(s) for upsert. Comma-separated for composite keys.
   -m, --mapping <mapping>                Path to column mapping JSON file
@@ -205,7 +205,7 @@ Usage:
   ppds data schema [options]
 
 Options:
-  -e, --entities <entities>                      [Required] Entity logical names to include (comma-separated or multiple -e flags)
+  -e, --entities <entities>                      [Required] Entity logical names to include (comma-separated or multiple -e flags) (-e is deprecated; use --entities.)
   -o, --output <output>                          [Required] Output schema file path
   -p, --profile <profile>                        Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
   -env, --environment <environment>              Override the environment URL. Takes precedence over profile's bound environment.
@@ -230,7 +230,7 @@ Usage:
   ppds data truncate [options]
 
 Options:
-  -e, --entity <entity>              [Required] Entity logical name to truncate (delete ALL records)
+  -e, --entity <entity>              [Required] Entity logical name to truncate (delete ALL records) (-e is deprecated; use --entity.)
   --dry-run                          Preview record count without deleting
   --force                            Skip confirmation prompt (required for non-interactive execution)
   --batch-size <batch-size>          Records per delete batch (default: 1000) [default: 1000]
@@ -257,7 +257,7 @@ Usage:
   ppds data update [options]
 
 Options:
-  -e, --entity <entity>              [Required] Target entity logical name
+  -e, --entity <entity>              [Required] Target entity logical name (-e is deprecated; use --entity.)
   --id <id>                          Record ID (GUID) to update
   -k, --key <key>                    Alternate key field(s) for lookup. Format: field=value or field1=value1,field2=value2 for composite keys.
   --file <file>                      Path to CSV file containing records to update (must include ID column and columns to update)

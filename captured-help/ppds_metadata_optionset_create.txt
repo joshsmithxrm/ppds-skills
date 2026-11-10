@@ -11,7 +11,7 @@ Options:
   -s, --solution <solution>          [Required] Solution unique name to add the option set to
   --name <name>                      [Required] Schema name for the global option set
   --display-name <display-name>      [Required] Display name of the global option set
-  --options <options>                [Required] Option definitions: "Label1=1,Label2=2"
+  --options <options>                [Required] Option definitions: "Label1,Label2=718980001"; omitted values derive from the solution publisher
   --description <description>        Description of the global option set
   --dry-run                          Validate only, do not persist changes
   -p, --profile <profile>            Authentication profile name

@@ -1,5 +1,5 @@
 Description:
-  Remove orphaned registrations not in configuration
+  Version 1: legacy parent cleanup; version 2: prune owned images on configured steps
 
 Usage:
   ppds plugins clean [options]

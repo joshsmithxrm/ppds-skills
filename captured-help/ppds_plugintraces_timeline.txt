@@ -5,12 +5,12 @@ Usage:
   ppds plugin-traces timeline [<trace-id>] [options]
 
 Arguments:
-  <trace-id>  Trace ID of any execution in the request — the timeline shows all related traces via the correlation ID
+  <trace-id>  Trace ID of any execution in the request - the timeline shows all related traces via the correlation ID
 
 Options:
   -c, --correlation-id <correlation-id>  Correlation ID to look up directly (use this if you already have the correlation ID)
   -p, --profile <profile>                Authentication profile name
-  -e, --environment <environment>        Override the environment URL. Takes precedence over profile's bound environment.
+  -e, -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                            Show only warnings and errors
   -v, --verbose                          Show detailed output including debug messages
   --debug                                Show trace-level diagnostic output

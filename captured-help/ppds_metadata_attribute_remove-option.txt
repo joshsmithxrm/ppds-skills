@@ -6,13 +6,13 @@ Usage:
 
 Options:
   -s, --solution <solution>          Solution unique name
-  -e, --entity <entity>              [Required] Logical name of the entity
+  -e, --entity <entity>              [Required] Logical name of the entity (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the Choice/Choices column
   --value <value>                    Target option by value (mutually exclusive with --label)
   --label <label>                    Target option by label (mutually exclusive with --value)
   --force                            Skip confirmation prompt
   --publish                          Publish the entity after the change
-  --dry-run                          Validate that the target option exists, without removing it
+  --dry-run                          Validate target option existence only. Dependencies and deletion feasibility are not checked. No changes persisted.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors

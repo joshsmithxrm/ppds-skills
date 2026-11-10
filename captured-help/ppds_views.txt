@@ -13,7 +13,7 @@ Commands:
   add-column       Add one or more columns to a view
   remove-column    Remove a column from a view by attribute name
   update-column    Update the width of an existing column in a view
-  reorder-columns  Set the authoritative column order for a view. Columns not listed are dropped.
+  reorder-columns  Reorder every existing column exactly once. Use remove-column to remove a column.
   set-sort         Set the sort order for a view. Multiple --sort flags applied in declaration order.
   clear-sort       Remove all sort configuration from a view
   set-filter       Set or replace the filter on a view.

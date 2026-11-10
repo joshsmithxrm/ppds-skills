@@ -1,9 +1,9 @@
 # `ppds plugins` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.28. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.35. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.4.3-alpha.0.28**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.3-alpha.0.35**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds plugins`
 
@@ -21,10 +21,10 @@ Commands:
   extract                         Extract plugin step/image attributes from an assembly (.dll) or plugin package (.nupkg) to JSON configuration. Works against Dataverse-supported .NET Framework plugin assemblies and net462/net471/net48 plugin package assets regardless of how the CLI is packaged (single-file, self-contained, or framework-dependent).
   deploy                          Deploy plugin registrations to environment
   register                        Register plugin components: assembly, package, type, step, image
-  diff                            Compare configuration against environment state
+  diff                            Compare managed registration fields against environment state
   list                            List registered plugins in the environment
   get <type> <name-or-id>         Get details for a specific plugin entity
-  clean                           Remove orphaned registrations not in configuration
+  clean                           Version 1: legacy parent cleanup; version 2: prune owned images on configured steps
   download                        Download plugin assembly or package binary from Dataverse
   update                          Update existing plugin registrations
   unregister <type> <name-or-id>  Unregister plugin entities from Dataverse
@@ -36,7 +36,7 @@ Commands:
 
 ```text
 Description:
-  Remove orphaned registrations not in configuration
+  Version 1: legacy parent cleanup; version 2: prune owned images on configured steps
 
 Usage:
   ppds plugins clean [options]
@@ -68,7 +68,7 @@ Options:
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
-  --clean                            Also remove orphaned registrations not in config
+  --clean                            Version 1: legacy parent cleanup; version 2: prune owned images on configured steps
   --dry-run                          Preview changes without applying
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
@@ -82,13 +82,14 @@ Options:
 
 ```text
 Description:
-  Compare configuration against environment state
+  Compare managed registration fields against environment state
 
 Usage:
   ppds plugins diff [options]
 
 Options:
   -c, --config <config>              [Required] Path to registrations.json
+  --include-hidden                   Include hidden registration steps in this read-only comparison
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -172,17 +173,18 @@ Usage:
   ppds plugins extract [options]
 
 Options:
-  -i, --input <input>                [Required] Path to assembly (.dll) or plugin package (.nupkg)
-  -o, --output <output>              Output file path (default: registrations.json in input directory)
-  -s, --solution <solution>          Solution unique name to add components to
-  -f, --force                        Overwrite existing file without merging
-  --reference-dir <reference-dir>    Additional directory to search for referenced assemblies (repeatable). Use when a plugin's dependencies live outside the input assembly's own folder.
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -i, --input <input>                            [Required] Path to assembly (.dll) or plugin package (.nupkg)
+  -o, --output <output>                          Output file path (default: registrations.json in input directory)
+  -s, --solution <solution>                      Solution unique name to add components to
+  -f, --force                                    Overwrite existing file without merging
+  --reference-dir <reference-dir>                Additional directory to search for referenced assemblies (repeatable). Use when a plugin's dependencies live outside the input assembly's own folder.
+  --registration-version <registration-version>  Registration contract: 1.0 (legacy) or 2.0 (nonsecret reconciliation); defaults to the existing file version or 1.0
+  -q, --quiet                                    Show only warnings and errors
+  -v, --verbose                                  Show detailed output including debug messages
+  --debug                                        Show trace-level diagnostic output
+  --correlation-id <correlation-id>              Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>                Output format [default: Text]
+  -?, -h, --help                                 Show help and usage information
 ```
 
 ## `ppds plugins get`
@@ -388,6 +390,7 @@ Options:
   --name <name>                      [Required] Image name
   --type <type>                      [Required] Image type: pre, post, or both
   --attributes <attributes>          Comma-separated list of attributes to include (all if not specified)
+  --reset-fields <reset-fields>      Explicit image field resets (attributes, description)
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
@@ -444,6 +447,7 @@ Options:
   --filtering-attributes <filtering-attributes>  Comma-separated list of attributes that trigger this step (for Update message)
   --name <name>                                  Step display name (auto-generated if not specified)
   --secure-config <secure-config>                Secure configuration string (write-only, not stored in source control)
+  --reset-fields <reset-fields>                  Explicit nonsecret field resets
   --event-handler-type <event-handler-type>      Event handler type: pluginType or serviceEndpoint [default: pluginType]
   -p, --profile <profile>                        Authentication profile name
   -env, --environment <environment>              Override the environment URL. Takes precedence over profile's bound environment.

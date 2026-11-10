@@ -1,9 +1,9 @@
 # `ppds-mcp-server` — tool reference
 
-<!-- GENERATED from a live tools/list call against ppds-mcp-server 1.2.3-alpha.0.28. -->
+<!-- GENERATED from a live tools/list call against ppds-mcp-server 1.2.3-alpha.0.35. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_mcp_tools.py && python tools/generate_flag_tables.py -->
 
-Captured from **ppds-mcp-server 1.2.3-alpha.0.28** (45 tools). Any `ppds_*` tool not listed here does not exist on this server version.
+Captured from **ppds-mcp-server 1.2.3-alpha.0.35** (45 tools). Any `ppds_*` tool not listed here does not exist on this server version.
 
 | Tool | Description |
 |------|-------------|
@@ -28,7 +28,7 @@ Captured from **ppds-mcp-server 1.2.3-alpha.0.28** (45 tools). Any `ppds_*` tool
 | `ppds_import_jobs_list` | List recent solution import jobs for the current environment. Shows import status, progress, solution name, and timing. Use this to check if a solution import succeeded or failed. |
 | `ppds_metadata_add_column` | Adds a new column (attribute) to an existing Dataverse table. Supports all standard column types. Use dry-run to validate before committing. |
 | `ppds_metadata_add_option_value` | Adds a new option value to an existing option set (global or local choice). Returns the assigned integer value. |
-| `ppds_metadata_create_choice` | Creates a new global choice (option set) in the specified solution. Options are provided as a JSON array of {label, value} objects. Supports dry-run mode. |
+| `ppds_metadata_create_choice` | Creates a new global choice (option set) in the specified solution. Options are JSON {label, value} objects. Omit value to derive it from the solution publisher; explicit zero is preserved. Out-of-range explicit values produce warnings. Supports dry-run mode. |
 | `ppds_metadata_create_key` | Creates an alternate key on a Dataverse table. Attributes can be provided as a comma-separated list or a JSON array of column logical names. Supports dry-run mode. |
 | `ppds_metadata_create_relationship` | Creates a relationship (one-to-many or many-to-many) between two Dataverse tables. For one-to-many, a lookup column is created on the referencing entity. Supports dry-run mode. |
 | `ppds_metadata_create_table` | Creates a new Dataverse table (entity) in the specified solution. Supports dry-run mode for validation without persisting changes. Use ppds_metadata_entities to verify the table was created. |

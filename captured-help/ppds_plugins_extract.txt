@@ -5,15 +5,16 @@ Usage:
   ppds plugins extract [options]
 
 Options:
-  -i, --input <input>                [Required] Path to assembly (.dll) or plugin package (.nupkg)
-  -o, --output <output>              Output file path (default: registrations.json in input directory)
-  -s, --solution <solution>          Solution unique name to add components to
-  -f, --force                        Overwrite existing file without merging
-  --reference-dir <reference-dir>    Additional directory to search for referenced assemblies (repeatable). Use when a plugin's dependencies live outside the input assembly's own folder.
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -i, --input <input>                            [Required] Path to assembly (.dll) or plugin package (.nupkg)
+  -o, --output <output>                          Output file path (default: registrations.json in input directory)
+  -s, --solution <solution>                      Solution unique name to add components to
+  -f, --force                                    Overwrite existing file without merging
+  --reference-dir <reference-dir>                Additional directory to search for referenced assemblies (repeatable). Use when a plugin's dependencies live outside the input assembly's own folder.
+  --registration-version <registration-version>  Registration contract: 1.0 (legacy) or 2.0 (nonsecret reconciliation); defaults to the existing file version or 1.0
+  -q, --quiet                                    Show only warnings and errors
+  -v, --verbose                                  Show detailed output including debug messages
+  --debug                                        Show trace-level diagnostic output
+  --correlation-id <correlation-id>              Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>                Output format [default: Text]
+  -?, -h, --help                                 Show help and usage information
 

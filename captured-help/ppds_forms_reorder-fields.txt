@@ -8,7 +8,7 @@ Options:
   --entity <entity>                  [Required] Entity logical name
   --form <form>                      [Required] Name or ID of the form
   --section <section>                [Required] Label or name of the section containing the fields to reorder
-  --fields <fields>                  [Required] Comma-separated ordered list of field logical names. Fields not in the list are removed.
+  --fields <fields>                  [Required] Comma-separated authoritative field order; unlisted fields are removed. New fields use metadata labels; fields in other sections are not copied.
   --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name

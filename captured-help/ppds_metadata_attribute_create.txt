@@ -6,7 +6,7 @@ Usage:
 
 Options:
   -s, --solution <solution>                                                                                   [Required] Solution unique name containing the table
-  -e, --entity <entity>                                                                                       [Required] Logical name of the entity to add the attribute to
+  -e, --entity <entity>                                                                                       [Required] Logical name of the entity to add the attribute to (-e is deprecated; use --entity.)
   --name <name>                                                                                               [Required] Schema name for the new attribute (e.g., new_MyColumn)
   --display-name <display-name>                                                                               [Required] Display name of the attribute
   --type <BigInt|Boolean|Choice|Choices|DateTime|Decimal|Double|File|Image|Integer|Lookup|Memo|Money|String>  [Required] Column type: String, Memo, Integer, BigInt, Decimal, Double, Money, Boolean, DateTime, Choice, Choices, Image, File, Lookup
@@ -20,7 +20,7 @@ Options:
   --date-time-behavior <date-time-behavior>                                                                   DateTime behavior: UserLocal, DateOnly, or TimeZoneIndependent
   --choice <choice>                                                                                           Attach the Choice/Choices column to an existing GLOBAL option set by name (mutually exclusive with --option/--options/--options-file)
   --options <options>                                                                                         [Legacy] Local Choice options as CSV: "Label1=1,Label2=2"
-  --option <option>                                                                                           Local Choice option "Label[:Value][:#Color]" — repeatable; value derived from --solution when omitted
+  --option <option>                                                                                           Local Choice option "Label[:Value][:#Color]" - repeatable; value derived from --solution when omitted
   --options-file <options-file>                                                                               Path to a JSON file of local Choice options: [{"label":"..","value":1,"color":"#RRGGBB"}]
   --default-value <default-value>                                                                             Default value for Choice or Boolean columns
   --true-label <true-label>                                                                                   Label for the true value of a Boolean column

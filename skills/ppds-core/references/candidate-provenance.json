@@ -1,45 +1,80 @@
 {
-  "status": "unpublished-merge-validation-candidate",
-  "source_commit": "1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+  "status": "unpublished-final-C-validation-candidate",
+  "source_commit": "a0feb138f00575d35634565f3a733deb9e65ca98",
+  "source_tree": "904cce706d298d3f0ed62ea095bdcdd78d584101",
   "build_configuration": "Release",
-  "target_framework": "net8.0",
+  "target_framework": "net10.0",
   "capture_platform": "Windows x64",
   "binaries": {
     "cli": {
-      "path": "src/PPDS.Cli/bin/Release/net8.0/ppds.dll",
-      "version": "1.4.3-alpha.0.28+1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
-      "sha256": "2990982bd7f56dc66a27f4bafcdfc565edd845c68b82785f4835be45ea89cfda"
+      "path": "src/PPDS.Cli/bin/Release/net10.0/ppds.dll",
+      "version": "1.4.3-alpha.0.35+a0feb138f00575d35634565f3a733deb9e65ca98",
+      "version_evidence": "actual --version text",
+      "sha256": "6e1ef15152091c50537ef14439a1ddc9b8808f6cdcb6c171755b9fbc54f2e25c"
     },
     "mcp": {
-      "path": "src/PPDS.Mcp/bin/Release/net8.0/ppds-mcp-server.dll",
-      "version": "1.2.3-alpha.0.28+1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
-      "sha256": "f7b60042d6bde8a991ffd9be8fc6ceff9d61a22af05fc9a8bb9b591d01d80b20"
+      "path": "src/PPDS.Mcp/bin/Release/net10.0/ppds-mcp-server.dll",
+      "version": "1.2.3-alpha.0.35",
+      "version_evidence": "actual MCP initialize serverInfo.version (no build suffix reported)",
+      "sha256": "db1ed6564e443a83669f6cc0476234430646ad76d672da4110de89fec98827fe"
     }
   },
   "publication_claim": false,
   "live_dataverse_operations": false,
   "skills_version_prepared": "0.2.0",
-  "cli_command_count": 273,
+  "cli_canonical_runtime_capture_count": 275,
+  "cli_alias_expanded_command_path_count": 302,
+  "cli_alias_derived_path_count": 27,
   "mcp_tool_count": 45,
+  "full_MCP_input_schemas_retained": true,
+  "protocol_version_requested": "2025-06-18",
+  "protocol_version_negotiated": "2025-03-26",
   "procedure": [
-    "Use exact immutable candidate runtimes with isolated empty profile configuration.",
-    "Run repository CLI help capture, bounded readonly MCP initialize/tools/list, repository table generation and recapture.py --no-capture.",
-    "Validate static gates with candidate freshness enabled; no tools/call or live Dataverse operation."
+    "Reuse immutable accepted-C Release/net10 capture outputs; do not recapture or invoke a product.",
+    "Preserve all275 actual canonical help texts verbatim; derive27 additional paths solely from exact shown aliases.",
+    "Keep deprecated command nodes separate; never substitute preferred commands for their help.",
+    "Retain all45 full MCP input schemas and exact protocol frames; no tools/call.",
+    "Run existing reference generator and recapture.py --no-capture, then existing static/free offline checks with product/claude absent from PATH."
   ],
+  "retained_host_capture_result_sha256": "de99d59a27b53035f3b1b373941bb1a7e01880088f9474a39227a64944e3084f",
+  "completed_Release_artifacts_sha256": "5da6f8c5bd00aecc56865c2a69308b489f144a06bd57d9fc0417785252253e75",
+  "completed_Release_build_result_sha256": "e7edcb9d423c3fd106c054ee56ccaa361b7955049a6fcbdf42d847d4e1df65ad",
+  "complete_net10_CLI_context_sha256": "e9ef21944ef288c0d6e1ec46e4d3242ae4a386453ece73ef1c9477e3fc2622d0",
   "normalized_lf_sha256": {
-    "captured-help/manifest.json": "f0409294123b90877a2989eba1556d95b4080611bca4c80ad3d2b876b18951cc",
-    "captured-help/mcp-tools.json": "9ba8d0e97e939240446b21af1e7a28ab0afa8633e2cdbe4648d970402446b291"
+    "captured-help/manifest.json": "f0d21c1efc8926e2bdc34940fa7d9bee3bb6f2209fa139025fdb45b989e05496",
+    "captured-help/mcp-tools.json": "fa8bc71bf5e347b4690911c5555d328e5a5a692cb17f9f657aef058f2f82c7b3",
+    "captured-help/alias-provenance.json": "255f740ff965260e5d244348977ba5425a918a97f13112ec24063b4b350d9b84",
+    "captured-help/platform-contracts.json": "af1c7a144b8e4cccc5a9313ae00988b5dd6e7911ab02acdd0bd6354b00cd939a"
   },
-  "full_protocol_tools_list_sha256": "96478cb4d07ee7da33d846cce5da21794a92bf9bddfb311748fbaa8cb6edf20c",
+  "full_protocol_frames_sha256": "bb03078789a77d119ad542a9b760536a52a2217aa7e8af2803a3e52da246587b",
+  "platform_contracts": [
+    {
+      "command": "ppds auth create",
+      "option": "--accept-cleartext-caching",
+      "description": "Accept cleartext credential storage on Linux when secure storage (libsecret) is unavailable",
+      "condition": "shown on Linux; hidden on other operating systems",
+      "default": false,
+      "evidence_kind": "exact C source predicate; not a runtime Linux capture",
+      "source_commit": "a0feb138f00575d35634565f3a733deb9e65ca98",
+      "source_path": "src/PPDS.Cli/Commands/Auth/AuthCommandGroup.cs",
+      "source_gitblob": "0bcc5b1336ff68bd7ba5cbec23647290b8faec46",
+      "source_canonical_lf_sha256": "0b9aa5344167f93c417ac3afc471d71493bc7d2ea3786215f997ed5ef3cdd89e"
+    }
+  ],
+  "known_cross_option_alias_collision_rows_preserved": 21,
   "validation": {
-    "static_gate": "passed for all seven skills against CLI 1.4.3-alpha.0.28 and MCP 1.2.3-alpha.0.28, with pinned CLI freshness enabled and no bypass",
-    "harness_selftest": "passed: offline evals/live/_selftest.py; no semantic model execution",
+    "static_gate": "passed against all seven current alpha-pinned skills; normal freshness check skipped because no ppds executable is on the private PATH; no bypass flag set",
+    "harness_selftest": "passed: free offline parser/assertion/scenario validation; semantic judge forced unavailable by the existing self-test",
     "paid_semantic_evals": "not run",
-    "configuration_directory_after_capture": "empty",
-    "independent_review": "Staged capture passed independent review; coordinator review of installed prose and provenance passed on 2026-11-01. Fresh hosted CI and live validation gates remain separate.",
-    "host_validator": "passed: host quick_validate.py for all seven skills",
-    "configuration_directory_after_checks": "empty"
+    "product_recapture_in_this_lane": false,
+    "public_stable_recapture": "held until actual public stable release; alpha evidence is not relabelled stable",
+    "private_configuration_directory_after_checks": "empty",
+    "existing_generators_and_eval_guards": "unchanged"
   },
-  "prior_public_record": "Previous public-package provenance retained in the release review artifacts; prior released Skills version is 0.1.2.",
-  "prior_candidate_record": "Previous candidate a9761537c4ad5d7f2276fd593b5924074484421c retained unchanged in review artifacts: prior-docs-provenance.json, prior-skills-provenance.json and prior-captured-help/."
+  "historical_candidate_record": {
+    "path": "candidate-provenance-1cba826c.json",
+    "source_commit": "1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+    "sha256": "9cfd05e9218e9dbfe76c3b94315b0e2ad0f0ac83b67a9d05780b57505a3ba75d",
+    "preserved_verbatim": true
+  }
 }

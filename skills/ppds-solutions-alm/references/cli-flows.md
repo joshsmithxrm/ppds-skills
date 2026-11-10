@@ -1,9 +1,9 @@
 # `ppds flows` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.28. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.35. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.4.3-alpha.0.28**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.3-alpha.0.35**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds flows`
 
@@ -45,7 +45,7 @@ Options:
   --expected-plan-hash <expected-plan-hash>  Require this dry-run plan fingerprint before writes
   -s, --solution <solution>                  Filter by solution unique name
   -p, --profile <profile>                    Authentication profile name
-  -e, --environment <environment>            Environment URL override
+  -e, -env, --environment <environment>      Environment URL override
   -q, --quiet                                Show only warnings and errors
   -v, --verbose                              Show detailed output including debug messages
   --debug                                    Show trace-level diagnostic output
@@ -74,7 +74,7 @@ Options:
   --expected-plan-hash <expected-plan-hash>  Require this dry-run plan fingerprint before writes
   -s, --solution <solution>                  Filter by solution unique name
   -p, --profile <profile>                    Authentication profile name
-  -e, --environment <environment>            Environment URL override
+  -e, -env, --environment <environment>      Environment URL override
   -q, --quiet                                Show only warnings and errors
   -v, --verbose                              Show detailed output including debug messages
   --debug                                    Show trace-level diagnostic output
@@ -96,14 +96,14 @@ Arguments:
   <name>  The workflow ID (GUID) or unique name
 
 Options:
-  -p, --profile <profile>            Authentication profile name
-  -e, --environment <environment>    Environment URL override
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -p, --profile <profile>                Authentication profile name
+  -e, -env, --environment <environment>  Environment URL override
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 ```
 
 ## `ppds flows list`
@@ -116,16 +116,16 @@ Usage:
   ppds flows list [options]
 
 Options:
-  -s, --solution <solution>          Filter by solution unique name
-  --state <state>                    Filter by state (Draft, Activated, Suspended)
-  -p, --profile <profile>            Authentication profile name
-  -e, --environment <environment>    Environment URL override
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -s, --solution <solution>              Filter by solution unique name
+  --state <state>                        Filter by state (Draft, Activated, Suspended)
+  -p, --profile <profile>                Authentication profile name
+  -e, -env, --environment <environment>  Environment URL override
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 ```
 
 ## `ppds flows url`
@@ -141,13 +141,13 @@ Arguments:
   <name>  The workflow ID (GUID) or unique name
 
 Options:
-  -p, --profile <profile>            Authentication profile name
-  -e, --environment <environment>    Environment URL override
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -p, --profile <profile>                Authentication profile name
+  -e, -env, --environment <environment>  Environment URL override
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 ```
 

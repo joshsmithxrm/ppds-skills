@@ -6,7 +6,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity to add the key to
+  -e, --entity <entity>              [Required] Logical name of the entity to add the key to (-e is deprecated; use --entity.)
   --name <name>                      [Required] Schema name for the alternate key
   --display-name <display-name>      [Required] Display name of the alternate key
   --attributes <attributes>          [Required] Comma-separated list of attribute logical names: "attr1,attr2"

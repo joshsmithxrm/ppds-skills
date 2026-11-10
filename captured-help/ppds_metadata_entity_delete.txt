@@ -10,9 +10,9 @@ Arguments:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>) (-e is deprecated; use --entity.)
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors

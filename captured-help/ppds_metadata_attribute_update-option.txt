@@ -6,7 +6,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          Solution unique name
-  -e, --entity <entity>              [Required] Logical name of the entity
+  -e, --entity <entity>              [Required] Logical name of the entity (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the Choice/Choices column
   --value <value>                    Target option by value (mutually exclusive with --label)
   --label <label>                    Target option by current label (mutually exclusive with --value)

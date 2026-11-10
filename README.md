@@ -51,7 +51,7 @@ requirements are described in the
 Final stable recapture is required before distribution; current alpha captures
 have not been relabelled as public release evidence.
 
-The expanded candidate also prepares explicit [form layout operations](skills/ppds-metadata/references/form-layout.md) and [CLI transition guidance](skills/ppds-core/references/cli-transition.md). Final capture/source identity and public tool availability remain pending; the historical captures have not been replaced or relabelled.
+The expanded candidate also prepares explicit [form layout operations](skills/ppds-metadata/references/form-layout.md) and [CLI transition guidance](skills/ppds-core/references/cli-transition.md). Current references bind accepted source `a0feb138f00575d35634565f3a733deb9e65ca98`: 275 canonical help captures, 302 valid command paths (27 derived only from shown aliases), and 45 full MCP tool schemas. Actual candidate versions remain CLI `1.4.3-alpha.0.35` and MCP `1.2.3-alpha.0.35`; public stable availability and recapture remain pending. [Historical candidate provenance](skills/ppds-core/references/candidate-provenance-1cba826c.json) is preserved verbatim. Windows help does not expose the Linux-only cleartext-cache flag; its [source contract](captured-help/platform-contracts.json) is recorded separately.
 
 ## Prerequisite
 

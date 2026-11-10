@@ -16,6 +16,7 @@ Options:
   --filtering-attributes <filtering-attributes>  Comma-separated list of attributes that trigger this step (for Update message)
   --name <name>                                  Step display name (auto-generated if not specified)
   --secure-config <secure-config>                Secure configuration string (write-only, not stored in source control)
+  --reset-fields <reset-fields>                  Explicit nonsecret field resets
   --event-handler-type <event-handler-type>      Event handler type: pluginType or serviceEndpoint [default: pluginType]
   -p, --profile <profile>                        Authentication profile name
   -env, --environment <environment>              Override the environment URL. Takes precedence over profile's bound environment.

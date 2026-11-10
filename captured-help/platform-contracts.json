@@ -1,0 +1,18 @@
+{
+  "runtime_capture_platform": "Windows x64",
+  "source_only_contracts": [
+    {
+      "command": "ppds auth create",
+      "option": "--accept-cleartext-caching",
+      "description": "Accept cleartext credential storage on Linux when secure storage (libsecret) is unavailable",
+      "condition": "shown on Linux; hidden on other operating systems",
+      "default": false,
+      "evidence_kind": "exact C source predicate; not a runtime Linux capture",
+      "source_commit": "a0feb138f00575d35634565f3a733deb9e65ca98",
+      "source_path": "src/PPDS.Cli/Commands/Auth/AuthCommandGroup.cs",
+      "source_gitblob": "0bcc5b1336ff68bd7ba5cbec23647290b8faec46",
+      "source_canonical_lf_sha256": "0b9aa5344167f93c417ac3afc471d71493bc7d2ea3786215f997ed5ef3cdd89e"
+    }
+  ],
+  "no_platform_flag_inserted_into_runtime_help": true
+}

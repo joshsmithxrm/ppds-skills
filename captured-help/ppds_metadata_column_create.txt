@@ -6,7 +6,7 @@ Usage:
 
 Options:
   -s, --solution <solution>                                                                                   [Required] Solution unique name containing the table
-  -e, --entity <entity>                                                                                       [Required] Logical name of the entity to add the column to
+  -e, --entity <entity>                                                                                       [Required] Logical name of the entity to add the column to (-e is deprecated; use --entity.)
   --name <name>                                                                                               [Required] Schema name for the new column (e.g., new_MyColumn)
   --display-name <display-name>                                                                               [Required] Display name of the column
   --type <BigInt|Boolean|Choice|Choices|DateTime|Decimal|Double|File|Image|Integer|Lookup|Memo|Money|String>  [Required] Column type: String, Memo, Integer, BigInt, Decimal, Double, Money, Boolean, DateTime, Choice, Choices, Image, File, Lookup

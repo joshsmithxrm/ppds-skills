@@ -1,9 +1,9 @@
 # `ppds metadata` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.28. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.35. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.4.3-alpha.0.28**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.3-alpha.0.35**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds metadata`
 
@@ -27,10 +27,10 @@ Commands:
   optionsets              List global option sets
   optionset <name>        Get details for or manage a global option set (choice)
   publish <names>         Publish entity metadata (alias for ppds publish --type entity)
-  table                   Create, update, or delete Dataverse tables (deprecated — use 'entity')
-  column                  Create, update, or delete columns (deprecated — use 'attribute')
+  table                   Create, update, or delete Dataverse tables (deprecated - use 'entity')
+  column                  Create, update, or delete columns (deprecated - use 'attribute')
   relationship            Create, update, or delete Dataverse relationships
-  choice                  Manage global choices/option sets (deprecated — use 'optionset')
+  choice                  Manage global choices/option sets (deprecated - use 'optionset')
   key                     Create, delete, or reactivate alternate keys on Dataverse tables
 ```
 
@@ -84,7 +84,7 @@ Options:
 
 ```text
 Description:
-  Manage global choices/option sets (deprecated — use 'optionset')
+  Manage global choices/option sets (deprecated - use 'optionset')
 
 Usage:
   ppds metadata choice [command] [options]
@@ -106,7 +106,7 @@ Commands:
 
 ```text
 Description:
-  Create, update, or delete columns (deprecated — use 'attribute')
+  Create, update, or delete columns (deprecated - use 'attribute')
 
 Usage:
   ppds metadata column [command] [options]
@@ -339,7 +339,7 @@ Options:
 
 ```text
 Description:
-  Create, update, or delete Dataverse tables (deprecated — use 'entity')
+  Create, update, or delete Dataverse tables (deprecated - use 'entity')
 
 Usage:
   ppds metadata table [command] [options]
@@ -364,7 +364,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          Solution unique name (required for value derivation when --option has no explicit value)
-  -e, --entity <entity>              [Required] Logical name of the entity
+  -e, --entity <entity>              [Required] Logical name of the entity (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the Choice/Choices column
   --option <option>                  [Required] Option to add: "Label[:Value][:#Color]"
   --publish                          Publish the entity after the change
@@ -390,7 +390,7 @@ Usage:
 
 Options:
   -s, --solution <solution>                                                                                   [Required] Solution unique name containing the table
-  -e, --entity <entity>                                                                                       [Required] Logical name of the entity to add the attribute to
+  -e, --entity <entity>                                                                                       [Required] Logical name of the entity to add the attribute to (-e is deprecated; use --entity.)
   --name <name>                                                                                               [Required] Schema name for the new attribute (e.g., new_MyColumn)
   --display-name <display-name>                                                                               [Required] Display name of the attribute
   --type <BigInt|Boolean|Choice|Choices|DateTime|Decimal|Double|File|Image|Integer|Lookup|Memo|Money|String>  [Required] Column type: String, Memo, Integer, BigInt, Decimal, Double, Money, Boolean, DateTime, Choice, Choices, Image, File, Lookup
@@ -404,7 +404,7 @@ Options:
   --date-time-behavior <date-time-behavior>                                                                   DateTime behavior: UserLocal, DateOnly, or TimeZoneIndependent
   --choice <choice>                                                                                           Attach the Choice/Choices column to an existing GLOBAL option set by name (mutually exclusive with --option/--options/--options-file)
   --options <options>                                                                                         [Legacy] Local Choice options as CSV: "Label1=1,Label2=2"
-  --option <option>                                                                                           Local Choice option "Label[:Value][:#Color]" — repeatable; value derived from --solution when omitted
+  --option <option>                                                                                           Local Choice option "Label[:Value][:#Color]" - repeatable; value derived from --solution when omitted
   --options-file <options-file>                                                                               Path to a JSON file of local Choice options: [{"label":"..","value":1,"color":"#RRGGBB"}]
   --default-value <default-value>                                                                             Default value for Choice or Boolean columns
   --true-label <true-label>                                                                                   Label for the true value of a Boolean column
@@ -433,10 +433,10 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity containing the attribute
+  -e, --entity <entity>              [Required] Logical name of the entity containing the attribute (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the attribute to delete
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -458,13 +458,13 @@ Usage:
 
 Options:
   -s, --solution <solution>          Solution unique name
-  -e, --entity <entity>              [Required] Logical name of the entity
+  -e, --entity <entity>              [Required] Logical name of the entity (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the Choice/Choices column
   --value <value>                    Target option by value (mutually exclusive with --label)
   --label <label>                    Target option by label (mutually exclusive with --value)
   --force                            Skip confirmation prompt
   --publish                          Publish the entity after the change
-  --dry-run                          Validate that the target option exists, without removing it
+  --dry-run                          Validate target option existence only. Dependencies and deletion feasibility are not checked. No changes persisted.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -486,7 +486,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity containing the attribute
+  -e, --entity <entity>              [Required] Logical name of the entity containing the attribute (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the attribute to update
   --display-name <display-name>      Updated display name
   --description <description>        Updated description
@@ -515,7 +515,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          Solution unique name
-  -e, --entity <entity>              [Required] Logical name of the entity
+  -e, --entity <entity>              [Required] Logical name of the entity (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the Choice/Choices column
   --value <value>                    Target option by value (mutually exclusive with --label)
   --label <label>                    Target option by current label (mutually exclusive with --value)
@@ -597,7 +597,7 @@ Options:
   -s, --solution <solution>          [Required] Solution unique name containing the global choice
   --name <name>                      [Required] Name of the global choice to delete
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -716,7 +716,7 @@ Usage:
 
 Options:
   -s, --solution <solution>                                                                                   [Required] Solution unique name containing the table
-  -e, --entity <entity>                                                                                       [Required] Logical name of the entity to add the column to
+  -e, --entity <entity>                                                                                       [Required] Logical name of the entity to add the column to (-e is deprecated; use --entity.)
   --name <name>                                                                                               [Required] Schema name for the new column (e.g., new_MyColumn)
   --display-name <display-name>                                                                               [Required] Display name of the column
   --type <BigInt|Boolean|Choice|Choices|DateTime|Decimal|Double|File|Image|Integer|Lookup|Memo|Money|String>  [Required] Column type: String, Memo, Integer, BigInt, Decimal, Double, Money, Boolean, DateTime, Choice, Choices, Image, File, Lookup
@@ -756,10 +756,10 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity containing the column
+  -e, --entity <entity>              [Required] Logical name of the entity containing the column (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the column to delete
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -781,7 +781,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity containing the column
+  -e, --entity <entity>              [Required] Logical name of the entity containing the column (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the column to update
   --display-name <display-name>      Updated display name
   --description <description>        Updated description
@@ -812,10 +812,10 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>) (-e is deprecated; use --entity.)
   --label <label>                    [Required] Display label for the new status reason
   --value <value>                    Explicit option value (mutually exclusive with --solution for derivation)
-  -s, --solution <solution>          [Required when --value is omitted] Solution unique name; publisher prefix × 10,000 is used to derive the option value
+  -s, --solution <solution>          [Required when --value is omitted] Solution unique name; publisher prefix x 10,000 is used to derive the option value
   --state <Active|Inactive>          State the reason belongs to: Active or Inactive (use this OR --state-code, not both)
   --state-code <state-code>          State code directly: 0 (Active) or 1 (Inactive) (use this OR --state, not both)
   --color <color>                    Hex color for the status reason (e.g., #FF0000)
@@ -877,9 +877,9 @@ Arguments:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>) (-e is deprecated; use --entity.)
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -904,7 +904,7 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>) (-e is deprecated; use --entity.)
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -929,7 +929,7 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>) (-e is deprecated; use --entity.)
   --value <value>                    Target status reason by option value (mutually exclusive with --label)
   --label <label>                    Target status reason by label (mutually exclusive with --value)
   -s, --solution <solution>          Solution unique name
@@ -960,12 +960,12 @@ Arguments:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>) (-e is deprecated; use --entity.)
   --display-name <display-name>      Updated display name
   --plural-name <plural-name>        Updated plural display name
   --description <description>        Updated description
-  --icon-small <icon-small>          16×16 icon: web resource logical name (e.g. new_icons/myentity16.png). Use empty string to clear.
-  --icon-medium <icon-medium>        32×32 icon: web resource logical name. Use empty string to clear.
+  --icon-small <icon-small>          16x16 icon: web resource logical name (e.g. new_icons/myentity16.png). Use empty string to clear.
+  --icon-medium <icon-medium>        32x32 icon: web resource logical name. Use empty string to clear.
   --icon-vector <icon-vector>        SVG vector icon: web resource logical name (primary icon in modern Dataverse). Use empty string to clear.
   --dry-run                          Validate only, do not persist changes
   --publish                          Publish the entity after the change
@@ -993,7 +993,7 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>) (-e is deprecated; use --entity.)
   --value <value>                    Target status reason by option value (mutually exclusive with --label)
   --label <label>                    Target status reason by current label (mutually exclusive with --value)
   --new-label <new-label>            New label to apply to the status reason
@@ -1021,7 +1021,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity to add the key to
+  -e, --entity <entity>              [Required] Logical name of the entity to add the key to (-e is deprecated; use --entity.)
   --name <name>                      [Required] Schema name for the alternate key
   --display-name <display-name>      [Required] Display name of the alternate key
   --attributes <attributes>          [Required] Comma-separated list of attribute logical names: "attr1,attr2"
@@ -1047,10 +1047,10 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity containing the key
+  -e, --entity <entity>              [Required] Logical name of the entity containing the key (-e is deprecated; use --entity.)
   --name <name>                      [Required] Logical name of the key to delete
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -1072,7 +1072,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity containing the key
+  -e, --entity <entity>              [Required] Logical name of the entity containing the key (-e is deprecated; use --entity.)
   --name <name>                      [Required] Logical name of the key to reactivate
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
@@ -1129,7 +1129,7 @@ Options:
   -s, --solution <solution>          [Required] Solution unique name to add the option set to
   --name <name>                      [Required] Schema name for the global option set
   --display-name <display-name>      [Required] Display name of the global option set
-  --options <options>                [Required] Option definitions: "Label1=1,Label2=2"
+  --options <options>                [Required] Option definitions: "Label1,Label2=718980001"; omitted values derive from the solution publisher
   --description <description>        Description of the global option set
   --dry-run                          Validate only, do not persist changes
   -p, --profile <profile>            Authentication profile name
@@ -1158,7 +1158,7 @@ Options:
   -s, --solution <solution>          [Required] Solution unique name containing the global option set
   --name <name>                      [Required] Name of the global option set to delete
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -1187,7 +1187,7 @@ Options:
   --value <value>                    Target option by value (mutually exclusive with --label)
   --label <label>                    Target option by label (mutually exclusive with --value)
   --force                            Skip confirmation prompt
-  --dry-run                          Validate that the target option exists, without removing it
+  --dry-run                          Validate target option existence only. Dependencies and deletion feasibility are not checked. No changes persisted.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -1326,7 +1326,7 @@ Options:
   -s, --solution <solution>          [Required] Solution unique name containing the relationship
   --name <name>                      [Required] Schema name of the relationship to delete
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -1405,9 +1405,9 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity to delete
+  -e, --entity <entity>              [Required] Logical name of the entity to delete (-e is deprecated; use --entity.)
   --force                            Skip confirmation prompt
-  --dry-run                          Show dependencies without deleting
+  --dry-run                          Read target metadata and deletion dependencies without deleting. Blocking components or incomplete checks return nonzero; other server constraints remain unchecked.
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors
@@ -1429,12 +1429,12 @@ Usage:
 
 Options:
   -s, --solution <solution>          [Required] Solution unique name containing the table
-  -e, --entity <entity>              [Required] Logical name of the entity to update
+  -e, --entity <entity>              [Required] Logical name of the entity to update (-e is deprecated; use --entity.)
   --display-name <display-name>      Updated display name
   --plural-name <plural-name>        Updated plural display name
   --description <description>        Updated description
-  --icon-small <icon-small>          16×16 icon: web resource logical name. Use empty string to clear.
-  --icon-medium <icon-medium>        32×32 icon: web resource logical name. Use empty string to clear.
+  --icon-small <icon-small>          16x16 icon: web resource logical name. Use empty string to clear.
+  --icon-medium <icon-medium>        32x32 icon: web resource logical name. Use empty string to clear.
   --icon-vector <icon-vector>        SVG vector icon: web resource logical name. Use empty string to clear.
   --dry-run                          Validate only, do not persist changes
   --publish                          Publish the entity after the change

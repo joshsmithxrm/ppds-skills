@@ -4,7 +4,7 @@ This branch prepares the next release increment. Generated captures identify the
 
 ## Approved release preparation
 
-The approved versions are CLI 1.5.0, MCP 1.3.0, Extension 1.8.0 stable and Skills 0.2.0. Publication is pending. Existing alpha captures retain their original provenance; regenerate and verify the references against the actual stable tools before distributing Skills 0.2.0.
+The approved versions are CLI 1.5.0, MCP 1.3.0, Extension 1.8.0 stable and Skills 0.2.0. Publication is pending. Current alpha captures bind accepted source a0feb138f00575d35634565f3a733deb9e65ca98; the prior 1cba826c candidate provenance is retained separately. Regenerate and verify the references against the actual stable tools before distributing Skills 0.2.0.
 
 CLI/MCP use an explicitly approved one-release minor-version exception for safety hardening that changes existing behavior. Protected form writers require the environment acknowledgement described below; ambiguous form selectors fail closed; MCP sessions retain captured targets. Update the Extension with its matching daemon. Custom .NET consumers embedding CLI/MCP implementation assemblies must adapt to changed form and web-resource signatures. The expanded Choice fix also adds an ignored read-only `OptionDefinition.HasExplicitValue` getter and the global-choice MCP `validationMessages` field. Omit Value to request allocation; explicit zero remains zero. Read the metadata skill's preview/Choice guidance. Do not describe this release as universally backward-compatible or weaken a guard to preserve an older workflow.
 

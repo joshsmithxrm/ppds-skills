@@ -6,7 +6,7 @@ Usage:
 
 Options:
   -s, --solution <solution>          Solution unique name (required for value derivation when --option has no explicit value)
-  -e, --entity <entity>              [Required] Logical name of the entity
+  -e, --entity <entity>              [Required] Logical name of the entity (-e is deprecated; use --entity.)
   -c, --column <column>              [Required] Logical name of the Choice/Choices column
   --option <option>                  [Required] Option to add: "Label[:Value][:#Color]"
   --publish                          Publish the entity after the change
