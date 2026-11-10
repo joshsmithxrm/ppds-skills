@@ -47,3 +47,4 @@ jobs:
         run: |
           python evals/check_skills.py
           python evals/live/_selftest.py
+          python evals/_test_recapture_version.py

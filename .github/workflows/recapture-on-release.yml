@@ -48,17 +48,32 @@ jobs:
       - name: Resolve current vs target CLI version
         id: ver
         shell: bash
+        env:
+          REQUESTED_CLI_VERSION: ${{ inputs.cli_version }}
+          LC_ALL: C
         run: |
           set -euo pipefail
           current="$(python -c "import json;print(json.load(open('captured-help/manifest.json'))['cli_version'])")"
-          forced="${{ inputs.cli_version }}"
+          forced="$REQUESTED_CLI_VERSION"
           if [ -n "$forced" ]; then
             target="$forced"
           else
             target="$(python tools/latest_stable_cli.py)"
           fi
-          echo "current=$current" >> "$GITHUB_OUTPUT"
-          echo "target=$target"   >> "$GITHUB_OUTPUT"
+          # Exact PPDS SemVer literals; same grammar as the release-input guard.
+          numeric='(0|[1-9][0-9]*)'
+          prerelease='(0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)'
+          build='[0-9A-Za-z-]+'
+          version_re="^${numeric}\.${numeric}\.${numeric}(-${prerelease}(\.${prerelease})*)?(\+${build}(\.${build})*)?$"
+          if ! [[ "$current" =~ $version_re ]]; then
+            echo "::error::Invalid captured CLI version literal"
+            exit 1
+          fi
+          if [ -n "$target" ] && ! [[ "$target" =~ $version_re ]]; then
+            echo "::error::Invalid target CLI version literal"
+            exit 1
+          fi
+          printf 'current=%s\ntarget=%s\n' "$current" "$target" >> "$GITHUB_OUTPUT"
           echo "Current captured: '$current' | target stable: '$target'"
           if [ -z "$target" ]; then
             echo "proceed=false" >> "$GITHUB_OUTPUT"
@@ -73,10 +88,12 @@ jobs:
 
       - name: Install released PPDS tools
         if: steps.ver.outputs.proceed == 'true'
+        env:
+          TARGET_CLI_VERSION: ${{ steps.ver.outputs.target }}
         shell: bash
         run: |
           set -euo pipefail
-          dotnet tool install -g PPDS.Cli --version "${{ steps.ver.outputs.target }}"
+          dotnet tool install -g PPDS.Cli --version "$TARGET_CLI_VERSION"
           # MCP server tracks its own version; take whatever stable is current.
           dotnet tool install -g PPDS.Mcp || dotnet tool update -g PPDS.Mcp
           echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
