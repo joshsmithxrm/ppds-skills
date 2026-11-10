@@ -12,25 +12,27 @@ human.
 
 ## When
 
-- A new **stable** PPDS CLI/MCP shipped (the usual trigger — the engine's
-  `release` skill §8 dispatches the recapture automatically), or
+- A new **stable** PPDS CLI/MCP shipped and its exact public package pair has
+  been verified, or
 - any change warranting a published version bump.
 
 ## 1. Get the recapture
 
-Preferred — let the automation produce the PR:
+Preferred — after execution approval, manually dispatch the verified pair
+(substitute its exact versions in this example):
 
 ```bash
-gh workflow run recapture-on-release.yml
+gh workflow run recapture-on-release.yml -f cli_version=1.5.0 -f mcp_version=1.3.0
 ```
 
-It installs the released CLI/MCP, regenerates `captured-help/` + references, bumps
+It installs both exact versions, regenerates `captured-help/` + references, bumps
 the frontmatter pins, runs the gate, and opens a PR. **Gotchas:** the *Allow
 GitHub Actions to create and approve PRs* repo setting must be on, and a
 bot-opened PR shows no CI — **close/reopen it** to fire `skill-evals`.
 
-Offline alternative: `dotnet tool update -g PPDS.Cli && dotnet tool update -g PPDS.Mcp`
-then `python3 tools/recapture.py`. See CONTRIBUTING "Regenerating the references".
+There is no schedule or newer-CLI prerequisite; MCP-only and same-pair recaptures
+are allowed. The existing capture job still has repository-writing authority.
+For local capture with both versions pinned, see CONTRIBUTING "Regenerating the references".
 
 ## 2. Read the capture diff → decide the version bump
 
