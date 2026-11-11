@@ -33,9 +33,11 @@ jobs:
             check_name: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.8'  # the documented floor; setup-python puts `python` on PATH on all OSes
 
@@ -54,15 +56,15 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.14.10'
 
-      - uses: actions/setup-dotnet@9a946fdbd5fb07b82b2f5a4466058b876ab72bb2 # v5.3.0
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
         env:
           DOTNET_INSTALL_DIR: ${{ runner.temp }}/ppds-dotnet
         with:
@@ -81,3 +83,39 @@ jobs:
           python evals/_test_recapture_artifact.py
           python evals/check_skills.py
           python evals/live/_selftest.py
+
+  dotnet-install-smoke:
+    name: setup-dotnet .NET 8 install smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions: {}
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+    steps:
+      - name: Require a fresh SDK installation destination
+        shell: bash
+        run: |
+          set -euo pipefail
+          install_dir="$RUNNER_TEMP/ppds-dotnet8-install-smoke"
+          test ! -e "$install_dir"
+          echo "DOTNET_INSTALL_DIR=$install_dir" >> "$GITHUB_ENV"
+          echo "DOTNET_CLI_HOME=$RUNNER_TEMP/ppds-dotnet8-cli-home" >> "$GITHUB_ENV"
+      - name: Install .NET 8 with the exact PR19 action
+        id: dotnet
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: '8.0.x'
+      - name: Verify the installed SDK and selected executable
+        shell: bash
+        env:
+          ACTION_SDK_VERSION: ${{ steps.dotnet.outputs.dotnet-version }}
+        run: |
+          set -euo pipefail
+          test "$(readlink -f "$(command -v dotnet)")" = "$(readlink -f "$DOTNET_INSTALL_DIR/dotnet")"
+          sdk="$(dotnet --version)"
+          [[ "$sdk" == 8.0.* ]]
+          test "$sdk" = "$ACTION_SDK_VERSION"
+          test -d "$DOTNET_INSTALL_DIR/sdk/$sdk"
+          dotnet --list-sdks
+          dotnet --info
