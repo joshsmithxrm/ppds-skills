@@ -69,7 +69,7 @@ jobs:
           echo "DOTNET_CLI_HOME=$RUNNER_TEMP/ppds-dotnet8-cli-home" >> "$GITHUB_ENV"
       - name: Install .NET 8 with the exact PR19 action
         id: dotnet
-        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: '8.0.x'
       - name: Verify the installed SDK and selected executable
