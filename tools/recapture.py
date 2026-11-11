@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
 """Re-capture the PPDS surface and bump skill frontmatter to match it.
 
-Assumes the *target* `ppds` / `ppds-mcp-server` are already installed (the CI
-workflow or a maintainer does the `dotnet tool update`). This script does the
+Assumes the *target* `ppds` / `ppds-mcp-server` are already installed. Set
+TARGET_CLI_VERSION and TARGET_MCP_VERSION to check the selected pair. This script does the
 repo-side half of the re-capture loop in one idempotent step:
 
   1. tools/capture_cli_help.py      -> captured-help/ + manifest.json
-  2. tools/capture_mcp_tools.py     -> captured-help/mcp-tools.json
+  2. tools/capture_mcp_tools.py     -> full MCP schemas, protocol frames and receipt
   3. tools/generate_flag_tables.py  -> skills/*/references/*.md
   4. bump metadata.ppds_cli_version_tested / ppds_mcp_version_tested in every
      skills/*/SKILL.md to the freshly captured versions.
 
-Run against the *currently installed* CLI it is a no-op (zero diff) — that is
-the property the automation relies on to prove the machinery works without a
-new release. After this runs, `python evals/check_skills.py` should pass; any
+Same-version runs are allowed; platform/runtime/protocol receipts can still
+change. Only byte-identical validated data is a no-op. Automation runs this
+script in fresh staging so obsolete captures cannot survive. Local users must
+review obsolete captures and provenance separately. After this runs,
+`python evals/check_skills.py` should pass; any
 prose changes (dropping `--prerelease`, stale rc mentions) remain a manual,
 human-reviewed step and are NOT touched here.
 

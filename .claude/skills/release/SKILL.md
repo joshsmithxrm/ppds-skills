@@ -31,7 +31,11 @@ GitHub Actions to create and approve PRs* repo setting must be on, and a
 bot-opened PR shows no CI — **close/reopen it** to fire `skill-evals`.
 
 There is no schedule or newer-CLI prerequisite; MCP-only and same-pair recaptures
-are allowed. The existing capture job still has repository-writing authority.
+are allowed. Dispatch runs from the default branch: a read-only producer captures
+full MCP schemas/protocol evidence, and a separate writer applies a bounded,
+source/run/attempt-bound data bundle using trusted code. The writer does not run
+PPDS or artifact code. Package/source receipts remain observations requiring
+human review; this separation does not prove stable-package provenance.
 For local capture with both versions pinned, see CONTRIBUTING "Regenerating the references".
 
 ## 2. Read the capture diff → decide the version bump

@@ -76,5 +76,8 @@ jobs:
           python -c "import sys; assert sys.version_info[:3] == (3, 14, 10), sys.version; print(sys.version)"
           test "$(dotnet --version)" = '10.0.404'
           python evals/_test_recapture_version.py
+          python evals/_test_cli_capture.py
+          python evals/_test_mcp_capture.py
+          python evals/_test_recapture_artifact.py
           python evals/check_skills.py
           python evals/live/_selftest.py
