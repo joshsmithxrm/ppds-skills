@@ -40,6 +40,7 @@ class RecaptureVersionTests(unittest.TestCase):
                 "CALL_LOG": calls.as_posix(), "GITHUB_PATH": path.as_posix(),
                 "REQUESTED_CLI_VERSION": cli, "REQUESTED_MCP_VERSION": mcp,
                 "TARGET_CLI_VERSION": cli, "TARGET_MCP_VERSION": mcp,
+                "PPDS_TOOL_DIR": "fixture-tool-directory",
                 "FIXTURE_TOOL_EXIT": str(tool_exit)})
             # Any feed/manifest Python call fails. dotnet only records arguments.
             stub = """python() { printf 'unexpected-python\\n' >> "$CALL_LOG"; return 97; }
@@ -82,11 +83,11 @@ dotnet() { printf '%s\\n' "$*" >> "$CALL_LOG"; return "$FIXTURE_TOOL_EXIT"; }
             with self.subTest(mcp=mcp):
                 result, _, calls = self.invoke(self.install, mcp=mcp)
                 self.assertEqual(result.returncode, 0, result.stderr)
-                self.assertEqual(calls, "tool install -g PPDS.Cli --version 1.5.0\n"
-                    "tool install -g PPDS.Mcp --version %s\n" % mcp)
+                self.assertEqual(calls, "tool install --tool-path fixture-tool-directory PPDS.Cli --version 1.5.0\n"
+                    "tool install --tool-path fixture-tool-directory PPDS.Mcp --version %s\n" % mcp)
         result, _, calls = self.invoke(self.install, tool_exit=42)
         self.assertEqual(result.returncode, 42)
-        self.assertEqual(calls, "tool install -g PPDS.Cli --version 1.5.0\n")
+        self.assertEqual(calls, "tool install --tool-path fixture-tool-directory PPDS.Cli --version 1.5.0\n")
 
     def test_manual_trigger_and_data_boundaries(self):
         trigger = self.workflow.split("\non:\n", 1)[1].split("\npermissions:", 1)[0]
@@ -98,7 +99,7 @@ dotnet() { printf '%s\\n' "$*" >> "$CALL_LOG"; return "$FIXTURE_TOOL_EXIT"; }
             self.assertIn("TARGET_%s_VERSION: ${{ steps.ver.outputs.%s_version }}" % (tool, tool.lower()), self.workflow)
         self.assertNotIn("${{", self.script)
         self.assertNotIn("${{", self.install)
-        self.assertIn('branch="recapture/cli-$TARGET_CLI_VERSION-mcp-$TARGET_MCP_VERSION"', self.workflow)
+        self.assertIn('branch="recapture/run-$GITHUB_RUN_ID-attempt-$GITHUB_RUN_ATTEMPT"', self.workflow)
 
 
 if __name__ == "__main__":
