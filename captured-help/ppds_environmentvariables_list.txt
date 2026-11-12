@@ -5,13 +5,13 @@ Usage:
   ppds environment-variables list [options]
 
 Options:
-  -s, --solution <solution>          Filter by solution unique name
-  -p, --profile <profile>            Authentication profile to use
-  -e, --environment <environment>    Target environment (name, URL, or ID)
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -s, --solution <solution>              Filter by solution unique name
+  -p, --profile <profile>                Authentication profile to use
+  -e, -env, --environment <environment>  Target environment (name, URL, or ID)
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 

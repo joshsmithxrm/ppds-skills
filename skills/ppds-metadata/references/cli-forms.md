@@ -1,9 +1,9 @@
 # `ppds forms` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.2. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.35. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.4.2**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.3-alpha.0.35**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds forms`
 
@@ -18,29 +18,31 @@ Options:
   -?, -h, --help  Show help and usage information
 
 Commands:
-  list            List systemforms for a Dataverse entity
-  get             Get the structure of a specific Dataverse systemform
-  set-xml         Write raw form XML to a Dataverse systemform record. Schema validation is applied before writing. All id and labelid attributes must use brace-format GUIDs ({xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}). All id and labelid values must be unique within the document.
-  add-tab         Add a tab to a Main form
-  update-tab      Update properties of an existing tab on a Main form
-  remove-tab      Remove a tab from a Main form
-  find-tab        Find a tab in a form by label and return its ID and position
-  add-section     Add a section to a tab on a Main form
-  update-section  Update properties of an existing section on a Main form
-  remove-section  Remove a section from a Main form
-  find-section    Find a section in a form by label and return its ID and parent tab
-  add-field       Add one or more fields to a section on a Main form. classid is resolved automatically from column metadata — never specify it directly.
-  remove-field    Remove a field from a Main form. Without --section, removes all occurrences of the field; with --section, removes only from the specified section.
-  reorder-fields  Reorder fields in a section. Provide the authoritative ordered list; fields not in the list are removed.
-  add-subgrid     Add a sub-grid control to a section on a Main form
-  remove-subgrid  Remove a sub-grid from a Main form by label or name
+  list                   List systemforms for a Dataverse entity
+  get                    Get the structure of a specific Dataverse systemform
+  set-xml                Write raw form XML to a Dataverse systemform record. Schema validation is applied before writing. GUID format is defined by the schema. Instance id and labelid GUIDs must be unique; customControl type IDs under controlDescriptions may repeat.
+  add-tab                Add a tab to a Main form
+  update-tab             Update properties of an existing tab on a Main form
+  remove-tab             Remove a tab from a Main form
+  find-tab               Find a tab in a form by label and return its ID and position
+  add-section            Add a section to a tab on a Main form
+  update-section         Update properties of an existing section on a Main form
+  remove-section         Remove a section from a Main form
+  find-section           Find a section in a form by label and return its ID and parent tab
+  add-field              Add one or more fields to a section on a Main form. classid is resolved automatically from column metadata - never specify it directly.
+  remove-field           Remove a field from a Main form. Without --section, removes all occurrences of the field; with --section, removes only from the specified section.
+  reorder-fields         Reorder fields in a section. Provide the authoritative ordered list; fields not in the list are removed.
+  reorder-fields-strict  Reorder all existing section fields without adding or removing cells.
+  move-field             Move an existing field cell without copying or replacing controls.
+  add-subgrid            Add a sub-grid control to a section on a Main form
+  remove-subgrid         Remove a sub-grid from a Main form by label or name
 ```
 
 ## `ppds forms add-field`
 
 ```text
 Description:
-  Add one or more fields to a section on a Main form. classid is resolved automatically from column metadata — never specify it directly.
+  Add one or more fields to a section on a Main form. classid is resolved automatically from column metadata - never specify it directly.
 
 Usage:
   ppds forms add-field [options]
@@ -49,11 +51,12 @@ Options:
   --entity <entity>                  [Required] Entity logical name
   --form <form>                      [Required] Name or ID of the form
   --section <section>                [Required] Label or name of the section to add the field(s) to
-  --field <field>                    Field logical name to add. Repeat for multiple fields.
-  --publish                          Publish customizations after writing
+  --field <field>                    Field logical name to add. Repeat for multiple fields; existing bindings in this section are kept.
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -80,10 +83,11 @@ Options:
   --columns <columns>                Number of columns (1 or 2)
   --visible                          Whether the section is visible
   --available-on-phone               Whether the section is available on phone
-  --publish                          Publish customizations after adding the section
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -113,10 +117,11 @@ Options:
   --hide-on-phone                    Whether to hide the sub-grid on phone
   --max-rows <max-rows>              Maximum number of rows to display in the sub-grid
   --hide-search-box                  Whether to hide the search box in the sub-grid
-  --publish                          Publish customizations after writing
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -143,10 +148,11 @@ Options:
   --visible                          Whether the tab is visible
   --available-on-phone               Whether the tab is available on phone
   --columns <columns>                Number of columns in the tab (1, 2, or 3)
-  --publish                          Publish customizations after writing
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -246,6 +252,35 @@ Options:
   -?, -h, --help                     Show help and usage information
 ```
 
+## `ppds forms move-field`
+
+```text
+Description:
+  Move an existing field cell without copying or replacing controls.
+
+Usage:
+  ppds forms move-field [options]
+
+Options:
+  --entity <entity>                  [Required] Entity logical name
+  --form <form>                      [Required] Form name or ID
+  --solution <solution>              Solution unique name to associate after the layout operation
+  --publish                          Publish all pending table customizations after the layout operation
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
+  --field <field>                    [Required] Existing field logical name
+  --from-section <from-section>      [Required] Source section label, name or ID
+  --to-section <to-section>          [Required] Target section label, name or ID
+  --before-field <before-field>      Insert before this unique target field's standalone row; default appends a cross-section move
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
+```
+
 ## `ppds forms remove-field`
 
 ```text
@@ -260,10 +295,11 @@ Options:
   --form <form>                      [Required] Name or ID of the form
   --field <field>                    [Required] Field logical name to remove
   --section <section>                Label or name of the section to remove the field from. If omitted, all occurrences of the field are removed from the form.
-  --publish                          Publish customizations after writing
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -285,10 +321,11 @@ Options:
   --entity <entity>                  [Required] Entity logical name
   --form <form>                      [Required] Name or ID of the form
   --section <section>                [Required] Label or name of the section to remove
-  --publish                          Publish customizations after removing the section
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -310,10 +347,11 @@ Options:
   --entity <entity>                  [Required] Entity logical name
   --form <form>                      [Required] Name or ID of the form
   --label <label>                    [Required] Label or name of the sub-grid to remove
-  --publish                          Publish customizations after writing
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -335,10 +373,11 @@ Options:
   --entity <entity>                  [Required] Entity logical name
   --form <form>                      [Required] Name or ID of the form
   --tab <tab>                        [Required] Label or name of the tab to remove
-  --publish                          Publish customizations after writing
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -360,11 +399,39 @@ Options:
   --entity <entity>                  [Required] Entity logical name
   --form <form>                      [Required] Name or ID of the form
   --section <section>                [Required] Label or name of the section containing the fields to reorder
-  --fields <fields>                  [Required] Comma-separated ordered list of field logical names. Fields not in the list are removed.
-  --publish                          Publish customizations after writing
+  --fields <fields>                  [Required] Comma-separated authoritative field order; unlisted fields are removed. New fields use metadata labels; fields in other sections are not copied.
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
+```
+
+## `ppds forms reorder-fields-strict`
+
+```text
+Description:
+  Reorder all existing section fields without adding or removing cells.
+
+Usage:
+  ppds forms reorder-fields-strict [options]
+
+Options:
+  --entity <entity>                  [Required] Entity logical name
+  --form <form>                      [Required] Form name or ID
+  --solution <solution>              Solution unique name to associate after the layout operation
+  --publish                          Publish all pending table customizations after the layout operation
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
+  --section <section>                [Required] Section label, name or ID
+  --fields <fields>                  [Required] Complete comma-separated permutation of existing section fields; no additions or removals
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -377,7 +444,7 @@ Options:
 
 ```text
 Description:
-  Write raw form XML to a Dataverse systemform record. Schema validation is applied before writing. All id and labelid attributes must use brace-format GUIDs ({xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}). All id and labelid values must be unique within the document.
+  Write raw form XML to a Dataverse systemform record. Schema validation is applied before writing. GUID format is defined by the schema. Instance id and labelid GUIDs must be unique; customControl type IDs under controlDescriptions may repeat.
 
 Usage:
   ppds forms set-xml [options]
@@ -385,11 +452,12 @@ Usage:
 Options:
   --entity <entity>                  [Required] Entity logical name
   --form <form>                      [Required] Name or ID of the form
-  --xml <xml>                        [Required] Path to the XML file to write. Schema validation is applied before writing. All id and labelid attributes must use brace-format GUIDs ({xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}). All id and labelid values must be unique within the document.
-  --publish                          Publish customizations after writing
+  --xml <xml>                        [Required] Path to the XML file to write. Schema validation is applied before writing. GUID format is defined by the schema. Instance id and labelid GUIDs must be unique; customControl type IDs under controlDescriptions may repeat.
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -416,10 +484,11 @@ Options:
   --columns <columns>                Number of columns
   --visible                          Whether the section is visible
   --available-on-phone               Whether the section is available on phone
-  --publish                          Publish customizations after updating the section
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output
@@ -447,10 +516,11 @@ Options:
   --visible                          Whether the tab is visible
   --available-on-phone               Whether the tab is available on phone
   --columns <columns>                Number of columns in the tab
-  --publish                          Publish customizations after writing
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output

@@ -11,10 +11,10 @@ Commands:
   extract                         Extract plugin step/image attributes from an assembly (.dll) or plugin package (.nupkg) to JSON configuration. Works against Dataverse-supported .NET Framework plugin assemblies and net462/net471/net48 plugin package assets regardless of how the CLI is packaged (single-file, self-contained, or framework-dependent).
   deploy                          Deploy plugin registrations to environment
   register                        Register plugin components: assembly, package, type, step, image
-  diff                            Compare configuration against environment state
+  diff                            Compare managed registration fields against environment state
   list                            List registered plugins in the environment
   get <type> <name-or-id>         Get details for a specific plugin entity
-  clean                           Remove orphaned registrations not in configuration
+  clean                           Version 1: legacy parent cleanup; version 2: prune owned images on configured steps
   download                        Download plugin assembly or package binary from Dataverse
   update                          Update existing plugin registrations
   unregister <type> <name-or-id>  Unregister plugin entities from Dataverse

@@ -5,7 +5,7 @@ Usage:
   ppds data schema [options]
 
 Options:
-  -e, --entities <entities>                      [Required] Entity logical names to include (comma-separated or multiple -e flags)
+  -e, --entities <entities>                      [Required] Entity logical names to include (comma-separated or multiple -e flags) (-e is deprecated; use --entities.)
   -o, --output <output>                          [Required] Output schema file path
   -p, --profile <profile>                        Profile name(s). For high-throughput pooling, specify multiple Application User profiles comma-separated (e.g., app1,app2,app3) - each profile multiplies API quota.
   -env, --environment <environment>              Override the environment URL. Takes precedence over profile's bound environment.

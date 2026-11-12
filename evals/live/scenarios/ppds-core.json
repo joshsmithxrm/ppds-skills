@@ -212,6 +212,18 @@
           "priority": "P1"
         }
       ]
+    },
+    {
+      "id": "notebook-target-survives-switch",
+      "priority": "P1",
+      "prompt": "I ran a PPDS notebook against Dev, changed its binding to Test, and switched profiles while the old run was finishing. Which environment should its record links and export use, and can I interrupt another notebook without cancelling this one?",
+      "assertions": [
+        {
+          "type": "semantic",
+          "priority": "P1",
+          "rubric": "Uses the completed run captured Dev target/profile and output timestamp for links and export instead of the new Test binding or global profile; cancellation belongs to each notebook, and interrupting one discards only its own active and queued work."
+        }
+      ]
     }
   ]
 }

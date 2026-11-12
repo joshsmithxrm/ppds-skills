@@ -306,6 +306,50 @@
           "priority": "P1"
         }
       ]
+    },
+    {
+      "id": "mcp-form-draft-not-publication",
+      "priority": "P1",
+      "prompt": "In the safe multi-environment candidate, use MCP to add the existing account telephone1 field to an existing Main-form section. I approve preparing and saving this draft after I review the exact target; I have not approved publishing other account customizations. How will you proceed?",
+      "assertions": [
+        {
+          "type": "skill_loaded",
+          "skill": "ppds-metadata",
+          "priority": "P2"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "all": [
+            "ppds_forms_get",
+            "ppds_forms_add_field"
+          ],
+          "priority": "P2"
+        },
+        {
+          "type": "semantic",
+          "priority": "P1",
+          "rubric": "Reads the unpublished draft, uses stable form/section identifiers and expectedDraftHash, previews before save, binds acknowledgement to the exact target, inspects separate write/association/verification phases, and leaves entity-wide publication pending separate explicit authorization."
+        }
+      ]
+    },
+    {
+      "id": "mcp-form-partial-write-recovery",
+      "priority": "P1",
+      "prompt": "The candidate MCP form add-field result says draftWrite applied but draftVerification unknown after a connection fault. Should I retry the same edit immediately or publish the form?",
+      "assertions": [
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds_forms_get",
+          "priority": "P2"
+        },
+        {
+          "type": "semantic",
+          "priority": "P1",
+          "rubric": "Treats the write as potentially persisted, re-reads the unpublished draft before retrying, obtains a fresh hash, and does not imply rollback or publish only this form: publication affects pending customizations for the whole entity and needs separate explicit acknowledgement."
+        }
+      ]
     }
   ]
 }

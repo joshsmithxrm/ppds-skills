@@ -1,9 +1,9 @@
 # `ppds environmentvariables` — command and flag reference
 
-<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.2. -->
+<!-- GENERATED from `ppds ... --help` output, CLI version 1.4.3-alpha.0.35. -->
 <!-- Do not edit by hand. Regenerate: python tools/capture_cli_help.py && python tools/generate_flag_tables.py -->
 
-Captured verbatim from PPDS CLI **1.4.2**. Every flag below is real; any flag not listed here does not exist on that command.
+Captured verbatim from PPDS CLI **1.4.3-alpha.0.35**. Every flag below is real; any flag not listed here does not exist on that command.
 
 ## `ppds environmentvariables`
 
@@ -35,16 +35,16 @@ Usage:
   ppds environment-variables export [options]
 
 Options:
-  -s, --solution <solution>          Filter by solution unique name
-  -o, --output <output>              Output file path (default: stdout)
-  -p, --profile <profile>            Authentication profile to use
-  -e, --environment <environment>    Target environment (name, URL, or ID)
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -s, --solution <solution>              Filter by solution unique name
+  -o, --output <output>                  Output file path (default: stdout)
+  -p, --profile <profile>                Authentication profile to use
+  -e, -env, --environment <environment>  Target environment (name, URL, or ID)
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 ```
 
 ## `ppds environmentvariables get`
@@ -60,14 +60,14 @@ Arguments:
   <schemaName>  The schema name of the environment variable
 
 Options:
-  -p, --profile <profile>            Authentication profile to use
-  -e, --environment <environment>    Target environment (name, URL, or ID)
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -p, --profile <profile>                Authentication profile to use
+  -e, -env, --environment <environment>  Target environment (name, URL, or ID)
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 ```
 
 ## `ppds environmentvariables list`
@@ -80,15 +80,15 @@ Usage:
   ppds environment-variables list [options]
 
 Options:
-  -s, --solution <solution>          Filter by solution unique name
-  -p, --profile <profile>            Authentication profile to use
-  -e, --environment <environment>    Target environment (name, URL, or ID)
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -s, --solution <solution>              Filter by solution unique name
+  -p, --profile <profile>                Authentication profile to use
+  -e, -env, --environment <environment>  Target environment (name, URL, or ID)
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 ```
 
 ## `ppds environmentvariables set`
@@ -105,14 +105,14 @@ Arguments:
   <value>       The value to set
 
 Options:
-  -p, --profile <profile>            Authentication profile to use
-  -e, --environment <environment>    Target environment (name, URL, or ID)
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -p, --profile <profile>                Authentication profile to use
+  -e, -env, --environment <environment>  Target environment (name, URL, or ID)
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 ```
 
 ## `ppds environmentvariables url`
@@ -128,13 +128,13 @@ Arguments:
   <schemaName>  The schema name of the environment variable
 
 Options:
-  -p, --profile <profile>            Authentication profile to use
-  -e, --environment <environment>    Target environment (name, URL, or ID)
-  -q, --quiet                        Show only warnings and errors
-  -v, --verbose                      Show detailed output including debug messages
-  --debug                            Show trace-level diagnostic output
-  --correlation-id <correlation-id>  Correlation ID for distributed tracing
-  -f, --output-format <Text|Json>    Output format [default: Text]
-  -?, -h, --help                     Show help and usage information
+  -p, --profile <profile>                Authentication profile to use
+  -e, -env, --environment <environment>  Target environment (name, URL, or ID)
+  -q, --quiet                            Show only warnings and errors
+  -v, --verbose                          Show detailed output including debug messages
+  --debug                                Show trace-level diagnostic output
+  --correlation-id <correlation-id>      Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>        Output format [default: Text]
+  -?, -h, --help                         Show help and usage information
 ```
 

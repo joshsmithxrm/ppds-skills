@@ -49,6 +49,40 @@ jobs:
         run: |
           python evals/check_skills.py
           python evals/live/_selftest.py
+          python evals/_test_recapture_version.py
+
+  maintainer-runtime:
+    name: maintainer-runtime (ubuntu-24.04)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14.10'
+
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        env:
+          DOTNET_INSTALL_DIR: ${{ runner.temp }}/ppds-dotnet
+        with:
+          dotnet-version: '10.0.404'
+
+      # Exercise the maintainer Python with stubbed product calls. No PPDS,
+      # feed lookup, capture, paid driver, repository write or deployment.
+      - name: Verify maintenance runtimes and offline checks
+        shell: bash
+        run: |
+          python -c "import sys; assert sys.version_info[:3] == (3, 14, 10), sys.version; print(sys.version)"
+          test "$(dotnet --version)" = '10.0.404'
+          python evals/_test_recapture_version.py
+          python evals/_test_cli_capture.py
+          python evals/_test_mcp_capture.py
+          python evals/_test_recapture_artifact.py
+          python evals/check_skills.py
+          python evals/live/_selftest.py
 
   dotnet-install-smoke:
     name: setup-dotnet .NET 8 install smoke

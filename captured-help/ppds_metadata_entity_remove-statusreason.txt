@@ -9,7 +9,7 @@ Arguments:
   <entity>  Logical name of the entity (alternative to --entity)
 
 Options:
-  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>)
+  -e, --entity <entity>              Logical name of the entity (alternative to the positional <entity>) (-e is deprecated; use --entity.)
   --value <value>                    Target status reason by option value (mutually exclusive with --label)
   --label <label>                    Target status reason by label (mutually exclusive with --value)
   -s, --solution <solution>          Solution unique name

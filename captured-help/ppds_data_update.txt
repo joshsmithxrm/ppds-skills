@@ -5,7 +5,7 @@ Usage:
   ppds data update [options]
 
 Options:
-  -e, --entity <entity>              [Required] Target entity logical name
+  -e, --entity <entity>              [Required] Target entity logical name (-e is deprecated; use --entity.)
   --id <id>                          Record ID (GUID) to update
   -k, --key <key>                    Alternate key field(s) for lookup. Format: field=value or field1=value1,field2=value2 for composite keys.
   --file <file>                      Path to CSV file containing records to update (must include ID column and columns to update)

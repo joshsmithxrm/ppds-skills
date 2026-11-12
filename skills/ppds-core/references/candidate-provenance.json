@@ -1,52 +1,80 @@
 {
-  "status": "verified-public-package-capture",
-  "repository": "https://github.com/joshsmithxrm/power-platform-developer-suite",
-  "commit": "60dbd696d28c79447fe6490924a462c91f9b2d35",
-  "source_tree": "8f74bb09ee71ce2193a2be27ffb31bef8950b789",
-  "runtime": "Public NuGet .NET global tools installed into an isolated tool directory; no source-build substitution.",
-  "cli_version": "1.4.2+60dbd696d28c79447fe6490924a462c91f9b2d35",
-  "mcp_version": "1.2.2",
-  "packages": [
-    {
-      "id": "PPDS.Cli",
-      "version": "1.4.2",
-      "url": "https://api.nuget.org/v3-flatcontainer/ppds.cli/1.4.2/ppds.cli.1.4.2.nupkg",
-      "sha256": "d16f876bc018c4b2e180b46a931e1c4744f6800de2e7e35faf415ccc45772755",
-      "nuspec_repository_commit": "60dbd696d28c79447fe6490924a462c91f9b2d35"
+  "status": "unpublished-final-C-validation-candidate",
+  "source_commit": "a0feb138f00575d35634565f3a733deb9e65ca98",
+  "source_tree": "904cce706d298d3f0ed62ea095bdcdd78d584101",
+  "build_configuration": "Release",
+  "target_framework": "net10.0",
+  "capture_platform": "Windows x64",
+  "binaries": {
+    "cli": {
+      "path": "src/PPDS.Cli/bin/Release/net10.0/ppds.dll",
+      "version": "1.4.3-alpha.0.35+a0feb138f00575d35634565f3a733deb9e65ca98",
+      "version_evidence": "actual --version text",
+      "sha256": "6e1ef15152091c50537ef14439a1ddc9b8808f6cdcb6c171755b9fbc54f2e25c"
     },
+    "mcp": {
+      "path": "src/PPDS.Mcp/bin/Release/net10.0/ppds-mcp-server.dll",
+      "version": "1.2.3-alpha.0.35",
+      "version_evidence": "actual MCP initialize serverInfo.version (no build suffix reported)",
+      "sha256": "db1ed6564e443a83669f6cc0476234430646ad76d672da4110de89fec98827fe"
+    }
+  },
+  "publication_claim": false,
+  "live_dataverse_operations": false,
+  "skills_version_prepared": "0.2.0",
+  "cli_canonical_runtime_capture_count": 275,
+  "cli_alias_expanded_command_path_count": 302,
+  "cli_alias_derived_path_count": 27,
+  "mcp_tool_count": 45,
+  "full_MCP_input_schemas_retained": true,
+  "protocol_version_requested": "2025-06-18",
+  "protocol_version_negotiated": "2025-03-26",
+  "procedure": [
+    "Reuse immutable accepted-C Release/net10 capture outputs; do not recapture or invoke a product.",
+    "Preserve all275 actual canonical help texts verbatim; derive27 additional paths solely from exact shown aliases.",
+    "Keep deprecated command nodes separate; never substitute preferred commands for their help.",
+    "Retain all45 full MCP input schemas and exact protocol frames; no tools/call.",
+    "Run existing reference generator and recapture.py --no-capture, then existing static/free offline checks with product/claude absent from PATH."
+  ],
+  "retained_host_capture_result_sha256": "de99d59a27b53035f3b1b373941bb1a7e01880088f9474a39227a64944e3084f",
+  "completed_Release_artifacts_sha256": "5da6f8c5bd00aecc56865c2a69308b489f144a06bd57d9fc0417785252253e75",
+  "completed_Release_build_result_sha256": "e7edcb9d423c3fd106c054ee56ccaa361b7955049a6fcbdf42d847d4e1df65ad",
+  "complete_net10_CLI_context_sha256": "e9ef21944ef288c0d6e1ec46e4d3242ae4a386453ece73ef1c9477e3fc2622d0",
+  "normalized_lf_sha256": {
+    "captured-help/manifest.json": "f0d21c1efc8926e2bdc34940fa7d9bee3bb6f2209fa139025fdb45b989e05496",
+    "captured-help/mcp-tools.json": "fa8bc71bf5e347b4690911c5555d328e5a5a692cb17f9f657aef058f2f82c7b3",
+    "captured-help/alias-provenance.json": "255f740ff965260e5d244348977ba5425a918a97f13112ec24063b4b350d9b84",
+    "captured-help/platform-contracts.json": "af1c7a144b8e4cccc5a9313ae00988b5dd6e7911ab02acdd0bd6354b00cd939a"
+  },
+  "full_protocol_frames_sha256": "bb03078789a77d119ad542a9b760536a52a2217aa7e8af2803a3e52da246587b",
+  "platform_contracts": [
     {
-      "id": "PPDS.Mcp",
-      "version": "1.2.2",
-      "url": "https://api.nuget.org/v3-flatcontainer/ppds.mcp/1.2.2/ppds.mcp.1.2.2.nupkg",
-      "sha256": "d1960c0555ec1c7a11222ea78eb525874f6816ef998e3280970bae2f474c11e9",
-      "nuspec_repository_commit": "60dbd696d28c79447fe6490924a462c91f9b2d35"
+      "command": "ppds auth create",
+      "option": "--accept-cleartext-caching",
+      "description": "Accept cleartext credential storage on Linux when secure storage (libsecret) is unavailable",
+      "condition": "shown on Linux; hidden on other operating systems",
+      "default": false,
+      "evidence_kind": "exact C source predicate; not a runtime Linux capture",
+      "source_commit": "a0feb138f00575d35634565f3a733deb9e65ca98",
+      "source_path": "src/PPDS.Cli/Commands/Auth/AuthCommandGroup.cs",
+      "source_gitblob": "0bcc5b1336ff68bd7ba5cbec23647290b8faec46",
+      "source_canonical_lf_sha256": "0b9aa5344167f93c417ac3afc471d71493bc7d2ea3786215f997ed5ef3cdd89e"
     }
   ],
-  "binary_sha256": {
-    "net9.0/ppds.dll": "2e8e23144bd785a8112fa248edbce13273292af6a81f067b251ba6aaa6e03317",
-    "net8.0/ppds.dll": "6437fc32620ed334067d534bdd95cec53f14ce43e794bf0603b50fffa9e01be8",
-    "net10.0/ppds.dll": "e4a5e85442c27a80594ce6dddea863c2d67caf67c71e8e9b357bd03417a27ad5",
-    "net9.0/ppds-mcp-server.dll": "e54b8e65a5913eab3895603e6b7b69975812e97e80b1a3844ee012ee51400260",
-    "net8.0/ppds-mcp-server.dll": "cede03a056bc3bc19903f2d5abd892a4824d7e460443e2af1cb406488a831b36",
-    "net10.0/ppds-mcp-server.dll": "26e90b9fa8849b4db412ebf8c717cd668c3be6a43b864fdd39bd99a7d0d314c7"
+  "known_cross_option_alias_collision_rows_preserved": 21,
+  "validation": {
+    "static_gate": "passed against all seven current alpha-pinned skills; normal freshness check skipped because no ppds executable is on the private PATH; no bypass flag set",
+    "harness_selftest": "passed: free offline parser/assertion/scenario validation; semantic judge forced unavailable by the existing self-test",
+    "paid_semantic_evals": "not run",
+    "product_recapture_in_this_lane": false,
+    "public_stable_recapture": "held until actual public stable release; alpha evidence is not relabelled stable",
+    "private_configuration_directory_after_checks": "empty",
+    "existing_generators_and_eval_guards": "unchanged"
   },
-  "capture": "Full tools/recapture.py at equal semantic versions: 271 CLI command nodes and 41 MCP tool names/descriptions. MCP input schemas were verified separately and are not retained by this capture script.",
-  "isolation": "Empty PPDS_CONFIG_DIR; inherited PPDS/DATAVERSE/POWERPLATFORM/AZURE variables removed. CLI --version/--help and MCP initialize/tools/list only; no tools/call or Dataverse operations.",
-  "recapture_comparison": {
-    "previous_source_commit": "d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6",
-    "changed_files": [
-      "captured-help/manifest.json"
-    ],
-    "changed_manifest_keys": [
-      "cli_version_raw"
-    ],
-    "command_nodes": 271,
-    "mcp_tools": 41,
-    "comparison_method": "Fresh captures and generated references compared with simulation using newline normalization; help bodies and MCP names/descriptions unchanged."
-  },
-  "previous_simulation_record": {
-    "commit": "d7ee9c5d9852ea5a67dd66f421fcc8c22a505ba6",
-    "sha256": "6a120cf1d39d11c0f8d1c8aead464fae80b8b29f24c7927885e152f09942df91",
-    "retained_in": "Release execution evidence; the earlier simulation is not public-package evidence."
+  "historical_candidate_record": {
+    "path": "candidate-provenance-1cba826c.json",
+    "source_commit": "1cba826c6ad6233e41b0d4d5197d0c7c618cd4c7",
+    "sha256": "9cfd05e9218e9dbfe76c3b94315b0e2ad0f0ac83b67a9d05780b57505a3ba75d",
+    "preserved_verbatim": true
   }
 }

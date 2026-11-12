@@ -3,27 +3,22 @@ name: ppds-core
 description: Install, authenticate, and safely operate the Power Platform Developer Suite (PPDS) CLI and MCP server against Microsoft Dataverse — auth profiles, environment selection, the environment-safety model, and error interpretation. Use when the user wants to connect to Dataverse with PPDS, set up `ppds` or `ppds-mcp-server`, manage auth profiles or environments, decide between the PPDS CLI and MCP surfaces, or interpret a PPDS error or exit code. Load this skill first before any other ppds-* skill.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.4.2"
-  ppds_mcp_version_tested: "1.2.2"
+  ppds_cli_version_tested: "1.4.3-alpha.0.35"
+  ppds_mcp_version_tested: "1.2.3-alpha.0.35"
 ---
 
 # PPDS Core — connect, select, stay safe
 
-PPDS (Power Platform Developer Suite) is a single .NET global tool giving you
-a typed CLI, an MCP server, a TUI, and NuGet libraries over Microsoft
-Dataverse. One install, no Python, no PAC CLI dependency. Docs:
-https://joshsmithxrm.github.io/ppds-docs/
+Power Platform Developer Suite (PPDS) provides a CLI, MCP server, TUI and NuGet libraries for Microsoft Dataverse. It needs no Python or PAC CLI. Docs: https://joshsmithxrm.github.io/ppds-docs/
 
 ```bash
 dotnet tool install -g PPDS.Cli   # CLI: `ppds`   (update: dotnet tool update -g PPDS.Cli)
 dotnet tool install -g PPDS.Mcp   # MCP server: `ppds-mcp-server`
 ```
 
-Verify: `ppds --version`. These skills capture published CLI **1.4.2**
-and MCP **1.2.2** from independently verified public NuGet packages.
-If the installed version differs, prefer live `--help`. See
-[public capture provenance](references/candidate-provenance.json) for package
-URLs, hashes, the release commit, and the offline capture procedure.
+Use a supported .NET 10 SDK for new global-tool installations. CLI/MCP package targets remain .NET 8, 9 and 10. The upcoming native CLI and VS Code bundles carry .NET 10, requiring no separate runtime. Native Linux requires glibc 2.27; VS Code requires 2.28. Final supported-OS review and public availability remain release gates.
+
+Verify: `ppds --version`. Frontmatter identifies the captured source candidate. If the installed version differs, prefer live `--help`. [Capture provenance](references/candidate-provenance.json) records binary hashes, source and the offline procedure; publication is pending.
 
 ## Surface routing (applies to every ppds-* skill)
 
@@ -37,9 +32,8 @@ instead when either holds:
    [references/mcp-server.md](references/mcp-server.md).
 
 Where an MCP tool mirrors a CLI command this package names it, e.g.
-`ppds env list` ↔ `ppds_env_list`. The captured public MCP server (1.2.2) exposes 41
-tools — the authoritative list is
-[references/mcp-tools.md](references/mcp-tools.md). The CLI surface is wider;
+`ppds env list` ↔ `ppds_env_list`. See the captured
+[MCP tool list](references/mcp-tools.md). The CLI surface is wider;
 anything without an MCP tool routes to the CLI.
 
 ## Authentication profiles
@@ -113,6 +107,10 @@ These rules are not style; agents must follow them.
 
 ## Reading PPDS output
 
+For the candidate's form/flow acknowledgements, notebook isolation and fix
+interpretation, read [safe workflows](references/safe-workflows.md). This guard
+adoption covers forms, nine Views writers and flow activation; other domains retain their own contracts.
+
 - **stdout is data, stderr is status.** Pipe-safe by design. Parse stdout;
   show stderr to humans.
 - Machine-readable: add `-f json` (`--output-format Json`); CSV is `-f csv`.
@@ -138,10 +136,14 @@ These rules are not style; agents must follow them.
 |------|-------|
 | SQL / FetchXML queries, DML, explain, history | ppds-query |
 | Plugin registration, deployment, trace debugging | ppds-plugins |
-| Solutions, import jobs, env vars, connection refs | ppds-solutions-alm |
+| Solutions, import jobs, env vars, connection refs, flow enable/disable | ppds-solutions-alm |
 | Tables, columns, relationships, keys, choices, views, forms | ppds-metadata |
 | Bulk data export/import/copy/load/delete | ppds-data |
 | Web resources pull/push/publish | ppds-webresources |
 | Users, roles, diagnostics | [references/cli-users.md](references/cli-users.md), [references/cli-roles.md](references/cli-roles.md), [references/cli-logs.md](references/cli-logs.md) |
-| Model-driven apps, data sources/providers, flows | no dedicated skill yet — `ppds model-driven-app`, `ppds data-sources`, `ppds data-providers`, `ppds flows`, or `ppds api request` |
+| Model-driven apps, data sources/providers | `ppds model-driven-app`, `ppds data-sources`, `ppds data-providers`, or `ppds api request` |
 | Anything else (raw Web API escape hatch) | `ppds api request` — prefer a typed command when one exists |
+
+## CLI transition guidance
+
+Prefer long `--environment`, `--entity` and `--entities` options. Existing `-e` meanings remain during this minor release; do not silently reinterpret old scripts. Every existing environment option also accepts `-env`; there is no opt-in mode. The later CLI 2.0 transition requires at least 90 days after the complete stable replacement guidance. Read [the transition contract](references/cli-transition.md); legacy warnings belong on stderr, never inside stdout JSON.

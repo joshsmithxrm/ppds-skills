@@ -11,4 +11,6 @@ Commands:
   list        List cloud flows
   get <name>  Get a cloud flow by workflow ID or unique name
   url <name>  Get Power Automate maker URL for a flow
+  enable      Enable solution cloud flows with preflight and verified outcomes
+  disable     Disable solution cloud flows (does not cancel existing runs)
 

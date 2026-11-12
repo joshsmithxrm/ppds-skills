@@ -9,7 +9,7 @@ Options:
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -s, --solution <solution>          Solution unique name. Overrides value in configuration file.
-  --clean                            Also remove orphaned registrations not in config
+  --clean                            Version 1: legacy parent cleanup; version 2: prune owned images on configured steps
   --dry-run                          Preview changes without applying
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages

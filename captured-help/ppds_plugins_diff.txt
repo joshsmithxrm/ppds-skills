@@ -1,11 +1,12 @@
 Description:
-  Compare configuration against environment state
+  Compare managed registration fields against environment state
 
 Usage:
   ppds plugins diff [options]
 
 Options:
   -c, --config <config>              [Required] Path to registrations.json
+  --include-hidden                   Include hidden registration steps in this read-only comparison
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -q, --quiet                        Show only warnings and errors

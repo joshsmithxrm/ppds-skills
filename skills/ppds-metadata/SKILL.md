@@ -3,8 +3,8 @@ name: ppds-metadata
 description: Browse and author Dataverse schema with PPDS — list entities/tables, inspect attributes/columns and relationships, create or update tables, columns, relationships, alternate keys, and global choices/option sets, compare schemas across environments, and adjust views and forms. Use when the user wants to know what columns or relationships an entity has, create or modify a table or column, manage option sets or keys, diff schema between environments, or edit a view or form definition. Read ppds-core first for auth and safety rules.
 license: MIT
 metadata:
-  ppds_cli_version_tested: "1.4.2"
-  ppds_mcp_version_tested: "1.2.2"
+  ppds_cli_version_tested: "1.4.3-alpha.0.35"
+  ppds_mcp_version_tested: "1.2.3-alpha.0.35"
 ---
 
 # PPDS Metadata — schema as a first-class surface
@@ -58,6 +58,8 @@ After metadata changes, publish: `ppds metadata publish <names>` (alias for
 Note: the `table`, `column`, and `choice` subgroups are **deprecated
 aliases** of entity, attribute, and optionset — prefer the canonical names.
 
+Read [metadata previews and Choice values](references/metadata-previews-and-choices.md) before schema deletion or initial Choice/Choices creation. Omit a value for allocation; explicit zero stays zero. Read preview scope and warnings, and inspect uncertain writes before retrying.
+
 ## Cross-environment schema comparison
 
 ```bash
@@ -75,8 +77,8 @@ environment first. A managed view can accept an unmanaged-layer edit when its
 managed properties allow it; `View.ManagedComponentNotEditable` reports a
 rejected write, not a universal ban on managed components.
 
-For the CLI 1.4.2 maintenance candidate's view projections, qualified related
-columns, draft verification, app selections, and Timeline fix, read
+For view projections, qualified related columns, draft verification, app
+selections and the Timeline fix retained from CLI 1.4.2, read
 [references/metadata-editing.md](references/metadata-editing.md). Inspect the
 draft before retrying a verification or partial-write error; a failed command
 does not prove that no write occurred. Publish only the intended table/app.
@@ -86,6 +88,20 @@ ppds views list --entity account
 ppds views set-filter --entity account --view "Active Accounts" --filter-file ./filter.xml
 ppds forms list --entity account
 ```
+
+## Explicit CLI form layout
+
+Use `forms add-field` for a placement, `forms reorder-fields-strict` for a complete permutation of existing fields and `forms move-field` for a unique existing control. Read [form layout and retries](references/form-layout.md) before writing. Same-section repeats preserve controls/custom labels and report actual outcomes; intentional other-section placements remain allowed. New cells use metadata labels. Legacy reorder retains authoritative add/drop during transition and warns on stderr only. Final generated flags/candidate provenance remain required; these CLI commands do not create new MCP tools.
+
+## MCP Main-form authoring
+
+The candidate adds `ppds_forms_list`, `ppds_forms_get`,
+`ppds_forms_add_field`, and `ppds_forms_publish`. Read
+[the bounded form workflow](references/mcp-form-authoring.md) before writing:
+use stable IDs and a fresh unpublished draft hash, preview first, verify the
+save, and acknowledge **table-wide** publication separately. No raw XML write
+or new tab/section authoring tool is exposed. Existing CLI form writers use
+`--confirm-env`; the acknowledgement must match the actual target.
 
 ## Common mistakes (do not invent these)
 

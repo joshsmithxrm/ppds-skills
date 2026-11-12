@@ -31,6 +31,7 @@ SKILL_GROUPS: dict[str, list[str]] = {
         "connections",
         "deployment-settings",
         "publish",
+        "flows",
     ],
     "ppds-metadata": ["metadata", "schema", "views", "forms"],
     "ppds-data": ["data"],
@@ -120,7 +121,7 @@ def emit_mcp_tools_file() -> Path | None:
     )
     lines.append("")
     lines.append(
-        f"Captured from the released **ppds-mcp-server {version}** "
+        f"Captured from **ppds-mcp-server {version}** "
         f"({data.get('tool_count')} tools). Any `ppds_*` tool not listed here "
         "does not exist on this server version."
     )

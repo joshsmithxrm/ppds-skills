@@ -9,10 +9,11 @@ Options:
   --form <form>                      [Required] Name or ID of the form
   --field <field>                    [Required] Field logical name to remove
   --section <section>                Label or name of the section to remove the field from. If omitted, all occurrences of the field are removed from the form.
-  --publish                          Publish customizations after writing
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output

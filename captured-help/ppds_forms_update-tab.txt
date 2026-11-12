@@ -14,10 +14,11 @@ Options:
   --visible                          Whether the tab is visible
   --available-on-phone               Whether the tab is available on phone
   --columns <columns>                Number of columns in the tab
-  --publish                          Publish customizations after writing
+  --publish                          Publish all pending customizations for this table after writing
   --solution <solution>              Solution unique name to associate the change with
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
   -q, --quiet                        Show only warnings and errors
   -v, --verbose                      Show detailed output including debug messages
   --debug                            Show trace-level diagnostic output

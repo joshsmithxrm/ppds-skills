@@ -265,6 +265,34 @@
           "priority": "P2"
         }
       ]
+    },
+    {
+      "id": "activate-reviewed-solution-flows",
+      "priority": "P1",
+      "prompt": "The safe multi-environment candidate is installed. Our SalesAutomation solution finished importing to Test. Prepare activation of its flows for my review; do not write yet. What commands and results should I review?",
+      "assertions": [
+        {
+          "type": "contains",
+          "scope": "all",
+          "value": "ppds flows enable",
+          "priority": "P1"
+        },
+        {
+          "type": "contains",
+          "scope": "all",
+          "all": [
+            "--all",
+            "--solution",
+            "--dry-run"
+          ],
+          "priority": "P2"
+        },
+        {
+          "type": "semantic",
+          "priority": "P1",
+          "rubric": "Previews only the explicitly named solution batch, reviews exact target, selected flows and blockers, preserves planHash for expected-plan-hash at apply, and explains that activation is explicit after import; a bound connection reference does not prove connector runtime health and timed-out verification is unknown rather than success."
+        }
+      ]
     }
   ]
 }

@@ -11,6 +11,7 @@ Options:
   --name <name>                      [Required] Image name
   --type <type>                      [Required] Image type: pre, post, or both
   --attributes <attributes>          Comma-separated list of attributes to include (all if not specified)
+  --reset-fields <reset-fields>      Explicit image field resets (attributes, description)
   -p, --profile <profile>            Authentication profile name
   -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
   -s, --solution <solution>          Solution unique name. Overrides value in configuration file.

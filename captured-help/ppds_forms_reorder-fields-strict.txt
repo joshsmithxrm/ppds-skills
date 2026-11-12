@@ -1,0 +1,23 @@
+Description:
+  Reorder all existing section fields without adding or removing cells.
+
+Usage:
+  ppds forms reorder-fields-strict [options]
+
+Options:
+  --entity <entity>                  [Required] Entity logical name
+  --form <form>                      [Required] Form name or ID
+  --solution <solution>              Solution unique name to associate after the layout operation
+  --publish                          Publish all pending table customizations after the layout operation
+  -p, --profile <profile>            Authentication profile name
+  -env, --environment <environment>  Override the environment URL. Takes precedence over profile's bound environment.
+  --confirm-env <confirm-env>        Acknowledge writing to this exact resolved environment URL
+  --section <section>                [Required] Section label, name or ID
+  --fields <fields>                  [Required] Complete comma-separated permutation of existing section fields; no additions or removals
+  -q, --quiet                        Show only warnings and errors
+  -v, --verbose                      Show detailed output including debug messages
+  --debug                            Show trace-level diagnostic output
+  --correlation-id <correlation-id>  Correlation ID for distributed tracing
+  -f, --output-format <Text|Json>    Output format [default: Text]
+  -?, -h, --help                     Show help and usage information
+

@@ -4,6 +4,7 @@
 # produce a spurious whole-file diff.
 captured-help/*.txt text eol=lf
 captured-help/*.json text eol=lf
+captured-help/mcp-stdout.jsonl -text
 
 # The generated reference tables are written by tools/generate_flag_tables.py
 # with platform newlines; pin them LF too so a Windows re-capture doesn't flip

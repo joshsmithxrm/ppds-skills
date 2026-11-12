@@ -6,7 +6,8 @@ Usage:
 
 Options:
   -p, --profile <profile>                Authentication profile name
-  -e, --environment <environment>        Override the environment URL.
+  -e, -env, --environment <environment>  Override the environment URL.
+  --confirm-env <confirm-env>            Acknowledge writing to this exact resolved environment URL
   --entity <entity>                      [Required] Entity logical name (e.g., account)
   -v, --view <view>                      [Required] View name or ID
   -c, --column <column>                  [Required] Column to add. Format: 'attributename' or 'attributename:width' (default width 150). Repeatable.
