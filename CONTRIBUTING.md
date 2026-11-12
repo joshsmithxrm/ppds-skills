@@ -17,7 +17,8 @@ hand-written:
 1. `tools/capture_cli_help.py` walks `ppds <command> --help` over the full
    command tree into `captured-help/*.txt` + `manifest.json`.
 2. `tools/capture_mcp_tools.py` records the MCP server's `tools/list` response
-   into `captured-help/mcp-tools.json`.
+   as full tool descriptors (including JSON schemas), raw protocol frames,
+   sent requests, and a source/data hash receipt in `captured-help/`.
 3. `tools/generate_flag_tables.py` embeds those captures **verbatim** into
    `skills/*/references/cli-*.md` and `mcp-tools.md`.
 4. `evals/check_skills.py` closes the loop: prose cannot cite a command, flag,
@@ -74,20 +75,46 @@ hand-written:
 Re-capture whenever the installed CLI/MCP surface moves (each new rc, and again
 at v1.2.0 stable).
 
-### Automated (preferred)
+### Manual dispatch (preferred)
 
-A new **stable** `PPDS.Cli` on NuGet is picked up by
-`.github/workflows/recapture-on-release.yml` — weekly, or on demand:
+After verifying both public package versions, dispatch
+`.github/workflows/recapture-on-release.yml` with that exact pair. For example,
+substitute the reviewed versions for the values below:
 
 ```bash
-gh workflow run recapture-on-release.yml
+gh workflow run recapture-on-release.yml -f cli_version=1.5.0 -f mcp_version=1.3.0
 ```
 
-It installs the released CLI/MCP, re-captures, runs `tools/recapture.py` to bump
-the frontmatter pins, runs the static gate, and opens a PR for review. It
-**never auto-merges**, and it correctly no-ops when the latest stable isn't newer
-than the captured version (e.g. while `1.2.0-rc.N` is still ahead of the latest
-published stable). Two operational gotchas:
+Dispatch is restricted to the default branch. A `contents: read` producer checks
+out the exact dispatch commit with `persist-credentials: false`, installs the
+selected tools into an isolated directory, and captures into fresh staging.
+It retains complete MCP descriptors and the initialize/tools-list exchange;
+partial or paginated responses fail. CLI aliases are explicitly derived from
+the exact shown spellings, with counts and a canonical-path map.
+
+After the static gate, the producer uploads one JSON data bundle. A fresh writer
+job checks out the same commit without persisted credentials, validates the
+repository/source/run/attempt/pair binding and data/source hashes, then applies
+only known capture and generated-reference paths. It updates the two version
+pins in trusted `SKILL.md` frontmatter; it never executes PPDS or artifact code.
+`GH_TOKEN` is supplied only to the final Git/draft-PR shell step; checkout uses
+the job token to fetch but does not persist it. Obsolete CLI
+captures and the old candidate-only platform record are removed in the proposed
+diff, requiring human review.
+
+The workflow **never auto-merges** and has no schedule. Every valid dispatch
+captures both tools, including MCP-only or same-pair updates. Versions alone do
+not imply a no-op: protocol/runtime/provenance bytes may change. Byte-identical
+validated data opens no PR. Package/source hashes in the 14-day run artifact are
+producer observations, not independent public-package authenticity proof. Review
+public package identity and the resulting capture diff separately; the PR links
+the exact run/attempt and bundle hash.
+Recapture maintenance uses Python 3.14.10 and .NET SDK 10.0.404. The
+`maintainer-runtime` PR job checks those runtimes and runs offline tests with
+product calls replaced by offline doubles; consumer static checks retain Python
+3.8. These tests establish parser/handoff behavior, not a new stable capture,
+public-package identity, or hosted product execution result.
+Two operational gotchas:
 
 - The repo setting **Settings → Actions → General → "Allow GitHub Actions to
   create and approve pull requests"** must stay **on**, or the final
@@ -99,12 +126,12 @@ published stable). Two operational gotchas:
   does **not** catch those once the pin is stable), resolve any review threads,
   and merge.
 
-### Manual (offline, or what the automation runs under the hood)
+### Local recapture
 
 ```bash
-dotnet tool update -g PPDS.Cli --prerelease   # or drop --prerelease at stable
-dotnet tool update -g PPDS.Mcp --prerelease   # or drop --prerelease at stable
-python3 tools/recapture.py                    # 3 capture scripts + frontmatter bump
+dotnet tool update -g PPDS.Cli --version "$CLI_VERSION"   # verified exact version
+dotnet tool update -g PPDS.Mcp --version "$MCP_VERSION"   # verified exact version
+TARGET_CLI_VERSION="$CLI_VERSION" TARGET_MCP_VERSION="$MCP_VERSION" python3 tools/recapture.py
 python3 evals/check_skills.py
 ```
 
@@ -112,10 +139,10 @@ python3 evals/check_skills.py
 `generate_flag_tables.py`, then bumps `metadata.ppds_cli_version_tested` /
 `ppds_mcp_version_tested` in every `skills/*/SKILL.md` from the fresh manifests.
 It always captures again, even when the version matches the committed pin.
-Identical output produces no diff. Use this manual path when replacing local
-candidate captures with public packages of the same version: the scheduled
-workflow's strict newer-version check intentionally skips that case, including
-when `cli_version` is supplied on manual dispatch.
+Review obsolete local capture files separately; automation uses a fresh staging
+tree. Identical output produces no diff. Both local capture and manual dispatch can
+replace candidate captures with public packages of the same version; neither
+uses a newer-CLI-only comparison to decide whether to capture.
 
 After a candidate recapture, update
 `skills/ppds-core/references/candidate-provenance.json` from the actual source

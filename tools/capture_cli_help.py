@@ -1,134 +1,96 @@
 #!/usr/bin/env python3
-"""Capture the full `ppds` CLI --help surface by walking the command tree.
+"""Capture CLI help plus explicit alias derivations; never call normal handlers.
 
-Output goes to captured-help/ as one .txt file per command node, plus
-captured-help/manifest.json recording the CLI version the capture was
-generated from. The eval suite and the flag-table generator both consume
-this tree; skills never hand-write flag references.
-
-Usage:
-    python tools/capture_cli_help.py [--root-cmd ppds] [--out captured-help]
+Only the first spelling in each command row is executed. Other shown spellings
+derive their text from that exact canonical node, including nested alias paths.
+Use a fresh --out directory in automation. This recorder never deletes old data.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import re
+import os
+import platform
 import subprocess
 import sys
+from collections import deque
 from pathlib import Path
 
-COMMANDS_HEADER = re.compile(r"^Commands:\s*$")
+from cli_capture_format import (
+    MAX_DEPTH, MAX_NODES, MAX_TEXT_BYTES, MAX_TOTAL_BYTES, NUM, PRE, VERSION, WORD,
+    effective_version, expand_aliases, node_filename, parse_command_groups,
+    parse_subcommands, require,
+)
+
+
+def run_text(argv: list[str]) -> str:
+    result = subprocess.run(argv, capture_output=True, text=True, timeout=120,
+                            encoding="utf-8", errors="strict", stdin=subprocess.DEVNULL)
+    require(result.returncode == 0, "CLI help/version process failed")
+    require(not result.stderr, "CLI help/version produced stderr")
+    text = result.stdout
+    require(isinstance(text, str) and bool(text.strip()), "CLI help/version output is empty")
+    require(len(text.encode("utf-8")) <= MAX_TEXT_BYTES, "CLI output exceeds size bound")
+    return text
 
 
 def run_help(argv: list[str]) -> str:
-    """Run `<argv> --help` and return help text (stderr banner included)."""
-    result = subprocess.run(
-        argv + ["--help"],
-        capture_output=True,
-        text=True,
-        timeout=120,
-        encoding="utf-8",
-        errors="replace",
-    )
-    out = result.stdout or ""
-    if result.stderr and result.stderr.strip() and not out:
-        out = result.stderr
-    return out
+    return run_text(argv + ["--help"])
 
 
-def parse_subcommands(help_text: str) -> list[str]:
-    """Extract subcommand names from a System.CommandLine help screen."""
-    subs: list[str] = []
-    in_commands = False
-    for line in help_text.splitlines():
-        if COMMANDS_HEADER.match(line):
-            in_commands = True
-            continue
-        if not in_commands:
-            continue
-        if line.strip() == "":
-            continue
-        if not line.startswith("  "):
-            in_commands = False
-            continue
-        # Wrapped description continuation lines are indented deeper than
-        # the two-space command column.
-        if line.startswith("    "):
-            continue
-        token = line[2:]
-        # Cut at the two-space gap separating name column from description.
-        name_col = re.split(r"\s{2,}", token)[0]
-        # Strip <arg> placeholders: "import <path>" -> "import"
-        name_part = name_col.split("<")[0].strip()
-        # "ls, list" -> canonical long alias is the last one
-        aliases = [a.strip() for a in name_part.split(",") if a.strip()]
-        if not aliases:
-            continue
-        canonical = aliases[-1]
-        if canonical.startswith("-"):
-            continue
-        subs.append(canonical)
-    return subs
-
-
-def node_filename(path_parts: list[str]) -> str:
-    return "_".join(path_parts) + ".txt"
-
-
-def walk(root_cmd: str, out_dir: Path) -> dict:
-    captured: dict[str, list[str]] = {}
-    queue: list[list[str]] = [[root_cmd]]
+def capture_tree(root_cmd: str) -> tuple[dict, dict, dict]:
+    canonical_help: dict[str, str] = {}
+    queue = deque([[]])
+    total_bytes = 0
     while queue:
-        parts = queue.pop(0)
-        rel = " ".join(parts)
-        sys.stderr.write(f"capturing: {rel} --help\n")
-        text = run_help(parts)
-        if not text.strip():
-            sys.stderr.write(f"  WARNING: empty help for {rel}\n")
-            continue
-        (out_dir / node_filename(parts)).write_text(text, encoding="utf-8")
-        subs = parse_subcommands(text)
-        captured[rel] = subs
-        for s in subs:
-            queue.append(parts + [s])
-    return captured
+        parts = queue.popleft()
+        path = " ".join(["ppds"] + parts)
+        require(path not in canonical_help, "Duplicate canonical command path")
+        require(len(canonical_help) < MAX_NODES and len(parts) < MAX_DEPTH, "Canonical command bound exceeded")
+        sys.stderr.write(f"capturing: {path} --help\n")
+        text = run_help([root_cmd] + parts)
+        total_bytes += len(text.encode("utf-8"))
+        require(total_bytes <= MAX_TOTAL_BYTES, "Total CLI capture size bound exceeded")
+        canonical_help[path] = text
+        for child in parse_subcommands(text):
+            queue.append(parts + [child])
+    return expand_aliases(canonical_help)
+
+
+def write_text(path: Path, text: str) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as stream:
+        stream.write(text)
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--root-cmd", default="ppds")
     ap.add_argument("--out", default="captured-help")
+    ap.add_argument("--expected-version", default=os.environ.get("TARGET_CLI_VERSION"))
     args = ap.parse_args()
-
+    version_raw = run_text([args.root_cmd, "--version"]).strip()
+    version = effective_version(version_raw, args.expected_version)
+    tree, texts, sources = capture_tree(args.root_cmd)
+    counts = {
+        "canonical_runtime_capture_count": len(set(sources.values())),
+        "alias_expanded_command_path_count": len(sources),
+        "alias_derived_path_count": sum(path != source for path, source in sources.items()),
+    }
+    manifest = {
+        "tool": "ppds", "cli_version": version, "cli_version_raw": version_raw,
+        "requested_package_version": args.expected_version,
+        "capture_platform": f"{platform.system()} {platform.machine()}",
+        **counts, "command_tree": tree,
+    }
+    alias_record = {**counts, "paths": sources,
+        "derivation": "Only exact shown spellings of the same canonical parent are expanded; derived text is unchanged canonical help, not an independent alias invocation."}
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
-
-    version_raw = subprocess.run(
-        [args.root_cmd, "--version"],
-        capture_output=True,
-        text=True,
-        timeout=120,
-        encoding="utf-8",
-        errors="replace",
-    ).stdout.strip()
-    # "1.2.0-rc.4+044d93aec2..." -> "1.2.0-rc.4"
-    version = version_raw.split("+")[0].strip()
-
-    tree = walk(args.root_cmd, out_dir)
-
-    manifest = {
-        "tool": args.root_cmd,
-        "cli_version": version,
-        "cli_version_raw": version_raw,
-        "command_tree": tree,
-    }
-    (out_dir / "manifest.json").write_text(
-        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
-    )
-    sys.stderr.write(
-        f"done: {len(tree)} command nodes captured at CLI version {version}\n"
-    )
+    for path, text in texts.items():
+        write_text(out_dir / node_filename(path.split(" ")), text)
+    for filename, data in (("manifest.json", manifest), ("alias-provenance.json", alias_record)):
+        write_text(out_dir / filename, json.dumps(data, indent=2) + "\n")
+    sys.stderr.write(f"done: {counts['canonical_runtime_capture_count']} actual CLI nodes, {len(tree)} paths at {version}\n")
     return 0
 
 

@@ -1,156 +1,214 @@
 name: recapture-on-release
 
-# Opens a ready-to-review PR when a newer STABLE PPDS.Cli ships on NuGet:
-# installs the released CLI + MCP server, regenerates captured-help/ and the
-# skill reference tables, bumps the frontmatter version pins, and runs the
-# static gate. It NEVER auto-merges — a human reviews the capture diff and the
-# manual-prose checklist in the PR body (issue #8).
-#
-# This job installs the CLI, so it is deliberately SEPARATE from evals.yml,
-# which is intentionally zero-dependency (installs no CLI). Runs on Linux so
-# Python writes LF and the captures match the committed eol=lf blobs with no
-# CRLF churn.
-
+# Held source proposal: manual default-branch dispatch only. The producer has
+# read authority and no persisted checkout token. The writer consumes data in
+# a fresh job using trusted code from the exact dispatch commit.
 on:
-  schedule:
-    - cron: '17 8 * * 1'   # Mondays 08:17 UTC — cheap poll for a new stable
   workflow_dispatch:
     inputs:
       cli_version:
-        description: 'Force a specific PPDS.Cli version (else: latest stable on NuGet)'
-        required: false
+        description: 'Exact verified PPDS.Cli package version'
+        required: true
+        type: string
+      mcp_version:
+        description: 'Exact verified PPDS.Mcp package version'
+        required: true
         type: string
 
-# Least privilege: needs to push the branch and open the PR, nothing else.
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 concurrency:
   group: recapture-on-release
   cancel-in-progress: false
 
 jobs:
-  recapture:
-    # setup-python provides the documented Python 3.8 floor on this image.
+  capture:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+      bundle_sha256: ${{ steps.bundle.outputs.sha256 }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ github.sha }}
           persist-credentials: false
 
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.8'
+          python-version: '3.14.10'
 
       - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        env:
+          DOTNET_INSTALL_DIR: ${{ runner.temp }}/ppds-dotnet
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.404'
 
-      - name: Resolve current vs target CLI version
+      - name: Validate requested tool versions
         id: ver
         shell: bash
         env:
           REQUESTED_CLI_VERSION: ${{ inputs.cli_version }}
+          REQUESTED_MCP_VERSION: ${{ inputs.mcp_version }}
           LC_ALL: C
         run: |
           set -euo pipefail
-          current="$(python -c "import json;print(json.load(open('captured-help/manifest.json'))['cli_version'])")"
-          forced="$REQUESTED_CLI_VERSION"
-          if [ -n "$forced" ]; then
-            target="$forced"
-          else
-            target="$(python tools/latest_stable_cli.py)"
-          fi
-          # Exact PPDS SemVer literals; same grammar as the release-input guard.
           numeric='(0|[1-9][0-9]*)'
           prerelease='(0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)'
           build='[0-9A-Za-z-]+'
           version_re="^${numeric}\.${numeric}\.${numeric}(-${prerelease}(\.${prerelease})*)?(\+${build}(\.${build})*)?$"
-          if ! [[ "$current" =~ $version_re ]]; then
-            echo "::error::Invalid captured CLI version literal"
+          if ! [[ "$REQUESTED_CLI_VERSION" =~ $version_re ]]; then
+            echo "::error::Invalid requested CLI version literal"
             exit 1
           fi
-          if [ -n "$target" ] && ! [[ "$target" =~ $version_re ]]; then
-            echo "::error::Invalid target CLI version literal"
+          if ! [[ "$REQUESTED_MCP_VERSION" =~ $version_re ]]; then
+            echo "::error::Invalid requested MCP version literal"
             exit 1
           fi
-          printf 'current=%s\ntarget=%s\n' "$current" "$target" >> "$GITHUB_OUTPUT"
-          echo "Current captured: '$current' | target stable: '$target'"
-          if [ -z "$target" ]; then
-            echo "proceed=false" >> "$GITHUB_OUTPUT"
-            echo "No stable version resolved from NuGet — no-op."
-          elif [ "$(python tools/cli_newer_than.py "$target" "$current")" = "yes" ]; then
-            echo "proceed=true" >> "$GITHUB_OUTPUT"
-            echo "Target '$target' is newer than captured '$current' — will re-capture."
-          else
-            echo "proceed=false" >> "$GITHUB_OUTPUT"
-            echo "Target '$target' is not newer than captured '$current' — no-op."
-          fi
+          printf 'cli_version=%s\nmcp_version=%s\n' "$REQUESTED_CLI_VERSION" "$REQUESTED_MCP_VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Install released PPDS tools
-        if: steps.ver.outputs.proceed == 'true'
         env:
-          TARGET_CLI_VERSION: ${{ steps.ver.outputs.target }}
+          TARGET_CLI_VERSION: ${{ steps.ver.outputs.cli_version }}
+          TARGET_MCP_VERSION: ${{ steps.ver.outputs.mcp_version }}
+          PPDS_TOOL_DIR: ${{ runner.temp }}/ppds-tools
         shell: bash
         run: |
           set -euo pipefail
-          dotnet tool install -g PPDS.Cli --version "$TARGET_CLI_VERSION"
-          # MCP server tracks its own version; take whatever stable is current.
-          dotnet tool install -g PPDS.Mcp || dotnet tool update -g PPDS.Mcp
-          echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
+          dotnet tool install --tool-path "$PPDS_TOOL_DIR" PPDS.Cli --version "$TARGET_CLI_VERSION"
+          dotnet tool install --tool-path "$PPDS_TOOL_DIR" PPDS.Mcp --version "$TARGET_MCP_VERSION"
+          echo "$PPDS_TOOL_DIR" >> "$GITHUB_PATH"
 
-      - name: Re-capture + bump frontmatter
-        if: steps.ver.outputs.proceed == 'true'
+      - name: Capture in fresh staging directory
+        env:
+          TARGET_CLI_VERSION: ${{ steps.ver.outputs.cli_version }}
+          TARGET_MCP_VERSION: ${{ steps.ver.outputs.mcp_version }}
+          CAPTURE_STAGE: ${{ runner.temp }}/ppds-capture
+          PPDS_CONFIG_DIR: ${{ runner.temp }}/ppds-empty-config
         shell: bash
         run: |
           set -euo pipefail
-          ppds --version
-          python tools/recapture.py
+          python -c "import sys; assert sys.version_info[:3] == (3, 14, 10), sys.version"
+          test "$(dotnet --version)" = '10.0.404'
+          mkdir "$PPDS_CONFIG_DIR"
+          python tools/recapture_artifact.py prepare --stage "$CAPTURE_STAGE"
+          python "$CAPTURE_STAGE/tools/recapture.py"
+          python "$CAPTURE_STAGE/evals/check_skills.py"
 
-      - name: Static gate
-        if: steps.ver.outputs.proceed == 'true'
+      - name: Seal data bundle
+        id: bundle
+        env:
+          TARGET_CLI_VERSION: ${{ steps.ver.outputs.cli_version }}
+          TARGET_MCP_VERSION: ${{ steps.ver.outputs.mcp_version }}
+          CAPTURE_STAGE: ${{ runner.temp }}/ppds-capture
+          PPDS_TOOL_DIR: ${{ runner.temp }}/ppds-tools
+          BUNDLE_PATH: ${{ runner.temp }}/ppds-handoff/bundle.json
         shell: bash
-        run: python evals/check_skills.py
+        run: |
+          set -euo pipefail
+          export CAPTURE_SOURCE_TREE="$(git rev-parse 'HEAD^{tree}')"
+          digest="$(python tools/recapture_artifact.py pack --stage "$CAPTURE_STAGE" --store "$PPDS_TOOL_DIR/.store" --output "$BUNDLE_PATH")"
+          printf 'sha256=%s\n' "$digest" >> "$GITHUB_OUTPUT"
 
-      - name: Open PR if the captured surface changed
-        if: steps.ver.outputs.proceed == 'true'
+      - name: Upload data only
+        id: upload
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: ppds-capture-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/ppds-handoff/bundle.json
+          if-no-files-found: error
+          retention-days: 14
+
+  write-pr:
+    needs: capture
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.14.10'
+
+      - name: Validate artifact selection
+        env:
+          ARTIFACT_ID: ${{ needs.capture.outputs.artifact_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$ARTIFACT_ID" =~ ^[1-9][0-9]*$ ]]
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          artifact-ids: ${{ needs.capture.outputs.artifact_id }}
+          path: ${{ runner.temp }}/ppds-handoff
+          merge-multiple: true
+
+      # No artifact scripts, PPDS, installers or capture/generator entrypoints.
+      - name: Validate and apply data only
+        env:
+          TARGET_CLI_VERSION: ${{ inputs.cli_version }}
+          TARGET_MCP_VERSION: ${{ inputs.mcp_version }}
+          BUNDLE_SHA256: ${{ needs.capture.outputs.bundle_sha256 }}
+          ARTIFACT_DIR: ${{ runner.temp }}/ppds-handoff
+          PATHS_OUTPUT: ${{ runner.temp }}/ppds-validated-paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          export CAPTURE_SOURCE_TREE="$(git rev-parse 'HEAD^{tree}')"
+          python tools/recapture_artifact.py apply --artifact-dir "$ARTIFACT_DIR" --sha256 "$BUNDLE_SHA256" --paths-output "$PATHS_OUTPUT"
+
+      - name: Open draft PR if validated data changed
         env:
           GH_TOKEN: ${{ github.token }}
-          TARGET: ${{ steps.ver.outputs.target }}
-          CURRENT: ${{ steps.ver.outputs.current }}
+          TARGET_CLI_VERSION: ${{ inputs.cli_version }}
+          TARGET_MCP_VERSION: ${{ inputs.mcp_version }}
+          BUNDLE_SHA256: ${{ needs.capture.outputs.bundle_sha256 }}
+          PATHS_OUTPUT: ${{ runner.temp }}/ppds-validated-paths
+          PR_BODY: ${{ runner.temp }}/ppds-capture-pr.md
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         shell: bash
         run: |
           set -euo pipefail
-          git add -A
-          # Post-normalization diff (eol=lf already applied on add): empty means
-          # the new release left the captured surface byte-identical.
+          git add --pathspec-from-file="$PATHS_OUTPUT" --pathspec-file-nul
           if git diff --cached --quiet; then
-            echo "No surface change between $CURRENT and $TARGET — no PR needed."
+            echo 'No validated capture change - no PR needed.'
             exit 0
           fi
-
-          branch="recapture/ppds-$TARGET"
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          branch="recapture/run-$GITHUB_RUN_ID-attempt-$GITHUB_RUN_ATTEMPT"
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
           git checkout -b "$branch"
-          git commit -m "chore(captures): re-capture CLI/MCP surface against PPDS $TARGET"
-          # Use the step-scoped GH_TOKEN for this push only; write no credential config.
-          git -c credential.helper= -c 'credential.helper=!gh auth git-credential' \
-            push -u origin "$branch" --force-with-lease
+          git -c core.hooksPath=/dev/null commit -m "chore(captures): CLI $TARGET_CLI_VERSION / MCP $TARGET_MCP_VERSION"
+          # The token is supplied only to this Git process; checkout never persists it.
+          header="$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $header" push origin "HEAD:refs/heads/$branch"
+          cat > "$PR_BODY" <<EOF
+          Manual capture of CLI $TARGET_CLI_VERSION / MCP $TARGET_MCP_VERSION.
 
-          body="$(cat <<EOF
-          Automated re-capture against **PPDS CLI \`$TARGET\`** (was \`$CURRENT\`), per #8.
+          Source: $GITHUB_SHA
+          Producer run: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/attempts/$GITHUB_RUN_ATTEMPT
+          Data bundle SHA256: $BUNDLE_SHA256
 
-          The capture scripts + frontmatter bump + \`check_skills.py\` ran green. **Do not merge without the manual review below** — the static gate verifies that cited commands/flags *exist*, not that the skill prose is still accurate or complete.
+          The read-only producer captured full MCP schemas and protocol records and passed the static gate. The clean writer validated only data against this exact source, run, attempt and pair. Package hashes are producer observations; they do not independently prove public package authenticity.
 
-          ## Manual review checklist
-          - [ ] Read the \`captured-help/\` diff: any **new / renamed / removed** command or flag that needs new *prose* in a skill (the gate won't tell you).
-          - [ ] If the pin is now **stable**, drop \`--prerelease\` install guidance (\`README.md\`, \`skills/ppds-core/SKILL.md\`) and remove stale \`rc\` mentions (\`README.md\`, \`DESIGN.md\`, \`skills/*\`) — \`check_skills.py::check_prose_version_drift\` does NOT catch these on a stable pin.
-          - [ ] Update \`CHANGELOG.md\`.
-          - [ ] Bump \`.claude-plugin/plugin.json\` + \`marketplace.json\` if cutting a package release.
-          - [ ] Close #8's first real run / link this PR to #2 if this is the v1.2 recapture.
+          - [ ] Review command/flag/tool additions and removals, full schemas, effective versions and package/source receipts in the run artifact.
+          - [ ] Review deleted candidate-only platform records; replace source-only assertions only with fresh evidence.
+          - [ ] Update candidate-provenance.json for the new evidence; never relabel the retained alpha evidence as stable.
+          - [ ] Review prose, stable install guidance, CHANGELOG and plugin versions separately.
+          - [ ] Run ordinary PR validation before considering merge. A GITHUB_TOKEN PR may require a maintainer close/reopen to trigger it.
           EOF
-          )"
-          gh pr create --title "chore(captures): re-capture against PPDS $TARGET" \
-            --body "$body" --label "type:docs,epic:agent-tooling" --base main --head "$branch"
+          gh pr create --draft --title "chore(captures): CLI $TARGET_CLI_VERSION / MCP $TARGET_MCP_VERSION" --body-file "$PR_BODY" --base "$DEFAULT_BRANCH" --head "$branch"
