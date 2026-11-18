@@ -146,4 +146,4 @@ adoption covers forms, nine Views writers and flow activation; other domains ret
 
 ## CLI transition guidance
 
-Prefer long `--environment`, `--entity` and `--entities` options. Existing `-e` meanings remain during this minor release; do not silently reinterpret old scripts. Every existing environment option also accepts `-env`; there is no opt-in mode. The later CLI 2.0 transition requires at least 90 days after the complete stable replacement guidance. Read [the transition contract](references/cli-transition.md); legacy warnings belong on stderr, never inside stdout JSON.
+Prefer long `--environment`, `--entity` and `--entities` options. Existing `-e` meanings remain during this minor release; do not silently reinterpret old scripts. Every existing environment option also accepts `-env`; there is no opt-in mode. Read [the transition contract](references/cli-transition.md); legacy warnings belong on stderr, never inside stdout JSON.

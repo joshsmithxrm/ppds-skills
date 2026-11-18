@@ -73,9 +73,9 @@ ambiguous selected bindings and silent copying from other sections now fail.
 
 The deprecation warning goes to stderr only; the existing JSON data shape stays
 `section`, `fields`, `message`. Migrate to strict reorder, explicit add or move
-according to the intended action. Removal is planned for CLI 2.0 and no earlier
-than 90 days after the replacement commands' stable release. Both conditions
-apply; no calendar removal date has been set.
+according to the intended action. Legacy `forms reorder-fields` is deprecated;
+use `forms reorder-fields-strict`, `forms add-field` or `forms move-field`
+instead. Its behavior and output are unchanged.
 
 ## Review publication separately
 
