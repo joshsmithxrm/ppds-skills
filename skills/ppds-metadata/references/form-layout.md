@@ -75,7 +75,7 @@ The deprecation warning goes to stderr only; the existing JSON data shape stays
 `section`, `fields`, `message`. Migrate to strict reorder, explicit add or move
 according to the intended action. Legacy `forms reorder-fields` is deprecated;
 use `forms reorder-fields-strict`, `forms add-field` or `forms move-field`
-instead. Its behavior and output are unchanged.
+instead.
 
 ## Review publication separately
 
