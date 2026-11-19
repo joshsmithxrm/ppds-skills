@@ -128,7 +128,6 @@
           "scope": "commands",
           "any": [
             "ppds traces",
-            "ppds plugin-traces",
             "--filter-xml",
             "pac "
           ],
@@ -165,7 +164,6 @@
           "scope": "commands",
           "any": [
             "ppds traces",
-            "ppds plugin-traces",
             "--filter-xml",
             "pac "
           ],
