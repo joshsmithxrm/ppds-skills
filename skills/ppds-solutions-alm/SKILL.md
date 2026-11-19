@@ -26,7 +26,7 @@ MCP read tools for shell-less hosts: `ppds_solutions_list`,
 ## Solution round-trip
 
 ```bash
-ppds solutions list -f json
+ppds solutions list --output-format Json
 ppds solutions get MySolution
 ppds solutions components MySolution            # what's inside
 ppds solutions export MySolution --managed -o ./out/MySolution_managed.zip
@@ -47,7 +47,7 @@ ppds solutions url MySolution                   # Maker portal deep link
 
 ```bash
 # Environment variables (the supported way to vary config per environment)
-ppds environmentvariables list -f json
+ppds environmentvariables list --output-format Json
 ppds environmentvariables set <schema-name> "<value>"
 
 # Connection references — find ones with no connection bound (import breaker)

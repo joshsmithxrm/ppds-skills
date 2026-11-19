@@ -115,7 +115,8 @@ These rules are not style; agents must follow them.
 
 - **stdout is data, stderr is status.** Pipe-safe by design. Parse stdout;
   show stderr to humans.
-- Machine-readable: `--output-format Json`, spelled out (`-f` can be `--file`).
+- Machine-readable: `--output-format Json` on commands that return data, spelled
+  out (`-f` can be `--file`).
 - Quiet/verbose: `-q` warnings+errors only; `-v` debug; `--debug` trace.
 - Non-zero exits carry a structured JSON error envelope on stderr with an
   `error.code` like `Connection.Throttled`. Exit codes 0–11 and per-code

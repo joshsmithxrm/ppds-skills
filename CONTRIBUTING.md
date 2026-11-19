@@ -50,7 +50,8 @@ hand-written:
   ```
   If a locally installed `ppds` differs from the captured version, its
   capture-freshness check fails; run it as `PPDS_SKIP_FRESHNESS=1 python3
-  evals/check_skills.py` for a prose-only change.
+  evals/check_skills.py` (PowerShell: `$env:PPDS_SKIP_FRESHNESS = '1'; python
+  evals/check_skills.py`) for a prose-only change.
 - Wrong text inside a generated `references/cli-*.md` file comes from the CLI's
   own `--help`. Fix it in the
   [main repo](https://github.com/joshsmithxrm/power-platform-developer-suite),

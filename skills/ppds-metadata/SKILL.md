@@ -26,7 +26,7 @@ relationship, key, optionset.
 ## Browsing schema
 
 ```bash
-ppds metadata entities -f json                  # all tables
+ppds metadata entities --output-format Json     # all tables
 ppds metadata entity account                    # full metadata for one table
 ppds metadata attributes account                # columns, types
 ppds metadata relationships account             # 1:N, N:1, N:N

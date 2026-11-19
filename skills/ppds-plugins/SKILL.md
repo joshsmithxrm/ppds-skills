@@ -99,7 +99,8 @@ ppds plugintraces delete --older-than 7d --dry-run
 
 Useful list filters: `--mode sync|async`, `--min-duration <ms>` (find slow
 steps), `--since/--until` (ISO 8601), `--correlation-id`, `--step-id`,
-`--record account/<guid>`, `--recursive` (nested depth >1 only).
+`--record account/<guid>`, `--recursive` (nested depth >1 only). To export the
+list, `plugintraces list` takes `--output-format Json` or `Csv`.
 
 ## Common mistakes (do not invent these)
 

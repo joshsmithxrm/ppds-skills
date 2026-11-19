@@ -28,7 +28,7 @@ history are CLI-only.
 ppds query sql "SELECT TOP 10 name, revenue FROM account WHERE statecode = 0 ORDER BY revenue DESC"
 ppds query sql "SELECT a.name, c.fullname FROM account a JOIN contact c ON c.parentcustomerid = a.accountid"
 ppds query sql "SELECT ownerid, COUNT(*) AS total FROM account GROUP BY ownerid HAVING COUNT(*) > 10"
-ppds query sql --file ./report.sql -f json     # SQL from file, JSON to stdout
+ppds query sql --file ./report.sql --output-format Json  # SQL from file, JSON to stdout
 ```
 
 - Paging: `--top`, `--page`, `--paging-cookie`; `--count` adds total count.
@@ -87,7 +87,7 @@ FetchXML is the ground truth of what Dataverse was asked.
 | `--limit 10` / `--max-rows 10` | `--top 10` (alias `-t`) |
 | `ppds query sql --fetchxml "<fetch>...""` | `ppds query fetch "<fetch>..."` |
 | `ppds sql "..."` | `ppds query sql "..."` |
-| `--format json` | `-f json` / `--output-format Json` |
+| `--format json` | `--output-format Json` (`Csv` also works on `query sql`, `query fetch`, `query history execute`) |
 | `BEGIN TRAN ... COMMIT` | not supported — statements run independently |
 | `--force` on `query sql` | the DML flags are `--confirm`, `--dry-run`, `--no-limit` |
 
