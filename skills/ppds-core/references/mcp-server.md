@@ -1,7 +1,7 @@
 # ppds-mcp-server — setup and session safety flags
 
-Source of truth: released `PPDS.Mcp` 1.0.0 (NuGet) and its public README.
-The tool list lives in [mcp-tools.md](mcp-tools.md), captured from a live
+Source of truth: released `PPDS.Mcp` 1.2.2 (NuGet), its public source, and its
+README. The tool list lives in [mcp-tools.md](mcp-tools.md), captured from a live
 `tools/list` call — never cite a tool that is not in that file.
 
 ## Install
@@ -51,7 +51,7 @@ ppds-mcp-server --environment https://yourorg-dev.crm.dynamics.com \
   --allowed-env https://yourorg-dev.crm.dynamics.com
 ```
 
-Note: the server prints nothing when invoked with `--help` in 1.0.0 — the
+Note: the server prints nothing when invoked with `--help` in 1.2.2 — the
 flags above come from the released source and README, both public.
 
 ## Logging

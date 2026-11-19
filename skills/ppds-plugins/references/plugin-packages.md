@@ -1,7 +1,7 @@
 # Plugin packages and extraction troubleshooting
 
-This guidance covers the CLI 1.4.2 maintenance candidate. Check the installed
-version and capture provenance; published 1.4.1 lacks net48 package acceptance
+This guidance covers CLI 1.4.2. Check the installed version and capture
+provenance; CLI 1.4.1 lacks net48 package acceptance
 and the protected-cache changes. Preserve ppds-core's environment and mutation
 controls. Local extraction does not authorize deployment.
 
@@ -9,7 +9,7 @@ controls. Local extraction does not authorize deployment.
 
 - `PPDS.Plugins` retains its `net462` library target; plugin projects can
   reference it from .NET Framework 4.6.2 through 4.8.
-- The candidate accepts package asset groups `lib/net462`, `lib/net471`, and
+- CLI 1.4.2 accepts package asset groups `lib/net462`, `lib/net471`, and
   `lib/net48`. A package without one of those groups fails local preflight.
 - A loose DLL must still target a Dataverse-supported .NET Framework version
   and be strong-name-signed. Repackaging does not make netstandard/modern .NET
@@ -37,7 +37,7 @@ destructive action, not an automatic rollback.
 
 ## Reference-cache failures
 
-Single-file installs embed framework references. The candidate stores them
+Single-file installs embed framework references. CLI 1.4.2 stores them
 under the OS local application-data directory at
 `PPDS/cache/net462-ref/<resource-hash>`. It validates ownership, permissions,
 and links before reading or repairing cache contents. Missing/truncated

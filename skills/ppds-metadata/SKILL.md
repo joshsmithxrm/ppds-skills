@@ -75,7 +75,7 @@ environment first. A managed view can accept an unmanaged-layer edit when its
 managed properties allow it; `View.ManagedComponentNotEditable` reports a
 rejected write, not a universal ban on managed components.
 
-For the CLI 1.4.2 maintenance candidate's view projections, qualified related
+For CLI 1.4.2's view projections, qualified related
 columns, draft verification, app selections, and Timeline fix, read
 [references/metadata-editing.md](references/metadata-editing.md). Inspect the
 draft before retrying a verification or partial-write error; a failed command

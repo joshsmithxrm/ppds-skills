@@ -44,9 +44,9 @@ ppds plugins list --assembly MyPlugins
 ```
 
 For NuGet package framework selection, identity validation, and reference-cache
-troubleshooting in the CLI 1.4.2 maintenance candidate, read
-[references/plugin-packages.md](references/plugin-packages.md). Keep the
-installed version and the candidate-only fixes distinct.
+troubleshooting in CLI 1.4.2, read
+[references/plugin-packages.md](references/plugin-packages.md). Check the
+installed version first; older releases lack some of these fixes.
 
 Key facts:
 
@@ -109,7 +109,7 @@ steps), `--since/--until` (ISO 8601), `--correlation-id`, `--step-id`,
 | `ppds plugins deploy --file registrations.json` | the flag is `--config` (alias `-c`) |
 | `ppds plugins register --assembly ...` for updates | `register` is first-time direct registration; the maintained loop is extract → diff → deploy |
 | `ppds plugintraces list --query "..."` / `--filter-xml` | `--filter <json-file>`, or the typed flags (`--entity`, `--message`, `--errors-only`, ...) |
-| `ppds traces ...` / `ppds plugin-traces ...` | the group is `ppds plugintraces` |
+| `ppds traces ...` | the group is `ppds plugintraces` |
 | Leaving trace level at `all` | `ppds plugintraces settings set exception` after debugging |
 
 ## Skill boundaries

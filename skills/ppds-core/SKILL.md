@@ -71,8 +71,8 @@ ppds env select --environment <url-or-name>
 ppds env who                            # identity + selected environment
 ```
 
-Per-call override on most commands: `--environment <url>` (alias `-env`) and
-`--profile <name>` (`-p`). `ppds org ...` is an alias for `ppds env ...`.
+Per-call override on most commands: `--environment <url>` and `--profile <name>`.
+Spell them out (short aliases vary). `ppds org ...` is an alias for `ppds env ...`.
 
 ## The safety model — hard rules
 
@@ -115,7 +115,7 @@ These rules are not style; agents must follow them.
 
 - **stdout is data, stderr is status.** Pipe-safe by design. Parse stdout;
   show stderr to humans.
-- Machine-readable: add `-f json` (`--output-format Json`); CSV is `-f csv`.
+- Machine-readable: `--output-format Json`, spelled out (`-f` can be `--file`).
 - Quiet/verbose: `-q` warnings+errors only; `-v` debug; `--debug` trace.
 - Non-zero exits carry a structured JSON error envelope on stderr with an
   `error.code` like `Connection.Throttled`. Exit codes 0–11 and per-code
@@ -129,7 +129,7 @@ These rules are not style; agents must follow them.
 | `ppds auth select 1` | `ppds auth select --index 1` |
 | `ppds auth login` / `ppds login` | `ppds auth create` (first time) or `ppds auth select` (existing) |
 | `ppds env switch` | `ppds env select --environment <name>` |
-| `--format json` / `--json` | `-f json` / `--output-format Json` |
+| `--format json` / `--json` | `--output-format Json` |
 | `pac auth create` patterns (e.g. `--url`) | PPDS is not PAC CLI — check [references/cli-auth.md](references/cli-auth.md) |
 
 ## Where to go next
