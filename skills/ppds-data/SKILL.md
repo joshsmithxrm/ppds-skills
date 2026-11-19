@@ -49,8 +49,10 @@ Import facts worth knowing (all real flags, see reference):
 - `--continue-on-error` + `--error-report <path>` stream per-record failures
   to `.errors.jsonl` — exit code 1 means partial success; report "X of Y".
 - Export format: `--format Cmt` (default, CMT-compatible) or `Json`.
-- Throughput: multiple app-user profiles multiply API quota
-  (`-p app1,app2,app3`); `--parallel`, `--batch-size`, `--page-parallel`.
+- Throughput: multiple app-user profiles multiply API quota. `import` and
+  `export` take `-p app1,app2,app3`; `copy` takes `--target-profile app1,app2`
+  (one `--source-profile`). Import has no parallelism flags; `export` takes
+  `--parallel`, `--batch-size`, `--page-parallel`; `copy` takes the first two.
 
 ## Targeted bulk operations
 

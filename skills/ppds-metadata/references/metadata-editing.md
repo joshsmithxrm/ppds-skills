@@ -1,7 +1,7 @@
 # View form and app editing
 
-This guidance describes the CLI 1.4.2 maintenance candidate. Check the installed
-version and captured provenance before relying on candidate-only fixes. Apply
+This guidance describes CLI 1.4.2. Check the installed version and captured
+provenance before relying on fixes that need 1.4.2. Apply
 ppds-core's environment and mutation controls; these examples do not authorize
 a write or publication.
 
@@ -20,7 +20,7 @@ ppds api request --path /api/data/v9.2/WhoAmI --profile <profile> --environment 
 ppds views get --entity account --view <view-id> --unpublished --profile <profile> --environment <environment-url>
 ```
 
-Save the original draft before mutation. In the candidate, adding a direct
+Save the original draft before mutation. In CLI 1.4.2, adding a direct
 column synchronizes its layout cell and FetchXML projection, repairing a
 missing projection when needed. Related cells use `alias.attribute`:
 
@@ -59,7 +59,7 @@ by `--include`. A cell without its FetchXML projection can render empty.
 
 ## Draft verification and publication
 
-The candidate verifies every written view XML field against intended normalized
+CLI 1.4.2 verifies every written view XML field against intended normalized
 draft state, including equivalent no-ops. Formatting and the platform-maintained
 root annotation can differ; query attributes, aliases, filters and order matter.
 `View.UpdateNotPersisted` means different XML or a missing read-back record;
@@ -79,7 +79,7 @@ with `--unpublished`.
 
 ## App selections and Timeline forms
 
-The candidate resolves the entire requested app form/view/chart set before
+CLI 1.4.2 resolves the entire requested app form/view/chart set before
 writing; ambiguous names require a returned candidate ID. It retains existing
 selections and adds before removing. A later server failure can leave partial
 state: inspect the app draft before retry/publish. `--all` removes explicit

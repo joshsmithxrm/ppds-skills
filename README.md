@@ -87,7 +87,7 @@ skills (`/skills reload` after copying mid-session).
 
 Copy all seven folders, including their `references/` files. The core skill
 contains the capture provenance, so it remains available after a copy-only
-installation; the other skills link to core and to one another.
+installation; the other skills refer to core and to one another by name.
 
 ## Smoke test
 

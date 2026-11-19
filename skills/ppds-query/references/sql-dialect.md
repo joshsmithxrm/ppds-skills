@@ -1,7 +1,7 @@
 # PPDS SQL dialect — what the SQL→FetchXML engine supports
 
 Source of truth: the public `PPDS.Query` package README (1.2.0 line) and
-the engine's published feature list. Parsing is full T-SQL via
+the engine's published feature list (command captures: CLI 1.4.2). Parsing is full T-SQL via
 `Microsoft.SqlServer.TransactSql.ScriptDom`; execution pushes work down to
 FetchXML when possible and falls back to client-side operators when not.
 
